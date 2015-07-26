@@ -44,12 +44,30 @@ namespace plugin_Stripe_Payment_Press;
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-Stripe-Payment-Press';
 const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 
+\add_action('admin_init', '\\plugin_Stripe_Payment_Press\\action_admin_init');
 \add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
 \add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
                                      '\\plugin_Stripe_Payment_Press\\filter_plugin_action_links');
 
 \add_shortcode('stripe-payment-press',
                '\\plugin_Stripe_Payment_Press\\shortcode_stripe_payment_press');
+
+function action_admin_init() {
+    //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
+    \add_settings_section('plugin_Stripe_Payment_Press__settings_group__stripe_keys',
+                          'Your Stripe Keys',
+                          '\\plugin_Stripe_Payment_Press\\settings_group__stripe_keys',
+                          SLUG_INFO_SETTINGS);
+
+    \register_setting('plugin_Stripe_Payment_Press__settings_group__stripe_keys',
+                      'plugin_Stripe_Payment_Press__setting__stripe_test_secret_key');
+
+    \add_settings_field('plugin_Stripe_Payment_Press__settings_field__stripe_test_secret_key',
+                        'Stripe Test Secret Key',
+                        '\\plugin_Stripe_Payment_Press\\settings_field__stripe_test_secret_key',
+                        SLUG_INFO_SETTINGS,
+                        'plugin_Stripe_Payment_Press__settings_group__stripe_keys');
+}
 
 function action_admin_menu() {
     \add_options_page(\__('Stripe-Payment-Press Info / Settings',
@@ -69,6 +87,13 @@ function action_admin_menu() {
     <div class="wrap">
       <p>Use the shortcode <code>[stripe-payment-press]</code> to embed a Stripe payment widget on
          any page or post.</p>
+      <form method="post" action="options.php">
+        <?php //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
+            \settings_fields('plugin_Stripe_Payment_Press__settings_group__stripe_keys');
+            \do_settings_sections(SLUG_INFO_SETTINGS);
+            \submit_button();
+        ?>
+      </form>
     </div>
     <?php
     }
@@ -83,6 +108,19 @@ function filter_plugin_action_links($arrLinks) {
 
 function getUrlInfoSettings() {
     return \admin_url('options-general.php?page=' . SLUG_INFO_SETTINGS);
+}
+
+function settings_field__stripe_test_secret_key() {
+    //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
+    ?>
+    <input type='text'
+           name='plugin_Stripe_Payment_Press__setting__stripe_test_secret_key'
+           value='<?=\esc_attr(\get_option(
+                            'plugin_Stripe_Payment_Press__setting__stripe_test_secret_key'))?>' />
+    <?php
+}
+
+function settings_group__stripe_keys() {
 }
 
 function shortcode_stripe_payment_press($atts) {
