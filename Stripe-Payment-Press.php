@@ -42,6 +42,8 @@
 namespace plugin_Stripe_Payment_Press;
 
 add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
+add_filter('plugin_action_links_' . plugin_basename(__FILE__),
+                                     '\\plugin_Stripe_Payment_Press\\filter_plugin_action_links');
 
 function action_admin_menu() {
     add_options_page( __('Stripe-Payment-Press Info / Settings',
@@ -62,5 +64,16 @@ function action_admin_menu() {
     </div>
     <?php
     }
+}
+
+function filter_plugin_action_links($arrLinks) {
+    array_push($arrLinks,
+               '<a href=\'' . getUrlInfoSettings() . '\'>'
+                          . __('Info / Settings', 'domain-plugin-Stripe-Payment-Press') . '</a>');
+    return $arrLinks;
+}
+
+function getUrlInfoSettings() {
+    return admin_url('options-general.php?page=plugin_Stripe_Payment_Press_info_settings');
 }
 ?>
