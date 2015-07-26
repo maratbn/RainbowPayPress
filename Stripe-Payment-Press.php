@@ -41,14 +41,16 @@
 
 namespace plugin_Stripe_Payment_Press;
 
+const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-Stripe-Payment-Press';
+
 add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
 add_filter('plugin_action_links_' . plugin_basename(__FILE__),
                                      '\\plugin_Stripe_Payment_Press\\filter_plugin_action_links');
 
 function action_admin_menu() {
     add_options_page( __('Stripe-Payment-Press Info / Settings',
-                         'domain-plugin-Stripe-Payment-Press'),
-                      __('Stripe-Payment-Press', 'domain-plugin-Stripe-Payment-Press'),
+                         DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                      __('Stripe-Payment-Press', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                       'manage_options',
                       'plugin_Stripe_Payment_Press_info_settings',
                       '\\plugin_Stripe_Payment_Press\\render_info_settings');
@@ -57,7 +59,7 @@ function action_admin_menu() {
         //  Based on http://codex.wordpress.org/Administration_Menus
         if (!current_user_can('manage_options' ))  {
             wp_die(__('You do not have sufficient permissions to access this page.',
-                      'domain-plugin-Stripe-Payment-Press'));
+                      DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS));
         }
     ?>
     <div class="wrap">
@@ -69,7 +71,7 @@ function action_admin_menu() {
 function filter_plugin_action_links($arrLinks) {
     array_push($arrLinks,
                '<a href=\'' . getUrlInfoSettings() . '\'>'
-                          . __('Info / Settings', 'domain-plugin-Stripe-Payment-Press') . '</a>');
+                          . __('Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS) . '</a>');
     return $arrLinks;
 }
 
