@@ -67,6 +67,8 @@ function action_admin_menu() {
         }
     ?>
     <div class="wrap">
+      <p>Use the shortcode <code>[stripe-payment-press]</code> to embed a Stripe payment widget on
+         any page or post.</p>
     </div>
     <?php
     }
