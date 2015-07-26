@@ -44,23 +44,23 @@ namespace plugin_Stripe_Payment_Press;
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-Stripe-Payment-Press';
 const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 
-add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
-add_filter('plugin_action_links_' . plugin_basename(__FILE__),
+\add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
+\add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
                                      '\\plugin_Stripe_Payment_Press\\filter_plugin_action_links');
 
 function action_admin_menu() {
-    add_options_page( __('Stripe-Payment-Press Info / Settings',
-                         DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                      __('Stripe-Payment-Press', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+    \add_options_page(\__('Stripe-Payment-Press Info / Settings',
+                          DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                      \__('Stripe-Payment-Press', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                       'manage_options',
                       SLUG_INFO_SETTINGS,
                       '\\plugin_Stripe_Payment_Press\\render_info_settings');
 
     function render_info_settings() {
         //  Based on http://codex.wordpress.org/Administration_Menus
-        if (!current_user_can('manage_options' ))  {
-            wp_die(__('You do not have sufficient permissions to access this page.',
-                      DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS));
+        if (!\current_user_can('manage_options' ))  {
+            \wp_die(__('You do not have sufficient permissions to access this page.',
+                       DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS));
         }
     ?>
     <div class="wrap">
@@ -70,13 +70,13 @@ function action_admin_menu() {
 }
 
 function filter_plugin_action_links($arrLinks) {
-    array_push($arrLinks,
-               '<a href=\'' . getUrlInfoSettings() . '\'>'
-                          . __('Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS) . '</a>');
+    \array_push($arrLinks,
+                '<a href=\'' . getUrlInfoSettings() . '\'>'
+                          . \__('Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS) . '</a>');
     return $arrLinks;
 }
 
 function getUrlInfoSettings() {
-    return admin_url('options-general.php?page=' . SLUG_INFO_SETTINGS);
+    return \admin_url('options-general.php?page=' . SLUG_INFO_SETTINGS);
 }
 ?>
