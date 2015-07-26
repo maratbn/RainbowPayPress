@@ -48,6 +48,9 @@ const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 \add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
                                      '\\plugin_Stripe_Payment_Press\\filter_plugin_action_links');
 
+\add_shortcode('stripe-payment-press',
+               '\\plugin_Stripe_Payment_Press\\shortcode_stripe_payment_press');
+
 function action_admin_menu() {
     \add_options_page(\__('Stripe-Payment-Press Info / Settings',
                           DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
@@ -78,5 +81,8 @@ function filter_plugin_action_links($arrLinks) {
 
 function getUrlInfoSettings() {
     return \admin_url('options-general.php?page=' . SLUG_INFO_SETTINGS);
+}
+
+function shortcode_stripe_payment_press($atts) {
 }
 ?>
