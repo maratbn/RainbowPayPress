@@ -42,6 +42,7 @@
 namespace plugin_Stripe_Payment_Press;
 
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-Stripe-Payment-Press';
+const SETTINGS_SECTION__STRIPE_KEYS = 'plugin_Stripe_Payment_Press__settings_group__stripe_keys';
 const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 
 \add_action('admin_init', '\\plugin_Stripe_Payment_Press\\action_admin_init');
@@ -54,19 +55,19 @@ const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 
 function action_admin_init() {
     //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
-    \add_settings_section('plugin_Stripe_Payment_Press__settings_group__stripe_keys',
+    \add_settings_section(SETTINGS_SECTION__STRIPE_KEYS,
                           'Your Stripe Keys',
                           '\\plugin_Stripe_Payment_Press\\settings_group__stripe_keys',
                           SLUG_INFO_SETTINGS);
 
-    \register_setting('plugin_Stripe_Payment_Press__settings_group__stripe_keys',
+    \register_setting(SETTINGS_SECTION__STRIPE_KEYS,
                       'plugin_Stripe_Payment_Press__setting__stripe_test_secret_key');
 
     \add_settings_field('plugin_Stripe_Payment_Press__settings_field__stripe_test_secret_key',
                         'Stripe Test Secret Key',
                         '\\plugin_Stripe_Payment_Press\\settings_field__stripe_test_secret_key',
                         SLUG_INFO_SETTINGS,
-                        'plugin_Stripe_Payment_Press__settings_group__stripe_keys');
+                        SETTINGS_SECTION__STRIPE_KEYS);
 }
 
 function action_admin_menu() {
@@ -89,7 +90,7 @@ function action_admin_menu() {
          any page or post.</p>
       <form method="post" action="options.php">
         <?php //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
-            \settings_fields('plugin_Stripe_Payment_Press__settings_group__stripe_keys');
+            \settings_fields(SETTINGS_SECTION__STRIPE_KEYS);
             \do_settings_sections(SLUG_INFO_SETTINGS);
             \submit_button();
         ?>
