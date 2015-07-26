@@ -41,4 +41,26 @@
 
 namespace plugin_Stripe_Payment_Press;
 
+add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
+
+function action_admin_menu() {
+    add_options_page( __('Stripe-Payment-Press Info / Settings',
+                         'domain-plugin-Stripe-Payment-Press'),
+                      __('Stripe-Payment-Press', 'domain-plugin-Stripe-Payment-Press'),
+                      'manage_options',
+                      'plugin_Stripe_Payment_Press_info_settings',
+                      '\\plugin_Stripe_Payment_Press\\render_info_settings');
+
+    function render_info_settings() {
+        //  Based on http://codex.wordpress.org/Administration_Menus
+        if (!current_user_can('manage_options' ))  {
+            wp_die(__('You do not have sufficient permissions to access this page.',
+                      'domain-plugin-Stripe-Payment-Press'));
+        }
+    ?>
+    <div class="wrap">
+    </div>
+    <?php
+    }
+}
 ?>
