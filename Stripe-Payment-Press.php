@@ -141,6 +141,10 @@ function action_admin_menu() {
             <code>name</code>
             <p>Your site / company / organization name.</p>
           </li>
+          <li>
+            <code>desc</code>
+            <p>Description of the product / service / fee you're charging for.</p>
+          </li>
         </ul>
       </p>
       <form method="post" action="options.php">
@@ -212,6 +216,7 @@ function settings_group__stripe_keys() {
 function shortcode_stripe_payment_press($atts) {
     if ($atts == null ||
         $atts['amount'] == null ||
+        $atts['desc'] == null ||
         $atts['name'] == null) {
         return '<b><i>Short-code [stripe-payment-press] missconfigured.</i></b>';
     }
