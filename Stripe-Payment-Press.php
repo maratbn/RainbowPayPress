@@ -56,7 +56,7 @@ const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 function action_admin_init() {
     //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
     \add_settings_section(SETTINGS_SECTION__STRIPE_KEYS,
-                          'Your Stripe Keys',
+                          \__('Your Stripe Keys', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                           '\\plugin_Stripe_Payment_Press\\settings_group__stripe_keys',
                           SLUG_INFO_SETTINGS);
 
