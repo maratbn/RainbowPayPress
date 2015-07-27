@@ -128,8 +128,17 @@ function action_admin_menu() {
         }
     ?>
     <div class="wrap">
-      <p>Use the shortcode <code>[stripe-payment-press]</code> to embed a Stripe payment widget on
+      <p>Use the shortcode <code>[stripe-payment-press amount=XXXX]</code> to embed a Stripe payment widget on
          any page or post.</p>
+      <p>
+        <h5>Shortcode attributes:</h5>
+        <ul>
+          <li>
+            <code>amount</code>
+            <p>The amount to charge in cents.</p>
+          </li>
+        </ul>
+      </p>
       <form method="post" action="options.php">
         <?php //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
             \settings_fields(SETTINGS_SECTION__STRIPE_KEYS);
@@ -197,7 +206,8 @@ function settings_group__stripe_keys() {
 }
 
 function shortcode_stripe_payment_press($atts) {
-    if ($atts == null) {
+    if ($atts == null ||
+        $atts['amount'] == null) {
         return '<b><i>Short-code [stripe-payment-press] missconfigured.</i></b>';
     }
 
