@@ -158,6 +158,7 @@ function settings_field__stripe_live_publish_key() {
     ?>
     <input type='text'
            name='<?=SETTING__STRIPE_LIVE_PUBLISH_KEY?>'
+           size='40'
            value='<?=\esc_attr(\get_option(SETTING__STRIPE_LIVE_PUBLISH_KEY))?>' />
     <?php
 }
@@ -167,6 +168,7 @@ function settings_field__stripe_live_secret_key() {
     ?>
     <input type='text'
            name='<?=SETTING__STRIPE_LIVE_SECRET_KEY?>'
+           size='40'
            value='<?=\esc_attr(\get_option(SETTING__STRIPE_LIVE_SECRET_KEY))?>' />
     <?php
 }
@@ -176,6 +178,7 @@ function settings_field__stripe_test_publish_key() {
     ?>
     <input type='text'
            name='<?=SETTING__STRIPE_TEST_PUBLISH_KEY?>'
+           size='40'
            value='<?=\esc_attr(\get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>' />
     <?php
 }
@@ -185,6 +188,7 @@ function settings_field__stripe_test_secret_key() {
     ?>
     <input type='text'
            name='<?=SETTING__STRIPE_TEST_SECRET_KEY?>'
+           size='40'
            value='<?=\esc_attr(\get_option(SETTING__STRIPE_TEST_SECRET_KEY))?>' />
     <?php
 }
