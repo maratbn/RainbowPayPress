@@ -221,5 +221,15 @@ function shortcode_stripe_payment_press($atts) {
         return '<b><i>Short-code [stripe-payment-press] missconfigured.</i></b>';
     }
 
+    return '<form action="" method="POST">' .
+             '<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"' .
+                    ' data-key="' . \esc_attr(\get_option(SETTING__STRIPE_TEST_PUBLISH_KEY)) .
+                              '"' .
+                    ' data-amount="' . \esc_attr($atts['amount']) . '"' .
+                    ' data-name="' . \esc_attr($atts['name']) . '"' .
+                    ' data-description="' . \esc_attr($atts['desc']) . '"' .
+                    '>' .
+             '</script>' .
+           '</form>';
 }
 ?>
