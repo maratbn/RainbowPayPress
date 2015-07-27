@@ -64,7 +64,7 @@ function action_admin_init() {
                       'plugin_Stripe_Payment_Press__setting__stripe_test_secret_key');
 
     \add_settings_field('plugin_Stripe_Payment_Press__settings_field__stripe_test_secret_key',
-                        'Stripe Test Secret Key',
+                        \__('Stripe Test Secret Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                         '\\plugin_Stripe_Payment_Press\\settings_field__stripe_test_secret_key',
                         SLUG_INFO_SETTINGS,
                         SETTINGS_SECTION__STRIPE_KEYS);
