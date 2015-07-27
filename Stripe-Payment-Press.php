@@ -197,5 +197,9 @@ function settings_group__stripe_keys() {
 }
 
 function shortcode_stripe_payment_press($atts) {
+    if ($atts == null) {
+        return '<b><i>Short-code [stripe-payment-press] missconfigured.</i></b>';
+    }
+
 }
 ?>
