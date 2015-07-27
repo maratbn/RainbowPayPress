@@ -42,8 +42,12 @@
 namespace plugin_Stripe_Payment_Press;
 
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-Stripe-Payment-Press';
+const SETTING__STRIPE_TEST_PUBLISH_KEY =
+                                  'plugin_Stripe_Payment_Press__setting__stripe_test_publish_key';
 const SETTING__STRIPE_TEST_SECRET_KEY =
                                    'plugin_Stripe_Payment_Press__setting__stripe_test_secret_key';
+const SETTINGS_FIELD__STRIPE_TEST_PUBLISH_KEY =
+                           'plugin_Stripe_Payment_Press__settings_field__stripe_test_publish_key';
 const SETTINGS_FIELD__STRIPE_TEST_SECRET_KEY =
                             'plugin_Stripe_Payment_Press__settings_field__stripe_test_secret_key';
 const SETTINGS_SECTION__STRIPE_KEYS = 'plugin_Stripe_Payment_Press__settings_group__stripe_keys';
@@ -69,6 +73,15 @@ function action_admin_init() {
     \add_settings_field(SETTINGS_FIELD__STRIPE_TEST_SECRET_KEY,
                         \__('Stripe Test Secret Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                         '\\plugin_Stripe_Payment_Press\\settings_field__stripe_test_secret_key',
+                        SLUG_INFO_SETTINGS,
+                        SETTINGS_SECTION__STRIPE_KEYS);
+
+
+    \register_setting(SETTINGS_SECTION__STRIPE_KEYS, SETTING__STRIPE_TEST_PUBLISH_KEY);
+
+    \add_settings_field(SETTINGS_FIELD__STRIPE_TEST_PUBLISH_KEY,
+                        \__('Stripe Test Publishable Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                        '\\plugin_Stripe_Payment_Press\\settings_field__stripe_test_publish_key',
                         SLUG_INFO_SETTINGS,
                         SETTINGS_SECTION__STRIPE_KEYS);
 }
@@ -112,6 +125,15 @@ function filter_plugin_action_links($arrLinks) {
 
 function getUrlInfoSettings() {
     return \admin_url('options-general.php?page=' . SLUG_INFO_SETTINGS);
+}
+
+function settings_field__stripe_test_publish_key() {
+    //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
+    ?>
+    <input type='text'
+           name='<?=SETTING__STRIPE_TEST_PUBLISH_KEY?>'
+           value='<?=\esc_attr(\get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>' />
+    <?php
 }
 
 function settings_field__stripe_test_secret_key() {
