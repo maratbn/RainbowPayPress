@@ -44,6 +44,8 @@ namespace plugin_Stripe_Payment_Press;
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-Stripe-Payment-Press';
 const SETTING__STRIPE_TEST_SECRET_KEY =
                                    'plugin_Stripe_Payment_Press__setting__stripe_test_secret_key';
+const SETTINGS_FIELD__STRIPE_TEST_SECRET_KEY =
+                            'plugin_Stripe_Payment_Press__settings_field__stripe_test_secret_key';
 const SETTINGS_SECTION__STRIPE_KEYS = 'plugin_Stripe_Payment_Press__settings_group__stripe_keys';
 const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 
@@ -64,7 +66,7 @@ function action_admin_init() {
 
     \register_setting(SETTINGS_SECTION__STRIPE_KEYS, SETTING__STRIPE_TEST_SECRET_KEY);
 
-    \add_settings_field('plugin_Stripe_Payment_Press__settings_field__stripe_test_secret_key',
+    \add_settings_field(SETTINGS_FIELD__STRIPE_TEST_SECRET_KEY,
                         \__('Stripe Test Secret Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                         '\\plugin_Stripe_Payment_Press\\settings_field__stripe_test_secret_key',
                         SLUG_INFO_SETTINGS,
