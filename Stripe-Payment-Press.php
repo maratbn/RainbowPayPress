@@ -42,6 +42,8 @@
 namespace plugin_Stripe_Payment_Press;
 
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-Stripe-Payment-Press';
+const SETTING__STRIPE_TEST_SECRET_KEY =
+                                   'plugin_Stripe_Payment_Press__setting__stripe_test_secret_key';
 const SETTINGS_SECTION__STRIPE_KEYS = 'plugin_Stripe_Payment_Press__settings_group__stripe_keys';
 const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 
@@ -60,8 +62,7 @@ function action_admin_init() {
                           '\\plugin_Stripe_Payment_Press\\settings_group__stripe_keys',
                           SLUG_INFO_SETTINGS);
 
-    \register_setting(SETTINGS_SECTION__STRIPE_KEYS,
-                      'plugin_Stripe_Payment_Press__setting__stripe_test_secret_key');
+    \register_setting(SETTINGS_SECTION__STRIPE_KEYS, SETTING__STRIPE_TEST_SECRET_KEY);
 
     \add_settings_field('plugin_Stripe_Payment_Press__settings_field__stripe_test_secret_key',
                         \__('Stripe Test Secret Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
@@ -115,9 +116,8 @@ function settings_field__stripe_test_secret_key() {
     //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
     ?>
     <input type='text'
-           name='plugin_Stripe_Payment_Press__setting__stripe_test_secret_key'
-           value='<?=\esc_attr(\get_option(
-                            'plugin_Stripe_Payment_Press__setting__stripe_test_secret_key'))?>' />
+           name='<?=SETTING__STRIPE_TEST_SECRET_KEY?>'
+           value='<?=\esc_attr(\get_option(SETTING__STRIPE_TEST_SECRET_KEY))?>' />
     <?php
 }
 
