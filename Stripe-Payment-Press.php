@@ -63,6 +63,7 @@ const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 
 \add_action('admin_init', '\\plugin_Stripe_Payment_Press\\action_admin_init');
 \add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
+
 \add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
                                      '\\plugin_Stripe_Payment_Press\\filter_plugin_action_links');
 
