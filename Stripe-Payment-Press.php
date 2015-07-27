@@ -137,6 +137,10 @@ function action_admin_menu() {
             <code>amount</code>
             <p>The amount to charge in cents.</p>
           </li>
+          <li>
+            <code>name</code>
+            <p>Your site / company / organization name.</p>
+          </li>
         </ul>
       </p>
       <form method="post" action="options.php">
@@ -207,7 +211,8 @@ function settings_group__stripe_keys() {
 
 function shortcode_stripe_payment_press($atts) {
     if ($atts == null ||
-        $atts['amount'] == null) {
+        $atts['amount'] == null ||
+        $atts['name'] == null) {
         return '<b><i>Short-code [stripe-payment-press] missconfigured.</i></b>';
     }
 
