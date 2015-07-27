@@ -128,7 +128,9 @@ function action_admin_menu() {
         }
     ?>
     <div class="wrap">
-      <p>Use the shortcode <code>[stripe-payment-press amount=XXXX]</code> to embed a Stripe payment widget on
+      <p>Use the shortcode
+         <code>[stripe-payment-press amount=1234 name="My entity" desc="Buy this" label="Click to buy"]</code>
+         to embed a Stripe payment widget on
          any page or post.</p>
       <p>
         <h5>Required shortcode attributes:</h5>
