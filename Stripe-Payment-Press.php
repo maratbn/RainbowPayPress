@@ -128,6 +128,7 @@ function action_admin_menu() {
         }
     ?>
     <div class="wrap">
+      <h2>Usage Info:</h2>
       <p>Use the shortcode
          <code>[stripe-payment-press amount=1234 name="My entity" desc="Buy this" label="Click to buy"]</code>
          to embed a Stripe payment widget on
@@ -156,6 +157,7 @@ function action_admin_menu() {
           </li>
         </ul>
       </p>
+      <h2>Configuration:</h2>
       <form method="post" action="options.php">
         <?php //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
             \settings_fields(SETTINGS_SECTION__STRIPE_KEYS);
