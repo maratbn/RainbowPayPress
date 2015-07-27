@@ -131,7 +131,7 @@ function action_admin_menu() {
       <p>Use the shortcode <code>[stripe-payment-press amount=XXXX]</code> to embed a Stripe payment widget on
          any page or post.</p>
       <p>
-        <h5>Shortcode attributes:</h5>
+        <h5>Required shortcode attributes:</h5>
         <ul>
           <li>
             <code>amount</code>
@@ -145,6 +145,9 @@ function action_admin_menu() {
             <code>desc</code>
             <p>Description of the product / service / fee you're charging for.</p>
           </li>
+        </ul>
+        <h5>Optional shortcode attributes:</h5>
+        <ul>
           <li>
             <code>label</code>
             <p>Stripe payment button label, otherwise defaults to "Pay with card" or similar.</p>
