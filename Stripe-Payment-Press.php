@@ -145,6 +145,10 @@ function action_admin_menu() {
             <code>desc</code>
             <p>Description of the product / service / fee you're charging for.</p>
           </li>
+          <li>
+            <code>label</code>
+            <p>Stripe payment button label, otherwise defaults to "Pay with card" or similar.</p>
+          </li>
         </ul>
       </p>
       <form method="post" action="options.php">
@@ -228,6 +232,8 @@ function shortcode_stripe_payment_press($atts) {
                     ' data-amount="' . \esc_attr($atts['amount']) . '"' .
                     ' data-name="' . \esc_attr($atts['name']) . '"' .
                     ' data-description="' . \esc_attr($atts['desc']) . '"' .
+                    ($atts['label'] == null ? ""
+                                            : ' data-label="' . \esc_attr($atts['label']) . '"') .
                     '>' .
              '</script>' .
            '</form>';
