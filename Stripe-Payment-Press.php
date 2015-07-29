@@ -63,6 +63,10 @@ const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 
 \add_action('admin_init', '\\plugin_Stripe_Payment_Press\\action_admin_init');
 \add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
+\add_action('wp_enqueue_scripts', '\\plugin_Stripe_Payment_Press\\action_wp_enqueue_scripts');
+\add_action('wp_print_footer_scripts',
+            '\\plugin_Stripe_Payment_Press\\action_wp_print_footer_scripts');
+
 
 \add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
                                      '\\plugin_Stripe_Payment_Press\\filter_plugin_action_links');
@@ -171,6 +175,63 @@ function action_admin_menu() {
     }
 }
 
+function action_wp_enqueue_scripts() {
+    \wp_enqueue_script('jquery');
+    \wp_enqueue_script('plugin__Stripe-Payment-Press__stripe_checkout',
+                       'https://checkout.stripe.com/checkout.js',
+                       null,
+                       \date('Y-m-d'));
+}
+
+function action_wp_print_footer_scripts() {
+?>
+    <script type='text/javascript'>
+        jQuery(document).ready(function($) {
+                var $elSnaps = $("snap[data-plugin-stripe-payment-press-role=root]");
+
+                for (var i = 0; i < $elSnaps.length; i++) {
+                    var $elSnap = $($elSnaps[i]);
+
+                    var amount =  $elSnap.attr('data-plugin-stripe-payment-press-amount'),
+                        name =    $elSnap.attr('data-plugin-stripe-payment-press-name'),
+                        desc =    $elSnap.attr('data-plugin-stripe-payment-press-desc'),
+                        label =   $elSnap.attr('data-plugin-stripe-payment-press-label');
+
+                    var $buttonMakePayment = $('<button>').text(label || "Pay with Stripe")
+                                                          .appendTo($elSnap);
+
+                    //  Based on: https://stripe.com/docs/checkout#integration-custom
+
+                    var handler = StripeCheckout.configure({
+                            key: '<?=\esc_attr(\get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>',
+                            token: function(token) {
+                                    // Use the token to create the charge with a server-side script.
+                                    // You can access the token ID with `token.id`
+
+                                }
+                        });
+
+                    $buttonMakePayment.on('click', function(e) {
+                            // Open Checkout with further options
+                            handler.open({
+                                    name:         name,
+                                    description:  desc,
+                                    amount:       amount
+                                });
+
+                            e.preventDefault();
+                        });
+
+                    // Close Checkout on page navigation
+                    $(window).on('popstate', function() {
+                            handler.close();
+                        });
+                }
+            });
+    </script>
+<?php
+}
+
 function filter_plugin_action_links($arrLinks) {
     \array_push($arrLinks,
                 '<a href=\'' . getUrlInfoSettings() . '\'>'
@@ -233,17 +294,16 @@ function shortcode_stripe_payment_press($atts) {
         return '<b><i>Short-code [stripe-payment-press] missconfigured.</i></b>';
     }
 
-    return '<form action="" method="POST">' .
-             '<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"' .
-                    ' data-key="' . \esc_attr(\get_option(SETTING__STRIPE_TEST_PUBLISH_KEY)) .
-                              '"' .
-                    ' data-amount="' . \esc_attr($atts['amount']) . '"' .
-                    ' data-name="' . \esc_attr($atts['name']) . '"' .
-                    ' data-description="' . \esc_attr($atts['desc']) . '"' .
-                    ($atts['label'] == null ? ""
-                                            : ' data-label="' . \esc_attr($atts['label']) . '"') .
-                    '>' .
-             '</script>' .
-           '</form>';
+    return '<snap data-plugin-stripe-payment-press-role="root"' .
+                ' data-plugin-stripe-payment-press-amount="' . \esc_attr($atts['amount']) .
+                                                         '"' .
+                ' data-plugin-stripe-payment-press-name="' . \esc_attr($atts['name']) .
+                                                       '"' .
+                ' data-plugin-stripe-payment-press-desc="' . \esc_attr($atts['desc']) .
+                                                       '"' .
+                ($atts['label'] == null ? "" :
+                ' data-plugin-stripe-payment-press-label="' . \esc_attr($atts['label']) .
+                                                        '"') . '>' .
+           '</snap>';
 }
 ?>
