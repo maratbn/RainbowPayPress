@@ -62,28 +62,28 @@ abstract class Util
     public static function convertToStripeObject($resp, $opts)
     {
         $types = array(
-            'account' => 'Stripe\\Account',
-            'alipay_account' => 'Stripe\\AlipayAccount',
-            'bank_account' => 'Stripe\\BankAccount',
-            'balance_transaction' => 'Stripe\\BalanceTransaction',
-            'card' => 'Stripe\\Card',
-            'charge' => 'Stripe\\Charge',
-            'coupon' => 'Stripe\\Coupon',
-            'customer' => 'Stripe\\Customer',
-            'list' => 'Stripe\\Collection',
-            'invoice' => 'Stripe\\Invoice',
-            'invoiceitem' => 'Stripe\\InvoiceItem',
-            'event' => 'Stripe\\Event',
-            'file' => 'Stripe\\FileUpload',
-            'token' => 'Stripe\\Token',
-            'transfer' => 'Stripe\\Transfer',
-            'plan' => 'Stripe\\Plan',
-            'recipient' => 'Stripe\\Recipient',
-            'refund' => 'Stripe\\Refund',
-            'subscription' => 'Stripe\\Subscription',
-            'fee_refund' => 'Stripe\\ApplicationFeeRefund',
-            'bitcoin_receiver' => 'Stripe\\BitcoinReceiver',
-            'bitcoin_transaction' => 'Stripe\\BitcoinTransaction',
+            'account' => 'plugin_Stripe_Payment_Press\\Stripe\\Account',
+            'alipay_account' => 'plugin_Stripe_Payment_Press\\Stripe\\AlipayAccount',
+            'bank_account' => 'plugin_Stripe_Payment_Press\\Stripe\\BankAccount',
+            'balance_transaction' => 'plugin_Stripe_Payment_Press\\Stripe\\BalanceTransaction',
+            'card' => 'plugin_Stripe_Payment_Press\\Stripe\\Card',
+            'charge' => 'plugin_Stripe_Payment_Press\\Stripe\\Charge',
+            'coupon' => 'plugin_Stripe_Payment_Press\\Stripe\\Coupon',
+            'customer' => 'plugin_Stripe_Payment_Press\\Stripe\\Customer',
+            'list' => 'plugin_Stripe_Payment_Press\\Stripe\\Collection',
+            'invoice' => 'plugin_Stripe_Payment_Press\\Stripe\\Invoice',
+            'invoiceitem' => 'plugin_Stripe_Payment_Press\\Stripe\\InvoiceItem',
+            'event' => 'plugin_Stripe_Payment_Press\\Stripe\\Event',
+            'file' => 'plugin_Stripe_Payment_Press\\Stripe\\FileUpload',
+            'token' => 'plugin_Stripe_Payment_Press\\Stripe\\Token',
+            'transfer' => 'plugin_Stripe_Payment_Press\\Stripe\\Transfer',
+            'plan' => 'plugin_Stripe_Payment_Press\\Stripe\\Plan',
+            'recipient' => 'plugin_Stripe_Payment_Press\\Stripe\\Recipient',
+            'refund' => 'plugin_Stripe_Payment_Press\\Stripe\\Refund',
+            'subscription' => 'plugin_Stripe_Payment_Press\\Stripe\\Subscription',
+            'fee_refund' => 'plugin_Stripe_Payment_Press\\Stripe\\ApplicationFeeRefund',
+            'bitcoin_receiver' => 'plugin_Stripe_Payment_Press\\Stripe\\BitcoinReceiver',
+            'bitcoin_transaction' => 'plugin_Stripe_Payment_Press\\Stripe\\BitcoinTransaction',
         );
         if (self::isList($resp)) {
             $mapped = array();
@@ -95,7 +95,7 @@ abstract class Util
             if (isset($resp['object']) && is_string($resp['object']) && isset($types[$resp['object']])) {
                 $class = $types[$resp['object']];
             } else {
-                $class = 'Stripe\\Object';
+                $class = 'plugin_Stripe_Payment_Press\\Stripe\\Object';
             }
             return $class::constructFrom($resp, $opts);
         } else {
