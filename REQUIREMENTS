@@ -10,4 +10,5 @@ Stripe-Payment-Press requires:
     Server-side environment:
 
      * PHP version >= 5.4
+     * php5-curl module enabled
      * WordPress version >= 3.8.3
