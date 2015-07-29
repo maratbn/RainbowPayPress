@@ -63,6 +63,10 @@ const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 
 \add_action('admin_init', '\\plugin_Stripe_Payment_Press\\action_admin_init');
 \add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
+\add_action('wp_ajax_stripe_payment_press__charge_with_stripe',
+            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
+\add_action('wp_ajax_nopriv_stripe_payment_press__charge_with_stripe',
+            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
 \add_action('wp_enqueue_scripts', '\\plugin_Stripe_Payment_Press\\action_wp_enqueue_scripts');
 \add_action('wp_print_footer_scripts',
             '\\plugin_Stripe_Payment_Press\\action_wp_print_footer_scripts');
@@ -175,6 +179,16 @@ function action_admin_menu() {
     }
 }
 
+function action_wp_ajax_stripe_payment_press__charge_with_stripe() {
+    $dataToken = $_POST['token'];
+
+
+    $arrErrors = [];
+
+    die(json_encode(['success' => false,
+                     'errors' => $arrErrors]));
+}
+
 function action_wp_enqueue_scripts() {
     \wp_enqueue_script('jquery');
     \wp_enqueue_script('plugin__Stripe-Payment-Press__stripe_checkout',
@@ -208,6 +222,10 @@ function action_wp_print_footer_scripts() {
                                     // Use the token to create the charge with a server-side script.
                                     // You can access the token ID with `token.id`
 
+                                    var $xhr = $.post('<?=\admin_url('admin-ajax.php')?>', {
+                                            action:  'stripe_payment_press__charge_with_stripe',
+                                            token:   token
+                                        });
                                 }
                         });
 
