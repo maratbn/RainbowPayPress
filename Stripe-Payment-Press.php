@@ -225,6 +225,7 @@ function action_wp_print_footer_scripts() {
                                     var $xhr = $.post('<?=\admin_url('admin-ajax.php')?>', {
                                             action:  'stripe_payment_press__charge_with_stripe',
                                             amount:  amount,
+                                            desc:    desc,
                                             token:   token
                                         });
                                 }
