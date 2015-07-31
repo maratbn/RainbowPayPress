@@ -41,6 +41,9 @@
 
 namespace plugin_Stripe_Payment_Press;
 
+const PLUGIN_VERSION = '0.0.1-development_unreleased';
+const IS_MODE_RELEASE = false;
+
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-Stripe-Payment-Press';
 const SETTING__STRIPE_LIVE_PUBLISH_KEY =
                                   'plugin_Stripe_Payment_Press__setting__stripe_live_publish_key';
@@ -288,6 +291,14 @@ function filter_plugin_action_links($arrLinks) {
                 '<a href=\'' . getUrlInfoSettings() . '\'>'
                           . \__('Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS) . '</a>');
     return $arrLinks;
+}
+
+/**
+ *  Returns unique version args to append to a resource URL to make
+ *  that resource be unique in the browser cache.
+ */
+function getUVArg() {
+    return 'uv=' . PLUGIN_VERSION . (IS_MODE_RELEASE ? "" : ('_' . time() . rand()));
 }
 
 function getUrlInfoSettings() {
