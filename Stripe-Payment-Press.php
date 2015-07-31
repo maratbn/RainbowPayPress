@@ -218,6 +218,14 @@ function action_wp_enqueue_scripts() {
                        'https://checkout.stripe.com/checkout.js',
                        null,
                        \date('Y-m-d'));
+
+    \wp_enqueue_script(
+            'plugin_Stripe_Payment_Press__requirejs',
+            plugin_dir_url(__FILE__)
+                . 'js/lib/require_js-2.1.20-src--tweaked--namespaced--4264bcbdceac4240e742d16b7a7a9313fc1cd6d6.js',
+            null,
+            '2015-07-30--1',
+            false);
 }
 
 function action_wp_print_footer_scripts() {
