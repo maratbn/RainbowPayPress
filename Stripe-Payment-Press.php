@@ -182,8 +182,31 @@ function action_admin_menu() {
 function action_wp_ajax_stripe_payment_press__charge_with_stripe() {
     $dataToken = $_POST['token'];
 
-
     $arrErrors = [];
+
+    //  Based on:   https://stripe.com/docs/checkout/guides/php
+
+    require_once(dirname(__FILE__) .
+                               '/stripe-php-2.3.0--tweaked--2015-07-26--01--namespaced/init.php');
+
+    $stripe = array(
+          "secret_key"       => \get_option(SETTING__STRIPE_TEST_SECRET_KEY),
+          "publishable_key"  => \get_option(SETTING__STRIPE_TEST_PUBLISH_KEY)
+        );
+
+    \plugin_Stripe_Payment_Press\Stripe\Stripe::setApiKey($stripe['secret_key']);
+
+    $customer = \plugin_Stripe_Payment_Press\Stripe\Customer::create(array(
+            'email'     => $dataToken['email'],
+            'card'      => $dataToken['id'],
+            'metadata'  => array('charge_desc' => $_POST['desc'])
+        ));
+
+    $charge = \plugin_Stripe_Payment_Press\Stripe\Charge::create(array(
+            'customer'  => $customer->id,
+            'amount'    => $_POST['amount'],
+            'currency'  => 'usd'
+        ));
 
     die(json_encode(['success' => false,
                      'errors' => $arrErrors]));
