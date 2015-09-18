@@ -354,7 +354,7 @@ function shortcode_stripe_payment_press($atts) {
         return '<b><i>Short-code [stripe-payment-press] missconfigured.</i></b>';
     }
 
-    return '<snap data-plugin-stripe-payment-press-role="root"' .
+    return '<span data-plugin-stripe-payment-press-role="root"' .
                 ' data-plugin-stripe-payment-press-amount="' . \esc_attr($atts['amount']) .
                                                          '"' .
                 ' data-plugin-stripe-payment-press-name="' . \esc_attr($atts['name']) .
@@ -364,6 +364,6 @@ function shortcode_stripe_payment_press($atts) {
                 ($atts['label'] == null ? "" :
                 ' data-plugin-stripe-payment-press-label="' . \esc_attr($atts['label']) .
                                                         '"') . '>' .
-           '</snap>';
+           '</span>';
 }
 ?>
