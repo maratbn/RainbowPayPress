@@ -41,6 +41,22 @@ define(['backbone',
 
                 initialize: function() {
 
+                        this.$el.attr({'border':       '0',
+                                       'cellspacing':  '0',
+                                       'cellpadding':  '0'});
+
+                        var $aOpenStripe      = $('<a>').attr('href', '#')
+                                                        .text("Open Stripe to specify"),
+                            $tdStripeTokenId  = $('<td>');
+
+                        var $trStripeTokenId = $('<tr>').append($('<td>').text("Stripe token id:"))
+                                                        .append($tdStripeTokenId)
+                                                        .append($('<td>').append($aOpenStripe))
+                                                        .appendTo(this.$el);
+
+                        $aOpenStripe.click(function(event) {
+                                event.preventDefault();
+                            });
                     }
             });
 
