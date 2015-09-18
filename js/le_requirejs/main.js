@@ -42,15 +42,15 @@ define(['jquery',
             var $elSpans = $("span[data-plugin-stripe-payment-press-role=root]");
 
             for (var i = 0; i < $elSpans.length; i++) {
-                var $elSnap = $($elSpans[i]);
+                var $elSpan = $($elSpans[i]);
 
-                var amount =  $elSnap.attr('data-plugin-stripe-payment-press-amount'),
-                    name =    $elSnap.attr('data-plugin-stripe-payment-press-name'),
-                    desc =    $elSnap.attr('data-plugin-stripe-payment-press-desc'),
-                    label =   $elSnap.attr('data-plugin-stripe-payment-press-label');
+                var amount =  $elSpan.attr('data-plugin-stripe-payment-press-amount'),
+                    name =    $elSpan.attr('data-plugin-stripe-payment-press-name'),
+                    desc =    $elSpan.attr('data-plugin-stripe-payment-press-desc'),
+                    label =   $elSpan.attr('data-plugin-stripe-payment-press-label');
 
                 var $buttonMakePayment = $('<button>').text(label || "Pay with Stripe")
-                                                      .appendTo($elSnap);
+                                                      .appendTo($elSpan);
 
                 //  Based on: https://stripe.com/docs/checkout#integration-custom
 
