@@ -66,6 +66,8 @@ define(['backbone',
                                         // Use the token to create the charge with a server-side script.
                                         // You can access the token ID with `token.id`
 
+                                        $tdStripeTokenId.text(dataToken.id);
+
                                         var $xhr = $.post(params['ajax_url'], {
                                                 action:  'stripe_payment_press__charge_with_stripe',
                                                 amount:  params.amount,
