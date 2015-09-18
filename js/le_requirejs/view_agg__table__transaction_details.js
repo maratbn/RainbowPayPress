@@ -62,7 +62,7 @@ define(['backbone',
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
                         var handler = StripeCheckout.configure({
                                 key: params['publish_key'],
-                                token: function(token) {
+                                token: function(dataToken) {
                                         // Use the token to create the charge with a server-side script.
                                         // You can access the token ID with `token.id`
 
@@ -70,7 +70,7 @@ define(['backbone',
                                                 action:  'stripe_payment_press__charge_with_stripe',
                                                 amount:  params.amount,
                                                 desc:    params.desc,
-                                                token:   token
+                                                token:   dataToken
                                             });
                                     }
                             });
