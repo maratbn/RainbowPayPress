@@ -232,58 +232,6 @@ function action_wp_enqueue_scripts() {
 }
 
 function action_wp_print_footer_scripts() {
-?>
-    <script type='text/javascript'>
-        jQuery(document).ready(function($) {
-                var $elSnaps = $("snap[data-plugin-stripe-payment-press-role=root]");
-
-                for (var i = 0; i < $elSnaps.length; i++) {
-                    var $elSnap = $($elSnaps[i]);
-
-                    var amount =  $elSnap.attr('data-plugin-stripe-payment-press-amount'),
-                        name =    $elSnap.attr('data-plugin-stripe-payment-press-name'),
-                        desc =    $elSnap.attr('data-plugin-stripe-payment-press-desc'),
-                        label =   $elSnap.attr('data-plugin-stripe-payment-press-label');
-
-                    var $buttonMakePayment = $('<button>').text(label || "Pay with Stripe")
-                                                          .appendTo($elSnap);
-
-                    //  Based on: https://stripe.com/docs/checkout#integration-custom
-
-                    var handler = StripeCheckout.configure({
-                            key: '<?=\esc_attr(\get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>',
-                            token: function(token) {
-                                    // Use the token to create the charge with a server-side script.
-                                    // You can access the token ID with `token.id`
-
-                                    var $xhr = $.post('<?=\admin_url('admin-ajax.php')?>', {
-                                            action:  'stripe_payment_press__charge_with_stripe',
-                                            amount:  amount,
-                                            desc:    desc,
-                                            token:   token
-                                        });
-                                }
-                        });
-
-                    $buttonMakePayment.on('click', function(e) {
-                            // Open Checkout with further options
-                            handler.open({
-                                    name:         name,
-                                    description:  desc,
-                                    amount:       amount
-                                });
-
-                            e.preventDefault();
-                        });
-
-                    // Close Checkout on page navigation
-                    $(window).on('popstate', function() {
-                            handler.close();
-                        });
-                }
-            });
-    </script>
-<?php
 
     if (!wp_script_is('plugin_Stripe_Payment_Press__requirejs')) return;
 
