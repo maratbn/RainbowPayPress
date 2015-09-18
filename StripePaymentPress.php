@@ -323,11 +323,13 @@ function action_wp_print_footer_scripts() {
         });
 
     _plugin_Stripe_Payment_Press__requirejs([
-            'backbone'
-        ], function(backbone) {
+            'backbone',
+            'plugin_Stripe_Payment_Press/main'
+        ], function(backbone, main) {
 
             backbone.history.start();
 
+            main.start();
         });
 </script>
 <?php
