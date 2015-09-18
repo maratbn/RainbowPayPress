@@ -87,7 +87,7 @@ define(['jquery',
                         handler.close();
                     });
 
-                (new ViewAgg_Table_TransactionDetails).$el.appendTo($elSpan);
+                (new ViewAgg_Table_TransactionDetails(params)).$el.appendTo($elSpan);
             }
         }
 

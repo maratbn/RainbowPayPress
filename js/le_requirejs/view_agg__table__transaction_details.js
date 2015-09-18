@@ -39,7 +39,9 @@ define(['backbone',
         return backbone.View.extend({
                 tagName: 'table',
 
-                initialize: function() {
+                //  @param  params.ajax_url
+                //  @param  params.publish_key
+                initialize: function(params) {
 
                         this.$el.attr({'border':       '0',
                                        'cellspacing':  '0',
