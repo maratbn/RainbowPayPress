@@ -328,7 +328,7 @@ function action_wp_print_footer_scripts() {
 
             backbone.history.start();
 
-            main.start();
+            main.start({'ajax_url': '<?=\admin_url('admin-ajax.php')?>'});
         });
 </script>
 <?php
