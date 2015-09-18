@@ -39,10 +39,10 @@ define(['jquery',
                 backbone) {
 
         function _processShortcodes(params) {
-            var $elSnaps = $("span[data-plugin-stripe-payment-press-role=root]");
+            var $elSpans = $("span[data-plugin-stripe-payment-press-role=root]");
 
-            for (var i = 0; i < $elSnaps.length; i++) {
-                var $elSnap = $($elSnaps[i]);
+            for (var i = 0; i < $elSpans.length; i++) {
+                var $elSnap = $($elSpans[i]);
 
                 var amount =  $elSnap.attr('data-plugin-stripe-payment-press-amount'),
                     name =    $elSnap.attr('data-plugin-stripe-payment-press-name'),
