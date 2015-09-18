@@ -17,7 +17,7 @@
 
   Version:        0.0.1-development_unreleased
 
-  Module:         Stripe-Payment-Press.php
+  Module:         StripePaymentPress.php
 
   Description:    Main PHP file for the WordPress plugin 'StripePaymentPress'.
 
