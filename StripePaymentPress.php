@@ -293,9 +293,8 @@ function action_wp_print_footer_scripts() {
     var strUrlRoot = '<?=$strUrlBase?>/js/le_requirejs/';
 
     _plugin_Stripe_Payment_Press__requirejs.config({
+            baseUrl: strUrlRoot,
             paths: {
-                    'plugin_Stripe_Payment_Press': strUrlRoot,
-
                     'backbone': strUrlRoot
                                     + 'lib/backbone-1.2.1-src--tweaked--namespaced_require_js--3acbb9f5418b2811cc515b3cf65f0574440d2eab',
                     'jquery': strUrlRoot
@@ -305,17 +304,17 @@ function action_wp_print_footer_scripts() {
                 },
             map: {
                     '*': {
-                            'backbone': 'plugin_Stripe_Payment_Press/backbone-private',
-                            'jquery': 'plugin_Stripe_Payment_Press/jquery-private',
-                            'underscore': 'plugin_Stripe_Payment_Press/underscore-private'
+                            'backbone': 'backbone-private',
+                            'jquery': 'jquery-private',
+                            'underscore': 'underscore-private'
                         },
-                    'plugin_Stripe_Payment_Press/backbone-private': {
+                    'backbone-private': {
                             'backbone': 'backbone'
                         },
-                    'plugin_Stripe_Payment_Press/jquery-private': {
+                    'jquery-private': {
                             'jquery': 'jquery'
                         },
-                    'plugin_Stripe_Payment_Press/underscore-private': {
+                    'underscore-private': {
                             'underscore': 'underscore'
                         }
                 },
@@ -324,7 +323,7 @@ function action_wp_print_footer_scripts() {
 
     _plugin_Stripe_Payment_Press__requirejs([
             'backbone',
-            'plugin_Stripe_Payment_Press/main'
+            'main'
         ], function(backbone, main) {
 
             backbone.history.start();
