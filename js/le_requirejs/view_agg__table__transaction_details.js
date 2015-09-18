@@ -41,6 +41,9 @@ define(['backbone',
 
                 //  @param  params.ajax_url
                 //  @param  params.publish_key
+                //  @param  params.amount
+                //  @param  params.name
+                //  @param  params.desc
                 initialize: function(params) {
 
                         this.$el.attr({'border':       '0',
@@ -56,8 +59,36 @@ define(['backbone',
                                                         .append($('<td>').append($aOpenStripe))
                                                         .appendTo(this.$el);
 
+                        //  Based on: https://stripe.com/docs/checkout#integration-custom
+                        var handler = StripeCheckout.configure({
+                                key: params['publish_key'],
+                                token: function(token) {
+                                        // Use the token to create the charge with a server-side script.
+                                        // You can access the token ID with `token.id`
+
+                                        var $xhr = $.post(params['ajax_url'], {
+                                                action:  'stripe_payment_press__charge_with_stripe',
+                                                amount:  params.amount,
+                                                desc:    params.desc,
+                                                token:   token
+                                            });
+                                    }
+                            });
+
+                        // Close Checkout on page navigation
+                        $(window).on('popstate', function() {
+                                handler.close();
+                            });
+
                         $aOpenStripe.click(function(event) {
                                 event.preventDefault();
+
+                                // Open Checkout with further options
+                                handler.open({
+                                        name:         params.name,
+                                        description:  params.desc,
+                                        amount:       params.amount
+                                    });
                             });
                     }
             });

@@ -54,40 +54,17 @@ define(['jquery',
                 var $buttonMakePayment = $('<button>').text(label || "Pay with Stripe")
                                                       .appendTo($elSpan);
 
-                //  Based on: https://stripe.com/docs/checkout#integration-custom
-
-                var handler = StripeCheckout.configure({
-                        key: params['publish_key'],
-                        token: function(token) {
-                                // Use the token to create the charge with a server-side script.
-                                // You can access the token ID with `token.id`
-
-                                var $xhr = $.post(params['ajax_url'], {
-                                        action:  'stripe_payment_press__charge_with_stripe',
-                                        amount:  amount,
-                                        desc:    desc,
-                                        token:   token
-                                    });
-                            }
-                    });
-
                 $buttonMakePayment.on('click', function(e) {
-                        // Open Checkout with further options
-                        handler.open({
-                                name:         name,
-                                description:  desc,
-                                amount:       amount
-                            });
-
                         e.preventDefault();
                     });
 
-                // Close Checkout on page navigation
-                $(window).on('popstate', function() {
-                        handler.close();
-                    });
-
-                (new ViewAgg_Table_TransactionDetails(params)).$el.appendTo($elSpan);
+                (new ViewAgg_Table_TransactionDetails({
+                            ajax_url:       params.ajax_url,
+                            publish_key:    params.publish_key,
+                            amount:         amount,
+                            name:           name,
+                            desc:           desc
+                        })).$el.appendTo($elSpan);
             }
         }
 
