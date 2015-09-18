@@ -34,9 +34,11 @@
 
 
 define(['jquery',
-        'backbone'
+        'backbone',
+        'view_agg__table__transaction_details'
     ], function($,
-                backbone) {
+                backbone,
+                ViewAgg_Table_TransactionDetails) {
 
         function _processShortcodes(params) {
             var $elSpans = $("span[data-plugin-stripe-payment-press-role=root]");
@@ -84,6 +86,8 @@ define(['jquery',
                 $(window).on('popstate', function() {
                         handler.close();
                     });
+
+                (new ViewAgg_Table_TransactionDetails).$el.appendTo($elSpan);
             }
         }
 
