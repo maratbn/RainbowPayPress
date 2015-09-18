@@ -1,6 +1,6 @@
 /*
   StripePaymentPress -- WordPress plugin for embedding Stripe checkouts via
-                          shortcodes.
+                        shortcodes.
 
   Copyright (C) 2015  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
 
