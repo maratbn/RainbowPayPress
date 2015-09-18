@@ -328,7 +328,9 @@ function action_wp_print_footer_scripts() {
 
             backbone.history.start();
 
-            main.start({'ajax_url': '<?=\admin_url('admin-ajax.php')?>'});
+            main.start({'ajax_url':     '<?=\admin_url('admin-ajax.php')?>',
+                        'publish_key':  '<?=\esc_attr(
+                                              \get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>'});
         });
 </script>
 <?php

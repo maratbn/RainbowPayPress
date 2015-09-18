@@ -41,6 +41,7 @@ define(['jquery',
         function StripePaymentPressClient() {
 
             //  @param  params.ajax_url
+            //  @param  params.publish_key
             this.start = function(params) {
 
                 $(document).ready(function() {
