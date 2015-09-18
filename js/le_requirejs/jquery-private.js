@@ -28,11 +28,18 @@
   along with StripePaymentPress.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
+(function(define) {
+
+
 /**
  *  From 'http://requirejs.org/docs/jquery.html':
  */
-_plugin_Stripe_Payment_Press__define([
+define([
         'jquery'
     ], function ($) {
         return $.noConflict(true);
     });
+
+
+})(_plugin_Stripe_Payment_Press__define);
