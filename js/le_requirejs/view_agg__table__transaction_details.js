@@ -57,10 +57,10 @@ define(['backbone',
                                                         .text("Enter credit card info"),
                             $divStripeTokenId = $('<div>');
 
-                        var $trStripeTokenId = $('<tr>').append($('<td>').text("Stripe token id:"))
-                                                        .append($('<td>').append($divStripeTokenId)
-                                                                         .append($aOpenStripe))
-                                                        .appendTo(this.$el);
+                        $('<tr>').append($('<td>').text("Stripe token id:"))
+                                 .append($('<td>').append($divStripeTokenId)
+                                                  .append($aOpenStripe))
+                                 .appendTo(this.$el);
 
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
                         var handler = StripeCheckout.configure({
