@@ -33,14 +33,18 @@
 (function(define) {
 
 
-define(['backbone'
-    ], function (backbone) {
+define(['backbone',
+        'jquery'
+    ], function (backbone, $) {
 
         return backbone.View.extend({
                 tagName: 'tr',
 
-                initialize: function() {
+                //  @param  params.name              The name of this detail.
+                initialize: function(params) {
                         this.$el.addClass('widget_view_agg__tr__transaction_detail');
+
+                        this.$el.append($("<td width='34%'>").text(params.name));
                     }
             });
     });

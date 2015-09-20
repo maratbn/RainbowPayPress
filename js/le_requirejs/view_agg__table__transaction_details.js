@@ -70,21 +70,24 @@ define(['backbone',
                                        'cellspacing':  '0',
                                        'cellpadding':  '0'});
 
-                        (new ViewAgg_Tr_TransactionDetail).$el
-                                 .append($("<td width='34%'>").text("Description:"))
+                        (new ViewAgg_Tr_TransactionDetail({
+                                    name: "Description:"
+                                })).$el
                                  .append($("<td width='66%'>").text(params.desc))
                                  .appendTo(this.$el);
 
-                        (new ViewAgg_Tr_TransactionDetail).$el
-                                 .append($("<td>").text("Puchase amount:"))
+                        (new ViewAgg_Tr_TransactionDetail({
+                                    name: "Puchase amount:"
+                                })).$el
                                  .append($("<td>").text(_formatCurrency(params.amount)))
                                  .appendTo(this.$el);
 
                         var $aOpenStripeForTokenId  = _get$aOpenStripe(),
                             $divStripeTokenId       = $('<div>');
 
-                        (new ViewAgg_Tr_TransactionDetail).$el
-                                 .append($('<td>').text("Stripe token id:"))
+                        (new ViewAgg_Tr_TransactionDetail({
+                                    name: "Stripe token id:"
+                                })).$el
                                  .append($('<td>').append($divStripeTokenId)
                                                   .append($aOpenStripeForTokenId))
                                  .appendTo(this.$el);
@@ -92,8 +95,9 @@ define(['backbone',
                         var $aOpenStripeForEmail = _get$aOpenStripe(),
                             $divStripeEmail = ($('<div>'));
 
-                        (new ViewAgg_Tr_TransactionDetail).$el
-                                 .append($('<td>').text("Stripe card email:"))
+                        (new ViewAgg_Tr_TransactionDetail({
+                                    name: "Stripe card email:"
+                                })).$el
                                  .append($('<td>').append($divStripeEmail)
                                                   .append($aOpenStripeForEmail))
                                  .appendTo(this.$el);
@@ -102,8 +106,9 @@ define(['backbone',
                                                           .text("Enter customer name"),
                             $divCustomerName = $('<div>');
 
-                        (new ViewAgg_Tr_TransactionDetail).$el
-                                 .append($('<td>').text("Customer name:"))
+                        (new ViewAgg_Tr_TransactionDetail({
+                                    name: "Customer name:"
+                                })).$el
                                  .append($('<td>').append($divCustomerName)
                                                   .append($aEnterCustomerName))
                                  .appendTo(this.$el);
@@ -112,8 +117,9 @@ define(['backbone',
                                                            .text("Enter customer phone"),
                             $divCustomerPhone = $('<div>');
 
-                        (new ViewAgg_Tr_TransactionDetail).$el
-                                 .append($('<td>').text("Customer phone:"))
+                        (new ViewAgg_Tr_TransactionDetail({
+                                    name: "Customer phone:"
+                                })).$el
                                  .append($('<td>').append($divCustomerPhone)
                                                   .append($aEnterCustomerPhone))
                                  .appendTo(this.$el);
