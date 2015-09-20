@@ -65,10 +65,12 @@ define(['backbone',
                                                   .append($aOpenStripeForTokenId))
                                  .appendTo(this.$el);
 
-                        var $divStripeEmail = ($('<div>'));
+                        var $aOpenStripeForEmail = _get$aOpenStripe(),
+                            $divStripeEmail = ($('<div>'));
 
                         $('<tr>').append($('<td>').text("Stripe card email:"))
-                                 .append($('<td>').append($divStripeEmail))
+                                 .append($('<td>').append($divStripeEmail)
+                                                  .append($aOpenStripeForEmail))
                                  .appendTo(this.$el);
 
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
@@ -107,6 +109,7 @@ define(['backbone',
                         }
 
                         $aOpenStripeForTokenId.click(_onClickOpenStripe);
+                        $aOpenStripeForEmail.click(_onClickOpenStripe);
                     }
             });
 
