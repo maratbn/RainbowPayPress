@@ -57,12 +57,12 @@ define(['backbone',
                                  .append($("<td width='66%'>").text(params.desc))
                                  .appendTo(this.$el);
 
-                        var $aOpenStripe      = _get$aOpenStripe(),
+                        var $aOpenStripeForTokenId = _get$aOpenStripe(),
                             $divStripeTokenId = $('<div>');
 
                         $('<tr>').append($('<td>').text("Stripe token id:"))
                                  .append($('<td>').append($divStripeTokenId)
-                                                  .append($aOpenStripe))
+                                                  .append($aOpenStripeForTokenId))
                                  .appendTo(this.$el);
 
                         var $divStripeEmail = ($('<div>'));
@@ -95,7 +95,7 @@ define(['backbone',
                                 handler.close();
                             });
 
-                        $aOpenStripe.click(function(event) {
+                        $aOpenStripeForTokenId.click(function(event) {
                                 event.preventDefault();
 
                                 // Open Checkout with further options
