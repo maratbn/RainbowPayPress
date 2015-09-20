@@ -36,6 +36,22 @@ define(['backbone',
         'jquery'
     ], function (backbone, $) {
 
+        function _formatCurrency(amount) {
+
+            function _formatDollars(dollars) {
+                var strDollars = "" + dollars;
+                if (strDollars.length <= 3) return strDollars;
+
+                return _formatDollars(Math.floor(dollars / 1000)) + ',' +
+                                                         strDollars.substr(strDollars.length - 3);
+            }
+
+            var strCents = "" + amount % 100;
+            if (strCents.length == 1) strCents = '0' + strCents;
+
+            return '$' + _formatDollars(Math.floor(amount / 100)) + '.' + strCents;
+        }
+
         function _get$aOpenStripe() {
             return $('<a>').attr('href', '#').text("Enter credit card info");
         }
@@ -55,6 +71,10 @@ define(['backbone',
 
                         $('<tr>').append($("<td width='34%'>").text("Description:"))
                                  .append($("<td width='66%'>").text(params.desc))
+                                 .appendTo(this.$el);
+
+                        $('<tr>').append($("<td>").text("Puchase amount:"))
+                                 .append($("<td>").text(_formatCurrency(params.amount)))
                                  .appendTo(this.$el);
 
                         var $aOpenStripeForTokenId  = _get$aOpenStripe(),
