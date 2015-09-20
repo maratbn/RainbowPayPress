@@ -57,8 +57,8 @@ define(['backbone',
                                  .append($("<td width='66%'>").text(params.desc))
                                  .appendTo(this.$el);
 
-                        var $aOpenStripeForTokenId = _get$aOpenStripe(),
-                            $divStripeTokenId = $('<div>');
+                        var $aOpenStripeForTokenId  = _get$aOpenStripe(),
+                            $divStripeTokenId       = $('<div>');
 
                         $('<tr>').append($('<td>').text("Stripe token id:"))
                                  .append($('<td>').append($divStripeTokenId)
