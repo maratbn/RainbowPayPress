@@ -73,6 +73,15 @@ define(['backbone',
                                                   .append($aOpenStripeForEmail))
                                  .appendTo(this.$el);
 
+                        var $aEnterCustomerName = $('<a>').attr('href', '#')
+                                                          .text("Enter customer name"),
+                            $divCustomerName = $('<div>');
+
+                        $('<tr>').append($('<td>').text("Customer name:"))
+                                 .append($('<td>').append($divCustomerName)
+                                                  .append($aEnterCustomerName))
+                                 .appendTo(this.$el);
+
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
                         var handler = StripeCheckout.configure({
                                 key: params['publish_key'],
@@ -110,6 +119,15 @@ define(['backbone',
 
                         $aOpenStripeForTokenId.click(_onClickOpenStripe);
                         $aOpenStripeForEmail.click(_onClickOpenStripe);
+
+                        $aEnterCustomerName.click(function(event) {
+                                event.preventDefault();
+
+                                var strCustomerName = window.prompt("Enter customer name:");
+                                if (!strCustomerName) return;
+
+                                $divCustomerName.text(strCustomerName);
+                            });
                     }
             });
 
