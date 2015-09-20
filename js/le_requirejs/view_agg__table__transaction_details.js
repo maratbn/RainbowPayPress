@@ -176,7 +176,11 @@ define(['backbone',
                             view_agg__tr__transaction_detailCustomerName,
                             'click_modify',
                             function() {
-                                var strCustomerName = window.prompt("Enter customer name:");
+                                var strCustomerName = window.prompt(
+                                                                "Enter customer name:",
+                                                                model_transaction_details
+                                                                          .get('customer_name')
+                                                                                           || "");
                                 if (!strCustomerName) return;
 
                                 model_transaction_details.set('customer_name', strCustomerName);
@@ -186,7 +190,11 @@ define(['backbone',
                             view_agg__tr__transaction_detailCustomerPhone,
                             'click_modify',
                             function() {
-                                var strCustomerPhone = window.prompt("Enter customer phone:");
+                                var strCustomerPhone = window.prompt(
+                                                                "Enter customer phone:",
+                                                                model_transaction_details
+                                                                          .get('customer_phone')
+                                                                                           || "");
                                 if (!strCustomerPhone) return;
 
                                 model_transaction_details.set('customer_phone', strCustomerPhone);
