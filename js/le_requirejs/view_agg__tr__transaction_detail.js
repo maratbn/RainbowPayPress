@@ -41,10 +41,37 @@ define(['backbone',
                 tagName: 'tr',
 
                 //  @param  params.name              The name of this detail.
+                //  @param  params.value             The initial value.
+                //  @param  params.modify_text       Text for the modification link.
                 initialize: function(params) {
                         this.$el.addClass('widget_view_agg__tr__transaction_detail');
 
-                        this.$el.append($("<td width='34%'>").text(params.name));
+                        var $aModify = params.modify_text
+                                     ? $('<a>').attr('href', '#').text(params.modify_text)
+                                     : null,
+                            $divValue = $('<div>').text(params.value);
+
+                        var $tdValue = $("<td width='66%'>").append($divValue);
+
+                        if ($aModify) $aModify.appendTo($tdValue);
+
+                        this.$el.append($("<td width='34%'>").text(params.name))
+                                .append($tdValue);
+
+
+                        this.setValue = function(strValue) {
+                                $divValue.text(strValue);
+                            };
+
+                        if ($aModify) {
+                            var me = this;
+
+                            $aModify.click(function(event) {
+                                    event.preventDefault();
+
+                                    me.trigger('click_modify');
+                                });
+                        }
                     }
             });
     });

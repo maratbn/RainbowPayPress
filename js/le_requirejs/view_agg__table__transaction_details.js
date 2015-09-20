@@ -53,10 +53,6 @@ define(['backbone',
             return '$' + _formatDollars(Math.floor(amount / 100)) + '.' + strCents;
         }
 
-        function _get$aOpenStripe() {
-            return $('<a>').attr('href', '#').text("Enter credit card info");
-        }
-
         return backbone.View.extend({
                 tagName: 'table',
 
@@ -71,58 +67,46 @@ define(['backbone',
                                        'cellpadding':  '0'});
 
                         (new ViewAgg_Tr_TransactionDetail({
-                                    name: "Description:"
-                                })).$el
-                                 .append($("<td width='66%'>").text(params.desc))
-                                 .appendTo(this.$el);
+                                    name: "Description:",
+                                    value: params.desc
+                                })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_TransactionDetail({
-                                    name: "Puchase amount:"
-                                })).$el
-                                 .append($("<td>").text(_formatCurrency(params.amount)))
-                                 .appendTo(this.$el);
+                                    name: "Puchase amount:",
+                                    value: _formatCurrency(params.amount)
+                                })).$el.appendTo(this.$el);
 
-                        var $aOpenStripeForTokenId  = _get$aOpenStripe(),
-                            $divStripeTokenId       = $('<div>');
+                        var view_agg__tr__transaction_detailStripeToken =
+                                                new ViewAgg_Tr_TransactionDetail({
+                                                            name: "Stripe token id:",
+                                                            modify_text: "Enter credit card info"
+                                                        });
 
-                        (new ViewAgg_Tr_TransactionDetail({
-                                    name: "Stripe token id:"
-                                })).$el
-                                 .append($('<td>').append($divStripeTokenId)
-                                                  .append($aOpenStripeForTokenId))
-                                 .appendTo(this.$el);
+                        view_agg__tr__transaction_detailStripeToken.$el.appendTo(this.$el);
 
-                        var $aOpenStripeForEmail = _get$aOpenStripe(),
-                            $divStripeEmail = ($('<div>'));
+                        var view_agg__tr__transaction_detailStripeEmail =
+                                                new ViewAgg_Tr_TransactionDetail({
+                                                            name: "Stripe card email:",
+                                                            modify_text: "Enter credit card info"
+                                                        });
 
-                        (new ViewAgg_Tr_TransactionDetail({
-                                    name: "Stripe card email:"
-                                })).$el
-                                 .append($('<td>').append($divStripeEmail)
-                                                  .append($aOpenStripeForEmail))
-                                 .appendTo(this.$el);
+                        view_agg__tr__transaction_detailStripeEmail.$el.appendTo(this.$el);
 
-                        var $aEnterCustomerName = $('<a>').attr('href', '#')
-                                                          .text("Enter customer name"),
-                            $divCustomerName = $('<div>');
+                        var view_agg__tr__transaction_detailCustomerName =
+                                                new ViewAgg_Tr_TransactionDetail({
+                                                            name: "Customer name:",
+                                                            modify_text: "Enter customer name"
+                                                        });
 
-                        (new ViewAgg_Tr_TransactionDetail({
-                                    name: "Customer name:"
-                                })).$el
-                                 .append($('<td>').append($divCustomerName)
-                                                  .append($aEnterCustomerName))
-                                 .appendTo(this.$el);
+                        view_agg__tr__transaction_detailCustomerName.$el.appendTo(this.$el);
 
-                        var $aEnterCustomerPhone = $('<a>').attr('href', '#')
-                                                           .text("Enter customer phone"),
-                            $divCustomerPhone = $('<div>');
+                        var view_agg__tr__transaction_detailCustomerPhone =
+                                                new ViewAgg_Tr_TransactionDetail({
+                                                            name: "Customer phone:",
+                                                            modify_text: "Enter customer phone"
+                                                        });
 
-                        (new ViewAgg_Tr_TransactionDetail({
-                                    name: "Customer phone:"
-                                })).$el
-                                 .append($('<td>').append($divCustomerPhone)
-                                                  .append($aEnterCustomerPhone))
-                                 .appendTo(this.$el);
+                        view_agg__tr__transaction_detailCustomerPhone.$el.appendTo(this.$el);
 
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
                         var handler = StripeCheckout.configure({
@@ -131,8 +115,10 @@ define(['backbone',
                                         // Use the token to create the charge with a server-side script.
                                         // You can access the token ID with `token.id`
 
-                                        $divStripeTokenId.text(dataToken.id);
-                                        $divStripeEmail.text(dataToken.email);
+                                        view_agg__tr__transaction_detailStripeToken
+                                                                       .setValue(dataToken.id);
+                                        view_agg__tr__transaction_detailStripeEmail
+                                                                       .setValue(dataToken.email);
 
                                         var $xhr = $.post(params['ajax_url'], {
                                                 action:  'stripe_payment_press__charge_with_stripe',
@@ -149,8 +135,6 @@ define(['backbone',
                             });
 
                         function _onClickOpenStripe(event) {
-                            event.preventDefault();
-
                             // Open Checkout with further options
                             handler.open({
                                     name:         params.name,
@@ -159,25 +143,33 @@ define(['backbone',
                                 });
                         }
 
-                        $aOpenStripeForTokenId.click(_onClickOpenStripe);
-                        $aOpenStripeForEmail.click(_onClickOpenStripe);
+                        this.listenTo(view_agg__tr__transaction_detailStripeToken,
+                                      'click_modify',
+                                      _onClickOpenStripe);
+                        this.listenTo(view_agg__tr__transaction_detailStripeEmail,
+                                      'click_modify',
+                                      _onClickOpenStripe);
 
-                        $aEnterCustomerName.click(function(event) {
-                                event.preventDefault();
-
+                        this.listenTo(
+                            view_agg__tr__transaction_detailCustomerName,
+                            'click_modify',
+                            function() {
                                 var strCustomerName = window.prompt("Enter customer name:");
                                 if (!strCustomerName) return;
 
-                                $divCustomerName.text(strCustomerName);
+                                view_agg__tr__transaction_detailCustomerName
+                                                                       .setValue(strCustomerName);
                             });
 
-                        $aEnterCustomerPhone.click(function(event) {
-                                event.preventDefault();
-
+                        this.listenTo(
+                            view_agg__tr__transaction_detailCustomerPhone,
+                            'click_modify',
+                            function() {
                                 var strCustomerPhone = window.prompt("Enter customer phone:");
                                 if (!strCustomerPhone) return;
 
-                                $divCustomerPhone.text(strCustomerPhone);
+                                view_agg__tr__transaction_detailCustomerPhone
+                                                                      .setValue(strCustomerPhone);
                             });
                     }
             });
