@@ -58,8 +58,8 @@ define(['backbone',
                             $divStripeTokenId = $('<div>');
 
                         var $trStripeTokenId = $('<tr>').append($('<td>').text("Stripe token id:"))
-                                                        .append($('<td>').append($divStripeTokenId))
-                                                        .append($('<td>').append($aOpenStripe))
+                                                        .append($('<td>').append($divStripeTokenId)
+                                                                         .append($aOpenStripe))
                                                         .appendTo(this.$el);
 
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
