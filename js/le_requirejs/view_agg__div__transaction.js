@@ -34,8 +34,9 @@
 
 define(['backbone',
         'jquery',
+        'model_transaction_details',
         'view_agg__table__transaction_details'
-    ], function(backbone, $, ViewAgg_Table_TransactionDetails) {
+    ], function(backbone, $, ModelTransactionDetails, ViewAgg_Table_TransactionDetails) {
 
         return backbone.View.extend({
 
@@ -45,7 +46,15 @@ define(['backbone',
                 //  @param  params.name                 //  Name of the seller
                 //  @param  params.desc                 //  Product description
                 initialize: function(params) {
+
+                        var model_transaction_details =
+                            new ModelTransactionDetails({
+                                        'product_description':  params.desc,
+                                        'product_cost':         params.amount
+                                    });
+
                         (new ViewAgg_Table_TransactionDetails({
+                                    model_transaction_details: model_transaction_details,
                                     ajax_url:     params.ajax_url,
                                     publish_key:  params.publish_key,
                                     amount:       params.amount,

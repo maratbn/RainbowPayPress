@@ -34,9 +34,8 @@
 
 define(['backbone',
         'jquery',
-        'model_transaction_details',
         'view_agg__tr__transaction_detail'
-    ], function (backbone, $, ModelTransactionDetails, ViewAgg_Tr_TransactionDetail) {
+    ], function (backbone, $, ViewAgg_Tr_TransactionDetail) {
 
         function _formatCurrency(amount) {
 
@@ -57,21 +56,19 @@ define(['backbone',
         return backbone.View.extend({
                 tagName: 'table',
 
+                //  @param  params.model_transaction_details
                 //  @param  params.ajax_url
                 //  @param  params.publish_key
                 //  @param  params.amount
                 //  @param  params.name                 //  Name of the seller
                 //  @param  params.desc                 //  Product description
                 initialize: function(params) {
+
+                        var model_transaction_details = params.model_transaction_details;
+
                         this.$el.attr({'border':       '0',
                                        'cellspacing':  '0',
                                        'cellpadding':  '0'});
-
-                        var model_transaction_details =
-                                                new ModelTransactionDetails({
-                                                            'product_description':  params.desc,
-                                                            'product_cost':         params.amount
-                                                        });
 
                         (new ViewAgg_Tr_TransactionDetail({
                                     model_transaction_details: model_transaction_details,
