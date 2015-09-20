@@ -42,8 +42,8 @@ define(['backbone',
                 //  @param  params.ajax_url
                 //  @param  params.publish_key
                 //  @param  params.amount
-                //  @param  params.name
-                //  @param  params.desc
+                //  @param  params.name                 //  Name of the seller
+                //  @param  params.desc                 //  Product description
                 initialize: function(params) {
 
                         this.$el.attr({'border':       '0',
