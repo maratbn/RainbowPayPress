@@ -36,6 +36,10 @@ define(['backbone',
         'jquery'
     ], function (backbone, $) {
 
+        function _get$aOpenStripe() {
+            return $('<a>').attr('href', '#').text("Enter credit card info");
+        }
+
         return backbone.View.extend({
                 tagName: 'table',
 
@@ -53,8 +57,7 @@ define(['backbone',
                                  .append($("<td width='66%'>").text(params.desc))
                                  .appendTo(this.$el);
 
-                        var $aOpenStripe      = $('<a>').attr('href', '#')
-                                                        .text("Enter credit card info"),
+                        var $aOpenStripe      = _get$aOpenStripe(),
                             $divStripeTokenId = $('<div>');
 
                         $('<tr>').append($('<td>').text("Stripe token id:"))
