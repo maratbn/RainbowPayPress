@@ -54,7 +54,7 @@ define(['backbone',
                                  .appendTo(this.$el);
 
                         var $aOpenStripe      = $('<a>').attr('href', '#')
-                                                        .text("Open Stripe to specify"),
+                                                        .text("Enter credit card info"),
                             $tdStripeTokenId  = $('<td>');
 
                         var $trStripeTokenId = $('<tr>').append($('<td>').text("Stripe token id:"))
