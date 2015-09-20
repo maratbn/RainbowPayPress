@@ -45,10 +45,13 @@ define(['backbone',
                 //  @param  params.name                 //  Name of the seller
                 //  @param  params.desc                 //  Product description
                 initialize: function(params) {
-
                         this.$el.attr({'border':       '0',
                                        'cellspacing':  '0',
                                        'cellpadding':  '0'});
+
+                        $('<tr>').append($('<td>').text("Description:"))
+                                 .append($('<td>').text(params.desc))
+                                 .appendTo(this.$el);
 
                         var $aOpenStripe      = $('<a>').attr('href', '#')
                                                         .text("Open Stripe to specify"),
