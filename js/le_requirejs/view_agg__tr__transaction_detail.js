@@ -45,7 +45,8 @@ define(['backbone',
                 //  @param  params.model_transaction_details
                 //  @param  params.field
                 //  @param  params.name              The name of this detail.
-                //  @param  params.text_enter        Text for the modification link.
+                //  @param  params.text_enter        Text for the modification link when there's
+                //                                   no value.
                 initialize: function(params) {
                         this.$el.addClass('widget_view_agg__tr__transaction_detail');
 
