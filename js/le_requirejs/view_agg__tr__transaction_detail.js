@@ -45,12 +45,12 @@ define(['backbone',
                 //  @param  params.model_transaction_details
                 //  @param  params.field
                 //  @param  params.name              The name of this detail.
-                //  @param  params.modify_text       Text for the modification link.
+                //  @param  params.text_enter        Text for the modification link.
                 initialize: function(params) {
                         this.$el.addClass('widget_view_agg__tr__transaction_detail');
 
-                        var $aModify = params.modify_text
-                                     ? $('<a>').attr('href', '#').text(params.modify_text)
+                        var $aModify = params.text_enter
+                                     ? $('<a>').attr('href', '#').text(params.text_enter)
                                      : null,
                             $divValue = $('<div>');
 
