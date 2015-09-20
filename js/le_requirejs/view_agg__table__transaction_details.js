@@ -102,6 +102,15 @@ define(['backbone',
                                                   .append($aEnterCustomerName))
                                  .appendTo(this.$el);
 
+                        var $aEnterCustomerPhone = $('<a>').attr('href', '#')
+                                                           .text("Enter customer phone"),
+                            $divCustomerPhone = $('<div>');
+
+                        $('<tr>').append($('<td>').text("Customer phone:"))
+                                 .append($('<td>').append($divCustomerPhone)
+                                                  .append($aEnterCustomerPhone))
+                                 .appendTo(this.$el);
+
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
                         var handler = StripeCheckout.configure({
                                 key: params['publish_key'],
@@ -147,6 +156,15 @@ define(['backbone',
                                 if (!strCustomerName) return;
 
                                 $divCustomerName.text(strCustomerName);
+                            });
+
+                        $aEnterCustomerPhone.click(function(event) {
+                                event.preventDefault();
+
+                                var strCustomerPhone = window.prompt("Enter customer phone:");
+                                if (!strCustomerPhone) return;
+
+                                $divCustomerPhone.text(strCustomerPhone);
                             });
                     }
             });
