@@ -62,6 +62,12 @@ define(['backbone',
                                                   .append($aOpenStripe))
                                  .appendTo(this.$el);
 
+                        var $divStripeEmail = ($('<div>'));
+
+                        $('<tr>').append($('<td>').text("Stripe card email:"))
+                                 .append($('<td>').append($divStripeEmail))
+                                 .appendTo(this.$el);
+
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
                         var handler = StripeCheckout.configure({
                                 key: params['publish_key'],
@@ -70,6 +76,7 @@ define(['backbone',
                                         // You can access the token ID with `token.id`
 
                                         $divStripeTokenId.text(dataToken.id);
+                                        $divStripeEmail.text(dataToken.email);
 
                                         var $xhr = $.post(params['ajax_url'], {
                                                 action:  'stripe_payment_press__charge_with_stripe',
