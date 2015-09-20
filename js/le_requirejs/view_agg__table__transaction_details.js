@@ -95,16 +95,18 @@ define(['backbone',
                                 handler.close();
                             });
 
-                        $aOpenStripeForTokenId.click(function(event) {
-                                event.preventDefault();
+                        function _onClickOpenStripe(event) {
+                            event.preventDefault();
 
-                                // Open Checkout with further options
-                                handler.open({
-                                        name:         params.name,
-                                        description:  params.desc,
-                                        amount:       params.amount
-                                    });
-                            });
+                            // Open Checkout with further options
+                            handler.open({
+                                    name:         params.name,
+                                    description:  params.desc,
+                                    amount:       params.amount
+                                });
+                        }
+
+                        $aOpenStripeForTokenId.click(_onClickOpenStripe);
                     }
             });
 
