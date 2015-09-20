@@ -49,8 +49,8 @@ define(['backbone',
                                        'cellspacing':  '0',
                                        'cellpadding':  '0'});
 
-                        $('<tr>').append($('<td>').text("Description:"))
-                                 .append($('<td>').text(params.desc))
+                        $('<tr>').append($("<td width='34%'>").text("Description:"))
+                                 .append($("<td width='66%'>").text(params.desc))
                                  .appendTo(this.$el);
 
                         var $aOpenStripe      = $('<a>').attr('href', '#')
