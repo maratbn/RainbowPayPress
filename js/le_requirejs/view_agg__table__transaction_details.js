@@ -34,8 +34,9 @@
 
 define(['backbone',
         'jquery',
+        'model_transaction_details',
         'view_agg__tr__transaction_detail'
-    ], function (backbone, $, ViewAgg_Tr_TransactionDetail) {
+    ], function (backbone, $, ModelTransactionDetails, ViewAgg_Tr_TransactionDetail) {
 
         function _formatCurrency(amount) {
 
@@ -66,18 +67,30 @@ define(['backbone',
                                        'cellspacing':  '0',
                                        'cellpadding':  '0'});
 
+                        var model_transaction_details =
+                                                new ModelTransactionDetails({
+                                                            'product_description':  params.desc,
+                                                            'product_cost':         params.amount
+                                                        });
+
                         (new ViewAgg_Tr_TransactionDetail({
-                                    name: "Description:",
-                                    value: params.desc
+                                    model_transaction_details: model_transaction_details,
+                                    field: 'product_description',
+                                    name: "Description:"
                                 })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_TransactionDetail({
-                                    name: "Puchase amount:",
-                                    value: _formatCurrency(params.amount)
+                                    callback_format_value: _formatCurrency,
+                                    model_transaction_details: model_transaction_details,
+                                    field: 'product_cost',
+                                    name: "Puchase amount:"
                                 })).$el.appendTo(this.$el);
 
                         var view_agg__tr__transaction_detailStripeToken =
                                                 new ViewAgg_Tr_TransactionDetail({
+                                                            model_transaction_details:
+                                                                        model_transaction_details,
+                                                            field: 'stripe_token_id',
                                                             name: "Stripe token id:",
                                                             modify_text: "Enter credit card info"
                                                         });
@@ -86,6 +99,9 @@ define(['backbone',
 
                         var view_agg__tr__transaction_detailStripeEmail =
                                                 new ViewAgg_Tr_TransactionDetail({
+                                                            model_transaction_details:
+                                                                        model_transaction_details,
+                                                            field: 'stripe_email',
                                                             name: "Stripe card email:",
                                                             modify_text: "Enter credit card info"
                                                         });
@@ -94,6 +110,9 @@ define(['backbone',
 
                         var view_agg__tr__transaction_detailCustomerName =
                                                 new ViewAgg_Tr_TransactionDetail({
+                                                            model_transaction_details:
+                                                                        model_transaction_details,
+                                                            field: 'customer_name',
                                                             name: "Customer name:",
                                                             modify_text: "Enter customer name"
                                                         });
@@ -102,6 +121,9 @@ define(['backbone',
 
                         var view_agg__tr__transaction_detailCustomerPhone =
                                                 new ViewAgg_Tr_TransactionDetail({
+                                                            model_transaction_details:
+                                                                        model_transaction_details,
+                                                            field: 'customer_phone',
                                                             name: "Customer phone:",
                                                             modify_text: "Enter customer phone"
                                                         });
@@ -115,10 +137,10 @@ define(['backbone',
                                         // Use the token to create the charge with a server-side script.
                                         // You can access the token ID with `token.id`
 
-                                        view_agg__tr__transaction_detailStripeToken
-                                                                       .setValue(dataToken.id);
-                                        view_agg__tr__transaction_detailStripeEmail
-                                                                       .setValue(dataToken.email);
+                                        model_transaction_details.set({
+                                                'stripe_token_id':  dataToken.id,
+                                                'stripe_email':     dataToken.email
+                                            });
 
                                         var $xhr = $.post(params['ajax_url'], {
                                                 action:  'stripe_payment_press__charge_with_stripe',
@@ -157,8 +179,7 @@ define(['backbone',
                                 var strCustomerName = window.prompt("Enter customer name:");
                                 if (!strCustomerName) return;
 
-                                view_agg__tr__transaction_detailCustomerName
-                                                                       .setValue(strCustomerName);
+                                model_transaction_details.set('customer_name', strCustomerName);
                             });
 
                         this.listenTo(
@@ -168,8 +189,7 @@ define(['backbone',
                                 var strCustomerPhone = window.prompt("Enter customer phone:");
                                 if (!strCustomerPhone) return;
 
-                                view_agg__tr__transaction_detailCustomerPhone
-                                                                      .setValue(strCustomerPhone);
+                                model_transaction_details.set('customer_phone', strCustomerPhone);
                             });
                     }
             });

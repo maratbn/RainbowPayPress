@@ -40,8 +40,11 @@ define(['backbone',
         return backbone.View.extend({
                 tagName: 'tr',
 
+                //  @param  params.callback_format_value
+                //                                   Optional value formatting callback.
+                //  @param  params.model_transaction_details
+                //  @param  params.field
                 //  @param  params.name              The name of this detail.
-                //  @param  params.value             The initial value.
                 //  @param  params.modify_text       Text for the modification link.
                 initialize: function(params) {
                         this.$el.addClass('widget_view_agg__tr__transaction_detail');
@@ -49,7 +52,7 @@ define(['backbone',
                         var $aModify = params.modify_text
                                      ? $('<a>').attr('href', '#').text(params.modify_text)
                                      : null,
-                            $divValue = $('<div>').text(params.value);
+                            $divValue = $('<div>');
 
                         var $tdValue = $("<td width='66%'>").append($divValue);
 
@@ -57,11 +60,6 @@ define(['backbone',
 
                         this.$el.append($("<td width='34%'>").text(params.name))
                                 .append($tdValue);
-
-
-                        this.setValue = function(strValue) {
-                                $divValue.text(strValue);
-                            };
 
                         if ($aModify) {
                             var me = this;
@@ -72,6 +70,24 @@ define(['backbone',
                                     me.trigger('click_modify');
                                 });
                         }
+
+
+                        var field                      = params.field,
+                            model_transaction_details  = params.model_transaction_details;
+
+                        function _updateValue() {
+                            var value = model_transaction_details.get(field);
+
+                            if (params.callback_format_value) {
+                                value = params.callback_format_value(value);
+                            }
+
+                            $divValue.text(value || "");
+                        }
+
+                        _updateValue.call(this);
+
+                        this.listenTo(model_transaction_details, 'change:' + field, _updateValue);
                     }
             });
     });
