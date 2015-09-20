@@ -47,11 +47,13 @@ define(['backbone',
                 //  @param  params.name             The name of this detail.
                 //  @param  params.text_enter       Text for the modification link when there's no
                 //                                  value.
+                //  @param  params.text_modify      Text for the modification link when there's a
+                //                                  value.
                 initialize: function(params) {
                         this.$el.addClass('widget_view_agg__tr__transaction_detail');
 
                         var $aModify = params.text_enter
-                                     ? $('<a>').attr('href', '#').text(params.text_enter)
+                                     ? $('<a>').attr('href', '#')
                                      : null,
                             $divValue = $('<div>');
 
@@ -84,6 +86,11 @@ define(['backbone',
                             }
 
                             $divValue.text(value || "");
+
+                            if ($aModify) {
+                                $aModify.text(value ? params.text_modify || params.text_enter
+                                                    : params.text_enter);
+                            }
                         }
 
                         _updateValue.call(this);

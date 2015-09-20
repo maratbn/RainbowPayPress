@@ -92,7 +92,8 @@ define(['backbone',
                                                                         model_transaction_details,
                                                             field: 'stripe_token_id',
                                                             name: "Stripe token id:",
-                                                            text_enter: "Enter credit card info"
+                                                            text_enter: "Enter credit card info",
+                                                            text_modify: "Change"
                                                         });
 
                         view_agg__tr__transaction_detailStripeToken.$el.appendTo(this.$el);
@@ -103,7 +104,8 @@ define(['backbone',
                                                                         model_transaction_details,
                                                             field: 'stripe_email',
                                                             name: "Stripe card email:",
-                                                            text_enter: "Enter credit card info"
+                                                            text_enter: "Enter credit card info",
+                                                            text_modify: "Change"
                                                         });
 
                         view_agg__tr__transaction_detailStripeEmail.$el.appendTo(this.$el);
@@ -114,7 +116,8 @@ define(['backbone',
                                                                         model_transaction_details,
                                                             field: 'customer_name',
                                                             name: "Customer name:",
-                                                            text_enter: "Enter customer name"
+                                                            text_enter: "Enter customer name",
+                                                            text_modify: "Change"
                                                         });
 
                         view_agg__tr__transaction_detailCustomerName.$el.appendTo(this.$el);
@@ -125,7 +128,8 @@ define(['backbone',
                                                                         model_transaction_details,
                                                             field: 'customer_phone',
                                                             name: "Customer phone:",
-                                                            text_enter: "Enter customer phone"
+                                                            text_enter: "Enter customer phone",
+                                                            text_modify: "Change"
                                                         });
 
                         view_agg__tr__transaction_detailCustomerPhone.$el.appendTo(this.$el);
