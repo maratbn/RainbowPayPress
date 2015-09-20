@@ -33,8 +33,9 @@
 
 
 define(['backbone',
-        'jquery'
-    ], function (backbone, $) {
+        'jquery',
+        'view_agg__tr__transaction_detail'
+    ], function (backbone, $, ViewAgg_Tr_TransactionDetail) {
 
         function _formatCurrency(amount) {
 
@@ -69,18 +70,21 @@ define(['backbone',
                                        'cellspacing':  '0',
                                        'cellpadding':  '0'});
 
-                        $('<tr>').append($("<td width='34%'>").text("Description:"))
+                        (new ViewAgg_Tr_TransactionDetail).$el
+                                 .append($("<td width='34%'>").text("Description:"))
                                  .append($("<td width='66%'>").text(params.desc))
                                  .appendTo(this.$el);
 
-                        $('<tr>').append($("<td>").text("Puchase amount:"))
+                        (new ViewAgg_Tr_TransactionDetail).$el
+                                 .append($("<td>").text("Puchase amount:"))
                                  .append($("<td>").text(_formatCurrency(params.amount)))
                                  .appendTo(this.$el);
 
                         var $aOpenStripeForTokenId  = _get$aOpenStripe(),
                             $divStripeTokenId       = $('<div>');
 
-                        $('<tr>').append($('<td>').text("Stripe token id:"))
+                        (new ViewAgg_Tr_TransactionDetail).$el
+                                 .append($('<td>').text("Stripe token id:"))
                                  .append($('<td>').append($divStripeTokenId)
                                                   .append($aOpenStripeForTokenId))
                                  .appendTo(this.$el);
@@ -88,7 +92,8 @@ define(['backbone',
                         var $aOpenStripeForEmail = _get$aOpenStripe(),
                             $divStripeEmail = ($('<div>'));
 
-                        $('<tr>').append($('<td>').text("Stripe card email:"))
+                        (new ViewAgg_Tr_TransactionDetail).$el
+                                 .append($('<td>').text("Stripe card email:"))
                                  .append($('<td>').append($divStripeEmail)
                                                   .append($aOpenStripeForEmail))
                                  .appendTo(this.$el);
@@ -97,7 +102,8 @@ define(['backbone',
                                                           .text("Enter customer name"),
                             $divCustomerName = $('<div>');
 
-                        $('<tr>').append($('<td>').text("Customer name:"))
+                        (new ViewAgg_Tr_TransactionDetail).$el
+                                 .append($('<td>').text("Customer name:"))
                                  .append($('<td>').append($divCustomerName)
                                                   .append($aEnterCustomerName))
                                  .appendTo(this.$el);
@@ -106,7 +112,8 @@ define(['backbone',
                                                            .text("Enter customer phone"),
                             $divCustomerPhone = $('<div>');
 
-                        $('<tr>').append($('<td>').text("Customer phone:"))
+                        (new ViewAgg_Tr_TransactionDetail).$el
+                                 .append($('<td>').text("Customer phone:"))
                                  .append($('<td>').append($divCustomerPhone)
                                                   .append($aEnterCustomerPhone))
                                  .appendTo(this.$el);
