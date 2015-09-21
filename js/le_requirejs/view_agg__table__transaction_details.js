@@ -131,6 +131,11 @@ define(['backbone',
 
                         view_agg__tr__transaction_detailCustomerPhone.$el.appendTo(this.$el);
 
+                        var $buttonSubmit = $('<button>').text("Submit").appendTo(this.$el);
+
+                        $('<tr>').append($('<td>').attr('colspan', '2').append($buttonSubmit))
+                                 .appendTo(this.$el);
+
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
                         var handler = StripeCheckout.configure({
                                 key: params['publish_key'],
