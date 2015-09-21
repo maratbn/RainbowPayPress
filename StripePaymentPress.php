@@ -231,7 +231,12 @@ function action_wp_ajax_stripe_payment_press__submit() {
     $strCustomerName        = $_POST['customer_name'];
     $strCustomerPhone       = $_POST['customer_phone'];
 
-    die(json_encode(['success' => false]));
+    die(json_encode(['success' => insertTransaction($strProductDescription,
+                                                    $strProductCost,
+                                                    $strStripeTokenId,
+                                                    $strStripeEmail,
+                                                    $strCustomerName,
+                                                    $strCustomerPhone)]));
 }
 
 function action_wp_enqueue_scripts() {

@@ -51,6 +51,28 @@ function initializeTable_Transactions() {
     dbDelta($sql);
 }
 
-function insertTransaction() {
+function insertTransaction($strProductDescription,
+                           $strProductCost,
+                           $strStripeTokenId,
+                           $strStripeEmail,
+                           $strCustomerName,
+                           $strCustomerPhone) {
+
+    $ms = \time() * 1000 + \substr(\microtime(), 2, 3);
+    $strTime = \gmdate('Y-m-d--H-i-s', $ms / 1000) . '--' . \sprintf('%03u', \bcmod($ms, 1000));
+
+    global $wpdb;
+    $strTableName = $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
+    if (!$wpdb->insert($strTableName, [
+                        'created'              => $strTime,
+                        'product_description'  => $strProductDescription,
+                        'product_cost'         => $strProductCost,
+                        'currency'             => 'usd_x_100',
+                        'stripe_token_id'      => $strStripeTokenId,
+                        'stripe_email'         => $strStripeEmail,
+                        'customer_name'        => $strCustomerName,
+                        'customer_phone'       => $strCustomerPhone])) return false;
+
+    return true;
 }
 ?>
