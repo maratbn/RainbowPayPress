@@ -162,21 +162,21 @@ define(['backbone',
                                 handler.close();
                             });
 
-                        function _onClickOpenStripe(event) {
-                            // Open Checkout with further options
-                            handler.open({
-                                    name:         params.name,
-                                    description:  params.desc,
-                                    amount:       params.amount
-                                });
-                        }
+                        this.listenTo(
+                            view_agg__tr__transaction_detailStripeToken,
+                            'click_modify',
+                            function() {
+                                model_transaction_details.trigger('do_prompt',
+                                                                  {field: 'stripe_token_id'});
+                            });
 
-                        this.listenTo(view_agg__tr__transaction_detailStripeToken,
-                                      'click_modify',
-                                      _onClickOpenStripe);
-                        this.listenTo(view_agg__tr__transaction_detailStripeEmail,
-                                      'click_modify',
-                                      _onClickOpenStripe);
+                        this.listenTo(
+                            view_agg__tr__transaction_detailStripeEmail,
+                            'click_modify',
+                            function() {
+                                model_transaction_details.trigger('do_prompt',
+                                                                  {field: 'stripe_email'});
+                            });
 
                         this.listenTo(
                             view_agg__tr__transaction_detailCustomerName,
@@ -204,6 +204,20 @@ define(['backbone',
                                 if (!strCustomerPhone) return;
 
                                 model_transaction_details.set('customer_phone', strCustomerPhone);
+                            });
+
+                        this.listenTo(model_transaction_details, 'do_prompt', function(event) {
+                                var field = event.field;
+
+                                if (field == 'stripe_token_id' || field == 'stripe_email') {
+                                    // Open Checkout with further options
+                                    handler.open({
+                                            name:         params.name,
+                                            description:  params.desc,
+                                            amount:       params.amount
+                                        });
+                                    return;
+                                }
                             });
 
                         var me = this;
