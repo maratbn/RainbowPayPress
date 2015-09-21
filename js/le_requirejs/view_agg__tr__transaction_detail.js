@@ -94,12 +94,24 @@ define(['backbone',
                             if ($aModify) {
                                 $aModify.text(value ? params.text_modify || params.text_enter
                                                     : params.text_enter);
+                                if (value) {
+                                    $aModify.css('color', "");
+                                }
                             }
                         }
 
                         _updateValue.call(this);
 
                         this.listenTo(model_transaction_details, 'change:' + field, _updateValue);
+
+                        this.listenTo(
+                            model_transaction_details,
+                            'fields_with_missing_values',
+                            function(event) {
+                                if ($aModify && event.fields.indexOf(field) >= 0) {
+                                    $aModify.css('color', 'red');
+                                }
+                            });
                     }
             });
     });

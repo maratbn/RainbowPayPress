@@ -44,8 +44,24 @@ define(['backbone'
                         'stripe_email':         null,
                         'customer_name':        null,
                         'customer_phone':       null
-                    }
+                    },
 
+                doCheckForFieldsWithMissingValues: function() {
+                        var arrFieldsWithMissingValues = [];
+
+                        for (var field in this.defaults) {
+                            var value = this.attributes[field];
+                            if (!value) {
+                                arrFieldsWithMissingValues.push(field);
+                            }
+                        }
+
+                        this.trigger('fields_with_missing_values', {
+                                        fields: arrFieldsWithMissingValues
+                                     });
+
+                        return arrFieldsWithMissingValues.length > 0 && true;
+                    }
             });
 
     });

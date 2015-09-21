@@ -207,6 +207,9 @@ define(['backbone',
                         $buttonSubmit.click(function(event) {
                                 event.preventDefault();
 
+                                if (model_transaction_details
+                                                     .doCheckForFieldsWithMissingValues()) return;
+
                                 var $xhr = $.post(params['ajax_url'], {
                                         action:               'stripe_payment_press__submit',
                                         product_description:  model_transaction_details
