@@ -196,6 +196,23 @@ function action_admin_menu() {
           <th>Customer name:</th>
           <th>Customer phone:</th>
         </tr>
+        <?php
+            $arrTransactions = selectTransactions();
+            for ($i = 0; $i < count($arrTransactions); $i++) {
+                $arrTransaction = $arrTransactions[$i];
+                ?>
+                <tr>
+                  <td><?=$arrTransaction['created']?></td>
+                  <td><?=$arrTransaction['product_description']?></td>
+                  <td><?=$arrTransaction['product_cost']?></td>
+                  <td><?=$arrTransaction['stripe_token_id']?></td>
+                  <td><?=$arrTransaction['stripe_email']?></td>
+                  <td><?=$arrTransaction['customer_name']?></td>
+                  <td><?=$arrTransaction['customer_phone']?></td>
+                </tr>
+                <?php
+            }
+        ?>
       </table>
     </div>
     <?php

@@ -79,4 +79,18 @@ function insertTransaction($strProductDescription,
 
     return true;
 }
+
+function selectTransactions() {
+    $strTableName = getTableName_Transactions();
+
+    global $wpdb;
+    return $wpdb->get_results("SELECT created,
+                                      product_description,
+                                      product_cost,
+                                      stripe_token_id,
+                                      stripe_email,
+                                      customer_name,
+                                      customer_phone
+                                 FROM $strTableName", ARRAY_A);
+}
 ?>
