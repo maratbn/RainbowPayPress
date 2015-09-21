@@ -32,9 +32,14 @@
 
 namespace plugin_Stripe_Payment_Press;
 
-function initializeTable_Transactions() {
+function getTableName_Transactions() {
     global $wpdb;
-    $strTableName = $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
+    return $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
+}
+
+function initializeTable_Transactions() {
+    $strTableName = getTableName_Transactions();
+    global $wpdb;
     $sql = "CREATE TABLE $strTableName (
             lid bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
             created datetime NOT NULL,
@@ -62,8 +67,7 @@ function insertTransaction($strProductDescription,
     $strTime = \gmdate('Y-m-d--H-i-s', $ms / 1000) . '--' . \sprintf('%03u', \bcmod($ms, 1000));
 
     global $wpdb;
-    $strTableName = $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
-    if (!$wpdb->insert($strTableName, [
+    if (!$wpdb->insert(getTableName_Transactions(), [
                         'created'              => $strTime,
                         'product_description'  => $strProductDescription,
                         'product_cost'         => $strProductCost,
