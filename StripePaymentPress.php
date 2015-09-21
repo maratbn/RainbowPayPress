@@ -185,6 +185,18 @@ function action_admin_menu() {
             \submit_button();
         ?>
       </form>
+      <h2>Transactions:</h2>
+      <table>
+        <tr>
+          <th>Created:</th>
+          <th>Product description:</th>
+          <th>Product cost:</th>
+          <th>Stripe token:</th>
+          <th>Stripe email:</th>
+          <th>Customer name:</th>
+          <th>Customer phone:</th>
+        </tr>
+      </table>
     </div>
     <?php
     }
