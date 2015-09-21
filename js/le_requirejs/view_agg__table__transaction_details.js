@@ -213,6 +213,8 @@ define(['backbone',
                                     return;
                                 }
 
+                                if (!window.confirm("Submit this transaction?")) return;
+
                                 var $xhr = $.post(params['ajax_url'], {
                                         action:               'stripe_payment_press__submit',
                                         product_description:  model_transaction_details
