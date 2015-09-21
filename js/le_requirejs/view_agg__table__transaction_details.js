@@ -182,28 +182,16 @@ define(['backbone',
                             view_agg__tr__transaction_detailCustomerName,
                             'click_modify',
                             function() {
-                                var strCustomerName = window.prompt(
-                                                                "Enter customer name:",
-                                                                model_transaction_details
-                                                                          .get('customer_name')
-                                                                                           || "");
-                                if (!strCustomerName) return;
-
-                                model_transaction_details.set('customer_name', strCustomerName);
+                                model_transaction_details.trigger('do_prompt',
+                                                                  {field: 'customer_name'});
                             });
 
                         this.listenTo(
                             view_agg__tr__transaction_detailCustomerPhone,
                             'click_modify',
                             function() {
-                                var strCustomerPhone = window.prompt(
-                                                                "Enter customer phone:",
-                                                                model_transaction_details
-                                                                          .get('customer_phone')
-                                                                                           || "");
-                                if (!strCustomerPhone) return;
-
-                                model_transaction_details.set('customer_phone', strCustomerPhone);
+                                model_transaction_details.trigger('do_prompt',
+                                                                  {field: 'customer_phone'});
                             });
 
                         this.listenTo(model_transaction_details, 'do_prompt', function(event) {
@@ -216,6 +204,32 @@ define(['backbone',
                                             description:  params.desc,
                                             amount:       params.amount
                                         });
+                                    return;
+                                }
+
+                                if (field == 'customer_name') {
+                                    var strCustomerName = window.prompt(
+                                                                "Enter customer name:",
+                                                                model_transaction_details
+                                                                          .get('customer_name')
+                                                                                           || "");
+                                    if (!strCustomerName) return;
+
+                                    model_transaction_details.set('customer_name',
+                                                                  strCustomerName);
+                                    return;
+                                }
+
+                                if (field == 'customer_phone') {
+                                    var strCustomerPhone = window.prompt(
+                                                                "Enter customer phone:",
+                                                                model_transaction_details
+                                                                          .get('customer_phone')
+                                                                                           || "");
+                                    if (!strCustomerPhone) return;
+
+                                    model_transaction_details.set('customer_phone',
+                                                                  strCustomerPhone);
                                     return;
                                 }
                             });
