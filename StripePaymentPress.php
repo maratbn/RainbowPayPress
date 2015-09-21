@@ -70,6 +70,10 @@ const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
 \add_action('wp_ajax_nopriv_stripe_payment_press__charge_with_stripe',
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
+\add_action('wp_ajax_stripe_payment_press__submit',
+            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__submit');
+\add_action('wp_ajax_nopriv_stripe_payment_press__submit',
+            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__submit');
 \add_action('wp_enqueue_scripts', '\\plugin_Stripe_Payment_Press\\action_wp_enqueue_scripts');
 \add_action('wp_print_footer_scripts',
             '\\plugin_Stripe_Payment_Press\\action_wp_print_footer_scripts');
@@ -213,6 +217,17 @@ function action_wp_ajax_stripe_payment_press__charge_with_stripe() {
 
     die(json_encode(['success' => false,
                      'errors' => $arrErrors]));
+}
+
+function action_wp_ajax_stripe_payment_press__submit() {
+    $strProductDescription  = $_POST['product_description'];
+    $strProductCost         = $_POST['product_cost'];
+    $strStripeTokenId       = $_POST['stripe_token_id'];
+    $strStripeEmail         = $_POST['stripe_email'];
+    $strCustomerName        = $_POST['customer_name'];
+    $strCustomerPhone       = $_POST['customer_phone'];
+
+    die(json_encode(['success' => false]));
 }
 
 function action_wp_enqueue_scripts() {
