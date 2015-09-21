@@ -208,7 +208,10 @@ define(['backbone',
                                 event.preventDefault();
 
                                 if (model_transaction_details
-                                                     .doCheckForFieldsWithMissingValues()) return;
+                                                     .doCheckForFieldsWithMissingValues()) {
+                                    window.alert("Please specify the required information by clicking on the links in red.");
+                                    return;
+                                }
 
                                 var $xhr = $.post(params['ajax_url'], {
                                         action:               'stripe_payment_press__submit',
