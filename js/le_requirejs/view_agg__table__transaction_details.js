@@ -205,6 +205,28 @@ define(['backbone',
 
                                 model_transaction_details.set('customer_phone', strCustomerPhone);
                             });
+
+                        var me = this;
+
+                        $buttonSubmit.click(function(event) {
+                                event.preventDefault();
+
+                                var $xhr = $.post(params['ajax_url'], {
+                                        action:               'stripe_payment_press__submit',
+                                        product_description:  model_transaction_details
+                                                               .attributes['product_description'],
+                                        product_cost:         model_transaction_details
+                                                               .attributes['product_cost'],
+                                        stripe_token_id:      model_transaction_details
+                                                               .attributes['stripe_token_id'],
+                                        stripe_email:         model_transaction_details
+                                                               .attributes['stripe_email'],
+                                        customer_name:        model_transaction_details
+                                                               .attributes['customer_name'],
+                                        customer_phone:       model_transaction_details
+                                                               .attributes['customer_phone']
+                                    });
+                            });
                     }
             });
 
