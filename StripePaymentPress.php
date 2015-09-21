@@ -64,6 +64,8 @@ const SETTINGS_FIELD__STRIPE_TEST_SECRET_KEY =
 const SETTINGS_SECTION__STRIPE_KEYS = 'plugin_Stripe_Payment_Press__settings_group__stripe_keys';
 const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
 
+require_once('StripePaymentPress_util.php');
+
 \register_activation_hook(__FILE__, '\\plugin_Stripe_Payment_Press\\plugin_activation_hook');
 
 \add_action('admin_init', '\\plugin_Stripe_Payment_Press\\action_admin_init');
@@ -321,22 +323,7 @@ function getUrlInfoSettings() {
 }
 
 function plugin_activation_hook() {
-    global $wpdb;
-    $strTableName = $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
-    $sql = "CREATE TABLE $strTableName (
-            lid bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            created datetime NOT NULL,
-            charged datetime,
-            product_description varchar(1000) NOT NULL,
-            product_cost int unsigned NOT NULL,
-            currency varchar(20) NOT NULL,
-            stripe_token_id varchar(100) NOT NULL,
-            stripe_email varchar(200) NOT NULL,
-            customer_name varchar(200) NOT NULL,
-            customer_phone varchar(100) NOT NULL
-        );";
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
+    initializeTable_Transactions();
 }
 
 function settings_field__stripe_live_publish_key() {
