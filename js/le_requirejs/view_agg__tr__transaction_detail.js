@@ -78,6 +78,10 @@ define(['backbone',
                         var field                      = params.field,
                             model_transaction_details  = params.model_transaction_details;
 
+                        this.on('click_modify', function() {
+                                model_transaction_details.trigger('do_prompt', {field: field});
+                            }, this);
+
                         function _updateValue() {
                             var value = model_transaction_details.get(field);
 

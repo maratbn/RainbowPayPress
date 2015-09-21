@@ -162,38 +162,6 @@ define(['backbone',
                                 handler.close();
                             });
 
-                        this.listenTo(
-                            view_agg__tr__transaction_detailStripeToken,
-                            'click_modify',
-                            function() {
-                                model_transaction_details.trigger('do_prompt',
-                                                                  {field: 'stripe_token_id'});
-                            });
-
-                        this.listenTo(
-                            view_agg__tr__transaction_detailStripeEmail,
-                            'click_modify',
-                            function() {
-                                model_transaction_details.trigger('do_prompt',
-                                                                  {field: 'stripe_email'});
-                            });
-
-                        this.listenTo(
-                            view_agg__tr__transaction_detailCustomerName,
-                            'click_modify',
-                            function() {
-                                model_transaction_details.trigger('do_prompt',
-                                                                  {field: 'customer_name'});
-                            });
-
-                        this.listenTo(
-                            view_agg__tr__transaction_detailCustomerPhone,
-                            'click_modify',
-                            function() {
-                                model_transaction_details.trigger('do_prompt',
-                                                                  {field: 'customer_phone'});
-                            });
-
                         this.listenTo(model_transaction_details, 'do_prompt', function(event) {
                                 var field = event.field;
 
