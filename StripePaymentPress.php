@@ -190,7 +190,7 @@ function action_admin_menu() {
         <tr>
           <th>Created:</th>
           <th>Product description:</th>
-          <th>Product cost:</th>
+          <th>Amount:</th>
           <th>Stripe token:</th>
           <th>Stripe email:</th>
           <th>Customer name:</th>
