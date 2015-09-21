@@ -51,4 +51,6 @@ function initializeTable_Transactions() {
     dbDelta($sql);
 }
 
+function insertTransaction() {
+}
 ?>
