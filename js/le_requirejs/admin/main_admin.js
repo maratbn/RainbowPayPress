@@ -6,7 +6,7 @@
 
   Version:        0.0.1--development_unreleased
 
-  Module:         js/le_requirejs/main_admin.js
+  Module:         js/le_requirejs/admin/main_admin.js
 
   Description:    Main JavaScript file for the internal admin pages for the
                   WordPress plugin 'StripePaymentPress'.

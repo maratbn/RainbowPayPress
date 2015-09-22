@@ -241,7 +241,7 @@ function action_admin_print_footer_scripts() {
 
     _plugin_Stripe_Payment_Press__requirejs([
             'backbone',
-            'main_admin'
+            'admin/main_admin'
         ], function(backbone, main_admin) {
 
             backbone.history.start();
