@@ -34,8 +34,9 @@
 
 define(['jquery',
         'view_agg__table',
-        'admin/collection_orig__transaction'
-    ], function ($, ViewAgg_Table, collection_orig__transaction) {
+        'admin/collection_orig__transaction',
+        'admin/view_agg__tr__transaction'
+    ], function ($, ViewAgg_Table, collection_orig__transaction, ViewAgg_Tr_Transaction) {
 
         return ViewAgg_Table.extend({
 
@@ -55,21 +56,9 @@ define(['jquery',
                             collection_orig__transaction,
                             'add',
                             function(model_orig__transaction) {
-                                ($('<tr>').append($('<td>').text(model_orig__transaction
-                                                                    .get('created')))
-                                          .append($('<td>').text(model_orig__transaction
-                                                                    .get('charge_description')))
-                                          .append($('<td>').text(model_orig__transaction
-                                                                    .get('charge_amount')))
-                                          .append($('<td>').text(model_orig__transaction
-                                                                    .get('stripe_token_id')))
-                                          .append($('<td>').text(model_orig__transaction
-                                                                    .get('stripe_email')))
-                                          .append($('<td>').text(model_orig__transaction
-                                                                    .get('customer_name')))
-                                          .append($('<td>').text(model_orig__transaction
-                                                                    .get('customer_phone'))))
-                                                                              .appendTo(this.$el);
+                                (new ViewAgg_Tr_Transaction({
+                                            model_orig__transaction: model_orig__transaction
+                                        })).$el.appendTo(this.$el);
                             });
                     }
             });
