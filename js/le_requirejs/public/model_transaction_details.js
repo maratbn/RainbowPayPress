@@ -6,7 +6,7 @@
 
   Version:        0.0.1--development_unreleased
 
-  Module:         js/le_requirejs/model__transaction_details.js
+  Module:         js/le_requirejs/public/model__transaction_details.js
 
   Description:    Model 'ModelTransactionDetails'.
 
