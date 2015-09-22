@@ -64,7 +64,7 @@ function initializeTable_Transactions() {
     dbDelta($sql);
 }
 
-function insertTransaction($strProductDescription,
+function insertTransaction($strChargeDescription,
                            $strProductCost,
                            $strStripeTokenId,
                            $strStripeEmail,
@@ -77,7 +77,7 @@ function insertTransaction($strProductDescription,
     global $wpdb;
     if (!$wpdb->insert(getTableName_Transactions(), [
                         'created'              => $strTime,
-                        'charge_description'   => $strProductDescription,
+                        'charge_description'   => $strChargeDescription,
                         'product_cost'         => $strProductCost,
                         'currency'             => 'usd_x_100',
                         'stripe_token_id'      => $strStripeTokenId,

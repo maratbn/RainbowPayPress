@@ -307,14 +307,14 @@ function action_wp_ajax_stripe_payment_press__get_transactions() {
 }
 
 function action_wp_ajax_stripe_payment_press__submit() {
-    $strProductDescription  = $_POST['charge_description'];
+    $strChargeDescription   = $_POST['charge_description'];
     $strProductCost         = $_POST['product_cost'];
     $strStripeTokenId       = $_POST['stripe_token_id'];
     $strStripeEmail         = $_POST['stripe_email'];
     $strCustomerName        = $_POST['customer_name'];
     $strCustomerPhone       = $_POST['customer_phone'];
 
-    die(json_encode(['success' => insertTransaction($strProductDescription,
+    die(json_encode(['success' => insertTransaction($strChargeDescription,
                                                     $strProductCost,
                                                     $strStripeTokenId,
                                                     $strStripeEmail,
