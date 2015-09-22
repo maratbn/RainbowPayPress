@@ -27,3 +27,9 @@
   You should have received a copy of the GNU General Public License
   along with StripePaymentPress.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+
+.widget_view_agg__table__transactions th,
+.widget_view_agg__table__transactions td {
+    padding: 0 5px;
+}
