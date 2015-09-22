@@ -6,7 +6,7 @@
 
   Version:        0.0.1--development_unreleased
 
-  Module:         js/le_requirejs/view_agg__div__transaction.js
+  Module:         js/le_requirejs/public/view_agg__div__transaction.js
 
   Description:    Widget 'ViewAgg_Div_Transaction'.
 

@@ -35,7 +35,7 @@
 
 define(['jquery',
         'backbone',
-        'view_agg__div__transaction'
+        'public/view_agg__div__transaction'
     ], function($,
                 backbone,
                 ViewAgg_Div_Transaction) {
