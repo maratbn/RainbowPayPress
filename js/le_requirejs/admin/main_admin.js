@@ -35,12 +35,20 @@
 
 define(['jquery',
         'backbone',
+        'admin/collection_orig__transaction',
         'admin/view_agg__table__transactions'
     ], function($,
                 backbone,
+                collection_orig_transaction,
                 ViewAgg_Table_Transactions) {
 
         function _processSpansWithRoles(params) {
+
+            collection_orig_transaction.url = params.ajax_url +
+                                                 '?action=stripe_payment_press__get_transactions';
+
+            collection_orig_transaction.fetch();
+
             var $elSpans = $("span[data-plugin-stripe-payment-press-role=transactions]");
 
             for (var i = 0; i < $elSpans.length; i++) {
