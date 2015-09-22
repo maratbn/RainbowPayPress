@@ -216,7 +216,7 @@ function action_admin_menu() {
                 ?>
                 <tr>
                   <td><?=$arrTransaction['created']?></td>
-                  <td><?=$arrTransaction['product_description']?></td>
+                  <td><?=$arrTransaction['charge_description']?></td>
                   <td><?=$arrTransaction['product_cost']?></td>
                   <td><?=$arrTransaction['stripe_token_id']?></td>
                   <td><?=$arrTransaction['stripe_email']?></td>
@@ -307,7 +307,7 @@ function action_wp_ajax_stripe_payment_press__get_transactions() {
 }
 
 function action_wp_ajax_stripe_payment_press__submit() {
-    $strProductDescription  = $_POST['product_description'];
+    $strProductDescription  = $_POST['charge_description'];
     $strProductCost         = $_POST['product_cost'];
     $strStripeTokenId       = $_POST['stripe_token_id'];
     $strStripeEmail         = $_POST['stripe_email'];

@@ -49,7 +49,7 @@ define(['backbone',
 
                         var model_transaction_details =
                             new ModelTransactionDetails({
-                                        'product_description':  params.desc,
+                                        'charge_description':   params.desc,
                                         'product_cost':         params.amount
                                     });
 

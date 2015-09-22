@@ -52,7 +52,7 @@ function initializeTable_Transactions() {
             lid bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
             created datetime NOT NULL,
             charged datetime,
-            product_description varchar(1000) NOT NULL,
+            charge_description varchar(1000) NOT NULL,
             product_cost int unsigned NOT NULL,
             currency varchar(20) NOT NULL,
             stripe_token_id varchar(100) NOT NULL,
@@ -77,7 +77,7 @@ function insertTransaction($strProductDescription,
     global $wpdb;
     if (!$wpdb->insert(getTableName_Transactions(), [
                         'created'              => $strTime,
-                        'product_description'  => $strProductDescription,
+                        'charge_description'   => $strProductDescription,
                         'product_cost'         => $strProductCost,
                         'currency'             => 'usd_x_100',
                         'stripe_token_id'      => $strStripeTokenId,
@@ -131,7 +131,7 @@ function selectTransactions() {
 
     global $wpdb;
     return $wpdb->get_results("SELECT created,
-                                      product_description,
+                                      charge_description,
                                       product_cost,
                                       stripe_token_id,
                                       stripe_email,

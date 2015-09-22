@@ -69,7 +69,7 @@ define(['jquery',
 
                         (new ViewAgg_Tr_TransactionDetail({
                                     model_transaction_details: model_transaction_details,
-                                    field: 'product_description',
+                                    field: 'charge_description',
                                     name: "Description:"
                                 })).$el.appendTo(this.$el);
 
@@ -214,8 +214,8 @@ define(['jquery',
 
                                 var $xhr = $.post(params['ajax_url'], {
                                         action:               'stripe_payment_press__submit',
-                                        product_description:  model_transaction_details
-                                                               .attributes['product_description'],
+                                        charge_description:   model_transaction_details
+                                                               .attributes['charge_description'],
                                         product_cost:         model_transaction_details
                                                                .attributes['product_cost'],
                                         stripe_token_id:      model_transaction_details

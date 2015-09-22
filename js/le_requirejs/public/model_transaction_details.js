@@ -38,7 +38,7 @@ define(['backbone'
         return backbone.Model.extend({
 
                 defaults: {
-                        'product_description':  null,
+                        'charge_description':   null,
                         'product_cost':         null,
                         'stripe_token_id':      null,
                         'stripe_email':         null,
