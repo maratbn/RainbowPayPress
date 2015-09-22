@@ -32,7 +32,7 @@
 (function(define) {
 
 
-define(['backbone', 'jquery'], function (backbone, $) {
+define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
 
         return backbone.View.extend({
 
@@ -47,8 +47,10 @@ define(['backbone', 'jquery'], function (backbone, $) {
                                                                     .get('created')))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('charge_description')))
-                                .append($('<td>').text(model_orig__transaction
-                                                                    .get('charge_amount')))
+                                .append($('<td>').text(
+                                                    util.formatCurrency(
+                                                       model_orig__transaction
+                                                                    .get('charge_amount'))))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('stripe_token_id')))
                                 .append($('<td>').text(model_orig__transaction
