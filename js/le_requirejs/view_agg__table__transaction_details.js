@@ -32,10 +32,10 @@
 (function(define) {
 
 
-define(['backbone',
-        'jquery',
+define(['jquery',
+        'view_agg__table',
         'view_agg__tr__transaction_detail'
-    ], function (backbone, $, ViewAgg_Tr_TransactionDetail) {
+    ], function ($, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
 
         function _formatCurrency(amount) {
 
@@ -53,8 +53,7 @@ define(['backbone',
             return '$' + _formatDollars(Math.floor(amount / 100)) + '.' + strCents;
         }
 
-        return backbone.View.extend({
-                tagName: 'table',
+        return ViewAgg_Table.extend({
 
                 //  @param  params.model_transaction_details
                 //  @param  params.ajax_url
@@ -64,11 +63,9 @@ define(['backbone',
                 //  @param  params.desc                 //  Product description
                 initialize: function(params) {
 
-                        var model_transaction_details = params.model_transaction_details;
+                        ViewAgg_Table.prototype.initialize.apply(this, arguments);
 
-                        this.$el.attr({'border':       '0',
-                                       'cellspacing':  '0',
-                                       'cellpadding':  '0'});
+                        var model_transaction_details = params.model_transaction_details;
 
                         (new ViewAgg_Tr_TransactionDetail({
                                     model_transaction_details: model_transaction_details,

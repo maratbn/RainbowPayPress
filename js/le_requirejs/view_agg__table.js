@@ -6,9 +6,9 @@
 
   Version:        0.0.1--development_unreleased
 
-  Module:         js/le_requirejs/view_agg__table__transactions.js
+  Module:         js/le_requirejs/view_agg__table.js
 
-  Description:    Widget 'ViewAgg_Table_Transactions'.
+  Description:    Widget 'ViewAgg_Table'.
 
   This file is part of StripePaymentPress.
 
@@ -32,21 +32,16 @@
 (function(define) {
 
 
-define(['jquery', 'view_agg__table'], function ($, ViewAgg_Table) {
+define(['backbone', 'jquery'], function (backbone, $) {
 
-        return ViewAgg_Table.extend({
+        return backbone.View.extend({
+                tagName: 'table',
 
                 initialize: function() {
 
-                        ViewAgg_Table.prototype.initialize.apply(this, arguments);
-
-                        ($('<tr>').append($('<th>').text("Created:"))
-                                  .append($('<th>').text("Product description:"))
-                                  .append($('<th>').text("Amount:"))
-                                  .append($('<th>').text("Stripe token:"))
-                                  .append($('<th>').text("Stripe email:"))
-                                  .append($('<th>').text("Customer name:"))
-                                  .append($('<th>').text("Customer phone:"))).appendTo(this.$el);
+                        this.$el.attr({'border':       '0',
+                                       'cellspacing':  '0',
+                                       'cellpadding':  '0'});
                     }
             });
 
