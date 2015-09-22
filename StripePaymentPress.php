@@ -74,9 +74,9 @@ require_once('StripePaymentPress_util.php');
 \add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
 \add_action('admin_print_footer_scripts',
             '\\plugin_Stripe_Payment_Press\\action_admin_print_footer_scripts');
-\add_action('wp_ajax_stripe_payment_press__charge_with_stripe',
-            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
 \add_action('wp_ajax_nopriv_stripe_payment_press__charge_with_stripe',
+            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
+\add_action('wp_ajax_stripe_payment_press__charge_with_stripe',
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
 \add_action('wp_ajax_stripe_payment_press__submit',
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__submit');
