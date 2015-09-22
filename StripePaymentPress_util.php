@@ -91,36 +91,38 @@ function insertTransaction($strProductDescription,
 function renderJavaScriptRequireJSConfig() {
     $strUrlBase = \plugin_dir_url(__FILE__);
 ?>
-var strUrlRoot = '<?=$strUrlBase?>/js/le_requirejs/';
+(function() {
+    var strUrlRoot = '<?=$strUrlBase?>/js/le_requirejs/';
 
-_plugin_Stripe_Payment_Press__requirejs.config({
-        baseUrl: strUrlRoot,
-        paths: {
-                'backbone': strUrlRoot
-                                + 'lib/backbone-1.2.1-src--tweaked--namespaced_require_js--3acbb9f5418b2811cc515b3cf65f0574440d2eab',
-                'jquery': strUrlRoot
-                                + 'lib/jquery-1.11.3--tweaked--namespaced_require_js--fe365e109bd7110d25323a66d36fa9c5f75f322f',
-                'underscore': strUrlRoot
-                                + 'lib/underscore-1.8.3-src--tweaked--namespaced_require_js--890bb70cc43f37e243e0759c12575ac9ed6f431c'
-            },
-        map: {
-                '*': {
-                        'backbone': 'backbone-private',
-                        'jquery': 'jquery-private',
-                        'underscore': 'underscore-private'
-                    },
-                'backbone-private': {
-                        'backbone': 'backbone'
-                    },
-                'jquery-private': {
-                        'jquery': 'jquery'
-                    },
-                'underscore-private': {
-                        'underscore': 'underscore'
-                    }
-            },
-        urlArgs: '<?=getUVArg()?>'
-    });
+    _plugin_Stripe_Payment_Press__requirejs.config({
+            baseUrl: strUrlRoot,
+            paths: {
+                    'backbone': strUrlRoot
+                                    + 'lib/backbone-1.2.1-src--tweaked--namespaced_require_js--3acbb9f5418b2811cc515b3cf65f0574440d2eab',
+                    'jquery': strUrlRoot
+                                    + 'lib/jquery-1.11.3--tweaked--namespaced_require_js--fe365e109bd7110d25323a66d36fa9c5f75f322f',
+                    'underscore': strUrlRoot
+                                    + 'lib/underscore-1.8.3-src--tweaked--namespaced_require_js--890bb70cc43f37e243e0759c12575ac9ed6f431c'
+                },
+            map: {
+                    '*': {
+                            'backbone': 'backbone-private',
+                            'jquery': 'jquery-private',
+                            'underscore': 'underscore-private'
+                        },
+                    'backbone-private': {
+                            'backbone': 'backbone'
+                        },
+                    'jquery-private': {
+                            'jquery': 'jquery'
+                        },
+                    'underscore-private': {
+                            'underscore': 'underscore'
+                        }
+                },
+            urlArgs: '<?=getUVArg()?>'
+        });
+})();
 <?php
 }
 
