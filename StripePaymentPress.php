@@ -330,7 +330,7 @@ function action_wp_print_footer_scripts() {
 
     _plugin_Stripe_Payment_Press__requirejs([
             'backbone',
-            'main_public'
+            'public/main_public'
         ], function(backbone, main_public) {
 
             backbone.history.start();
