@@ -34,9 +34,21 @@
 
 
 define(['jquery',
-        'backbone'
+        'backbone',
+        'view_agg__table__transactions'
     ], function($,
-                backbone) {
+                backbone,
+                ViewAgg_Table_Transactions) {
+
+        function _processSpansWithRoles(params) {
+            var $elSpans = $("span[data-plugin-stripe-payment-press-role=transactions]");
+
+            for (var i = 0; i < $elSpans.length; i++) {
+                var $elSpan = $($elSpans[i]);
+
+                (new ViewAgg_Table_Transactions).$el.appendTo($elSpan);
+            }
+        }
 
         function StripePaymentPressAdminClient() {
 
@@ -44,6 +56,8 @@ define(['jquery',
             this.start = function(params) {
 
                 $(document).ready(function() {
+
+                        _processSpansWithRoles(params);
 
                     });
             };
