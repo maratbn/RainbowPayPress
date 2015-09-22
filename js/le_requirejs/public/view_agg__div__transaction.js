@@ -50,7 +50,7 @@ define(['backbone',
                         var model_transaction_details =
                             new ModelTransactionDetails({
                                         'charge_description':   params.desc,
-                                        'product_cost':         params.amount
+                                        'charge_amount':        params.amount
                                     });
 
                         (new ViewAgg_Table_TransactionDetails({

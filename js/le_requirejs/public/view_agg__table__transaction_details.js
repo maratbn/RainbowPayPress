@@ -76,7 +76,7 @@ define(['jquery',
                         (new ViewAgg_Tr_TransactionDetail({
                                     callback_format_value: _formatCurrency,
                                     model_transaction_details: model_transaction_details,
-                                    field: 'product_cost',
+                                    field: 'charge_amount',
                                     name: "Puchase amount:"
                                 })).$el.appendTo(this.$el);
 
@@ -216,8 +216,8 @@ define(['jquery',
                                         action:               'stripe_payment_press__submit',
                                         charge_description:   model_transaction_details
                                                                .attributes['charge_description'],
-                                        product_cost:         model_transaction_details
-                                                               .attributes['product_cost'],
+                                        charge_amount:        model_transaction_details
+                                                               .attributes['charge_amount'],
                                         stripe_token_id:      model_transaction_details
                                                                .attributes['stripe_token_id'],
                                         stripe_email:         model_transaction_details

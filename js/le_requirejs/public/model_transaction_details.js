@@ -39,7 +39,7 @@ define(['backbone'
 
                 defaults: {
                         'charge_description':   null,
-                        'product_cost':         null,
+                        'charge_amount':        null,
                         'stripe_token_id':      null,
                         'stripe_email':         null,
                         'customer_name':        null,
