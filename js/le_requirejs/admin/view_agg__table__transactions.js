@@ -33,8 +33,9 @@
 
 
 define(['jquery',
-        'view_agg__table'
-    ], function ($, ViewAgg_Table) {
+        'view_agg__table',
+        'admin/collection_orig__transaction'
+    ], function ($, ViewAgg_Table, collection_orig__transaction) {
 
         return ViewAgg_Table.extend({
 
@@ -49,6 +50,27 @@ define(['jquery',
                                   .append($('<th>').text("Stripe email:"))
                                   .append($('<th>').text("Customer name:"))
                                   .append($('<th>').text("Customer phone:"))).appendTo(this.$el);
+
+                        this.listenTo(
+                            collection_orig__transaction,
+                            'add',
+                            function(model_orig__transaction) {
+                                ($('<tr>').append($('<td>').text(model_orig__transaction
+                                                                    .get('created')))
+                                          .append($('<td>').text(model_orig__transaction
+                                                                    .get('charge_description')))
+                                          .append($('<td>').text(model_orig__transaction
+                                                                    .get('charge_amount')))
+                                          .append($('<td>').text(model_orig__transaction
+                                                                    .get('stripe_token_id')))
+                                          .append($('<td>').text(model_orig__transaction
+                                                                    .get('stripe_email')))
+                                          .append($('<td>').text(model_orig__transaction
+                                                                    .get('customer_name')))
+                                          .append($('<td>').text(model_orig__transaction
+                                                                    .get('customer_phone'))))
+                                                                              .appendTo(this.$el);
+                            });
                     }
             });
 
