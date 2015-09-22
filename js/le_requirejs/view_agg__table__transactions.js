@@ -32,7 +32,7 @@
 (function(define) {
 
 
-define(['backbone'], function (backbone) {
+define(['backbone', 'jquery'], function (backbone, $) {
 
         return backbone.View.extend({
                 tagName: 'table',
@@ -43,6 +43,13 @@ define(['backbone'], function (backbone) {
                                        'cellspacing':  '0',
                                        'cellpadding':  '0'});
 
+                        ($('<tr>').append($('<th>').text("Created:"))
+                                  .append($('<th>').text("Product description:"))
+                                  .append($('<th>').text("Amount:"))
+                                  .append($('<th>').text("Stripe token:"))
+                                  .append($('<th>').text("Stripe email:"))
+                                  .append($('<th>').text("Customer name:"))
+                                  .append($('<th>').text("Customer phone:"))).appendTo(this.$el);
                     }
             });
 
