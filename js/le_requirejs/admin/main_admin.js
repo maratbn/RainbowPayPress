@@ -35,7 +35,7 @@
 
 define(['jquery',
         'backbone',
-        'view_agg__table__transactions'
+        'admin/view_agg__table__transactions'
     ], function($,
                 backbone,
                 ViewAgg_Table_Transactions) {
