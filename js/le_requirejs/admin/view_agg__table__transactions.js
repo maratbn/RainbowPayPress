@@ -32,7 +32,9 @@
 (function(define) {
 
 
-define(['jquery', 'view_agg__table'], function ($, ViewAgg_Table) {
+define(['jquery',
+        'view_agg__table'
+    ], function ($, ViewAgg_Table) {
 
         return ViewAgg_Table.extend({
 
