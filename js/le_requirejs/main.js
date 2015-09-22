@@ -8,8 +8,8 @@
 
   Module:         js/le_requirejs/main.js
 
-  Description:    Main JavaScript file for the WordPress plugin
-                  'StripePaymentPress'.
+  Description:    Main JavaScript file for the public-facing pages for the
+                  WordPress plugin 'StripePaymentPress'.
 
   This file is part of StripePaymentPress.
 
