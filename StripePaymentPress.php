@@ -98,6 +98,11 @@ require_once('StripePaymentPress_util.php');
 function action_admin_enqueue_scripts($hook) {
     if ($hook != 'settings_page_' . SLUG_INFO_SETTINGS) return;
 
+    \wp_enqueue_style('plugin__StripePaymentPress__style_css',
+                      plugin_dir_url(__FILE__) . '/style.css',
+                      null,
+                      getUVArg());
+
     action_wp_enqueue_scripts();
 }
 
