@@ -33,25 +33,10 @@
 
 
 define(['jquery',
+        'util',
         'view_agg__table',
         'public/view_agg__tr__transaction_detail'
-    ], function ($, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
-
-        function _formatCurrency(amount) {
-
-            function _formatDollars(dollars) {
-                var strDollars = "" + dollars;
-                if (strDollars.length <= 3) return strDollars;
-
-                return _formatDollars(Math.floor(dollars / 1000)) + ',' +
-                                                         strDollars.substr(strDollars.length - 3);
-            }
-
-            var strCents = "" + amount % 100;
-            if (strCents.length == 1) strCents = '0' + strCents;
-
-            return '$' + _formatDollars(Math.floor(amount / 100)) + '.' + strCents;
-        }
+    ], function ($, util, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
 
         return ViewAgg_Table.extend({
 
@@ -74,7 +59,7 @@ define(['jquery',
                                 })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_TransactionDetail({
-                                    callback_format_value: _formatCurrency,
+                                    callback_format_value: util.formatCurrency,
                                     model_transaction_details: model_transaction_details,
                                     field: 'charge_amount',
                                     name: "Puchase amount:"
