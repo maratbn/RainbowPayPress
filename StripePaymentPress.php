@@ -78,6 +78,8 @@ require_once('StripePaymentPress_util.php');
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
 \add_action('wp_ajax_stripe_payment_press__charge_with_stripe',
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
+\add_action('wp_ajax_stripe_payment_press__get_transactions',
+            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__get_transactions');
 \add_action('wp_ajax_stripe_payment_press__submit',
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__submit');
 \add_action('wp_ajax_nopriv_stripe_payment_press__submit',
@@ -285,6 +287,23 @@ function action_wp_ajax_stripe_payment_press__charge_with_stripe() {
 
     die(json_encode(['success' => false,
                      'errors' => $arrErrors]));
+}
+
+function action_wp_ajax_stripe_payment_press__get_transactions() {
+    /** Available errors:
+     *      error_select_transactions
+     **/
+
+    $arrErrors = [];
+
+    $arrTransactions = selectTransactions();
+    if (!$arrTransactions) {
+        \array_push($arrErrors, 'error_select_transactions');
+    }
+
+    die(\json_encode(['success'       => (count($arrErrors) == 0),
+                      'errors'        => $arrErrors,
+                      'transactions'  => $arrTransactions]));
 }
 
 function action_wp_ajax_stripe_payment_press__submit() {
