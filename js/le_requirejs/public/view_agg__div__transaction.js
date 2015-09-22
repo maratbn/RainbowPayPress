@@ -35,7 +35,7 @@
 define(['backbone',
         'jquery',
         'public/model_transaction_details',
-        'view_agg__table__transaction_details'
+        'public/view_agg__table__transaction_details'
     ], function(backbone, $, ModelTransactionDetails, ViewAgg_Table_TransactionDetails) {
 
         return backbone.View.extend({

@@ -6,7 +6,7 @@
 
   Version:        0.0.1--development_unreleased
 
-  Module:         js/le_requirejs/view_agg__table__transaction_details.js
+  Module:         js/le_requirejs/public/view_agg__table__transaction_details.js
 
   Description:    Widget 'ViewAgg_Table_TransactionDetails'.
 
