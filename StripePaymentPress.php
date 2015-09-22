@@ -323,10 +323,15 @@ function action_wp_ajax_stripe_payment_press__submit() {
 }
 
 function action_wp_enqueue_scripts() {
-    \wp_enqueue_script('plugin__StripePaymentPress__stripe_checkout',
-                       'https://checkout.stripe.com/checkout.js',
-                       null,
-                       \date('Y-m-d'));
+
+    global $post;
+    if ($post instanceof \WP_Post &&
+        \has_shortcode($post->post_content, 'stripe-payment-press')) {
+        \wp_enqueue_script('plugin__StripePaymentPress__stripe_checkout',
+                           'https://checkout.stripe.com/checkout.js',
+                           null,
+                           \date('Y-m-d'));
+    }
 
     \wp_enqueue_script('jquery');
 
