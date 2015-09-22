@@ -323,11 +323,12 @@ function action_wp_ajax_stripe_payment_press__submit() {
 }
 
 function action_wp_enqueue_scripts() {
-    \wp_enqueue_script('jquery');
     \wp_enqueue_script('plugin__StripePaymentPress__stripe_checkout',
                        'https://checkout.stripe.com/checkout.js',
                        null,
                        \date('Y-m-d'));
+
+    \wp_enqueue_script('jquery');
 
     \wp_enqueue_script(
             'plugin_Stripe_Payment_Press__requirejs',
