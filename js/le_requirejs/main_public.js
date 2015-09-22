@@ -6,7 +6,7 @@
 
   Version:        0.0.1--development_unreleased
 
-  Module:         js/le_requirejs/main.js
+  Module:         js/le_requirejs/main_public.js
 
   Description:    Main JavaScript file for the public-facing pages for the
                   WordPress plugin 'StripePaymentPress'.

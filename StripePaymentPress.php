@@ -324,14 +324,15 @@ function action_wp_print_footer_scripts() {
 
     _plugin_Stripe_Payment_Press__requirejs([
             'backbone',
-            'main'
-        ], function(backbone, main) {
+            'main_public'
+        ], function(backbone, main_public) {
 
             backbone.history.start();
 
-            main.start({'ajax_url':     '<?=\admin_url('admin-ajax.php')?>',
-                        'publish_key':  '<?=\esc_attr(
-                                              \get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>'});
+            main_public.start({
+                    'ajax_url':     '<?=\admin_url('admin-ajax.php')?>',
+                    'publish_key':  '<?=\esc_attr(\get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>'
+                });
         });
 </script>
 <?php
