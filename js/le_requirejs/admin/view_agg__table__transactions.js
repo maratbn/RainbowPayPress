@@ -44,6 +44,8 @@ define(['jquery',
 
                         ViewAgg_Table.prototype.initialize.apply(this, arguments);
 
+                        this.$el.addClass('widget_view_agg__table__transactions');
+
                         ($('<tr>').append($('<th>').text("Created:"))
                                   .append($('<th>').text("Product description:"))
                                   .append($('<th>').text("Amount:"))
