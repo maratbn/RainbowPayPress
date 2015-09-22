@@ -204,34 +204,6 @@ function action_admin_menu() {
       </form>
       <h2>Transactions:</h2>
       <span data-plugin-stripe-payment-press-role='transactions'></span>
-      <table>
-        <tr>
-          <th>Created:</th>
-          <th>Product description:</th>
-          <th>Amount:</th>
-          <th>Stripe token:</th>
-          <th>Stripe email:</th>
-          <th>Customer name:</th>
-          <th>Customer phone:</th>
-        </tr>
-        <?php
-            $arrTransactions = selectTransactions();
-            for ($i = 0; $i < count($arrTransactions); $i++) {
-                $arrTransaction = $arrTransactions[$i];
-                ?>
-                <tr>
-                  <td><?=$arrTransaction['created']?></td>
-                  <td><?=$arrTransaction['charge_description']?></td>
-                  <td><?=$arrTransaction['charge_amount']?></td>
-                  <td><?=$arrTransaction['stripe_token_id']?></td>
-                  <td><?=$arrTransaction['stripe_email']?></td>
-                  <td><?=$arrTransaction['customer_name']?></td>
-                  <td><?=$arrTransaction['customer_phone']?></td>
-                </tr>
-                <?php
-            }
-        ?>
-      </table>
     </div>
     <?php
     }
