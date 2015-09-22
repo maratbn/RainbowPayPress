@@ -34,7 +34,7 @@
 
 define(['jquery',
         'view_agg__table',
-        'view_agg__tr__transaction_detail'
+        'public/view_agg__tr__transaction_detail'
     ], function ($, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
 
         function _formatCurrency(amount) {

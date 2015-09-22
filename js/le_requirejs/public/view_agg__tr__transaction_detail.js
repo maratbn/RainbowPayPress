@@ -6,7 +6,7 @@
 
   Version:        0.0.1--development_unreleased
 
-  Module:         js/le_requirejs/view_agg__tr__transaction_detail.js
+  Module:         js/le_requirejs/admin/view_agg__tr__transaction_detail.js
 
   Description:    Widget 'ViewAgg_Tr_TransactionDetail'.  Renders a row inside
                   'ViewAgg_Table_TransactionDetails'.
