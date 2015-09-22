@@ -68,7 +68,7 @@ define(['jquery',
             }
         }
 
-        function StripePaymentPressClient() {
+        function StripePaymentPressPublicClient() {
 
             //  @param  params.ajax_url
             //  @param  params.publish_key
@@ -82,7 +82,7 @@ define(['jquery',
             };
         }
 
-        var client = new StripePaymentPressClient();
+        var client = new StripePaymentPressPublicClient();
         return client;
     });
 
