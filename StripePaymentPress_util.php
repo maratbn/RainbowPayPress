@@ -32,6 +32,11 @@
 
 namespace plugin_Stripe_Payment_Press;
 
+function getDateTimeNow() {
+    $ms = \time() * 1000 + \substr(\microtime(), 2, 3);
+    return \gmdate('Y-m-d--H-i-s', $ms / 1000) . '--' . \sprintf('%03u', \bcmod($ms, 1000));
+}
+
 function getTableName_Transactions() {
     global $wpdb;
     return $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
@@ -71,12 +76,9 @@ function insertTransaction($strChargeDescription,
                            $strCustomerName,
                            $strCustomerPhone) {
 
-    $ms = \time() * 1000 + \substr(\microtime(), 2, 3);
-    $strTime = \gmdate('Y-m-d--H-i-s', $ms / 1000) . '--' . \sprintf('%03u', \bcmod($ms, 1000));
-
     global $wpdb;
     if (!$wpdb->insert(getTableName_Transactions(), [
-                        'created'              => $strTime,
+                        'created'              => getDateTimeNow(),
                         'charge_description'   => $strChargeDescription,
                         'charge_amount'        => $strProductCost,
                         'currency'             => 'usd_x_100',
