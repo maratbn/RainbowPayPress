@@ -45,6 +45,9 @@ define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
                         var flagExcludeCharged       = params.flag_exclude_charged,
                             model_orig__transaction  = params.model_orig__transaction;
 
+                        var $buttonDelete = $('<button>').addClass('button button-secondary')
+                                                         .text("Delete");
+
                         var $buttonCharge = model_orig__transaction.get('charged')
                                           ? null
                                           : $('<button>').addClass('button button-secondary')
@@ -56,7 +59,8 @@ define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
                                 });
                         }
 
-                        this.$el.append($('<td>').append($buttonCharge))
+                        this.$el.append($('<td>').append($buttonDelete)
+                                                 .append($buttonCharge))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('created') || ""))
                                 .append(flagExcludeCharged
