@@ -57,6 +57,10 @@ define(['jquery',
             }
 
             _processSpans($("span[data-plugin-stripe-payment-press-role=transactions]"));
+            _processSpans($("span[data-plugin-stripe-payment-press-role=transactions-charged]"),
+                          {flag_exclude_uncharged: true});
+            _processSpans($("span[data-plugin-stripe-payment-press-role=transactions-pending]"),
+                          {flag_exclude_charged: true});
         }
 
         function StripePaymentPressAdminClient() {

@@ -200,8 +200,10 @@ function action_admin_menu() {
             \submit_button();
         ?>
       </form>
-      <h2>Transactions:</h2>
-      <span data-plugin-stripe-payment-press-role='transactions'></span>
+      <h2>Pending Transactions:</h2>
+      <span data-plugin-stripe-payment-press-role='transactions-pending'></span>
+      <h2>Charged Transactions:</h2>
+      <span data-plugin-stripe-payment-press-role='transactions-charged'></span>
     </div>
     <?php
     }
