@@ -34,8 +34,9 @@
 
 
 define(['backbone',
+        'model_info__app_common',
         'admin/model_orig__transaction'
-    ], function (backbone, ModelOrig_Transaction) {
+    ], function (backbone, model_info__app_common, ModelOrig_Transaction) {
 
         return new (backbone.Collection.extend({
 
@@ -45,6 +46,11 @@ define(['backbone',
                         if (!response.success) return null;
 
                         return response.transactions;
+                    },
+
+                url: function() {
+                        return model_info__app_common.get('ajax_url') +
+                                                 '?action=stripe_payment_press__get_transactions';
                     }
             }));
 
