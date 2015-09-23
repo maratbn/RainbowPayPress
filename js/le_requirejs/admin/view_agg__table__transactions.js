@@ -51,7 +51,14 @@ define(['jquery',
 
                         this.$el.addClass('widget_view_agg__table__transactions');
 
-                        ($('<tr>').append($('<th>'))
+                        ($('<tr>').append($('<th>').append($('<button>')
+                                                              .addClass('button button-secondary')
+                                                              .click(
+                                                                function() {
+                                                                  collection_orig__transaction
+                                                                                         .fetch();
+                                                                })
+                                                              .text("Refresh")))
                                   .append($('<th>').text("Created:"))
                                   .append(flagExcludeCharged ? null : $('<th>').text("Charged:"))
                                   .append($('<th>').text("Product description:"))
