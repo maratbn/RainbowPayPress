@@ -263,23 +263,30 @@ function action_wp_ajax_stripe_payment_press__charge() {
 
         \plugin_Stripe_Payment_Press\Stripe\Stripe::setApiKey($stripe['secret_key']);
 
-        $customer = \plugin_Stripe_Payment_Press\Stripe\Customer::create(array(
-                'email'     => $dataTransaction['stripe_email'],
-                'card'      => $dataTransaction['stripe_token_id']
-            ));
-
-        if (!$customer) {
-            \array_push($arrErrors, 'error_create_stripe_customer');
-        } else {
-            $charge = \plugin_Stripe_Payment_Press\Stripe\Charge::create(array(
-                    'customer'  => $customer->id,
-                    'amount'    => $dataTransaction['charge_amount'],
-                    'currency'  => 'usd',
-                    'metadata'  => array('charge_desc' => $dataTransaction['charge_description'])
+        try {
+            $customer = \plugin_Stripe_Payment_Press\Stripe\Customer::create(array(
+                    'email'     => $dataTransaction['stripe_email'],
+                    'card'      => $dataTransaction['stripe_token_id']
                 ));
-            if (!$charge) {
-                \array_push($arrErrors, 'error_create_stripe_charge');
+
+            if (!$customer) {
+                \array_push($arrErrors, 'error_create_stripe_customer');
+            } else {
+                $charge = \plugin_Stripe_Payment_Press\Stripe\Charge::create(array(
+                        'customer'  => $customer->id,
+                        'amount'    => $dataTransaction['charge_amount'],
+                        'currency'  => 'usd',
+                        'metadata'  => array('charge_desc' => $dataTransaction['charge_description'])
+                    ));
+                if (!$charge) {
+                    \array_push($arrErrors, 'error_create_stripe_charge');
+                }
             }
+        } catch (plugin_Stripe_Payment_Press\Stripe\Error\InvalidArgumentException
+                                                                    $invalid_argument_exception) {
+            \array_push($arrErrors, 'error_stripe_invalid_argument_exception');
+        } catch (\Exception $exception) {
+            \array_push($arrErrors, 'error_stripe_exception');
         }
     }
 
