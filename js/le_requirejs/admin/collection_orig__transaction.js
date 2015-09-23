@@ -52,7 +52,15 @@ define(['backbone',
                                                       'id':      model_orig__transaction.get('id')
                                                   },
                                               method: 'post'
-                                          });
+                                          }),
+                            me = this;
+
+                        $xhr.success(function(strData) {
+                                var objData = JSON.parse(strData);
+                                if (!objData || !objData.success) return;
+
+                                me.remove(model_orig__transaction);
+                            });
                     },
 
                 parse: function(response, options) {
