@@ -134,6 +134,7 @@ function selectTransaction($lid) {
     global $wpdb;
     $arrTransaction = $wpdb->get_results($wpdb->prepare("SELECT lid,
                                                                 created,
+                                                                charged,
                                                                 charge_description,
                                                                 charge_amount,
                                                                 stripe_token_id,
@@ -155,6 +156,7 @@ function selectTransactions() {
     global $wpdb;
     return $wpdb->get_results("SELECT lid,
                                       created,
+                                      charged,
                                       charge_description,
                                       charge_amount,
                                       stripe_token_id,

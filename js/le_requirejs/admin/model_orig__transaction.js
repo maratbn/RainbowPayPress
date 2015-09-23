@@ -43,6 +43,7 @@ define(['backbone',
                 defaults: {
                         'lid':                  null,
                         'created':              null,
+                        'charged':              null,
                         'charge_description':   null,
                         'charge_amount':        null,
                         'stripe_token_id':      null,

@@ -53,6 +53,8 @@ define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('created')))
                                 .append($('<td>').text(model_orig__transaction
+                                                                    .get('charged')))
+                                .append($('<td>').text(model_orig__transaction
                                                                     .get('charge_description')))
                                 .append($('<td>').text(
                                                     util.formatCurrency(

@@ -48,6 +48,7 @@ define(['jquery',
 
                         ($('<tr>').append($('<th>'))
                                   .append($('<th>').text("Created:"))
+                                  .append($('<th>').text("Charged:"))
                                   .append($('<th>').text("Product description:"))
                                   .append($('<th>').text("Amount:"))
                                   .append($('<th>').text("Stripe token:"))
