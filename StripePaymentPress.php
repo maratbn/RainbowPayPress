@@ -76,6 +76,8 @@ require_once('StripePaymentPress_util.php');
             '\\plugin_Stripe_Payment_Press\\action_admin_print_footer_scripts');
 \add_action('wp_ajax_nopriv_stripe_payment_press__charge_with_stripe',
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
+\add_action('wp_ajax_stripe_payment_press__charge',
+            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge');
 \add_action('wp_ajax_stripe_payment_press__charge_with_stripe',
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge_with_stripe');
 \add_action('wp_ajax_stripe_payment_press__get_transactions',
@@ -231,6 +233,66 @@ function action_admin_print_footer_scripts() {
         });
 </script>
 <?php
+}
+
+function action_wp_ajax_stripe_payment_press__charge() {
+    /** Available errors:
+     *      error_select_transaction
+     *      error_create_stripe_customer
+     *      error_create_stripe_charge
+     *      error_update_transaction
+     **/
+
+    $arrErrors = [];
+
+    $lid = $_POST['lid'];
+    $dataTransaction = selectTransaction($lid);
+    if (!$dataTransaction) {
+        \array_push($arrErrors, 'error_select_transaction');
+    }
+
+    if (count($arrErrors) == 0) {
+
+        //  Based on:   https://stripe.com/docs/checkout/guides/php
+
+        require_once(dirname(__FILE__) .
+                               '/stripe-php-2.3.0--tweaked--2015-07-26--01--namespaced/init.php');
+
+        $stripe = array(
+              "secret_key"       => \get_option(SETTING__STRIPE_TEST_SECRET_KEY),
+              "publishable_key"  => \get_option(SETTING__STRIPE_TEST_PUBLISH_KEY)
+            );
+
+        \plugin_Stripe_Payment_Press\Stripe\Stripe::setApiKey($stripe['secret_key']);
+
+        $customer = \plugin_Stripe_Payment_Press\Stripe\Customer::create(array(
+                'email'     => $dataTransaction['stripe_email'],
+                'card'      => $dataTransaction['stripe_token_id']
+            ));
+
+        if (!$customer) {
+            \array_push($arrErrors, 'error_create_stripe_customer');
+        } else {
+            $charge = \plugin_Stripe_Payment_Press\Stripe\Charge::create(array(
+                    'customer'  => $customer->id,
+                    'amount'    => $dataTransaction['charge_amount'],
+                    'currency'  => 'usd',
+                    'metadata'  => array('charge_desc' => $dataTransaction['charge_description'])
+                ));
+            if (!$charge) {
+                \array_push($arrErrors, 'error_create_stripe_charge');
+            }
+        }
+    }
+
+    if (count($arrErrors) == 0) {
+        if (!updateTransactionAsCharged($lid)) {
+            \array_push($arrErrors, 'error_update_transaction');
+        }
+    }
+
+    die(json_encode(['success' => (count($arrErrors) == 0),
+                     'errors' => $arrErrors]));
 }
 
 function action_wp_ajax_stripe_payment_press__charge_with_stripe() {

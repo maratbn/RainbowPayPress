@@ -128,6 +128,27 @@ function renderJavaScriptRequireJSConfig() {
 <?php
 }
 
+function selectTransaction($lid) {
+    $strTableName = getTableName_Transactions();
+
+    global $wpdb;
+    $arrTransaction = $wpdb->get_results($wpdb->prepare("SELECT lid,
+                                                                created,
+                                                                charge_description,
+                                                                charge_amount,
+                                                                stripe_token_id,
+                                                                stripe_email,
+                                                                customer_name,
+                                                                customer_phone
+                                                           FROM $strTableName
+                                                          WHERE lid=%d",
+                                                        $lid),
+                                         ARRAY_A);
+    if (!$arrTransaction || count($arrTransaction) == 0) return false;
+
+    return $arrTransaction[0];
+}
+
 function selectTransactions() {
     $strTableName = getTableName_Transactions();
 
@@ -141,5 +162,13 @@ function selectTransactions() {
                                       customer_name,
                                       customer_phone
                                  FROM $strTableName", ARRAY_A);
+}
+
+function updateTransactionAsCharged($lid) {
+
+    global $wpdb;
+    return $wpdb->update(getTableName_Transactions(),
+                         ['charged' => getDateTimeNow()],
+                         ['lid' => $lid]);
 }
 ?>
