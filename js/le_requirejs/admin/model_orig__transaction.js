@@ -33,7 +33,10 @@
 (function(define) {
 
 
-define(['backbone'], function (backbone) {
+define(['backbone',
+        'jquery',
+        'model_info__app_common'
+    ], function (backbone, $, model_info__app_common) {
 
         return backbone.Model.extend({
 
@@ -46,6 +49,16 @@ define(['backbone'], function (backbone) {
                         'stripe_email':         null,
                         'customer_name':        null,
                         'customer_phone':       null
+                    },
+
+                doCharge: function() {
+                        var $xhr = $.ajax(model_info__app_common.get('ajax_url'), {
+                                              data: {
+                                                      'action':  'stripe_payment_press__charge',
+                                                      'lid':     this.attributes['lid']
+                                                  },
+                                              method: 'post'
+                                          });
                     }
 
             });
