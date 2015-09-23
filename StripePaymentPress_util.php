@@ -130,7 +130,8 @@ function selectTransactions() {
     $strTableName = getTableName_Transactions();
 
     global $wpdb;
-    return $wpdb->get_results("SELECT created,
+    return $wpdb->get_results("SELECT lid,
+                                      created,
                                       charge_description,
                                       charge_amount,
                                       stripe_token_id,

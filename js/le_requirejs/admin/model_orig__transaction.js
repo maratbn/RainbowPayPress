@@ -38,6 +38,7 @@ define(['backbone'], function (backbone) {
         return backbone.Model.extend({
 
                 defaults: {
+                        'lid':                  null,
                         'created':              null,
                         'charge_description':   null,
                         'charge_amount':        null,
