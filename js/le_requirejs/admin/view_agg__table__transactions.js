@@ -61,6 +61,8 @@ define(['jquery',
                                   .append($('<th>').text("Customer name:"))
                                   .append($('<th>').text("Customer phone:"))).appendTo(this.$el);
 
+                        var mapViewAgg_Tr_Transaction = {};
+
                         this.listenTo(
                             collection_orig__transaction,
                             'add',
@@ -70,10 +72,14 @@ define(['jquery',
                                 if (charged && flagExcludeCharged ||
                                    !charged && flagExcludeUncharged) return;
 
-                                (new ViewAgg_Tr_Transaction({
-                                            flag_exclude_charged:     flagExcludeCharged,
-                                            model_orig__transaction:  model_orig__transaction
-                                        })).$el.appendTo(this.$el);
+                                var lid = model_orig__transaction.get('lid');
+                                if (mapViewAgg_Tr_Transaction[lid]) return;
+
+                                (mapViewAgg_Tr_Transaction[lid] =
+                                    new ViewAgg_Tr_Transaction({
+                                                flag_exclude_charged:     flagExcludeCharged,
+                                                model_orig__transaction:  model_orig__transaction
+                                            })).$el.appendTo(this.$el);
                             });
                     }
             });
