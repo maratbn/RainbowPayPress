@@ -48,13 +48,15 @@ define(['jquery',
 
             collection_orig_transaction.fetch();
 
-            var $elSpans = $("span[data-plugin-stripe-payment-press-role=transactions]");
+            function _processSpans($elSpans) {
+                for (var i = 0; i < $elSpans.length; i++) {
+                    var $elSpan = $($elSpans[i]);
 
-            for (var i = 0; i < $elSpans.length; i++) {
-                var $elSpan = $($elSpans[i]);
-
-                (new ViewAgg_Table_Transactions).$el.appendTo($elSpan);
+                    (new ViewAgg_Table_Transactions).$el.appendTo($elSpan);
+                }
             }
+
+            _processSpans($("span[data-plugin-stripe-payment-press-role=transactions]"));
         }
 
         function StripePaymentPressAdminClient() {
