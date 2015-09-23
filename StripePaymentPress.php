@@ -76,6 +76,8 @@ require_once('StripePaymentPress_util.php');
             '\\plugin_Stripe_Payment_Press\\action_admin_print_footer_scripts');
 \add_action('wp_ajax_stripe_payment_press__charge',
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge');
+\add_action('wp_ajax_stripe_payment_press__delete',
+            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__delete');
 \add_action('wp_ajax_stripe_payment_press__get_transactions',
             '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__get_transactions');
 \add_action('wp_ajax_stripe_payment_press__submit',
@@ -294,6 +296,22 @@ function action_wp_ajax_stripe_payment_press__charge() {
         if (!updateTransactionAsCharged($lid)) {
             \array_push($arrErrors, 'error_update_transaction');
         }
+    }
+
+    die(json_encode(['success' => (count($arrErrors) == 0),
+                     'errors' => $arrErrors]));
+}
+
+function action_wp_ajax_stripe_payment_press__delete() {
+    /** Available errors:
+     *      error_delete_transaction
+     **/
+
+    $arrErrors = [];
+
+    $lid = $_POST['lid'];
+    if (!deleteTransaction($lid)) {
+        \array_push($arrErrors, 'error_delete_transaction');
     }
 
     die(json_encode(['success' => (count($arrErrors) == 0),

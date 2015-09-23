@@ -47,6 +47,14 @@ define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
 
                         var $buttonDelete = $('<button>').addClass('button button-secondary')
                                                          .text("Delete");
+                        $buttonDelete.click(function() {
+                                if (!window
+                                       .confirm(
+                                          "This will delete the local record of this transaction.  Are you sure?"))
+                                    return;
+
+                                model_orig__transaction.doDelete();
+                            });
 
                         var $buttonCharge = model_orig__transaction.get('charged')
                                           ? null

@@ -128,6 +128,11 @@ function renderJavaScriptRequireJSConfig() {
 <?php
 }
 
+function deleteTransaction($lid) {
+    global $wpdb;
+    return $wpdb->delete(getTableName_Transactions(), ['lid' => $lid]);
+}
+
 function selectTransaction($lid) {
     $strTableName = getTableName_Transactions();
 

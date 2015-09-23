@@ -60,6 +60,16 @@ define(['backbone',
                                                   },
                                               method: 'post'
                                           });
+                    },
+
+                doDelete: function() {
+                        var $xhr = $.ajax(model_info__app_common.get('ajax_url'), {
+                                              data: {
+                                                      'action':  'stripe_payment_press__delete',
+                                                      'lid':     this.attributes['lid']
+                                                  },
+                                              method: 'post'
+                                          });
                     }
 
             });
