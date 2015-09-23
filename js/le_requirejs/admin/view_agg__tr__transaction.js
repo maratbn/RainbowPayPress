@@ -34,8 +34,9 @@
 
 define(['backbone',
         'jquery',
-        'util'
-    ], function (backbone, $, util) {
+        'util',
+        'admin/collection_orig__transaction'
+    ], function (backbone, $, util, collection_orig__transaction) {
 
         return backbone.View.extend({
 
@@ -56,7 +57,7 @@ define(['backbone',
                                           "This will delete the local record of this transaction.  Are you sure?"))
                                     return;
 
-                                model_orig__transaction.doDelete();
+                                collection_orig__transaction.doDelete(model_orig__transaction);
                             });
 
                         var $buttonCharge = model_orig__transaction.get('charged')

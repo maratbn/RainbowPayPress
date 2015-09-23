@@ -34,13 +34,26 @@
 
 
 define(['backbone',
+        'jquery',
         'model_info__app_common',
         'admin/model_orig__transaction'
-    ], function (backbone, model_info__app_common, ModelOrig_Transaction) {
+    ], function (backbone, $, model_info__app_common, ModelOrig_Transaction) {
 
         return new (backbone.Collection.extend({
 
                 model: ModelOrig_Transaction,
+
+                doDelete: function(model_orig__transaction) {
+                        if (!model_orig__transaction) return;
+
+                        var $xhr = $.ajax(model_info__app_common.get('ajax_url'), {
+                                              data: {
+                                                      'action':  'stripe_payment_press__delete',
+                                                      'id':      model_orig__transaction.get('id')
+                                                  },
+                                              method: 'post'
+                                          });
+                    },
 
                 parse: function(response, options) {
                         if (!response.success) return null;
