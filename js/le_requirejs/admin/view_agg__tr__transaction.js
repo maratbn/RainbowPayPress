@@ -41,13 +41,18 @@ define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
                 //  @param  params.model_orig__transaction
                 initialize: function(params) {
 
-                        var $buttonCharge = $('<button>').addClass('button button-secondary')
-                                                         .text("Charge"),
-                            model_orig__transaction = params.model_orig__transaction;
+                        var model_orig__transaction = params.model_orig__transaction;
 
-                        $buttonCharge.click(function () {
-                                model_orig__transaction.doCharge();
-                            });
+                        var $buttonCharge = model_orig__transaction.get('charged')
+                                          ? null
+                                          : $('<button>').addClass('button button-secondary')
+                                                         .text("Charge");
+
+                        if ($buttonCharge) {
+                            $buttonCharge.click(function () {
+                                    model_orig__transaction.doCharge();
+                                });
+                        }
 
                         this.$el.append($('<td>').append($buttonCharge))
                                 .append($('<td>').text(model_orig__transaction
