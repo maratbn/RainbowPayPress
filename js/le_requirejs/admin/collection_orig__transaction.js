@@ -33,7 +33,9 @@
 (function(define) {
 
 
-define(['backbone', 'admin/model_orig__transaction'], function (backbone, ModelOrig_Transaction) {
+define(['backbone',
+        'admin/model_orig__transaction'
+    ], function (backbone, ModelOrig_Transaction) {
 
         return new (backbone.Collection.extend({
 
