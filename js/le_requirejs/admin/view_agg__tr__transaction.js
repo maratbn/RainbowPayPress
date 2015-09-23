@@ -32,7 +32,10 @@
 (function(define) {
 
 
-define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
+define(['backbone',
+        'jquery',
+        'util'
+    ], function (backbone, $, util) {
 
         return backbone.View.extend({
 
