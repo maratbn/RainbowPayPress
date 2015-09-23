@@ -43,7 +43,8 @@ define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
 
                         var model_orig__transaction = params.model_orig__transaction;
 
-                        this.$el.append($('<td>').text(model_orig__transaction
+                        this.$el.append($('<td>').append($('<button>').text("Charge")))
+                                .append($('<td>').text(model_orig__transaction
                                                                     .get('created')))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('charge_description')))

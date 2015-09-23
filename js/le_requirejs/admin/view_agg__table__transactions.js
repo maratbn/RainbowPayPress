@@ -46,7 +46,8 @@ define(['jquery',
 
                         this.$el.addClass('widget_view_agg__table__transactions');
 
-                        ($('<tr>').append($('<th>').text("Created:"))
+                        ($('<tr>').append($('<th>'))
+                                  .append($('<th>').text("Created:"))
                                   .append($('<th>').text("Product description:"))
                                   .append($('<th>').text("Amount:"))
                                   .append($('<th>').text("Stripe token:"))
