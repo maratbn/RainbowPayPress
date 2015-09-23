@@ -56,23 +56,24 @@ define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
 
                         this.$el.append($('<td>').append($buttonCharge))
                                 .append($('<td>').text(model_orig__transaction
-                                                                    .get('created')))
+                                                                    .get('created') || ""))
                                 .append($('<td>').text(model_orig__transaction
-                                                                    .get('charged')))
+                                                                    .get('charged') || ""))
                                 .append($('<td>').text(model_orig__transaction
-                                                                    .get('charge_description')))
+                                                                    .get('charge_description') ||
+                                                                                              ""))
                                 .append($('<td>').text(
                                                     util.formatCurrency(
                                                        model_orig__transaction
-                                                                    .get('charge_amount'))))
+                                                                    .get('charge_amount') || "")))
                                 .append($('<td>').text(model_orig__transaction
-                                                                    .get('stripe_token_id')))
+                                                                    .get('stripe_token_id') || ""))
                                 .append($('<td>').text(model_orig__transaction
-                                                                    .get('stripe_email')))
+                                                                    .get('stripe_email') || ""))
                                 .append($('<td>').text(model_orig__transaction
-                                                                    .get('customer_name')))
+                                                                    .get('customer_name') || ""))
                                 .append($('<td>').text(model_orig__transaction
-                                                                    .get('customer_phone')));
+                                                                    .get('customer_phone') || ""));
                     }
             });
 
