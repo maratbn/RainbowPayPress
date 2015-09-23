@@ -54,7 +54,7 @@ function initializeTable_Transactions() {
     $strTableName = getTableName_Transactions();
     global $wpdb;
     $sql = "CREATE TABLE $strTableName (
-            lid bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            id bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
             created datetime NOT NULL,
             charged datetime,
             charge_description varchar(1000) NOT NULL,
@@ -128,16 +128,16 @@ function renderJavaScriptRequireJSConfig() {
 <?php
 }
 
-function deleteTransaction($lid) {
+function deleteTransaction($id) {
     global $wpdb;
-    return $wpdb->delete(getTableName_Transactions(), ['lid' => $lid]);
+    return $wpdb->delete(getTableName_Transactions(), ['id' => $id]);
 }
 
-function selectTransaction($lid) {
+function selectTransaction($id) {
     $strTableName = getTableName_Transactions();
 
     global $wpdb;
-    $arrTransaction = $wpdb->get_results($wpdb->prepare("SELECT lid,
+    $arrTransaction = $wpdb->get_results($wpdb->prepare("SELECT id,
                                                                 created,
                                                                 charged,
                                                                 charge_description,
@@ -147,8 +147,8 @@ function selectTransaction($lid) {
                                                                 customer_name,
                                                                 customer_phone
                                                            FROM $strTableName
-                                                          WHERE lid=%d",
-                                                        $lid),
+                                                          WHERE id=%d",
+                                                        $id),
                                          ARRAY_A);
     if (!$arrTransaction || count($arrTransaction) == 0) return false;
 
@@ -159,7 +159,7 @@ function selectTransactions() {
     $strTableName = getTableName_Transactions();
 
     global $wpdb;
-    return $wpdb->get_results("SELECT lid,
+    return $wpdb->get_results("SELECT id,
                                       created,
                                       charged,
                                       charge_description,
@@ -171,11 +171,11 @@ function selectTransactions() {
                                  FROM $strTableName", ARRAY_A);
 }
 
-function updateTransactionAsCharged($lid) {
+function updateTransactionAsCharged($id) {
 
     global $wpdb;
     return $wpdb->update(getTableName_Transactions(),
                          ['charged' => getDateTimeNow()],
-                         ['lid' => $lid]);
+                         ['id' => $id]);
 }
 ?>

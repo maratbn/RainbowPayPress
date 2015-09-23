@@ -79,10 +79,10 @@ define(['jquery',
                                 if (charged && flagExcludeCharged ||
                                    !charged && flagExcludeUncharged) return;
 
-                                var lid = model_orig__transaction.get('lid');
-                                if (mapViewAgg_Tr_Transaction[lid]) return;
+                                var id = model_orig__transaction.get('id');
+                                if (mapViewAgg_Tr_Transaction[id]) return;
 
-                                (mapViewAgg_Tr_Transaction[lid] =
+                                (mapViewAgg_Tr_Transaction[id] =
                                     new ViewAgg_Tr_Transaction({
                                                 flag_exclude_charged:     flagExcludeCharged,
                                                 model_orig__transaction:  model_orig__transaction
@@ -93,11 +93,11 @@ define(['jquery',
                             collection_orig__transaction,
                             'remove',
                             function(model_orig__transaction) {
-                                var lid = model_orig__transaction.get('lid');
-                                var view_agg__tr__transaction = mapViewAgg_Tr_Transaction[lid];
+                                var id = model_orig__transaction.get('id');
+                                var view_agg__tr__transaction = mapViewAgg_Tr_Transaction[id];
                                 if (!view_agg__tr__transaction) return;
 
-                                mapViewAgg_Tr_Transaction[lid] = null;
+                                mapViewAgg_Tr_Transaction[id] = null;
                                 view_agg__tr__transaction.$el.remove();
                             });
                     }

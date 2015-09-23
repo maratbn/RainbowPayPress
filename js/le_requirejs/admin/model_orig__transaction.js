@@ -41,7 +41,7 @@ define(['backbone',
         return backbone.Model.extend({
 
                 defaults: {
-                        'lid':                  null,
+                        'id':                   null,
                         'created':              null,
                         'charged':              null,
                         'charge_description':   null,
@@ -56,7 +56,7 @@ define(['backbone',
                         var $xhr = $.ajax(model_info__app_common.get('ajax_url'), {
                                               data: {
                                                       'action':  'stripe_payment_press__charge',
-                                                      'lid':     this.attributes['lid']
+                                                      'id':      this.attributes['id']
                                                   },
                                               method: 'post'
                                           });
@@ -66,7 +66,7 @@ define(['backbone',
                         var $xhr = $.ajax(model_info__app_common.get('ajax_url'), {
                                               data: {
                                                       'action':  'stripe_payment_press__delete',
-                                                      'lid':     this.attributes['lid']
+                                                      'id':      this.attributes['id']
                                                   },
                                               method: 'post'
                                           });

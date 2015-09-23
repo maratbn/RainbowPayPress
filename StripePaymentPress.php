@@ -245,8 +245,8 @@ function action_wp_ajax_stripe_payment_press__charge() {
 
     $arrErrors = [];
 
-    $lid = $_POST['lid'];
-    $dataTransaction = selectTransaction($lid);
+    $id = $_POST['id'];
+    $dataTransaction = selectTransaction($id);
     if (!$dataTransaction) {
         \array_push($arrErrors, 'error_select_transaction');
     }
@@ -293,7 +293,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
     }
 
     if (count($arrErrors) == 0) {
-        if (!updateTransactionAsCharged($lid)) {
+        if (!updateTransactionAsCharged($id)) {
             \array_push($arrErrors, 'error_update_transaction');
         }
     }
@@ -309,8 +309,8 @@ function action_wp_ajax_stripe_payment_press__delete() {
 
     $arrErrors = [];
 
-    $lid = $_POST['lid'];
-    if (!deleteTransaction($lid)) {
+    $id = $_POST['id'];
+    if (!deleteTransaction($id)) {
         \array_push($arrErrors, 'error_delete_transaction');
     }
 
