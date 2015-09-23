@@ -129,13 +129,6 @@ define(['jquery',
                                                 'stripe_token_id':  dataToken.id,
                                                 'stripe_email':     dataToken.email
                                             });
-
-                                        var $xhr = $.post(params['ajax_url'], {
-                                                action:  'stripe_payment_press__charge_with_stripe',
-                                                amount:  params.amount,
-                                                desc:    params.desc,
-                                                token:   dataToken
-                                            });
                                     }
                             });
 
