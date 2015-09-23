@@ -38,10 +38,12 @@ define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
 
                 tagName: 'tr',
 
+                //  @param  params.flag_exclude_charged
                 //  @param  params.model_orig__transaction
                 initialize: function(params) {
 
-                        var model_orig__transaction = params.model_orig__transaction;
+                        var flagExcludeCharged       = params.flag_exclude_charged,
+                            model_orig__transaction  = params.model_orig__transaction;
 
                         var $buttonCharge = model_orig__transaction.get('charged')
                                           ? null
@@ -57,7 +59,9 @@ define(['backbone', 'jquery', 'util'], function (backbone, $, util) {
                         this.$el.append($('<td>').append($buttonCharge))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('created') || ""))
-                                .append($('<td>').text(model_orig__transaction
+                                .append(flagExcludeCharged
+                                        ? null
+                                        : $('<td>').text(model_orig__transaction
                                                                     .get('charged') || ""))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('charge_description') ||

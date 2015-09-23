@@ -53,7 +53,7 @@ define(['jquery',
 
                         ($('<tr>').append($('<th>'))
                                   .append($('<th>').text("Created:"))
-                                  .append($('<th>').text("Charged:"))
+                                  .append(flagExcludeCharged ? null : $('<th>').text("Charged:"))
                                   .append($('<th>').text("Product description:"))
                                   .append($('<th>').text("Amount:"))
                                   .append($('<th>').text("Stripe token:"))
@@ -71,7 +71,8 @@ define(['jquery',
                                    !charged && flagExcludeUncharged) return;
 
                                 (new ViewAgg_Tr_Transaction({
-                                            model_orig__transaction: model_orig__transaction
+                                            flag_exclude_charged:     flagExcludeCharged,
+                                            model_orig__transaction:  model_orig__transaction
                                         })).$el.appendTo(this.$el);
                             });
                     }
