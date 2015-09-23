@@ -40,7 +40,12 @@ define(['jquery',
 
         return ViewAgg_Table.extend({
 
-                initialize: function() {
+                //  @param  params.flag_exclude_charged
+                //  @param  params.flag_exclude_uncharged
+                initialize: function(params) {
+
+                        var flagExcludeCharged    = params && params.flag_exclude_charged,
+                            flagExcludeUncharged  = params && params.flag_exclude_uncharged;
 
                         ViewAgg_Table.prototype.initialize.apply(this, arguments);
 
@@ -60,6 +65,11 @@ define(['jquery',
                             collection_orig__transaction,
                             'add',
                             function(model_orig__transaction) {
+
+                                var charged = model_orig__transaction.get('charged');
+                                if (charged && flagExcludeCharged ||
+                                   !charged && flagExcludeUncharged) return;
+
                                 (new ViewAgg_Tr_Transaction({
                                             model_orig__transaction: model_orig__transaction
                                         })).$el.appendTo(this.$el);
