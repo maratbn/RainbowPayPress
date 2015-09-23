@@ -88,6 +88,18 @@ define(['jquery',
                                                 model_orig__transaction:  model_orig__transaction
                                             })).$el.appendTo(this.$el);
                             });
+
+                        this.listenTo(
+                            collection_orig__transaction,
+                            'remove',
+                            function(model_orig__transaction) {
+                                var lid = model_orig__transaction.get('lid');
+                                var view_agg__tr__transaction = mapViewAgg_Tr_Transaction[lid];
+                                if (!view_agg__tr__transaction) return;
+
+                                mapViewAgg_Tr_Transaction[lid] = null;
+                                view_agg__tr__transaction.$el.remove();
+                            });
                     }
             });
 
