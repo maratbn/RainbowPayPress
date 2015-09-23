@@ -57,7 +57,7 @@ define(['backbone',
                                           "This will delete the local record of this transaction.  Are you sure?"))
                                     return;
 
-                                collection_orig__transaction.doDelete(model_orig__transaction);
+                                collection_orig__transaction.doXhrDelete(model_orig__transaction);
                             });
 
                         var $buttonCharge = model_orig__transaction.get('charged')

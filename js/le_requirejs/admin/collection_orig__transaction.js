@@ -43,7 +43,7 @@ define(['backbone',
 
                 model: ModelOrig_Transaction,
 
-                doDelete: function(model_orig__transaction) {
+                doXhrDelete: function(model_orig__transaction) {
                         if (!model_orig__transaction) return;
 
                         var $xhr = $.ajax(model_info__app_common.get('ajax_url'), {
