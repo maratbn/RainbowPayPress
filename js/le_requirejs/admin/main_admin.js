@@ -48,11 +48,11 @@ define(['jquery',
 
             collection_orig_transaction.fetch();
 
-            function _processSpans($elSpans) {
+            function _processSpans($elSpans, params) {
                 for (var i = 0; i < $elSpans.length; i++) {
                     var $elSpan = $($elSpans[i]);
 
-                    (new ViewAgg_Table_Transactions).$el.appendTo($elSpan);
+                    (new ViewAgg_Table_Transactions(params)).$el.appendTo($elSpan);
                 }
             }
 
