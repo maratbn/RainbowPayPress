@@ -42,6 +42,7 @@ define(['backbone',
 
                 defaults: {
                         'id':                   null,
+                        'type':                 null,
                         'created':              null,
                         'charged':              null,
                         'charge_description':   null,

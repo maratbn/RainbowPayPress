@@ -140,6 +140,7 @@ function selectTransaction($id) {
 
     global $wpdb;
     $arrTransaction = $wpdb->get_results($wpdb->prepare("SELECT id,
+                                                                type,
                                                                 created,
                                                                 charged,
                                                                 charge_description,
@@ -162,6 +163,7 @@ function selectTransactions() {
 
     global $wpdb;
     return $wpdb->get_results("SELECT id,
+                                      type,
                                       created,
                                       charged,
                                       charge_description,

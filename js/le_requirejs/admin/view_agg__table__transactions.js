@@ -59,6 +59,7 @@ define(['jquery',
                                                                                          .fetch();
                                                                 })
                                                               .text("Refresh")))
+                                  .append($('<th>').text("Type:"))
                                   .append($('<th>').text("Created:"))
                                   .append(flagExcludeCharged ? null : $('<th>').text("Charged:"))
                                   .append($('<th>').text("Product description:"))
