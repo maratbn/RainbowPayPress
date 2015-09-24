@@ -55,7 +55,9 @@ define(['backbone',
                                 if (!window
                                        .confirm("This will delete the local record of this " +
                                                          model_orig__transaction.get('type') +
-                                                          " transaction.  Are you sure?")) return;
+                                                                         " transaction for " +
+                                                 model_orig__transaction.get('stripe_email') +
+                                                                      ".  Are you sure?")) return;
 
                                 collection_orig__transaction.doXhrDelete(model_orig__transaction);
                             });
