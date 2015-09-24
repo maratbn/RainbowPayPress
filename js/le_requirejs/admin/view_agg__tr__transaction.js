@@ -57,6 +57,9 @@ define(['backbone',
                         $buttonDelete.click(function() {
                                 if (!window
                                        .confirm("This will delete the local record of this " +
+                                               (model_orig__transaction.get('charged')
+                                                                          ? 'charged'
+                                                                          : 'pending') + " " +
                                                                        strChargeAmount + " " +
                                                          model_orig__transaction.get('type') +
                                                                          " transaction for " +
