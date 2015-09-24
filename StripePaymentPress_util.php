@@ -173,9 +173,13 @@ function selectTransactions() {
 
 function updateTransactionAsCharged($id) {
 
+    $date_time = getDateTimeNow();
+
     global $wpdb;
-    return $wpdb->update(getTableName_Transactions(),
-                         ['charged' => getDateTimeNow()],
-                         ['id' => $id]);
+    if(!$wpdb->update(getTableName_Transactions(),
+                      ['charged' => $date_time],
+                      ['id' => $id])) return false;
+
+    return $date_time;
 }
 ?>

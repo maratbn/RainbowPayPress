@@ -292,14 +292,25 @@ function action_wp_ajax_stripe_payment_press__charge() {
         }
     }
 
+    $charged = null;
+
     if (count($arrErrors) == 0) {
-        if (!updateTransactionAsCharged($id)) {
+        $charged = updateTransactionAsCharged($id);
+        if ($charged == null) {
             \array_push($arrErrors, 'error_update_transaction');
         }
     }
 
-    die(json_encode(['success' => (count($arrErrors) == 0),
-                     'errors' => $arrErrors]));
+    $flagSuccess = (count($arrErrors) == 0);
+
+    $dataRet = ['success'  => $flagSuccess,
+                'errors'   => $arrErrors];
+
+    if ($flagSuccess) {
+        $dataRet['charged'] = $charged;
+    }
+
+    die(json_encode($dataRet));
 }
 
 function action_wp_ajax_stripe_payment_press__delete() {
