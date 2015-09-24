@@ -50,16 +50,6 @@ define(['backbone',
                         'stripe_email':         null,
                         'customer_name':        null,
                         'customer_phone':       null
-                    },
-
-                doXhrCharge: function() {
-                        var $xhr = $.ajax(model_info__app_common.get('ajax_url'), {
-                                              data: {
-                                                      'action':  'stripe_payment_press__charge',
-                                                      'id':      this.attributes['id']
-                                                  },
-                                              method: 'post'
-                                          });
                     }
 
             });
