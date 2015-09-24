@@ -55,6 +55,7 @@ function initializeTable_Transactions() {
     global $wpdb;
     $sql = "CREATE TABLE $strTableName (
             id bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            type varchar(20) NOT NULL,
             created datetime NOT NULL,
             charged datetime,
             charge_description varchar(1000) NOT NULL,
@@ -78,6 +79,7 @@ function insertTransaction($strChargeDescription,
 
     global $wpdb;
     if (!$wpdb->insert(getTableName_Transactions(), [
+                        'type'                 => 'test',
                         'created'              => getDateTimeNow(),
                         'charge_description'   => $strChargeDescription,
                         'charge_amount'        => $strProductCost,
