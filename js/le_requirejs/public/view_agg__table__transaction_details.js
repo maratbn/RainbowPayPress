@@ -119,9 +119,9 @@ define(['jquery',
 
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
                         var handler = StripeCheckout.configure({
-                                key: params['publish_key'],
+                                'key': params['publish_key'],
                                 'panel-label': "Obtain Stripe token",
-                                token: function(dataToken) {
+                                'token': function(dataToken) {
                                         // Use the token to create the charge with a server-side script.
                                         // You can access the token ID with `token.id`
 
