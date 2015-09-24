@@ -42,8 +42,8 @@ define(['backbone',
 
                 //  @param  params.publish_key
                 //  @param  params.amount
-                //  @param  params.name                 //  Name of the seller
-                //  @param  params.desc                 //  Product description
+                //  @param  params.name                 Name of the seller
+                //  @param  params.desc                 Product description
                 initialize: function(params) {
 
                         function _doTransactionCycle() {
