@@ -59,6 +59,17 @@ define(['backbone',
                                     name:                       params.name,
                                     desc:                       params.desc
                                 })).$el.appendTo(this.$el);
+
+                        this.listenTo(
+                            model_transaction_details,
+                            'xhr__always__stripe_payment_press__submit',
+                            function(event) {
+                                if (event.success) {
+                                    this.$el.text(
+                                        "Your transaction has been submitted successfully.  Your confirmation code is: "
+                                              + model_transaction_details.get('stripe_token_id'));
+                                }
+                            });
                     }
             });
 
