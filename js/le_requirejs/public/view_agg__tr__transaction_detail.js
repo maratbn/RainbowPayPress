@@ -78,9 +78,11 @@ define(['backbone',
                         var field                      = params.field,
                             model_transaction_details  = params.model_transaction_details;
 
-                        this.on('click_modify', function() {
-                                model_transaction_details.trigger('do_prompt', {field: field});
-                            }, this);
+                        if (model_transaction_details) {
+                            this.on('click_modify', function() {
+                                    model_transaction_details.trigger('do_prompt', {field: field});
+                                }, this);
+                        }
 
                         function _updateValue() {
                             var value = model_transaction_details.get(field);
@@ -100,18 +102,22 @@ define(['backbone',
                             }
                         }
 
-                        _updateValue.call(this);
+                        if (model_transaction_details) {
+                            _updateValue.call(this);
 
-                        this.listenTo(model_transaction_details, 'change:' + field, _updateValue);
+                            this.listenTo(model_transaction_details,
+                                          'change:' + field,
+                                          _updateValue);
 
-                        this.listenTo(
-                            model_transaction_details,
-                            'fields_with_missing_values',
-                            function(event) {
-                                if ($aModify && event.fields.indexOf(field) >= 0) {
-                                    $aModify.css('color', 'red');
-                                }
-                            });
+                            this.listenTo(
+                                model_transaction_details,
+                                'fields_with_missing_values',
+                                function(event) {
+                                    if ($aModify && event.fields.indexOf(field) >= 0) {
+                                        $aModify.css('color', 'red');
+                                    }
+                                });
+                        }
                     }
             });
     });
