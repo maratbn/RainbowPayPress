@@ -35,13 +35,13 @@
 define(['jquery',
         'util',
         'view_agg__table',
+        'public/model_info__app_public',
         'public/view_agg__tr__transaction_detail'
-    ], function ($, util, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
+    ], function ($, util, ViewAgg_Table, model_info__app_public, ViewAgg_Tr_TransactionDetail) {
 
         return ViewAgg_Table.extend({
 
                 //  @param  params.model_transaction_details
-                //  @param  params.publish_key
                 //  @param  params.amount
                 //  @param  params.name                 Name of the seller
                 //  @param  params.desc                 Product description
@@ -129,7 +129,7 @@ define(['jquery',
                         var handler = StripeCheckout.configure({
                                 'allow-remember-me':
                                                 false,
-                                'key':          params['publish_key'],
+                                'key':          model_info__app_public.get('publish_key_test'),
                                 'panel-label':  "Obtain Stripe token",
                                 'token':        function(dataToken) {
                                                     // Use the token to create the charge with a

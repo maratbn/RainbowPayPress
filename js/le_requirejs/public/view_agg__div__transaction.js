@@ -34,12 +34,10 @@
 
 define(['backbone',
         'jquery',
-        'public/model_info__app_public',
         'public/model_transaction_details',
         'public/view_agg__table__transaction_details'
     ], function(backbone,
                 $,
-                model_info__app_public,
                 ModelTransactionDetails,
                 ViewAgg_Table_TransactionDetails) {
 
@@ -60,8 +58,6 @@ define(['backbone',
 
                             (new ViewAgg_Table_TransactionDetails({
                                         model_transaction_details:  model_transaction_details,
-                                        publish_key:                model_info__app_public
-                                                                         .get('publish_key_test'),
                                         amount:                     params.amount,
                                         name:                       params.name,
                                         desc:                       params.desc,
