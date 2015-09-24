@@ -42,7 +42,6 @@ define(['jquery',
         return ViewAgg_Table.extend({
 
                 //  @param  params.model_transaction_details
-                //  @param  params.amount
                 //  @param  params.name                 Name of the seller
                 //  @param  params.desc                 Product description
                 //  @param  params.info                 Miscellaneous additional information
@@ -156,7 +155,8 @@ define(['jquery',
                                     handler.open({
                                             name:         params.name,
                                             description:  params.desc,
-                                            amount:       params.amount
+                                            amount:       model_transaction_details
+                                                                             .get('charge_amount')
                                         });
                                     return;
                                 }

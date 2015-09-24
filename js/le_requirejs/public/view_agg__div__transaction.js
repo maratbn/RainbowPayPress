@@ -58,7 +58,6 @@ define(['backbone',
 
                             (new ViewAgg_Table_TransactionDetails({
                                         model_transaction_details:  model_transaction_details,
-                                        amount:                     params.amount,
                                         name:                       params.name,
                                         desc:                       params.desc,
                                         info:                       params.info
