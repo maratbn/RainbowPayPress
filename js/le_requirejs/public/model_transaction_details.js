@@ -76,7 +76,16 @@ define(['backbone',
                                           stripe_email:        this.attributes['stripe_email'],
                                           customer_name:       this.attributes['customer_name'],
                                           customer_phone:      this.attributes['customer_phone']
-                                      });
+                                      }),
+                            me = this;
+
+                        $xhr.always(function(strData) {
+                                var objData = JSON.parse(strData);
+
+                                me.trigger('xhr__always__stripe_payment_press__submit', {
+                                               success: objData && objData.success
+                                           });
+                            });
                     }
             });
 
