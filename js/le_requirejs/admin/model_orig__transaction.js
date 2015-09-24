@@ -52,7 +52,7 @@ define(['backbone',
                         'customer_phone':       null
                     },
 
-                doCharge: function() {
+                doXhrCharge: function() {
                         var $xhr = $.ajax(model_info__app_common.get('ajax_url'), {
                                               data: {
                                                       'action':  'stripe_payment_press__charge',

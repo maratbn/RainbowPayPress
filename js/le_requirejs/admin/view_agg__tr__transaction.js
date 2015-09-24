@@ -67,7 +67,7 @@ define(['backbone',
 
                         if ($buttonCharge) {
                             $buttonCharge.click(function () {
-                                    model_orig__transaction.doCharge();
+                                    model_orig__transaction.doXhrCharge();
                                 });
                         }
 
