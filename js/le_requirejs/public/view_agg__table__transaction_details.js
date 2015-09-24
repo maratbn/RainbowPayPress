@@ -52,6 +52,12 @@ define(['jquery',
 
                         (new ViewAgg_Tr_TransactionDetail({
                                     model_transaction_details: model_transaction_details,
+                                    field: 'type',
+                                    name: "Stripe transaction type:"
+                                })).$el.appendTo(this.$el);
+
+                        (new ViewAgg_Tr_TransactionDetail({
+                                    model_transaction_details: model_transaction_details,
                                     field: 'charge_description',
                                     name: "Description:"
                                 })).$el.appendTo(this.$el);
