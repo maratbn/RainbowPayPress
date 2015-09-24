@@ -33,15 +33,15 @@
 
 
 define(['jquery',
+        'model_info__app_common',
         'util',
         'view_agg__table',
         'public/view_agg__tr__transaction_detail'
-    ], function ($, util, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
+    ], function ($, model_info__app_common, util, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
 
         return ViewAgg_Table.extend({
 
                 //  @param  params.model_transaction_details
-                //  @param  params.ajax_url
                 //  @param  params.publish_key
                 //  @param  params.amount
                 //  @param  params.name                 //  Name of the seller
@@ -190,7 +190,7 @@ define(['jquery',
 
                                 if (!window.confirm("Submit this transaction?")) return;
 
-                                var $xhr = $.post(params['ajax_url'], {
+                                var $xhr = $.post(model_info__app_common.get('ajax_url'), {
                                         action:               'stripe_payment_press__submit',
                                         charge_description:   model_transaction_details
                                                                .attributes['charge_description'],

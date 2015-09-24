@@ -55,7 +55,6 @@ define(['backbone',
 
                         (new ViewAgg_Table_TransactionDetails({
                                     model_transaction_details:  model_transaction_details,
-                                    ajax_url:                   params.ajax_url,
                                     publish_key:                params.publish_key,
                                     amount:                     params.amount,
                                     name:                       params.name,
