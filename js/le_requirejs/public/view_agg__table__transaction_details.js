@@ -43,7 +43,6 @@ define(['jquery',
 
                 //  @param  params.model_transaction_details
                 //  @param  params.name                 Name of the seller
-                //  @param  params.desc                 Product description
                 //  @param  params.info                 Miscellaneous additional information
                 initialize: function(params) {
 
@@ -154,7 +153,8 @@ define(['jquery',
                                     // Open Checkout with further options
                                     handler.open({
                                             name:         params.name,
-                                            description:  params.desc,
+                                            description:  model_transaction_details
+                                                                       .get('charge_description'),
                                             amount:       model_transaction_details
                                                                              .get('charge_amount')
                                         });
