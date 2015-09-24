@@ -36,10 +36,12 @@
 define(['jquery',
         'backbone',
         'model_info__app_common',
+        'public/model_info__app_public',
         'public/view_agg__div__transaction'
     ], function($,
                 backbone,
                 model_info__app_common,
+                model_info__app_public,
                 ViewAgg_Div_Transaction) {
 
         function _processShortcodes(params) {
@@ -88,6 +90,7 @@ define(['jquery',
             this.start = function(params) {
 
                 model_info__app_common.set('ajax_url', params.ajax_url);
+                model_info__app_public.set('publish_key_test', params.publish_key_test);
 
                 $(document).ready(function() {
 
