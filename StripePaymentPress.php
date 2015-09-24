@@ -406,6 +406,8 @@ function action_wp_print_footer_scripts() {
 
             main_public.start({
                     'ajax_url':          '<?=\admin_url('admin-ajax.php')?>',
+                    'publish_key_live':  '<?=\esc_attr(
+                                                \get_option(SETTING__STRIPE_LIVE_PUBLISH_KEY))?>',
                     'publish_key_test':  '<?=\esc_attr(
                                                  \get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>'
                 });

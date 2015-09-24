@@ -85,11 +85,13 @@ define(['jquery',
         function StripePaymentPressPublicClient() {
 
             //  @param  params.ajax_url
+            //  @param  params.publish_key_live
             //  @param  params.publish_key_test
             this.start = function(params) {
 
                 model_info__app_common.set('ajax_url', params.ajax_url);
-                model_info__app_public.set('publish_key_test', params.publish_key_test);
+                model_info__app_public.set({'publish_key_live': params.publish_key_live,
+                                            'publish_key_test': params.publish_key_test});
 
                 $(document).ready(function() {
 

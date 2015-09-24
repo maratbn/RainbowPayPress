@@ -38,6 +38,7 @@ define(['backbone'], function (backbone) {
         return new (backbone.Model.extend({
 
                 defaults: {
+                        'publish_key_live': null,
                         'publish_key_test': null
                     }
 
