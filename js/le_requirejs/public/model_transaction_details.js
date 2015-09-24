@@ -32,8 +32,10 @@
 (function(define) {
 
 
-define(['backbone'
-    ], function(backbone) {
+define(['backbone',
+        'jquery',
+        'model_info__app_common'
+    ], function(backbone, $, model_info__app_common) {
 
         return backbone.Model.extend({
 
@@ -61,6 +63,20 @@ define(['backbone'
                                      });
 
                         return arrFieldsWithMissingValues.length > 0 && true;
+                    },
+
+                doXhrSubmit: function() {
+                        var $xhr = $.post
+                                      (model_info__app_common.get('ajax_url'), {
+                                          action:              'stripe_payment_press__submit',
+                                          charge_description:  this.attributes
+                                                                           ['charge_description'],
+                                          charge_amount:       this.attributes['charge_amount'],
+                                          stripe_token_id:     this.attributes['stripe_token_id'],
+                                          stripe_email:        this.attributes['stripe_email'],
+                                          customer_name:       this.attributes['customer_name'],
+                                          customer_phone:      this.attributes['customer_phone']
+                                      });
                     }
             });
 

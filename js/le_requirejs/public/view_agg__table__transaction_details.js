@@ -33,11 +33,10 @@
 
 
 define(['jquery',
-        'model_info__app_common',
         'util',
         'view_agg__table',
         'public/view_agg__tr__transaction_detail'
-    ], function ($, model_info__app_common, util, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
+    ], function ($, util, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
 
         return ViewAgg_Table.extend({
 
@@ -190,21 +189,7 @@ define(['jquery',
 
                                 if (!window.confirm("Submit this transaction?")) return;
 
-                                var $xhr = $.post(model_info__app_common.get('ajax_url'), {
-                                        action:               'stripe_payment_press__submit',
-                                        charge_description:   model_transaction_details
-                                                               .attributes['charge_description'],
-                                        charge_amount:        model_transaction_details
-                                                               .attributes['charge_amount'],
-                                        stripe_token_id:      model_transaction_details
-                                                               .attributes['stripe_token_id'],
-                                        stripe_email:         model_transaction_details
-                                                               .attributes['stripe_email'],
-                                        customer_name:        model_transaction_details
-                                                               .attributes['customer_name'],
-                                        customer_phone:       model_transaction_details
-                                                               .attributes['customer_phone']
-                                    });
+                                model_transaction_details.doXhrSubmit();
                             });
                     }
             });
