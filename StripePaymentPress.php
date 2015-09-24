@@ -405,8 +405,9 @@ function action_wp_print_footer_scripts() {
             backbone.history.start();
 
             main_public.start({
-                    'ajax_url':     '<?=\admin_url('admin-ajax.php')?>',
-                    'publish_key':  '<?=\esc_attr(\get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>'
+                    'ajax_url':          '<?=\admin_url('admin-ajax.php')?>',
+                    'publish_key_test':  '<?=\esc_attr(
+                                                 \get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>'
                 });
         });
 </script>

@@ -70,7 +70,7 @@ define(['jquery',
                         } else {
                             (view_agg__div__transactionCached =
                                                     new ViewAgg_Div_Transaction({
-                                                                publish_key:   params.publish_key,
+                                                                publish_key:   params.publish_key_test,
                                                                 amount:        amount,
                                                                 name:          name,
                                                                 desc:          desc,
@@ -84,7 +84,7 @@ define(['jquery',
         function StripePaymentPressPublicClient() {
 
             //  @param  params.ajax_url
-            //  @param  params.publish_key
+            //  @param  params.publish_key_test
             this.start = function(params) {
 
                 model_info__app_common.set('ajax_url', params.ajax_url);
