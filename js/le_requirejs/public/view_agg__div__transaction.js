@@ -46,30 +46,35 @@ define(['backbone',
                 //  @param  params.desc                 //  Product description
                 initialize: function(params) {
 
-                        var model_transaction_details =
-                            new ModelTransactionDetails({
-                                        'charge_description':   params.desc,
-                                        'charge_amount':        params.amount
-                                    });
+                        function _doTransactionCycle() {
+                            var model_transaction_details =
+                                new ModelTransactionDetails({
+                                            'charge_description':   params.desc,
+                                            'charge_amount':        params.amount
+                                        });
 
-                        (new ViewAgg_Table_TransactionDetails({
-                                    model_transaction_details:  model_transaction_details,
-                                    publish_key:                params.publish_key,
-                                    amount:                     params.amount,
-                                    name:                       params.name,
-                                    desc:                       params.desc
-                                })).$el.appendTo(this.$el);
+                            (new ViewAgg_Table_TransactionDetails({
+                                        model_transaction_details:  model_transaction_details,
+                                        publish_key:                params.publish_key,
+                                        amount:                     params.amount,
+                                        name:                       params.name,
+                                        desc:                       params.desc
+                                    })).$el.appendTo(this.$el);
 
-                        this.listenTo(
-                            model_transaction_details,
-                            'xhr__always__stripe_payment_press__submit',
-                            function(event) {
-                                if (event.success) {
-                                    this.$el.text(
-                                        "Your transaction has been submitted successfully.  Your confirmation code is: "
+
+                            this.listenTo(
+                                model_transaction_details,
+                                'xhr__always__stripe_payment_press__submit',
+                                function(event) {
+                                    if (event.success) {
+                                        this.$el.text(
+                                            "Your transaction has been submitted successfully.  Your confirmation code is: "
                                               + model_transaction_details.get('stripe_token_id'));
-                                }
-                            });
+                                    }
+                                });
+                        }
+
+                        _doTransactionCycle.call(this);
                     }
             });
 
