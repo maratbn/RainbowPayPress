@@ -48,10 +48,10 @@ define(['jquery',
             for (var i = 0; i < $elSpans.length; i++) {
                 var $elSpan = $($elSpans[i]);
 
-                var amount =  $elSpan.attr('data-plugin-stripe-payment-press-amount'),
-                    name =    $elSpan.attr('data-plugin-stripe-payment-press-name'),
-                    desc =    $elSpan.attr('data-plugin-stripe-payment-press-desc'),
-                    label =   $elSpan.attr('data-plugin-stripe-payment-press-label');
+                var amount  = $elSpan.attr('data-plugin-stripe-payment-press-amount'),
+                    name    = $elSpan.attr('data-plugin-stripe-payment-press-name'),
+                    desc    = $elSpan.attr('data-plugin-stripe-payment-press-desc'),
+                    label   = $elSpan.attr('data-plugin-stripe-payment-press-label');
 
                 var $buttonMakePayment = $('<button>').text(label || "Pay with Stripe")
                                                       .appendTo($elSpan),
