@@ -90,7 +90,7 @@ define(['backbone',
                                 .append($('<td>').text(
                                                     util.formatCurrency(
                                                        model_orig__transaction
-                                                                    .get('charge_amount') || "")))
+                                                                    .get('charge_amount')) || ""))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('stripe_token_id') || ""))
                                 .append($('<td>').text(model_orig__transaction
