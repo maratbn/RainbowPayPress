@@ -264,6 +264,8 @@ function action_wp_ajax_stripe_payment_press__charge() {
         \array_push($arrErrors, 'error_select_transaction');
     }
 
+    $stripe = null;
+
     if (count($arrErrors) == 0) {
 
         //  Based on:   https://stripe.com/docs/checkout/guides/php
@@ -271,11 +273,26 @@ function action_wp_ajax_stripe_payment_press__charge() {
         require_once(dirname(__FILE__) .
                                '/stripe-php-2.3.0--tweaked--2015-07-26--01--namespaced/init.php');
 
-        $stripe = array(
-              "secret_key"       => \get_option(SETTING__STRIPE_TEST_SECRET_KEY),
-              "publishable_key"  => \get_option(SETTING__STRIPE_TEST_PUBLISH_KEY)
-            );
+        $type = $dataTransaction['type'];
 
+        if ($type == 'live') {
+            $stripe = array(
+                  "secret_key"       => \get_option(SETTING__STRIPE_LIVE_SECRET_KEY),
+                  "publishable_key"  => \get_option(SETTING__STRIPE_LIVE_PUBLISH_KEY)
+                );
+        } else if ($type == 'test') {
+            $stripe = array(
+                  "secret_key"       => \get_option(SETTING__STRIPE_TEST_SECRET_KEY),
+                  "publishable_key"  => \get_option(SETTING__STRIPE_TEST_PUBLISH_KEY)
+                );
+        }
+
+        if (type == null) {
+            \array_push($arrErrors, 'error_invalid_transaction_type');
+        }
+    }
+
+    if (count($arrErrors) == 0) {
         \plugin_Stripe_Payment_Press\Stripe\Stripe::setApiKey($stripe['secret_key']);
 
         try {
