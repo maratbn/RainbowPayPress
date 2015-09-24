@@ -67,9 +67,19 @@ define(['backbone',
                                 'xhr__always__stripe_payment_press__submit',
                                 function(event) {
                                     if (event.success) {
+                                        var me = this;
+
+                                        var $buttonAnotherTransaction =
+                                               $('<button>').text("Start another transaction")
+                                                            .click(function() {
+                                                                     $buttonAnotherTransaction
+                                                                                        .remove();
+                                                                     _doTransactionCycle.call(me);
+                                                                   });
                                         this.$el.text(
                                             "Your transaction has been submitted successfully.  Your confirmation code is: "
-                                              + model_transaction_details.get('stripe_token_id'));
+                                              + model_transaction_details.get('stripe_token_id'))
+                                                .append($buttonAnotherTransaction);
                                     }
                                 });
                         }
