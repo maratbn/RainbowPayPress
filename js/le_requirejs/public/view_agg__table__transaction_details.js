@@ -127,6 +127,8 @@ define(['jquery',
 
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
                         var handler = StripeCheckout.configure({
+                                'allow-remember-me':
+                                                false,
                                 'key':          params['publish_key'],
                                 'panel-label':  "Obtain Stripe token",
                                 'token':        function(dataToken) {
