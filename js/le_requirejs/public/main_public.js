@@ -54,18 +54,28 @@ define(['jquery',
                     label =   $elSpan.attr('data-plugin-stripe-payment-press-label');
 
                 var $buttonMakePayment = $('<button>').text(label || "Pay with Stripe")
-                                                      .appendTo($elSpan);
+                                                      .appendTo($elSpan),
+                    view_agg__div__transactionCached = null;
 
                 $buttonMakePayment.on('click', function(e) {
                         e.preventDefault();
-                    });
 
-                (new ViewAgg_Div_Transaction({
-                            publish_key:    params.publish_key,
-                            amount:         amount,
-                            name:           name,
-                            desc:           desc
-                        })).$el.appendTo($elSpan);
+                        if (view_agg__div__transactionCached) {
+                            if (view_agg__div__transactionCached.$el.css('display') == 'none') {
+                                view_agg__div__transactionCached.$el.css('display', "");
+                            } else {
+                                view_agg__div__transactionCached.$el.css('display', 'none');
+                            }
+                        } else {
+                            (view_agg__div__transactionCached =
+                                                    new ViewAgg_Div_Transaction({
+                                                                publish_key:   params.publish_key,
+                                                                amount:        amount,
+                                                                name:          name,
+                                                                desc:          desc
+                                                            })).$el.appendTo($elSpan);
+                        }
+                    });
             }
         }
 
