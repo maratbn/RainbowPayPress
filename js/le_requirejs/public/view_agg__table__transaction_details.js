@@ -119,17 +119,18 @@ define(['jquery',
 
                         //  Based on: https://stripe.com/docs/checkout#integration-custom
                         var handler = StripeCheckout.configure({
-                                'key': params['publish_key'],
-                                'panel-label': "Obtain Stripe token",
-                                'token': function(dataToken) {
-                                        // Use the token to create the charge with a server-side script.
-                                        // You can access the token ID with `token.id`
+                                'key':          params['publish_key'],
+                                'panel-label':  "Obtain Stripe token",
+                                'token':        function(dataToken) {
+                                                    // Use the token to create the charge with a
+                                                    // server-side script.
+                                                    // You can access the token ID with `token.id`
 
-                                        model_transaction_details.set({
-                                                'stripe_token_id':  dataToken.id,
-                                                'stripe_email':     dataToken.email
-                                            });
-                                    }
+                                                    model_transaction_details.set({
+                                                            'stripe_token_id':  dataToken.id,
+                                                            'stripe_email':     dataToken.email
+                                                        });
+                                                }
                             });
 
                         // Close Checkout on page navigation
