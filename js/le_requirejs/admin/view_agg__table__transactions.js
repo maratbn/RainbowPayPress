@@ -100,6 +100,39 @@ define(['jquery',
                                 mapViewAgg_Tr_Transaction[id] = null;
                                 view_agg__tr__transaction.$el.remove();
                             });
+
+                        this.listenTo(
+                            collection_orig__transaction,
+                            'change:charged',
+                            function(model_orig__transaction) {
+
+                                if (!flagExcludeCharged && !flagExcludeUncharged) return;
+
+                                var charged  = model_orig__transaction.get('charged'),
+                                    id       = model_orig__transaction.get('id');
+
+                                var view_agg__tr__transaction = mapViewAgg_Tr_Transaction[id];
+
+                                //  This logic checks if the table has the 'ViewAgg_Tr_Transaction'
+                                //  associated with this id but if it has to be excluded now:
+                                if (view_agg__tr__transaction &&
+                                    ((charged && flagExcludeCharged) ||
+                                    (!charged && flagExcludeUncharged))) {
+                                        view_agg__tr__transaction.$el.remove();
+                                        return;
+                                }
+
+                                //  This table already has the 'ViewAgg_Tr_Transaction' associated
+                                //  with this id.
+                                if (view_agg__tr__transaction) return;
+
+                                //  This table does not already have it but needs to have it.
+                                (mapViewAgg_Tr_Transaction[id] =
+                                    new ViewAgg_Tr_Transaction({
+                                                flag_exclude_charged:     flagExcludeCharged,
+                                                model_orig__transaction:  model_orig__transaction
+                                            })).$el.appendTo(this.$el);
+                            });
                     }
             });
 
