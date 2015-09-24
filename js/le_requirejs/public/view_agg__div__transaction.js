@@ -44,6 +44,7 @@ define(['backbone',
                 //  @param  params.amount
                 //  @param  params.name                 Name of the seller
                 //  @param  params.desc                 Product description
+                //  @param  params.info                 Miscellaneous additional information
                 initialize: function(params) {
 
                         function _doTransactionCycle() {
@@ -58,7 +59,8 @@ define(['backbone',
                                         publish_key:                params.publish_key,
                                         amount:                     params.amount,
                                         name:                       params.name,
-                                        desc:                       params.desc
+                                        desc:                       params.desc,
+                                        info:                       params.info
                                     })).$el.appendTo(this.$el);
 
 

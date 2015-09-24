@@ -45,6 +45,7 @@ define(['jquery',
                 //  @param  params.amount
                 //  @param  params.name                 Name of the seller
                 //  @param  params.desc                 Product description
+                //  @param  params.info                 Miscellaneous additional information
                 initialize: function(params) {
 
                         ViewAgg_Table.prototype.initialize.apply(this, arguments);
@@ -56,6 +57,13 @@ define(['jquery',
                                     field: 'charge_description',
                                     name: "Description:"
                                 })).$el.appendTo(this.$el);
+
+                        if (params.info) {
+                            (new ViewAgg_Tr_TransactionDetail({
+                                    name: "Information:",
+                                    text: params.info
+                                })).$el.appendTo(this.$el);
+                        }
 
                         (new ViewAgg_Tr_TransactionDetail({
                                     callback_format_value: util.formatCurrency,

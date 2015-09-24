@@ -45,6 +45,7 @@ define(['backbone',
                 //  @param  params.model_transaction_details
                 //  @param  params.field
                 //  @param  params.name             The name of this detail.
+                //  @param  params.text             Text to place into the value field.
                 //  @param  params.text_enter       Text for the modification link when there's no
                 //                                  value.
                 //  @param  params.text_modify      Text for the modification link when there's a
@@ -57,7 +58,10 @@ define(['backbone',
                                      : null,
                             $divValue = $('<div>');
 
-                        var $tdValue = $("<td width='66%'>").append($divValue);
+                        var $tdValue = $("<td width='66%'>").append(params.text
+                                                                    ? $('<span>').text(params.text)
+                                                                    : null)
+                                                            .append($divValue);
 
                         if ($aModify) $aModify.appendTo($tdValue);
 

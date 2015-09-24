@@ -189,6 +189,10 @@ function action_admin_menu() {
         <h5>Optional shortcode attributes:</h5>
         <ul>
           <li>
+            <code>info</code>
+            <p>Miscellaneous additional information for the user.</p>
+          </li>
+          <li>
             <code>label</code>
             <p>Stripe payment button label, otherwise defaults to "Pay with card" or similar.</p>
           </li>
@@ -482,6 +486,10 @@ function shortcode_stripe_payment_press($atts) {
                                                        '"' .
                 ' data-plugin-stripe-payment-press-desc="' . \esc_attr($atts['desc']) .
                                                        '"' .
+                ($atts['info'] == null ? "" :
+                ' data-plugin-stripe-payment-press-info="' . \esc_attr($atts['info']) .
+                                                        '"') .
+
                 ($atts['label'] == null ? "" :
                 ' data-plugin-stripe-payment-press-label="' . \esc_attr($atts['label']) .
                                                         '"') . '>' .

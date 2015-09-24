@@ -51,6 +51,7 @@ define(['jquery',
                 var amount  = $elSpan.attr('data-plugin-stripe-payment-press-amount'),
                     name    = $elSpan.attr('data-plugin-stripe-payment-press-name'),
                     desc    = $elSpan.attr('data-plugin-stripe-payment-press-desc'),
+                    info    = $elSpan.attr('data-plugin-stripe-payment-press-info'),
                     label   = $elSpan.attr('data-plugin-stripe-payment-press-label');
 
                 var $buttonMakePayment = $('<button>').text(label || "Pay with Stripe")
@@ -72,7 +73,8 @@ define(['jquery',
                                                                 publish_key:   params.publish_key,
                                                                 amount:        amount,
                                                                 name:          name,
-                                                                desc:          desc
+                                                                desc:          desc,
+                                                                info:          info
                                                             })).$el.appendTo($elSpan);
                         }
                     });
