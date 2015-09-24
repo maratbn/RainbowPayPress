@@ -44,7 +44,7 @@ define(['jquery',
                 model_info__app_public,
                 ViewAgg_Div_Transaction) {
 
-        function _processShortcodes(params) {
+        function _processShortcodes() {
             var $elSpans = $("span[data-plugin-stripe-payment-press-role=root]");
 
             for (var i = 0; i < $elSpans.length; i++) {
@@ -72,7 +72,6 @@ define(['jquery',
                         } else {
                             (view_agg__div__transactionCached =
                                                     new ViewAgg_Div_Transaction({
-                                                                publish_key:   params.publish_key_test,
                                                                 amount:        amount,
                                                                 name:          name,
                                                                 desc:          desc,
@@ -94,7 +93,7 @@ define(['jquery',
 
                 $(document).ready(function() {
 
-                        _processShortcodes(params);
+                        _processShortcodes();
 
                     });
             };
