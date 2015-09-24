@@ -53,9 +53,9 @@ define(['backbone',
                                                          .text("Delete");
                         $buttonDelete.click(function() {
                                 if (!window
-                                       .confirm(
-                                          "This will delete the local record of this transaction.  Are you sure?"))
-                                    return;
+                                       .confirm("This will delete the local record of this " +
+                                                         model_orig__transaction.get('type') +
+                                                          " transaction.  Are you sure?")) return;
 
                                 collection_orig__transaction.doXhrDelete(model_orig__transaction);
                             });
