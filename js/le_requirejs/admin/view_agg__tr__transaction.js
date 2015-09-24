@@ -50,7 +50,10 @@ define(['backbone',
                             model_orig__transaction  = params.model_orig__transaction;
 
                         var $buttonDelete = $('<button>').addClass('button button-secondary')
-                                                         .text("Delete");
+                                                         .text("Delete"),
+                            strChargeAmount = util.formatCurrency(model_orig__transaction
+                                                                           .get('charge_amount'));
+
                         $buttonDelete.click(function() {
                                 if (!window
                                        .confirm("This will delete the local record of this " +
@@ -87,10 +90,7 @@ define(['backbone',
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('charge_description') ||
                                                                                               ""))
-                                .append($('<td>').text(
-                                                    util.formatCurrency(
-                                                       model_orig__transaction
-                                                                    .get('charge_amount')) || ""))
+                                .append($('<td>').text(strChargeAmount || ""))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('stripe_token_id') || ""))
                                 .append($('<td>').text(model_orig__transaction
