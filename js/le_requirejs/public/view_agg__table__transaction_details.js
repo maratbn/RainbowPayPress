@@ -35,9 +35,8 @@
 define(['jquery',
         'util',
         'view_agg__table',
-        'public/model_info__app_public',
         'public/view_agg__tr__transaction_detail'
-    ], function ($, util, ViewAgg_Table, model_info__app_public, ViewAgg_Tr_TransactionDetail) {
+    ], function ($, util, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
 
         return ViewAgg_Table.extend({
 
@@ -133,7 +132,7 @@ define(['jquery',
                         var handler = StripeCheckout.configure({
                                 'allow-remember-me':
                                                 false,
-                                'key':          model_info__app_public.get('publish_key_test'),
+                                'key':          model_transaction_details.getPublishKey(),
                                 'panel-label':  "Obtain Stripe token",
                                 'token':        function(dataToken) {
                                                     // Use the token to create the charge with a

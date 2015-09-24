@@ -34,8 +34,9 @@
 
 define(['backbone',
         'jquery',
-        'model_info__app_common'
-    ], function(backbone, $, model_info__app_common) {
+        'model_info__app_common',
+        'public/model_info__app_public',
+    ], function(backbone, $, model_info__app_common, model_info__app_public) {
 
         return backbone.Model.extend({
 
@@ -88,6 +89,13 @@ define(['backbone',
                                                success: objData && objData.success
                                            });
                             });
+                    },
+
+                getPublishKey: function() {
+                        var strType = this.attributes['type'];
+                        if (strType == 'live') return model_info__app_public.get('publish_key_live');
+                        if (strType == 'test') return model_info__app_public.get('publish_key_test');
+                        return null;
                     }
             });
 
