@@ -53,6 +53,13 @@ define(['backbone',
                                                   },
                                               method: 'post'
                                           });
+
+                        $xhr.success(function(strData) {
+                                var objData = JSON.parse(strData);
+                                if (!objData || !objData.success) return;
+
+                                model_orig__transaction.set('charged', objData.charged);
+                            });
                     },
 
                 doXhrDelete: function(model_orig__transaction) {
