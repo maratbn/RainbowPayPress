@@ -40,6 +40,7 @@ define(['backbone',
         return backbone.Model.extend({
 
                 defaults: {
+                        'type':                 null,
                         'charge_description':   null,
                         'charge_amount':        null,
                         'stripe_token_id':      null,
@@ -69,6 +70,7 @@ define(['backbone',
                         var $xhr = $.post
                                       (model_info__app_common.get('ajax_url'), {
                                           action:              'stripe_payment_press__submit',
+                                          type:                this.attributes['type'],
                                           charge_description:  this.attributes
                                                                            ['charge_description'],
                                           charge_amount:       this.attributes['charge_amount'],

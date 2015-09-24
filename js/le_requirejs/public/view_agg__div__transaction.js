@@ -43,6 +43,7 @@ define(['backbone',
 
         return backbone.View.extend({
 
+                //  @param  params.type                 Transaction type -- 'test' or 'live'.
                 //  @param  params.amount
                 //  @param  params.name                 Name of the seller
                 //  @param  params.desc                 Product description
@@ -52,6 +53,7 @@ define(['backbone',
                         function _doTransactionCycle() {
                             var model_transaction_details =
                                 new ModelTransactionDetails({
+                                            'type':                 params.type,
                                             'charge_description':   params.desc,
                                             'charge_amount':        params.amount
                                         });

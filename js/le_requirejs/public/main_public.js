@@ -50,7 +50,8 @@ define(['jquery',
             for (var i = 0; i < $elSpans.length; i++) {
                 var $elSpan = $($elSpans[i]);
 
-                var amount  = $elSpan.attr('data-plugin-stripe-payment-press-amount'),
+                var type    = $elSpan.attr('data-plugin-stripe-payment-press-type') || 'test',
+                    amount  = $elSpan.attr('data-plugin-stripe-payment-press-amount'),
                     name    = $elSpan.attr('data-plugin-stripe-payment-press-name'),
                     desc    = $elSpan.attr('data-plugin-stripe-payment-press-desc'),
                     info    = $elSpan.attr('data-plugin-stripe-payment-press-info'),
@@ -72,6 +73,7 @@ define(['jquery',
                         } else {
                             (view_agg__div__transactionCached =
                                                     new ViewAgg_Div_Transaction({
+                                                                type:          type,
                                                                 amount:        amount,
                                                                 name:          name,
                                                                 desc:          desc,

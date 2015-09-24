@@ -70,7 +70,8 @@ function initializeTable_Transactions() {
     dbDelta($sql);
 }
 
-function insertTransaction($strChargeDescription,
+function insertTransaction($strType,
+                           $strChargeDescription,
                            $strProductCost,
                            $strStripeTokenId,
                            $strStripeEmail,
@@ -79,7 +80,7 @@ function insertTransaction($strChargeDescription,
 
     global $wpdb;
     if (!$wpdb->insert(getTableName_Transactions(), [
-                        'type'                 => 'test',
+                        'type'                 => $strType,
                         'created'              => getDateTimeNow(),
                         'charge_description'   => $strChargeDescription,
                         'charge_amount'        => $strProductCost,
