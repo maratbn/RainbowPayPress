@@ -40,7 +40,6 @@ define(['backbone',
 
         return backbone.View.extend({
 
-                //  @param  params.ajax_url
                 //  @param  params.publish_key
                 //  @param  params.amount
                 //  @param  params.name                 //  Name of the seller

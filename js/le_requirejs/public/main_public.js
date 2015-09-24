@@ -61,7 +61,6 @@ define(['jquery',
                     });
 
                 (new ViewAgg_Div_Transaction({
-                            ajax_url:       params.ajax_url,
                             publish_key:    params.publish_key,
                             amount:         amount,
                             name:           name,
