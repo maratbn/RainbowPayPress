@@ -99,7 +99,7 @@ function renderJavaScriptRequireJSConfig() {
 (function() {
     var strUrlRoot = '<?=$strUrlBase?>/js/le_requirejs/';
 
-    _plugin_Stripe_Payment_Press__requirejs.config({
+    _plugin_StripePaymentPress__requirejs.config({
             baseUrl: strUrlRoot,
             paths: {
                     'backbone': strUrlRoot

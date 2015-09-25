@@ -233,6 +233,10 @@ function action_admin_print_footer_scripts() {
 <script type='text/javascript'>
     <?php renderJavaScriptRequireJSConfig() ?>
 
+    var _plugin_Stripe_Payment_Press__define     = _plugin_StripePaymentPress__define,
+        _plugin_Stripe_Payment_Press__require    = _plugin_StripePaymentPress__require,
+        _plugin_Stripe_Payment_Press__requirejs  = _plugin_StripePaymentPress__requirejs;
+
     _plugin_Stripe_Payment_Press__requirejs([
             'backbone',
             'admin/main_admin'
@@ -410,9 +414,9 @@ function action_wp_enqueue_scripts() {
     \wp_enqueue_script(
             'plugin_Stripe_Payment_Press__requirejs',
             plugin_dir_url(__FILE__)
-                . 'js/lib/require_js-2.1.20-src--tweaked--namespaced--4264bcbdceac4240e742d16b7a7a9313fc1cd6d6.js',
+                . 'js/lib/require_js-2.1.20-src--tweaked--2015-09-24--01--namespaced--plugin_StripePaymentPress--45576dbca1a4f9ff7385a89c3c1f6db4917fe2c1.js',
             null,
-            '2015-07-30--1',
+            '2015-09-25--1',
             false);
 }
 
@@ -424,6 +428,10 @@ function action_wp_print_footer_scripts() {
 ?>
 <script type='text/javascript'>
     <?php renderJavaScriptRequireJSConfig() ?>
+
+    var _plugin_Stripe_Payment_Press__define     = _plugin_StripePaymentPress__define,
+        _plugin_Stripe_Payment_Press__require    = _plugin_StripePaymentPress__require,
+        _plugin_Stripe_Payment_Press__requirejs  = _plugin_StripePaymentPress__requirejs;
 
     _plugin_Stripe_Payment_Press__requirejs([
             'backbone',
