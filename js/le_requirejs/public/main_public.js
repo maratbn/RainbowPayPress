@@ -45,11 +45,7 @@ define(['jquery',
                 ViewAgg_Div_Transaction) {
 
         function _processShortcodes() {
-            var $elSpans = $("span[data-plugin-stripe-payment-press-role=root]");
-
-            for (var i = 0; i < $elSpans.length; i++) {
-                var $elSpan = $($elSpans[i]);
-
+            function _processSpan($elSpan) {
                 var type    = $elSpan.attr('data-plugin-stripe-payment-press-type') || 'test',
                     amount  = $elSpan.attr('data-plugin-stripe-payment-press-amount'),
                     name    = $elSpan.attr('data-plugin-stripe-payment-press-name'),
@@ -81,6 +77,12 @@ define(['jquery',
                                                             })).$el.appendTo($elSpan);
                         }
                     });
+            }
+
+            var $elSpans = $("span[data-plugin-stripe-payment-press-role=root]");
+
+            for (var i = 0; i < $elSpans.length; i++) {
+                _processSpan($($elSpans[i]));
             }
         }
 
