@@ -4,7 +4,7 @@
 
   Copyright (C) 2015  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
 
-  Version:        0.0.1-development_unreleased
+  Version:        0.1.0-development_unreleased
 
   Module:         js/le_requirejs/admin/view_agg__tr__transaction.js
 

@@ -5,7 +5,7 @@
   Author: Marat Nepomnyashy
   Author URI: http://www.maratbn.com
   License: GPL3
-  Version: 0.0.1-development_unreleased
+  Version: 0.1.0-development_unreleased
   Text Domain: domain-plugin-StripePaymentPress
 */
 
@@ -15,7 +15,7 @@
 
   Copyright (C) 2015  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
 
-  Version:        0.0.1-development_unreleased
+  Version:        0.1.0-development_unreleased
 
   Module:         StripePaymentPress.php
 
@@ -41,7 +41,7 @@
 
 namespace plugin_StripePaymentPress;
 
-const PLUGIN_VERSION = '0.0.1-development_unreleased';
+const PLUGIN_VERSION = '0.1.0-development_unreleased';
 const IS_MODE_RELEASE = false;
 
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-StripePaymentPress';
