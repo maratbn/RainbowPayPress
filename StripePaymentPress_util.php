@@ -103,7 +103,7 @@ function renderJavaScriptRequireJSConfig() {
             baseUrl: strUrlRoot,
             paths: {
                     'backbone': strUrlRoot
-                                    + 'lib/backbone-1.2.1-src--tweaked--namespaced_require_js--3acbb9f5418b2811cc515b3cf65f0574440d2eab',
+                                    + 'lib/backbone-1.2.1-src--tweaked--2015-09-24--01--require_js_namespaced--5decf311fc2fa509f63fda82e4bc2e465aeb5545',
                     'jquery': strUrlRoot
                                     + 'lib/jquery-1.11.3--tweaked--namespaced_require_js--fe365e109bd7110d25323a66d36fa9c5f75f322f',
                     'underscore': strUrlRoot
