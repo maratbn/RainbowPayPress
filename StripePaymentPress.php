@@ -233,8 +233,6 @@ function action_admin_print_footer_scripts() {
 <script type='text/javascript'>
     <?php renderJavaScriptRequireJSConfig() ?>
 
-    var _plugin_Stripe_Payment_Press__define     = _plugin_StripePaymentPress__define;
-
     _plugin_StripePaymentPress__requirejs([
             'backbone',
             'admin/main_admin'
@@ -426,8 +424,6 @@ function action_wp_print_footer_scripts() {
 ?>
 <script type='text/javascript'>
     <?php renderJavaScriptRequireJSConfig() ?>
-
-    var _plugin_Stripe_Payment_Press__define     = _plugin_StripePaymentPress__define;
 
     _plugin_StripePaymentPress__requirejs([
             'backbone',

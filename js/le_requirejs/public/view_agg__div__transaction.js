@@ -94,4 +94,4 @@ define(['backbone',
     });
 
 
-})(_plugin_Stripe_Payment_Press__define);
+})(_plugin_StripePaymentPress__define);
