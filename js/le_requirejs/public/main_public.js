@@ -108,4 +108,4 @@ define(['jquery',
     });
 
 
-})(_plugin_Stripe_Payment_Press__define, _plugin_Stripe_Payment_Press__require);
+})(_plugin_Stripe_Payment_Press__define, _plugin_StripePaymentPress__require);
