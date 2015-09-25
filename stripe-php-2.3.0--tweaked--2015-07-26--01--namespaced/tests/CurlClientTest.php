@@ -1,8 +1,8 @@
 <?php
 
-namespace plugin_Stripe_Payment_Press\Stripe;
+namespace plugin_StripePaymentPress\Stripe;
 
-use plugin_Stripe_Payment_Press\Stripe\HttpClient\CurlClient;
+use plugin_StripePaymentPress\Stripe\HttpClient\CurlClient;
 
 class CurlClientTest extends TestCase
 {

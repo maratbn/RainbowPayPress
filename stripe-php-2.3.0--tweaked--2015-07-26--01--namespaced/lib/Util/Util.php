@@ -1,8 +1,8 @@
 <?php
 
-namespace plugin_Stripe_Payment_Press\Stripe\Util;
+namespace plugin_StripePaymentPress\Stripe\Util;
 
-use plugin_Stripe_Payment_Press\Stripe\Object;
+use plugin_StripePaymentPress\Stripe\Object;
 
 abstract class Util
 {
@@ -62,28 +62,28 @@ abstract class Util
     public static function convertToStripeObject($resp, $opts)
     {
         $types = array(
-            'account' => 'plugin_Stripe_Payment_Press\\Stripe\\Account',
-            'alipay_account' => 'plugin_Stripe_Payment_Press\\Stripe\\AlipayAccount',
-            'bank_account' => 'plugin_Stripe_Payment_Press\\Stripe\\BankAccount',
-            'balance_transaction' => 'plugin_Stripe_Payment_Press\\Stripe\\BalanceTransaction',
-            'card' => 'plugin_Stripe_Payment_Press\\Stripe\\Card',
-            'charge' => 'plugin_Stripe_Payment_Press\\Stripe\\Charge',
-            'coupon' => 'plugin_Stripe_Payment_Press\\Stripe\\Coupon',
-            'customer' => 'plugin_Stripe_Payment_Press\\Stripe\\Customer',
-            'list' => 'plugin_Stripe_Payment_Press\\Stripe\\Collection',
-            'invoice' => 'plugin_Stripe_Payment_Press\\Stripe\\Invoice',
-            'invoiceitem' => 'plugin_Stripe_Payment_Press\\Stripe\\InvoiceItem',
-            'event' => 'plugin_Stripe_Payment_Press\\Stripe\\Event',
-            'file' => 'plugin_Stripe_Payment_Press\\Stripe\\FileUpload',
-            'token' => 'plugin_Stripe_Payment_Press\\Stripe\\Token',
-            'transfer' => 'plugin_Stripe_Payment_Press\\Stripe\\Transfer',
-            'plan' => 'plugin_Stripe_Payment_Press\\Stripe\\Plan',
-            'recipient' => 'plugin_Stripe_Payment_Press\\Stripe\\Recipient',
-            'refund' => 'plugin_Stripe_Payment_Press\\Stripe\\Refund',
-            'subscription' => 'plugin_Stripe_Payment_Press\\Stripe\\Subscription',
-            'fee_refund' => 'plugin_Stripe_Payment_Press\\Stripe\\ApplicationFeeRefund',
-            'bitcoin_receiver' => 'plugin_Stripe_Payment_Press\\Stripe\\BitcoinReceiver',
-            'bitcoin_transaction' => 'plugin_Stripe_Payment_Press\\Stripe\\BitcoinTransaction',
+            'account' => 'plugin_StripePaymentPress\\Stripe\\Account',
+            'alipay_account' => 'plugin_StripePaymentPress\\Stripe\\AlipayAccount',
+            'bank_account' => 'plugin_StripePaymentPress\\Stripe\\BankAccount',
+            'balance_transaction' => 'plugin_StripePaymentPress\\Stripe\\BalanceTransaction',
+            'card' => 'plugin_StripePaymentPress\\Stripe\\Card',
+            'charge' => 'plugin_StripePaymentPress\\Stripe\\Charge',
+            'coupon' => 'plugin_StripePaymentPress\\Stripe\\Coupon',
+            'customer' => 'plugin_StripePaymentPress\\Stripe\\Customer',
+            'list' => 'plugin_StripePaymentPress\\Stripe\\Collection',
+            'invoice' => 'plugin_StripePaymentPress\\Stripe\\Invoice',
+            'invoiceitem' => 'plugin_StripePaymentPress\\Stripe\\InvoiceItem',
+            'event' => 'plugin_StripePaymentPress\\Stripe\\Event',
+            'file' => 'plugin_StripePaymentPress\\Stripe\\FileUpload',
+            'token' => 'plugin_StripePaymentPress\\Stripe\\Token',
+            'transfer' => 'plugin_StripePaymentPress\\Stripe\\Transfer',
+            'plan' => 'plugin_StripePaymentPress\\Stripe\\Plan',
+            'recipient' => 'plugin_StripePaymentPress\\Stripe\\Recipient',
+            'refund' => 'plugin_StripePaymentPress\\Stripe\\Refund',
+            'subscription' => 'plugin_StripePaymentPress\\Stripe\\Subscription',
+            'fee_refund' => 'plugin_StripePaymentPress\\Stripe\\ApplicationFeeRefund',
+            'bitcoin_receiver' => 'plugin_StripePaymentPress\\Stripe\\BitcoinReceiver',
+            'bitcoin_transaction' => 'plugin_StripePaymentPress\\Stripe\\BitcoinTransaction',
         );
         if (self::isList($resp)) {
             $mapped = array();
@@ -95,7 +95,7 @@ abstract class Util
             if (isset($resp['object']) && is_string($resp['object']) && isset($types[$resp['object']])) {
                 $class = $types[$resp['object']];
             } else {
-                $class = 'plugin_Stripe_Payment_Press\\Stripe\\Object';
+                $class = 'plugin_StripePaymentPress\\Stripe\\Object';
             }
             return $class::constructFrom($resp, $opts);
         } else {

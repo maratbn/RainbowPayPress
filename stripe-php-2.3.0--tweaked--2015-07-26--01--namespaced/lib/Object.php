@@ -1,6 +1,6 @@
 <?php
 
-namespace plugin_Stripe_Payment_Press\Stripe;
+namespace plugin_StripePaymentPress\Stripe;
 
 use ArrayAccess;
 use InvalidArgumentException;

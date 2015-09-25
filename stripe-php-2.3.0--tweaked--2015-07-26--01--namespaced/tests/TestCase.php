@@ -1,6 +1,6 @@
 <?php
 
-namespace plugin_Stripe_Payment_Press\Stripe;
+namespace plugin_StripePaymentPress\Stripe;
 
 /**
  * Base class for Stripe test cases, provides some utility methods for creating

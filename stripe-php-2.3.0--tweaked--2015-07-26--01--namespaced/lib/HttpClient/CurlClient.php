@@ -1,10 +1,10 @@
 <?php
 
-namespace plugin_Stripe_Payment_Press\Stripe\HttpClient;
+namespace plugin_StripePaymentPress\Stripe\HttpClient;
 
-use plugin_Stripe_Payment_Press\Stripe\Stripe;
-use plugin_Stripe_Payment_Press\Stripe\Error;
-use plugin_Stripe_Payment_Press\Stripe\Util;
+use plugin_StripePaymentPress\Stripe\Stripe;
+use plugin_StripePaymentPress\Stripe\Error;
+use plugin_StripePaymentPress\Stripe\Util;
 
 class CurlClient implements ClientInterface
 {

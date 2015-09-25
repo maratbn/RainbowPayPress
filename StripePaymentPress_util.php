@@ -30,7 +30,7 @@
   along with StripePaymentPress.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace plugin_Stripe_Payment_Press;
+namespace plugin_StripePaymentPress;
 
 function getDateTimeNow() {
     $ms = \time() * 1000 + \substr(\microtime(), 2, 3);

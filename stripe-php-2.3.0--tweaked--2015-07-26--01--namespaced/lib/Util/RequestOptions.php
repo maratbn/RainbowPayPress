@@ -1,8 +1,8 @@
 <?php
 
-namespace plugin_Stripe_Payment_Press\Stripe\Util;
+namespace plugin_StripePaymentPress\Stripe\Util;
 
-use plugin_Stripe_Payment_Press\Stripe\Error;
+use plugin_StripePaymentPress\Stripe\Error;
 
 class RequestOptions
 {

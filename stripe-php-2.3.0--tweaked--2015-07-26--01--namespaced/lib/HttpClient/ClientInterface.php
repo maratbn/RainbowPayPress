@@ -1,6 +1,6 @@
 <?php
 
-namespace plugin_Stripe_Payment_Press\Stripe\HttpClient;
+namespace plugin_StripePaymentPress\Stripe\HttpClient;
 
 interface ClientInterface
 {

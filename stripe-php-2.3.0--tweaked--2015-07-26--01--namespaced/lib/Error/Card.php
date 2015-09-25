@@ -1,6 +1,6 @@
 <?php
 
-namespace plugin_Stripe_Payment_Press\Stripe\Error;
+namespace plugin_StripePaymentPress\Stripe\Error;
 
 class Card extends Base
 {

@@ -39,61 +39,61 @@
   along with StripePaymentPress.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace plugin_Stripe_Payment_Press;
+namespace plugin_StripePaymentPress;
 
 const PLUGIN_VERSION = '0.0.1-development_unreleased';
 const IS_MODE_RELEASE = false;
 
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-StripePaymentPress';
 const SETTING__STRIPE_LIVE_PUBLISH_KEY =
-                                  'plugin_Stripe_Payment_Press__setting__stripe_live_publish_key';
+                                  'plugin_StripePaymentPress__setting__stripe_live_publish_key';
 const SETTING__STRIPE_LIVE_SECRET_KEY =
-                                   'plugin_Stripe_Payment_Press__setting__stripe_live_secret_key';
+                                   'plugin_StripePaymentPress__setting__stripe_live_secret_key';
 const SETTING__STRIPE_TEST_PUBLISH_KEY =
-                                  'plugin_Stripe_Payment_Press__setting__stripe_test_publish_key';
+                                  'plugin_StripePaymentPress__setting__stripe_test_publish_key';
 const SETTING__STRIPE_TEST_SECRET_KEY =
-                                   'plugin_Stripe_Payment_Press__setting__stripe_test_secret_key';
+                                   'plugin_StripePaymentPress__setting__stripe_test_secret_key';
 const SETTINGS_FIELD__STRIPE_LIVE_PUBLISH_KEY =
-                           'plugin_Stripe_Payment_Press__settings_field__stripe_live_publish_key';
+                           'plugin_StripePaymentPress__settings_field__stripe_live_publish_key';
 const SETTINGS_FIELD__STRIPE_LIVE_SECRET_KEY =
-                            'plugin_Stripe_Payment_Press__settings_field__stripe_live_secret_key';
+                            'plugin_StripePaymentPress__settings_field__stripe_live_secret_key';
 const SETTINGS_FIELD__STRIPE_TEST_PUBLISH_KEY =
-                           'plugin_Stripe_Payment_Press__settings_field__stripe_test_publish_key';
+                           'plugin_StripePaymentPress__settings_field__stripe_test_publish_key';
 const SETTINGS_FIELD__STRIPE_TEST_SECRET_KEY =
-                            'plugin_Stripe_Payment_Press__settings_field__stripe_test_secret_key';
-const SETTINGS_SECTION__STRIPE_KEYS = 'plugin_Stripe_Payment_Press__settings_group__stripe_keys';
-const SLUG_INFO_SETTINGS = 'plugin_Stripe_Payment_Press_info_settings';
+                            'plugin_StripePaymentPress__settings_field__stripe_test_secret_key';
+const SETTINGS_SECTION__STRIPE_KEYS = 'plugin_StripePaymentPress__settings_group__stripe_keys';
+const SLUG_INFO_SETTINGS = 'plugin_StripePaymentPress_info_settings';
 
 require_once('StripePaymentPress_util.php');
 
-\register_activation_hook(__FILE__, '\\plugin_Stripe_Payment_Press\\plugin_activation_hook');
+\register_activation_hook(__FILE__, '\\plugin_StripePaymentPress\\plugin_activation_hook');
 
 \add_action('admin_enqueue_scripts',
-            '\\plugin_Stripe_Payment_Press\\action_admin_enqueue_scripts');
-\add_action('admin_init', '\\plugin_Stripe_Payment_Press\\action_admin_init');
-\add_action('admin_menu', '\\plugin_Stripe_Payment_Press\\action_admin_menu');
+            '\\plugin_StripePaymentPress\\action_admin_enqueue_scripts');
+\add_action('admin_init', '\\plugin_StripePaymentPress\\action_admin_init');
+\add_action('admin_menu', '\\plugin_StripePaymentPress\\action_admin_menu');
 \add_action('admin_print_footer_scripts',
-            '\\plugin_Stripe_Payment_Press\\action_admin_print_footer_scripts');
+            '\\plugin_StripePaymentPress\\action_admin_print_footer_scripts');
 \add_action('wp_ajax_stripe_payment_press__charge',
-            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__charge');
+            '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__charge');
 \add_action('wp_ajax_stripe_payment_press__delete',
-            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__delete');
+            '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__delete');
 \add_action('wp_ajax_stripe_payment_press__get_transactions',
-            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__get_transactions');
+            '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__get_transactions');
 \add_action('wp_ajax_stripe_payment_press__submit',
-            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__submit');
+            '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__submit');
 \add_action('wp_ajax_nopriv_stripe_payment_press__submit',
-            '\\plugin_Stripe_Payment_Press\\action_wp_ajax_stripe_payment_press__submit');
-\add_action('wp_enqueue_scripts', '\\plugin_Stripe_Payment_Press\\action_wp_enqueue_scripts');
+            '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__submit');
+\add_action('wp_enqueue_scripts', '\\plugin_StripePaymentPress\\action_wp_enqueue_scripts');
 \add_action('wp_print_footer_scripts',
-            '\\plugin_Stripe_Payment_Press\\action_wp_print_footer_scripts');
+            '\\plugin_StripePaymentPress\\action_wp_print_footer_scripts');
 
 
 \add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
-                                     '\\plugin_Stripe_Payment_Press\\filter_plugin_action_links');
+                                     '\\plugin_StripePaymentPress\\filter_plugin_action_links');
 
 \add_shortcode('stripe-payment-press',
-               '\\plugin_Stripe_Payment_Press\\shortcode_stripe_payment_press');
+               '\\plugin_StripePaymentPress\\shortcode_stripe_payment_press');
 
 function action_admin_enqueue_scripts($hook) {
     if ($hook != 'settings_page_' . SLUG_INFO_SETTINGS) return;
@@ -110,14 +110,14 @@ function action_admin_init() {
     //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
     \add_settings_section(SETTINGS_SECTION__STRIPE_KEYS,
                           \__('Your Stripe Keys', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                          '\\plugin_Stripe_Payment_Press\\settings_group__stripe_keys',
+                          '\\plugin_StripePaymentPress\\settings_group__stripe_keys',
                           SLUG_INFO_SETTINGS);
 
     \register_setting(SETTINGS_SECTION__STRIPE_KEYS, SETTING__STRIPE_TEST_SECRET_KEY);
 
     \add_settings_field(SETTINGS_FIELD__STRIPE_TEST_SECRET_KEY,
                         \__('Stripe Test Secret Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                        '\\plugin_Stripe_Payment_Press\\settings_field__stripe_test_secret_key',
+                        '\\plugin_StripePaymentPress\\settings_field__stripe_test_secret_key',
                         SLUG_INFO_SETTINGS,
                         SETTINGS_SECTION__STRIPE_KEYS);
 
@@ -126,7 +126,7 @@ function action_admin_init() {
 
     \add_settings_field(SETTINGS_FIELD__STRIPE_TEST_PUBLISH_KEY,
                         \__('Stripe Test Publishable Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                        '\\plugin_Stripe_Payment_Press\\settings_field__stripe_test_publish_key',
+                        '\\plugin_StripePaymentPress\\settings_field__stripe_test_publish_key',
                         SLUG_INFO_SETTINGS,
                         SETTINGS_SECTION__STRIPE_KEYS);
 
@@ -135,7 +135,7 @@ function action_admin_init() {
 
     \add_settings_field(SETTINGS_FIELD__STRIPE_LIVE_SECRET_KEY,
                         \__('Stripe Live Secret Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                        '\\plugin_Stripe_Payment_Press\\settings_field__stripe_live_secret_key',
+                        '\\plugin_StripePaymentPress\\settings_field__stripe_live_secret_key',
                         SLUG_INFO_SETTINGS,
                         SETTINGS_SECTION__STRIPE_KEYS);
 
@@ -144,7 +144,7 @@ function action_admin_init() {
 
     \add_settings_field(SETTINGS_FIELD__STRIPE_LIVE_PUBLISH_KEY,
                         \__('Stripe Live Publishable Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                        '\\plugin_Stripe_Payment_Press\\settings_field__stripe_live_publish_key',
+                        '\\plugin_StripePaymentPress\\settings_field__stripe_live_publish_key',
                         SLUG_INFO_SETTINGS,
                         SETTINGS_SECTION__STRIPE_KEYS);
 }
@@ -155,7 +155,7 @@ function action_admin_menu() {
                       \__('StripePaymentPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                       'manage_options',
                       SLUG_INFO_SETTINGS,
-                      '\\plugin_Stripe_Payment_Press\\render_info_settings');
+                      '\\plugin_StripePaymentPress\\render_info_settings');
 
     function render_info_settings() {
         //  Based on http://codex.wordpress.org/Administration_Menus
@@ -226,7 +226,7 @@ function action_admin_menu() {
 
 function action_admin_print_footer_scripts() {
 
-    if (!wp_script_is('plugin_Stripe_Payment_Press__requirejs')) return;
+    if (!wp_script_is('plugin_StripePaymentPress__requirejs')) return;
 
     $strUrlBase = \plugin_dir_url(__FILE__);
 ?>
@@ -293,10 +293,10 @@ function action_wp_ajax_stripe_payment_press__charge() {
     }
 
     if (count($arrErrors) == 0) {
-        \plugin_Stripe_Payment_Press\Stripe\Stripe::setApiKey($stripe['secret_key']);
+        \plugin_StripePaymentPress\Stripe\Stripe::setApiKey($stripe['secret_key']);
 
         try {
-            $customer = \plugin_Stripe_Payment_Press\Stripe\Customer::create(array(
+            $customer = \plugin_StripePaymentPress\Stripe\Customer::create(array(
                     'email'     => $dataTransaction['stripe_email'],
                     'card'      => $dataTransaction['stripe_token_id']
                 ));
@@ -304,7 +304,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
             if (!$customer) {
                 \array_push($arrErrors, 'error_create_stripe_customer');
             } else {
-                $charge = \plugin_Stripe_Payment_Press\Stripe\Charge::create(array(
+                $charge = \plugin_StripePaymentPress\Stripe\Charge::create(array(
                         'customer'  => $customer->id,
                         'amount'    => $dataTransaction['charge_amount'],
                         'currency'  => 'usd',
@@ -314,7 +314,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
                     \array_push($arrErrors, 'error_create_stripe_charge');
                 }
             }
-        } catch (plugin_Stripe_Payment_Press\Stripe\Error\InvalidArgumentException
+        } catch (plugin_StripePaymentPress\Stripe\Error\InvalidArgumentException
                                                                     $invalid_argument_exception) {
             \array_push($arrErrors, 'error_stripe_invalid_argument_exception');
         } catch (\Exception $exception) {
@@ -408,7 +408,7 @@ function action_wp_enqueue_scripts() {
     \wp_enqueue_script('jquery');
 
     \wp_enqueue_script(
-            'plugin_Stripe_Payment_Press__requirejs',
+            'plugin_StripePaymentPress__requirejs',
             plugin_dir_url(__FILE__)
                 . 'js/lib/require_js-2.1.20-src--tweaked--2015-09-24--01--namespaced--plugin_StripePaymentPress--45576dbca1a4f9ff7385a89c3c1f6db4917fe2c1.js',
             null,
@@ -418,7 +418,7 @@ function action_wp_enqueue_scripts() {
 
 function action_wp_print_footer_scripts() {
 
-    if (!wp_script_is('plugin_Stripe_Payment_Press__requirejs')) return;
+    if (!wp_script_is('plugin_StripePaymentPress__requirejs')) return;
 
     $strUrlBase = \plugin_dir_url(__FILE__);
 ?>
