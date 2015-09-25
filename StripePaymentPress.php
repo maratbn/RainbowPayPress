@@ -409,8 +409,10 @@ function action_wp_enqueue_scripts() {
 
     \wp_enqueue_script(
             'plugin_StripePaymentPress__requirejs',
-            plugin_dir_url(__FILE__)
-                . 'js/lib/require_js-2.1.20-src--tweaked--2015-09-24--01--namespaced--plugin_StripePaymentPress--45576dbca1a4f9ff7385a89c3c1f6db4917fe2c1.js',
+            plugin_dir_url(__FILE__) . (
+                IS_MODE_RELEASE
+                ? 'js/lib/require_js-2.1.20-src--tweaked--2015-09-24--01--namespaced--plugin_StripePaymentPress--45576dbca1a4f9ff7385a89c3c1f6db4917fe2c1.min.js'
+                : 'js/lib/require_js-2.1.20-src--tweaked--2015-09-24--01--namespaced--plugin_StripePaymentPress--45576dbca1a4f9ff7385a89c3c1f6db4917fe2c1.js'),
             null,
             '2015-09-25--1',
             false);
