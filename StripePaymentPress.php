@@ -234,10 +234,9 @@ function action_admin_print_footer_scripts() {
     <?php renderJavaScriptRequireJSConfig() ?>
 
     var _plugin_Stripe_Payment_Press__define     = _plugin_StripePaymentPress__define,
-        _plugin_Stripe_Payment_Press__require    = _plugin_StripePaymentPress__require,
-        _plugin_Stripe_Payment_Press__requirejs  = _plugin_StripePaymentPress__requirejs;
+        _plugin_Stripe_Payment_Press__require    = _plugin_StripePaymentPress__require;
 
-    _plugin_Stripe_Payment_Press__requirejs([
+    _plugin_StripePaymentPress__requirejs([
             'backbone',
             'admin/main_admin'
         ], function(backbone, main_admin) {
@@ -430,10 +429,9 @@ function action_wp_print_footer_scripts() {
     <?php renderJavaScriptRequireJSConfig() ?>
 
     var _plugin_Stripe_Payment_Press__define     = _plugin_StripePaymentPress__define,
-        _plugin_Stripe_Payment_Press__require    = _plugin_StripePaymentPress__require,
-        _plugin_Stripe_Payment_Press__requirejs  = _plugin_StripePaymentPress__requirejs;
+        _plugin_Stripe_Payment_Press__require    = _plugin_StripePaymentPress__require;
 
-    _plugin_Stripe_Payment_Press__requirejs([
+    _plugin_StripePaymentPress__requirejs([
             'backbone',
             'public/main_public'
         ], function(backbone, main_public) {
