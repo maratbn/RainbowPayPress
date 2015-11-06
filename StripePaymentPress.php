@@ -298,7 +298,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
         try {
             $customer = \plugin_StripePaymentPress\Stripe\Customer::create(array(
                     'email'     => $dataTransaction['stripe_email'],
-                    'card'      => $dataTransaction['stripe_token_id']
+                    'source'    => $dataTransaction['stripe_token_id']
                 ));
 
             if (!$customer) {
