@@ -317,7 +317,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
                 if (!$charge) {
                     \array_push($arrErrors, 'error_create_stripe_charge');
                 } else {
-                    $charged = updateTransactionAsCharged($id);
+                    $charged = updateTransactionAsCharged($id, $customer->id, $charge->id);
                     if ($charged == null) {
                         \array_push($arrErrors, 'error_update_transaction');
                     }

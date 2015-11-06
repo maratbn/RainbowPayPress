@@ -178,13 +178,15 @@ function selectTransactions() {
                                  FROM $strTableName", ARRAY_A);
 }
 
-function updateTransactionAsCharged($id) {
+function updateTransactionAsCharged($id, $stripe_customer_id, $stripe_charge_id) {
 
     $date_time = getDateTimeNow();
 
     global $wpdb;
     if(!$wpdb->update(getTableName_Transactions(),
-                      ['charged' => $date_time],
+                      ['charged'             => $date_time,
+                       'stripe_customer_id'  => $stripe_customer_id,
+                       'stripe_charge_id'    => $stripe_charge_id],
                       ['id' => $id])) return false;
 
     return $date_time;
