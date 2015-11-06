@@ -67,7 +67,9 @@ define(['jquery',
                                   .append($('<th>').text("Stripe token:"))
                                   .append($('<th>').text("Stripe email:"))
                                   .append($('<th>').text("Customer name:"))
-                                  .append($('<th>').text("Customer phone:"))).appendTo(this.$el);
+                                  .append($('<th>').text("Customer phone:"))).appendTo(this.$el)
+                                  .append(flagExcludeCharged ? null : $('<th>').text("Customer ID:"))
+                                  .append(flagExcludeCharged ? null : $('<th>').text("Charge ID:"));
 
                         var mapViewAgg_Tr_Transaction = {};
 

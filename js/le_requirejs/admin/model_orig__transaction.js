@@ -50,7 +50,9 @@ define(['backbone',
                         'stripe_token_id':      null,
                         'stripe_email':         null,
                         'customer_name':        null,
-                        'customer_phone':       null
+                        'customer_phone':       null,
+                        'stripe_customer_id':   null,
+                        'stripe_charge_id':     null
                     }
 
             });

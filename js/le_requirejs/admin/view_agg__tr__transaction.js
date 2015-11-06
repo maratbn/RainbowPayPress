@@ -102,7 +102,15 @@ define(['backbone',
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('customer_name') || ""))
                                 .append($('<td>').text(model_orig__transaction
-                                                                    .get('customer_phone') || ""));
+                                                                    .get('customer_phone') || ""))
+                                .append(flagExcludeCharged
+                                        ? null
+                                        : $('<td>').text(model_orig__transaction
+                                                                    .get('stripe_customer_id') || ""))
+                                .append(flagExcludeCharged
+                                        ? null
+                                        : $('<td>').text(model_orig__transaction
+                                                                    .get('stripe_charge_id') || ""));
                     }
             });
 
