@@ -292,6 +292,8 @@ function action_wp_ajax_stripe_payment_press__charge() {
         }
     }
 
+    $charged = null;
+
     if (count($arrErrors) == 0) {
         \plugin_StripePaymentPress\Stripe\Stripe::setApiKey($stripe['secret_key']);
 
@@ -314,6 +316,11 @@ function action_wp_ajax_stripe_payment_press__charge() {
                     ));
                 if (!$charge) {
                     \array_push($arrErrors, 'error_create_stripe_charge');
+                } else {
+                    $charged = updateTransactionAsCharged($id);
+                    if ($charged == null) {
+                        \array_push($arrErrors, 'error_update_transaction');
+                    }
                 }
             }
         } catch (plugin_StripePaymentPress\Stripe\Error\InvalidArgumentException
@@ -321,15 +328,6 @@ function action_wp_ajax_stripe_payment_press__charge() {
             \array_push($arrErrors, 'error_stripe_invalid_argument_exception');
         } catch (\Exception $exception) {
             \array_push($arrErrors, 'error_stripe_exception');
-        }
-    }
-
-    $charged = null;
-
-    if (count($arrErrors) == 0) {
-        $charged = updateTransactionAsCharged($id);
-        if ($charged == null) {
-            \array_push($arrErrors, 'error_update_transaction');
         }
     }
 
