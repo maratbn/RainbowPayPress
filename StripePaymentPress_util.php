@@ -64,7 +64,9 @@ function initializeTable_Transactions() {
             stripe_token_id varchar(100) NOT NULL,
             stripe_email varchar(200) NOT NULL,
             customer_name varchar(200) NOT NULL,
-            customer_phone varchar(100) NOT NULL
+            customer_phone varchar(100) NOT NULL,
+            stripe_customer_id varchar(100),
+            stripe_charge_id varchar(100)
         );";
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);
