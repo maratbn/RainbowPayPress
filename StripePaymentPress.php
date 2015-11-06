@@ -271,7 +271,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
         //  Based on:   https://stripe.com/docs/checkout/guides/php
 
         require_once(dirname(__FILE__) .
-                               '/stripe-php-2.3.0--tweaked--2015-07-26--01--namespaced/init.php');
+                               '/stripe-php-3.4.0--tweaked--2015-11-05--01--namespaced/init.php');
 
         $type = $dataTransaction['type'];
 
