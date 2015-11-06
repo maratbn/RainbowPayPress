@@ -174,7 +174,9 @@ function selectTransactions() {
                                       stripe_token_id,
                                       stripe_email,
                                       customer_name,
-                                      customer_phone
+                                      customer_phone,
+                                      stripe_customer_id,
+                                      stripe_charge_id
                                  FROM $strTableName", ARRAY_A);
 }
 
