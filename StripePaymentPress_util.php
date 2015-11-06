@@ -34,7 +34,7 @@ namespace plugin_StripePaymentPress;
 
 function getDateTimeNow() {
     $ms = \time() * 1000 + \substr(\microtime(), 2, 3);
-    return \gmdate('Y-m-d--H-i-s', $ms / 1000) . '--' . \sprintf('%03u', \bcmod($ms, 1000));
+    return \gmdate('Y-m-d  H:i:s', $ms / 1000);
 }
 
 function getTableName_Transactions() {
