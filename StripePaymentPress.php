@@ -292,7 +292,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
         }
     }
 
-    $charged = null;
+    $dataRet = [];
 
     if (count($arrErrors) == 0) {
         \plugin_StripePaymentPress\Stripe\Stripe::setApiKey($stripe['secret_key']);
@@ -320,6 +320,8 @@ function action_wp_ajax_stripe_payment_press__charge() {
                     $charged = updateTransactionAsCharged($id, $customer->id, $charge->id);
                     if ($charged == null) {
                         \array_push($arrErrors, 'error_update_transaction');
+                    } else {
+                        $dataRet['charged'] = $charged;
                     }
                 }
             }
@@ -333,12 +335,8 @@ function action_wp_ajax_stripe_payment_press__charge() {
 
     $flagSuccess = (count($arrErrors) == 0);
 
-    $dataRet = ['success'  => $flagSuccess,
-                'errors'   => $arrErrors];
-
-    if ($flagSuccess) {
-        $dataRet['charged'] = $charged;
-    }
+    $dataRet['success']  = $flagSuccess;
+    $dataRet['errors']   = $arrErrors;
 
     die(json_encode($dataRet));
 }
