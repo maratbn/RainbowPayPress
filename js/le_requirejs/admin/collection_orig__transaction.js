@@ -58,7 +58,11 @@ define(['backbone',
                                 var objData = JSON.parse(strData);
                                 if (!objData || !objData.success) return;
 
-                                model_orig__transaction.set('charged', objData.charged);
+                                model_orig__transaction.set({
+                                        'charged':             objData.charged,
+                                        'stripe_customer_id':  objData.stripe_customer_id,
+                                        'stripe_charge_id':    objData.stripe_charge_id
+                                    });
                             });
                     },
 
