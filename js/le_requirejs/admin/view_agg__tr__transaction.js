@@ -81,10 +81,12 @@ define(['backbone',
                                 });
                         }
 
+
+                        var type = model_orig__transaction.get('type');
+
                         this.$el.append($('<td>').append($buttonDelete)
                                                  .append($buttonCharge))
-                                .append($('<td>').text(model_orig__transaction
-                                                                    .get('type') || ""))
+                                .append($('<td>').text(type || ""))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('created') || ""))
                                 .append(flagExcludeCharged
