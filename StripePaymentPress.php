@@ -42,7 +42,10 @@
 namespace plugin_StripePaymentPress;
 
 const PLUGIN_VERSION = '0.3.0-development_unreleased';
+
+
 const IS_MODE_RELEASE = false;
+
 
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-StripePaymentPress';
 const SETTING__STRIPE_LIVE_PUBLISH_KEY =
