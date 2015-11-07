@@ -38,11 +38,28 @@ define(['backbone',
         'admin/collection_orig__transaction'
     ], function (backbone, $, util, collection_orig__transaction) {
 
+        function _getStripeUrlForCharge(type, stripe_charge_id) {
+            if (!type || !stripe_charge_id) return null;
+
+            return 'https://dashboard.stripe.com/' + window.encodeURIComponent(type) +
+                                      '/payments/' + window.encodeURIComponent(stripe_charge_id);
+        }
+
         function _getStripeUrlForCustomer(type, stripe_customer_id) {
             if (!type || !stripe_customer_id) return null;
 
             return 'https://dashboard.stripe.com/' + window.encodeURIComponent(type) +
                                     '/customers/' + window.encodeURIComponent(stripe_customer_id);
+        }
+
+        function _getAggA_Charge(type, stripe_charge_id) {
+            if (!type || !stripe_charge_id) return null;
+
+            var strUrl = _getStripeUrlForCharge(type, stripe_charge_id);
+            if (!strUrl) return null;
+
+            return $('<a>').attr({'href':    strUrl,
+                                  'target':  '_blank'}).text(stripe_charge_id);
         }
 
         function _getAggA_Customer(type, stripe_customer_id) {
@@ -130,8 +147,10 @@ define(['backbone',
                                                                     .get('stripe_customer_id'))))
                                 .append(flagExcludeCharged
                                         ? null
-                                        : $('<td>').text(model_orig__transaction
-                                                                    .get('stripe_charge_id') || ""));
+                                        : $('<td>').append(_getAggA_Charge(
+                                                                type,
+                                                                model_orig__transaction
+                                                                    .get('stripe_charge_id'))));
                     }
             });
 
