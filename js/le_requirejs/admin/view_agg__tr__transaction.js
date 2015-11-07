@@ -38,6 +38,23 @@ define(['backbone',
         'admin/collection_orig__transaction'
     ], function (backbone, $, util, collection_orig__transaction) {
 
+        function _getStripeUrlForCustomer(type, stripe_customer_id) {
+            if (!type || !stripe_customer_id) return null;
+
+            return 'https://dashboard.stripe.com/' + window.encodeURIComponent(type) +
+                                    '/customers/' + window.encodeURIComponent(stripe_customer_id);
+        }
+
+        function _getAggA_Customer(type, stripe_customer_id) {
+            if (!type || !stripe_customer_id) return null;
+
+            var strUrl = _getStripeUrlForCustomer(type, stripe_customer_id);
+            if (!strUrl) return null;
+
+            return $('<a>').attr({'href':    strUrl,
+                                  'target':  '_blank'}).text(stripe_customer_id);
+        }
+
         return backbone.View.extend({
 
                 tagName: 'tr',
@@ -107,8 +124,10 @@ define(['backbone',
                                                                     .get('customer_phone') || ""))
                                 .append(flagExcludeCharged
                                         ? null
-                                        : $('<td>').text(model_orig__transaction
-                                                                    .get('stripe_customer_id') || ""))
+                                        : $('<td>').append(_getAggA_Customer(
+                                                                type,
+                                                                model_orig__transaction
+                                                                    .get('stripe_customer_id'))))
                                 .append(flagExcludeCharged
                                         ? null
                                         : $('<td>').text(model_orig__transaction
