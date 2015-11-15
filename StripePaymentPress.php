@@ -322,7 +322,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
                     \array_push($arrErrors, 'error_create_stripe_charge');
                 } else {
                     $dataRet['stripe_charge_id'] = $charge->id;
-                    $charged = updateTransactionAsCharged($id, $customer->id, $charge->id);
+                    $charged = DBUtil::updateTransactionAsCharged($id, $customer->id, $charge->id);
                     if ($charged == null) {
                         \array_push($arrErrors, 'error_update_transaction');
                     } else {

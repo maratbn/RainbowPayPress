@@ -143,6 +143,20 @@ class DBUtil {
                                           stripe_charge_id
                                      FROM $strTableName", ARRAY_A);
     }
+
+    static function updateTransactionAsCharged($id, $stripe_customer_id, $stripe_charge_id) {
+
+        $date_time = getDateTimeNow();
+
+        global $wpdb;
+        if(!$wpdb->update(DBUtil::getTableName_Transactions(),
+                          ['charged'             => $date_time,
+                           'stripe_customer_id'  => $stripe_customer_id,
+                           'stripe_charge_id'    => $stripe_charge_id],
+                          ['id' => $id])) return false;
+
+        return $date_time;
+    }
 }
 
 function renderJavaScriptRequireJSConfig() {
@@ -181,19 +195,5 @@ function renderJavaScriptRequireJSConfig() {
         });
 })();
 <?php
-}
-
-function updateTransactionAsCharged($id, $stripe_customer_id, $stripe_charge_id) {
-
-    $date_time = getDateTimeNow();
-
-    global $wpdb;
-    if(!$wpdb->update(DBUtil::getTableName_Transactions(),
-                      ['charged'             => $date_time,
-                       'stripe_customer_id'  => $stripe_customer_id,
-                       'stripe_charge_id'    => $stripe_charge_id],
-                      ['id' => $id])) return false;
-
-    return $date_time;
 }
 ?>
