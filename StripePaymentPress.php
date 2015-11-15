@@ -234,7 +234,7 @@ function action_admin_print_footer_scripts() {
     $strUrlBase = \plugin_dir_url(__FILE__);
 ?>
 <script type='text/javascript'>
-    <?php renderJavaScriptRequireJSConfig() ?>
+    <?php FragmentUtil::renderJavaScriptRequireJSConfig() ?>
 
     _plugin_StripePaymentPress__requirejs([
             'backbone',
@@ -428,7 +428,7 @@ function action_wp_print_footer_scripts() {
     $strUrlBase = \plugin_dir_url(__FILE__);
 ?>
 <script type='text/javascript'>
-    <?php renderJavaScriptRequireJSConfig() ?>
+    <?php FragmentUtil::renderJavaScriptRequireJSConfig() ?>
 
     _plugin_StripePaymentPress__requirejs([
             'backbone',
