@@ -461,7 +461,7 @@ function getUrlInfoSettings() {
 }
 
 function plugin_activation_hook() {
-    initializeTable_Transactions();
+    DBUtil::initializeTable_Transactions();
 }
 
 function settings_field__stripe_live_publish_key() {

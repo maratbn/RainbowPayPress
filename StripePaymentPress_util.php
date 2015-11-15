@@ -51,28 +51,28 @@ class DBUtil {
         global $wpdb;
         return $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
     }
-}
 
-function initializeTable_Transactions() {
-    $strTableName = DBUtil::getTableName_Transactions();
-    global $wpdb;
-    $sql = "CREATE TABLE $strTableName (
-            id bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            type varchar(20) NOT NULL,
-            created datetime NOT NULL,
-            charged datetime,
-            charge_description varchar(1000) NOT NULL,
-            charge_amount int unsigned NOT NULL,
-            currency varchar(20) NOT NULL,
-            stripe_token_id varchar(100) NOT NULL,
-            stripe_email varchar(200) NOT NULL,
-            customer_name varchar(200) NOT NULL,
-            customer_phone varchar(100) NOT NULL,
-            stripe_customer_id varchar(100),
-            stripe_charge_id varchar(100)
-        );";
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
+    static function initializeTable_Transactions() {
+        $strTableName = DBUtil::getTableName_Transactions();
+        global $wpdb;
+        $sql = "CREATE TABLE $strTableName (
+                id bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                type varchar(20) NOT NULL,
+                created datetime NOT NULL,
+                charged datetime,
+                charge_description varchar(1000) NOT NULL,
+                charge_amount int unsigned NOT NULL,
+                currency varchar(20) NOT NULL,
+                stripe_token_id varchar(100) NOT NULL,
+                stripe_email varchar(200) NOT NULL,
+                customer_name varchar(200) NOT NULL,
+                customer_phone varchar(100) NOT NULL,
+                stripe_customer_id varchar(100),
+                stripe_charge_id varchar(100)
+            );";
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        dbDelta($sql);
+    }
 }
 
 function insertTransaction($strType,
