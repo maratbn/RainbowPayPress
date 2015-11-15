@@ -47,6 +47,11 @@ function getUVArg() {
 }
 
 class DBUtil {
+    static function deleteTransaction($id) {
+        global $wpdb;
+        return $wpdb->delete(DBUtil::getTableName_Transactions(), ['id' => $id]);
+    }
+
     static function getTableName_Transactions() {
         global $wpdb;
         return $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
@@ -134,11 +139,6 @@ function renderJavaScriptRequireJSConfig() {
         });
 })();
 <?php
-}
-
-function deleteTransaction($id) {
-    global $wpdb;
-    return $wpdb->delete(DBUtil::getTableName_Transactions(), ['id' => $id]);
 }
 
 function selectTransaction($id) {

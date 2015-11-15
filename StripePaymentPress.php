@@ -354,7 +354,7 @@ function action_wp_ajax_stripe_payment_press__delete() {
     $arrErrors = [];
 
     $id = $_POST['id'];
-    if (!deleteTransaction($id)) {
+    if (!DBUtil::deleteTransaction($id)) {
         \array_push($arrErrors, 'error_delete_transaction');
     }
 
