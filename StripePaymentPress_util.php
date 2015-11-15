@@ -33,13 +33,6 @@
 namespace plugin_StripePaymentPress;
 
 
-class DBUtil {
-    static function getTableName_Transactions() {
-        global $wpdb;
-        return $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
-    }
-}
-
 function getDateTimeNow() {
     $ms = \time() * 1000 + \substr(\microtime(), 2, 3);
     return \gmdate('Y-m-d  H:i:s', $ms / 1000);
@@ -51,6 +44,13 @@ function getDateTimeNow() {
  */
 function getUVArg() {
     return 'uv=' . PLUGIN_VERSION . (IS_MODE_RELEASE ? "" : ('_' . time() . rand()));
+}
+
+class DBUtil {
+    static function getTableName_Transactions() {
+        global $wpdb;
+        return $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
+    }
 }
 
 function initializeTable_Transactions() {
