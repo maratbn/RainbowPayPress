@@ -124,6 +124,25 @@ class DBUtil {
 
         return $arrTransaction[0];
     }
+
+    static function selectTransactions() {
+        $strTableName = DBUtil::getTableName_Transactions();
+
+        global $wpdb;
+        return $wpdb->get_results("SELECT id,
+                                          type,
+                                          created,
+                                          charged,
+                                          charge_description,
+                                          charge_amount,
+                                          stripe_token_id,
+                                          stripe_email,
+                                          customer_name,
+                                          customer_phone,
+                                          stripe_customer_id,
+                                          stripe_charge_id
+                                     FROM $strTableName", ARRAY_A);
+    }
 }
 
 function renderJavaScriptRequireJSConfig() {
@@ -162,25 +181,6 @@ function renderJavaScriptRequireJSConfig() {
         });
 })();
 <?php
-}
-
-function selectTransactions() {
-    $strTableName = DBUtil::getTableName_Transactions();
-
-    global $wpdb;
-    return $wpdb->get_results("SELECT id,
-                                      type,
-                                      created,
-                                      charged,
-                                      charge_description,
-                                      charge_amount,
-                                      stripe_token_id,
-                                      stripe_email,
-                                      customer_name,
-                                      customer_phone,
-                                      stripe_customer_id,
-                                      stripe_charge_id
-                                 FROM $strTableName", ARRAY_A);
 }
 
 function updateTransactionAsCharged($id, $stripe_customer_id, $stripe_charge_id) {

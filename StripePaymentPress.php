@@ -369,7 +369,7 @@ function action_wp_ajax_stripe_payment_press__get_transactions() {
 
     $arrErrors = [];
 
-    $arrTransactions = selectTransactions();
+    $arrTransactions = DBUtil::selectTransactions();
     if (!$arrTransactions) {
         \array_push($arrErrors, 'error_select_transactions');
     }
