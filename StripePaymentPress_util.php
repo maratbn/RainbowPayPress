@@ -159,6 +159,9 @@ class DBUtil {
     }
 }
 
+class FragmentUtil {
+}
+
 function renderJavaScriptRequireJSConfig() {
     $strUrlBase = \plugin_dir_url(__FILE__);
 ?>
