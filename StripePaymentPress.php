@@ -262,7 +262,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
     $arrErrors = [];
 
     $id = $_POST['id'];
-    $dataTransaction = selectTransaction($id);
+    $dataTransaction = DBUtil::selectTransaction($id);
     if (!$dataTransaction) {
         \array_push($arrErrors, 'error_select_transaction');
     }

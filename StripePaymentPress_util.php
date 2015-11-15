@@ -101,6 +101,29 @@ class DBUtil {
 
         return true;
     }
+
+    static function selectTransaction($id) {
+        $strTableName = DBUtil::getTableName_Transactions();
+
+        global $wpdb;
+        $arrTransaction = $wpdb->get_results($wpdb->prepare("SELECT id,
+                                                                    type,
+                                                                    created,
+                                                                    charged,
+                                                                    charge_description,
+                                                                    charge_amount,
+                                                                    stripe_token_id,
+                                                                    stripe_email,
+                                                                    customer_name,
+                                                                    customer_phone
+                                                               FROM $strTableName
+                                                              WHERE id=%d",
+                                                            $id),
+                                             ARRAY_A);
+        if (!$arrTransaction || count($arrTransaction) == 0) return false;
+
+        return $arrTransaction[0];
+    }
 }
 
 function renderJavaScriptRequireJSConfig() {
@@ -139,29 +162,6 @@ function renderJavaScriptRequireJSConfig() {
         });
 })();
 <?php
-}
-
-function selectTransaction($id) {
-    $strTableName = DBUtil::getTableName_Transactions();
-
-    global $wpdb;
-    $arrTransaction = $wpdb->get_results($wpdb->prepare("SELECT id,
-                                                                type,
-                                                                created,
-                                                                charged,
-                                                                charge_description,
-                                                                charge_amount,
-                                                                stripe_token_id,
-                                                                stripe_email,
-                                                                customer_name,
-                                                                customer_phone
-                                                           FROM $strTableName
-                                                          WHERE id=%d",
-                                                        $id),
-                                         ARRAY_A);
-    if (!$arrTransaction || count($arrTransaction) == 0) return false;
-
-    return $arrTransaction[0];
 }
 
 function selectTransactions() {
