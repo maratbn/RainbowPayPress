@@ -44,7 +44,7 @@ namespace plugin_StripePaymentPress;
 const PLUGIN_VERSION = '1.0.0-development_unreleased_candidate';
 
 
-const IS_MODE_RELEASE = false;
+const IS_MODE_RELEASE = true;
 
 
 const PHP_VERSION_MIN_SUPPORTED = '5.4';
