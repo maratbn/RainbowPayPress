@@ -73,29 +73,29 @@ class DBUtil {
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
     }
-}
 
-function insertTransaction($strType,
-                           $strChargeDescription,
-                           $strProductCost,
-                           $strStripeTokenId,
-                           $strStripeEmail,
-                           $strCustomerName,
-                           $strCustomerPhone) {
+    static function insertTransaction($strType,
+                                      $strChargeDescription,
+                                      $strProductCost,
+                                      $strStripeTokenId,
+                                      $strStripeEmail,
+                                      $strCustomerName,
+                                      $strCustomerPhone) {
 
-    global $wpdb;
-    if (!$wpdb->insert(DBUtil::getTableName_Transactions(), [
-                        'type'                 => $strType,
-                        'created'              => getDateTimeNow(),
-                        'charge_description'   => $strChargeDescription,
-                        'charge_amount'        => $strProductCost,
-                        'currency'             => 'usd_x_100',
-                        'stripe_token_id'      => $strStripeTokenId,
-                        'stripe_email'         => $strStripeEmail,
-                        'customer_name'        => $strCustomerName,
-                        'customer_phone'       => $strCustomerPhone])) return false;
+        global $wpdb;
+        if (!$wpdb->insert(DBUtil::getTableName_Transactions(), [
+                            'type'                 => $strType,
+                            'created'              => getDateTimeNow(),
+                            'charge_description'   => $strChargeDescription,
+                            'charge_amount'        => $strProductCost,
+                            'currency'             => 'usd_x_100',
+                            'stripe_token_id'      => $strStripeTokenId,
+                            'stripe_email'         => $strStripeEmail,
+                            'customer_name'        => $strCustomerName,
+                            'customer_phone'       => $strCustomerPhone])) return false;
 
-    return true;
+        return true;
+    }
 }
 
 function renderJavaScriptRequireJSConfig() {
