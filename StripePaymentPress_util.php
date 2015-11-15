@@ -34,16 +34,15 @@ namespace plugin_StripePaymentPress;
 
 
 class DBUtil {
+    static function getTableName_Transactions() {
+        global $wpdb;
+        return $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
+    }
 }
 
 function getDateTimeNow() {
     $ms = \time() * 1000 + \substr(\microtime(), 2, 3);
     return \gmdate('Y-m-d  H:i:s', $ms / 1000);
-}
-
-function getTableName_Transactions() {
-    global $wpdb;
-    return $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
 }
 
 /**
@@ -55,7 +54,7 @@ function getUVArg() {
 }
 
 function initializeTable_Transactions() {
-    $strTableName = getTableName_Transactions();
+    $strTableName = DBUtil::getTableName_Transactions();
     global $wpdb;
     $sql = "CREATE TABLE $strTableName (
             id bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -85,7 +84,7 @@ function insertTransaction($strType,
                            $strCustomerPhone) {
 
     global $wpdb;
-    if (!$wpdb->insert(getTableName_Transactions(), [
+    if (!$wpdb->insert(DBUtil::getTableName_Transactions(), [
                         'type'                 => $strType,
                         'created'              => getDateTimeNow(),
                         'charge_description'   => $strChargeDescription,
@@ -139,11 +138,11 @@ function renderJavaScriptRequireJSConfig() {
 
 function deleteTransaction($id) {
     global $wpdb;
-    return $wpdb->delete(getTableName_Transactions(), ['id' => $id]);
+    return $wpdb->delete(DBUtil::getTableName_Transactions(), ['id' => $id]);
 }
 
 function selectTransaction($id) {
-    $strTableName = getTableName_Transactions();
+    $strTableName = DBUtil::getTableName_Transactions();
 
     global $wpdb;
     $arrTransaction = $wpdb->get_results($wpdb->prepare("SELECT id,
@@ -166,7 +165,7 @@ function selectTransaction($id) {
 }
 
 function selectTransactions() {
-    $strTableName = getTableName_Transactions();
+    $strTableName = DBUtil::getTableName_Transactions();
 
     global $wpdb;
     return $wpdb->get_results("SELECT id,
@@ -189,7 +188,7 @@ function updateTransactionAsCharged($id, $stripe_customer_id, $stripe_charge_id)
     $date_time = getDateTimeNow();
 
     global $wpdb;
-    if(!$wpdb->update(getTableName_Transactions(),
+    if(!$wpdb->update(DBUtil::getTableName_Transactions(),
                       ['charged'             => $date_time,
                        'stripe_customer_id'  => $stripe_customer_id,
                        'stripe_charge_id'    => $stripe_charge_id],
