@@ -245,7 +245,7 @@ class FragmentUtil {
         $strUrlBase = \plugin_dir_url(__FILE__);
     ?>
     (function() {
-        var strUrlRoot = '<?=$strUrlBase?>/js/le_requirejs/';
+        var strUrlRoot = '<?=$strUrlBase?>/js/le_requirejs_min/';
 
         _plugin_StripePaymentPress__requirejs.config({
                 baseUrl: strUrlRoot,
@@ -272,6 +272,15 @@ class FragmentUtil {
                         'underscore-private': {
                                 'underscore': 'underscore'
                             }
+                    },
+                bundles: {
+                        'main':   ['backbone',
+                                   'jquery',
+                                   'underscore',
+                                   'util',
+                                   'backbone-private',
+                                   'jquery-private',
+                                   'underscore-private']
                     },
                 urlArgs: '<?=getUVArg()?>'
             });
