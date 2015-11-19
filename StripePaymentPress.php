@@ -388,6 +388,12 @@ function action_wp_ajax_stripe_payment_press__get_transactions() {
 }
 
 function action_wp_ajax_stripe_payment_press__submit() {
+    /** Possible errors:
+     *      error_insert_transaction
+     **/
+
+    $arrErrors = [];
+
     $strType                = $_POST['type'];
     $strChargeDescription   = $_POST['charge_description'];
     $strProductCost         = $_POST['charge_amount'];
@@ -404,7 +410,12 @@ function action_wp_ajax_stripe_payment_press__submit() {
                                              $strCustomerName,
                                              $strCustomerPhone);
 
-    die(json_encode(['success' => $flagSuccess]));
+    if (!$flagSuccess) {
+        \array_push($arrErrors, 'error_insert_transaction');
+    }
+
+    die(json_encode(['success'  => (count($arrErrors) == 0),
+                     'errors'   => $arrErrors]));
 }
 
 function action_wp_enqueue_scripts() {
