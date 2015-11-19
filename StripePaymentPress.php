@@ -253,6 +253,7 @@ function action_admin_print_footer_scripts() {
 
 function action_wp_ajax_stripe_payment_press__charge() {
     /** Possible errors:
+     *      error_insufficient_permissions
      *      error_select_transaction
      *      error_create_stripe_customer
      *      error_create_stripe_charge
@@ -261,10 +262,18 @@ function action_wp_ajax_stripe_payment_press__charge() {
 
     $arrErrors = [];
 
-    $id = $_POST['id'];
-    $dataTransaction = DBUtil::selectTransaction($id);
-    if (!$dataTransaction) {
-        \array_push($arrErrors, 'error_select_transaction');
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error_insufficient_permissions');
+    }
+
+    $dataTransaction = null;
+
+    if (count($arrErrors) == 0) {
+        $id = $_POST['id'];
+        $dataTransaction = DBUtil::selectTransaction($id);
+        if (!$dataTransaction) {
+            \array_push($arrErrors, 'error_select_transaction');
+        }
     }
 
     $stripe = null;
