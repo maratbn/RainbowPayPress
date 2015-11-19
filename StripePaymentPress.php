@@ -348,10 +348,15 @@ function action_wp_ajax_stripe_payment_press__charge() {
 
 function action_wp_ajax_stripe_payment_press__delete() {
     /** Possible errors:
+     *      error_insufficient_permissions
      *      error_delete_transaction
      **/
 
     $arrErrors = [];
+
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error_insufficient_permissions');
+    }
 
     if (count($arrErrors) == 0) {
         $id = $_POST['id'];
