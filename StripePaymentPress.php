@@ -364,14 +364,22 @@ function action_wp_ajax_stripe_payment_press__delete() {
 
 function action_wp_ajax_stripe_payment_press__get_transactions() {
     /** Available errors:
+     *      error_insufficient_permissions
      *      error_select_transactions
      **/
 
     $arrErrors = [];
 
-    $arrTransactions = DBUtil::selectTransactions();
-    if (!$arrTransactions) {
-        \array_push($arrErrors, 'error_select_transactions');
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error_insufficient_permissions');
+    }
+
+    $arrTransactions = null;
+    if (count($arrErrors) == 0) {
+        $arrTransactions = DBUtil::selectTransactions();
+        if (!$arrTransactions) {
+            \array_push($arrErrors, 'error_select_transactions');
+        }
     }
 
     die(\json_encode(['success'       => (count($arrErrors) == 0),
