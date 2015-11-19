@@ -252,7 +252,7 @@ function action_admin_print_footer_scripts() {
 }
 
 function action_wp_ajax_stripe_payment_press__charge() {
-    /** Available errors:
+    /** Possible errors:
      *      error_select_transaction
      *      error_create_stripe_customer
      *      error_create_stripe_charge
@@ -347,7 +347,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
 }
 
 function action_wp_ajax_stripe_payment_press__delete() {
-    /** Available errors:
+    /** Possible errors:
      *      error_delete_transaction
      **/
 
@@ -363,7 +363,7 @@ function action_wp_ajax_stripe_payment_press__delete() {
 }
 
 function action_wp_ajax_stripe_payment_press__get_transactions() {
-    /** Available errors:
+    /** Possible errors:
      *      error_insufficient_permissions
      *      error_select_transactions
      **/
