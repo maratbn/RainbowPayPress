@@ -402,15 +402,13 @@ function action_wp_ajax_stripe_payment_press__submit() {
     $strCustomerName        = $_POST['customer_name'];
     $strCustomerPhone       = $_POST['customer_phone'];
 
-    $flagSuccess = DBUtil::insertTransaction($strType,
-                                             $strChargeDescription,
-                                             $strProductCost,
-                                             $strStripeTokenId,
-                                             $strStripeEmail,
-                                             $strCustomerName,
-                                             $strCustomerPhone);
-
-    if (!$flagSuccess) {
+    if (!DBUtil::insertTransaction($strType,
+                                   $strChargeDescription,
+                                   $strProductCost,
+                                   $strStripeTokenId,
+                                   $strStripeEmail,
+                                   $strCustomerName,
+                                   $strCustomerPhone)) {
         \array_push($arrErrors, 'error_insert_transaction');
     }
 
