@@ -26,9 +26,9 @@
                     'underscore': 'underscore'
                 }
         },
-    modules: [{name:  'backbone-private'},
-              {name:  'jquery-private'},
-              {name:  'underscore-private'},
-              {name:  'admin/main_admin'},
-              {name:  'public/main_public'}]
+    modules: [{name:  'common'},
+              {name:  'admin/main_admin',
+               exclude: ['common']},
+              {name:  'public/main_public',
+               exclude: ['common']}]
 })
