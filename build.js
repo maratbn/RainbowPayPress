@@ -27,6 +27,7 @@
                 }
         },
     modules: [{name:  'common'},
+              {name:  'main'},
               {name:  'admin/main_admin',
                exclude: ['common']},
               {name:  'public/main_public',

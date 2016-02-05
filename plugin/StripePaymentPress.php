@@ -246,12 +246,12 @@ function action_admin_print_footer_scripts() {
 
     _plugin_StripePaymentPress__requirejs([
             'backbone',
-            'admin/main_admin'
-        ], function(backbone, main_admin) {
+            'main'
+        ], function(backbone, main) {
 
             backbone.history.start();
 
-            main_admin.start({
+            main.startAdmin({
                     'ajax_url': '<?=\admin_url('admin-ajax.php')?>'
                 });
         });
@@ -473,12 +473,12 @@ function action_wp_print_footer_scripts() {
 
     _plugin_StripePaymentPress__requirejs([
             'backbone',
-            'public/main_public'
-        ], function(backbone, main_public) {
+            'main'
+        ], function(backbone, main) {
 
             backbone.history.start();
 
-            main_public.start({
+            main.startPublic({
                     'ajax_url':          '<?=\admin_url('admin-ajax.php')?>',
                     'publish_key_live':  '<?=\esc_attr(
                                                 \get_option(SETTING__STRIPE_LIVE_PUBLISH_KEY))?>',
