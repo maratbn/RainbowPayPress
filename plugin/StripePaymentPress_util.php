@@ -5,7 +5,7 @@
 
   Copyright (C) 2015-2016  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
 
-  Version:        0.5.0-development_unreleased
+  Version:        0.6.0-development_unreleased
 
   Module:         StripePaymentPress_util.php
 
