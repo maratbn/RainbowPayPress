@@ -34,12 +34,10 @@
 
 
 define(['jquery',
-        'backbone',
         'model_info__app_common',
         'admin/collection_orig__transaction',
         'admin/view_agg__table__transactions'
     ], function($,
-                backbone,
                 model_info__app_common,
                 collection_orig_transaction,
                 ViewAgg_Table_Transactions) {
