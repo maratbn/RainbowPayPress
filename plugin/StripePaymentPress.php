@@ -443,8 +443,6 @@ function action_wp_enqueue_scripts() {
                            \date('Y-m-d'));
     }
 
-    \wp_enqueue_script('jquery');
-
     \wp_enqueue_script(
             'plugin_StripePaymentPress__requirejs',
             plugin_dir_url(__FILE__) . (
