@@ -494,6 +494,9 @@ function filter_plugin_action_links($arrLinks) {
     \array_push($arrLinks,
                 '<a href=\'' . getUrlInfoSettings() . '\'>'
                           . \__('Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS) . '</a>');
+    \array_push($arrLinks,
+                '<a href=\'' . \plugin_dir_url(__FILE__) . 'LICENSE\'>'
+                          . \__('License', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS) . '</a>');
     return $arrLinks;
 }
 
