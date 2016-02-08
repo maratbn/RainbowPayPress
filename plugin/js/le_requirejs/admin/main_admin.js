@@ -34,11 +34,11 @@
 
 
 define(['jquery',
-        'model_info__app_common',
+        'model_orig__app_common',
         'admin/collection_orig__transaction',
         'admin/view_agg__table__transactions'
     ], function($,
-                model_info__app_common,
+                model_orig__app_common,
                 collection_orig_transaction,
                 ViewAgg_Table_Transactions) {
 
@@ -66,7 +66,7 @@ define(['jquery',
             //  @param  params.ajax_url
             this.start = function(params) {
 
-                model_info__app_common.set('ajax_url', params.ajax_url);
+                model_orig__app_common.set('ajax_url', params.ajax_url);
 
                 $(document).ready(function() {
 

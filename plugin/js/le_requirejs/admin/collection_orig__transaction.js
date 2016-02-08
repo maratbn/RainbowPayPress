@@ -35,9 +35,9 @@
 
 define(['backbone',
         'jquery',
-        'model_info__app_common',
+        'model_orig__app_common',
         'admin/model_orig__transaction'
-    ], function (backbone, $, model_info__app_common, ModelOrig_Transaction) {
+    ], function (backbone, $, model_orig__app_common, ModelOrig_Transaction) {
 
         return new (backbone.Collection.extend({
 
@@ -46,7 +46,7 @@ define(['backbone',
                 doXhrCharge: function(model_orig__transaction) {
                         if (!model_orig__transaction) return;
 
-                        var $xhr = $.ajax(model_info__app_common.get('ajax_url'), {
+                        var $xhr = $.ajax(model_orig__app_common.get('ajax_url'), {
                                               data: {
                                                       'action':  'stripe_payment_press__charge',
                                                       'id':      model_orig__transaction.get('id')
@@ -69,7 +69,7 @@ define(['backbone',
                 doXhrDelete: function(model_orig__transaction) {
                         if (!model_orig__transaction) return;
 
-                        var $xhr = $.ajax(model_info__app_common.get('ajax_url'), {
+                        var $xhr = $.ajax(model_orig__app_common.get('ajax_url'), {
                                               data: {
                                                       'action':  'stripe_payment_press__delete',
                                                       'id':      model_orig__transaction.get('id')
@@ -93,7 +93,7 @@ define(['backbone',
                     },
 
                 url: function() {
-                        return model_info__app_common.get('ajax_url') +
+                        return model_orig__app_common.get('ajax_url') +
                                                  '?action=stripe_payment_press__get_transactions';
                     }
             }));

@@ -6,9 +6,9 @@
 
   Version:        0.7.0-development_unreleased
 
-  Module:         js/le_requirejs/model_info__app_common.js
+  Module:         js/le_requirejs/model_orig__app_common.js
 
-  Description:    Single instance of model 'ModelInfo_AppCommon' for storing
+  Description:    Single instance of model 'ModelOrig_AppCommon' for storing
                   information common to both public and admin front-ends.
 
   This file is part of StripePaymentPress.

@@ -34,9 +34,9 @@
 
 define(['backbone',
         'jquery',
-        'model_info__app_common',
+        'model_orig__app_common',
         'public/model_info__app_public',
-    ], function(backbone, $, model_info__app_common, model_info__app_public) {
+    ], function(backbone, $, model_orig__app_common, model_info__app_public) {
 
         return backbone.Model.extend({
 
@@ -69,7 +69,7 @@ define(['backbone',
 
                 doXhrSubmit: function() {
                         var $xhr = $.post
-                                      (model_info__app_common.get('ajax_url'), {
+                                      (model_orig__app_common.get('ajax_url'), {
                                           action:              'stripe_payment_press__submit',
                                           type:                this.attributes['type'],
                                           charge_description:  this.attributes

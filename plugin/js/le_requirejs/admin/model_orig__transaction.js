@@ -35,8 +35,8 @@
 
 define(['backbone',
         'jquery',
-        'model_info__app_common'
-    ], function (backbone, $, model_info__app_common) {
+        'model_orig__app_common'
+    ], function (backbone, $, model_orig__app_common) {
 
         return backbone.Model.extend({
 

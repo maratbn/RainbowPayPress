@@ -34,11 +34,11 @@
 
 
 define(['jquery',
-        'model_info__app_common',
+        'model_orig__app_common',
         'public/model_info__app_public',
         'public/view_agg__div__transaction'
     ], function($,
-                model_info__app_common,
+                model_orig__app_common,
                 model_info__app_public,
                 ViewAgg_Div_Transaction) {
 
@@ -91,7 +91,7 @@ define(['jquery',
             //  @param  params.publish_key_test
             this.start = function(params) {
 
-                    model_info__app_common.set('ajax_url', params.ajax_url);
+                    model_orig__app_common.set('ajax_url', params.ajax_url);
                     model_info__app_public.set({'publish_key_live': params.publish_key_live,
                                                 'publish_key_test': params.publish_key_test});
 
