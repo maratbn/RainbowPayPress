@@ -36,10 +36,12 @@
 define(['jquery',
         'model_orig__app_common',
         'admin/collection_orig__transaction',
+        'admin/model_orig__config',
         'admin/view_agg__table__transactions'
     ], function($,
                 model_orig__app_common,
                 collection_orig_transaction,
+                model_orig__config,
                 ViewAgg_Table_Transactions) {
 
         function _processSpansWithRoles(params) {
@@ -64,9 +66,20 @@ define(['jquery',
         function StripePaymentPressAdminClient() {
 
             //  @param  params.ajax_url
+            //  @param  params.stripe_key_live_secret
+            //  @param  params.stripe_key_live_publish
+            //  @param  params.stripe_key_test_secret
+            //  @param  params.stripe_key_test_publish
             this.start = function(params) {
 
                 model_orig__app_common.set('ajax_url', params.ajax_url);
+
+                model_orig__config.set({
+                        'stripe_key_live_secret':   params.stripe_key_live_secret,
+                        'stripe_key_live_publish':  params.stripe_key_live_publish,
+                        'stripe_key_test_secret':   params.stripe_key_test_secret,
+                        'stripe_key_test_publish':  params.stripe_key_test_publish
+                    });
 
                 $(document).ready(function() {
 

@@ -252,7 +252,15 @@ function action_admin_print_footer_scripts() {
             backbone.history.start();
 
             main.startAdmin({
-                    'ajax_url': '<?=\admin_url('admin-ajax.php')?>'
+                    'ajax_url':                 '<?=\admin_url('admin-ajax.php')?>',
+                    'stripe_key_live_secret':   '<?=\get_option(
+                                                            SETTING__STRIPE_LIVE_SECRET_KEY)?>',
+                    'stripe_key_live_publish':  '<?=\get_option(
+                                                            SETTING__STRIPE_LIVE_PUBLISH_KEY)?>',
+                    'stripe_key_test_secret':   '<?=\get_option(
+                                                            SETTING__STRIPE_TEST_SECRET_KEY)?>',
+                    'stripe_key_test_publish':  '<?=\get_option(
+                                                            SETTING__STRIPE_TEST_PUBLISH_KEY)?>'
                 });
         });
 </script>
