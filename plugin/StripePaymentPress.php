@@ -404,7 +404,7 @@ function action_wp_ajax_stripe_payment_press__delete() {
 function action_wp_ajax_stripe_payment_press__get_transactions() {
     /** Possible errors:
      *      error__insufficient_permissions
-     *      error_select_transactions
+     *      error__select_transactions
      **/
 
     $arrErrors = [];
@@ -417,7 +417,7 @@ function action_wp_ajax_stripe_payment_press__get_transactions() {
     if (count($arrErrors) == 0) {
         $arrTransactions = DBUtil::selectTransactions();
         if (!$arrTransactions) {
-            \array_push($arrErrors, 'error_select_transactions');
+            \array_push($arrErrors, 'error__select_transactions');
         }
     }
 
