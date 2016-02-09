@@ -50,7 +50,7 @@ define(['jquery',
 
             (new ViewAgg_Table_Config())
                         .$el
-                        .appendTo($("span[data-plugin-stripe-payment-press-role=stripe-config]"));
+                        .appendTo($("span[data-plugin-stripe-payment-press-role=app-config]"));
 
 
             collection_orig_transaction.fetch();
