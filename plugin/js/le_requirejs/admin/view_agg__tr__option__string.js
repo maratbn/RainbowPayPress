@@ -6,9 +6,9 @@
 
   Version:        0.7.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/view_agg__tr__option.js
+  Module:         js/le_requirejs/admin/view_agg__tr__option__string.js
 
-  Description:    Widget 'ViewAgg_Tr_Option' for displaying config options.
+  Description:    Widget 'ViewAgg_Tr_Option_String' for displaying config options.
 
   This file is part of StripePaymentPress.
 
@@ -40,7 +40,7 @@ define(['backbone',
                 model_orig__config) {
 
 
-        //  Widget 'ViewAgg_Tr_Option':
+        //  Widget 'ViewAgg_Tr_Option_String':
 
 
         return backbone.View.extend({

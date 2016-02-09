@@ -36,11 +36,11 @@
 define(['jquery',
         'view_agg__table',
         'admin/model_orig__config',
-        'admin/view_agg__tr__option'
+        'admin/view_agg__tr__option__string'
     ], function($,
                 ViewAgg_Table,
                 model_orig__config,
-                ViewAgg_Tr_Option) {
+                ViewAgg_Tr_Option_String) {
 
         return ViewAgg_Table.extend({
 
@@ -55,25 +55,25 @@ define(['jquery',
 
                         this.$el.append($("<tr>").append($("<th>").append($buttonRefresh)));
 
-                        (new ViewAgg_Tr_Option({field:   'stripe_key_live_secret',
+                        (new ViewAgg_Tr_Option_String({field:   'stripe_key_live_secret',
                                                 label:   "Stripe live secret key:",
                                                 prompt:  "Enter new Stripe live secret key:"
                                             })).$el
                                          .appendTo(this.$el);
 
-                        (new ViewAgg_Tr_Option({field:   'stripe_key_live_publish',
+                        (new ViewAgg_Tr_Option_String({field:   'stripe_key_live_publish',
                                                 label:   "Stripe live publishable key:",
                                                 prompt:  "Enter new Stripe live publishable key:"
                                             })).$el
                                          .appendTo(this.$el);
 
-                        (new ViewAgg_Tr_Option({field:   'stripe_key_test_secret',
+                        (new ViewAgg_Tr_Option_String({field:   'stripe_key_test_secret',
                                                 label:   "Stripe test secret key:",
                                                 prompt:  "Enter new Stripe test secret key:"
                                             })).$el
                                          .appendTo(this.$el);
 
-                        (new ViewAgg_Tr_Option({field:   'stripe_key_test_publish',
+                        (new ViewAgg_Tr_Option_String({field:   'stripe_key_test_publish',
                                                 label:   "Stripe test publishable key:",
                                                 prompt:  "Enter new Stripe test publishable key:"
                                             })).$el
