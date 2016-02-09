@@ -179,7 +179,7 @@ function action_admin_menu() {
           </li>
         </ul>
       </p>
-      <h2>Stripe Configuration:</h2>
+      <h2>Configuration:</h2>
       <span data-plugin-stripe-payment-press-role='app-config'></span>
       <h2>Pending Transactions:</h2>
       <span data-plugin-stripe-payment-press-role='transactions-pending'></span>
