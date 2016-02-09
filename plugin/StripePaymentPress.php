@@ -318,6 +318,29 @@ function action_wp_ajax_stripe_payment_press__admin__charge() {
     die(json_encode($dataRet));
 }
 
+function action_wp_ajax_stripe_payment_press__admin__delete() {
+    /** Possible errors:
+     *      error__insufficient_permissions
+     *      error__delete_transaction
+     **/
+
+    $arrErrors = [];
+
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error__insufficient_permissions');
+    }
+
+    if (count($arrErrors) == 0) {
+        $id = $_POST['id'];
+        if (!DBUtil::deleteTransaction($id)) {
+            \array_push($arrErrors, 'error__delete_transaction');
+        }
+    }
+
+    die(json_encode(['success' => (count($arrErrors) == 0),
+                     'errors' => $arrErrors]));
+}
+
 function action_wp_ajax_stripe_payment_press__admin__get_config() {
     /** Possible errors:
      *      error__insufficient_permissions
@@ -404,29 +427,6 @@ function action_wp_ajax_stripe_payment_press__admin__update_config() {
     }
 
     die(\json_encode($objRet));
-}
-
-function action_wp_ajax_stripe_payment_press__admin__delete() {
-    /** Possible errors:
-     *      error__insufficient_permissions
-     *      error__delete_transaction
-     **/
-
-    $arrErrors = [];
-
-    if (!\current_user_can('manage_options')) {
-        \array_push($arrErrors, 'error__insufficient_permissions');
-    }
-
-    if (count($arrErrors) == 0) {
-        $id = $_POST['id'];
-        if (!DBUtil::deleteTransaction($id)) {
-            \array_push($arrErrors, 'error__delete_transaction');
-        }
-    }
-
-    die(json_encode(['success' => (count($arrErrors) == 0),
-                     'errors' => $arrErrors]));
 }
 
 function action_wp_ajax_stripe_payment_press__submit() {
