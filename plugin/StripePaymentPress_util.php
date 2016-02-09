@@ -201,7 +201,9 @@ class FragmentUtil {
 
 class Util {
     static function getConfig() {
-        return ['stripe_key_live_secret'  => \get_option(SETTING__STRIPE_LIVE_SECRET_KEY),
+        return ['flag_enable_email_notifications'
+                                          => \get_option(SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS),
+                'stripe_key_live_secret'  => \get_option(SETTING__STRIPE_LIVE_SECRET_KEY),
                 'stripe_key_live_publish' => \get_option(SETTING__STRIPE_LIVE_PUBLISH_KEY),
                 'stripe_key_test_secret'  => \get_option(SETTING__STRIPE_TEST_SECRET_KEY),
                 'stripe_key_test_publish' => \get_option(SETTING__STRIPE_TEST_PUBLISH_KEY)];
