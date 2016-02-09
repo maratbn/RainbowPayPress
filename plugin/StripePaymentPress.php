@@ -56,15 +56,6 @@ const SETTING__STRIPE_TEST_PUBLISH_KEY =
                                   'plugin_StripePaymentPress__setting__stripe_test_publish_key';
 const SETTING__STRIPE_TEST_SECRET_KEY =
                                    'plugin_StripePaymentPress__setting__stripe_test_secret_key';
-const SETTINGS_FIELD__STRIPE_LIVE_PUBLISH_KEY =
-                           'plugin_StripePaymentPress__settings_field__stripe_live_publish_key';
-const SETTINGS_FIELD__STRIPE_LIVE_SECRET_KEY =
-                            'plugin_StripePaymentPress__settings_field__stripe_live_secret_key';
-const SETTINGS_FIELD__STRIPE_TEST_PUBLISH_KEY =
-                           'plugin_StripePaymentPress__settings_field__stripe_test_publish_key';
-const SETTINGS_FIELD__STRIPE_TEST_SECRET_KEY =
-                            'plugin_StripePaymentPress__settings_field__stripe_test_secret_key';
-const SETTINGS_SECTION__STRIPE_KEYS = 'plugin_StripePaymentPress__settings_group__stripe_keys';
 const SLUG_INFO_SETTINGS = 'plugin_StripePaymentPress_info_settings';
 
 require_once('StripePaymentPress_util.php');
@@ -73,7 +64,6 @@ require_once('StripePaymentPress_util.php');
 
 \add_action('admin_enqueue_scripts',
             '\\plugin_StripePaymentPress\\action_admin_enqueue_scripts');
-\add_action('admin_init', '\\plugin_StripePaymentPress\\action_admin_init');
 \add_action('admin_menu', '\\plugin_StripePaymentPress\\action_admin_menu');
 \add_action('admin_print_footer_scripts',
             '\\plugin_StripePaymentPress\\action_admin_print_footer_scripts');
@@ -126,49 +116,6 @@ function action_admin_enqueue_scripts($hook) {
         null,
         '2015-09-25--1',
         false);
-}
-
-function action_admin_init() {
-    //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
-    \add_settings_section(SETTINGS_SECTION__STRIPE_KEYS,
-                          \__('Your Stripe Keys', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                          '\\plugin_StripePaymentPress\\settings_group__stripe_keys',
-                          SLUG_INFO_SETTINGS);
-
-    \register_setting(SETTINGS_SECTION__STRIPE_KEYS, SETTING__STRIPE_TEST_SECRET_KEY);
-
-    \add_settings_field(SETTINGS_FIELD__STRIPE_TEST_SECRET_KEY,
-                        \__('Stripe Test Secret Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                        '\\plugin_StripePaymentPress\\settings_field__stripe_test_secret_key',
-                        SLUG_INFO_SETTINGS,
-                        SETTINGS_SECTION__STRIPE_KEYS);
-
-
-    \register_setting(SETTINGS_SECTION__STRIPE_KEYS, SETTING__STRIPE_TEST_PUBLISH_KEY);
-
-    \add_settings_field(SETTINGS_FIELD__STRIPE_TEST_PUBLISH_KEY,
-                        \__('Stripe Test Publishable Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                        '\\plugin_StripePaymentPress\\settings_field__stripe_test_publish_key',
-                        SLUG_INFO_SETTINGS,
-                        SETTINGS_SECTION__STRIPE_KEYS);
-
-
-    \register_setting(SETTINGS_SECTION__STRIPE_KEYS, SETTING__STRIPE_LIVE_SECRET_KEY);
-
-    \add_settings_field(SETTINGS_FIELD__STRIPE_LIVE_SECRET_KEY,
-                        \__('Stripe Live Secret Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                        '\\plugin_StripePaymentPress\\settings_field__stripe_live_secret_key',
-                        SLUG_INFO_SETTINGS,
-                        SETTINGS_SECTION__STRIPE_KEYS);
-
-
-    \register_setting(SETTINGS_SECTION__STRIPE_KEYS, SETTING__STRIPE_LIVE_PUBLISH_KEY);
-
-    \add_settings_field(SETTINGS_FIELD__STRIPE_LIVE_PUBLISH_KEY,
-                        \__('Stripe Live Publishable Key', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                        '\\plugin_StripePaymentPress\\settings_field__stripe_live_publish_key',
-                        SLUG_INFO_SETTINGS,
-                        SETTINGS_SECTION__STRIPE_KEYS);
 }
 
 function action_admin_menu() {
@@ -229,14 +176,6 @@ function action_admin_menu() {
           </li>
         </ul>
       </p>
-      <h2>Configuration:</h2>
-      <form method="post" action="options.php">
-        <?php //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
-            \settings_fields(SETTINGS_SECTION__STRIPE_KEYS);
-            \do_settings_sections(SLUG_INFO_SETTINGS);
-            \submit_button();
-        ?>
-      </form>
       <h2>Stripe Configuration:</h2>
       <span data-plugin-stripe-payment-press-role='stripe-config'></span>
       <h2>Pending Transactions:</h2>
@@ -582,49 +521,6 @@ function getUrlInfoSettings() {
 
 function plugin_activation_hook() {
     DBUtil::initializeTable_Transactions();
-}
-
-function settings_field__stripe_live_publish_key() {
-    //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
-    ?>
-    <input type='text'
-           name='<?=SETTING__STRIPE_LIVE_PUBLISH_KEY?>'
-           size='40'
-           value='<?=\esc_attr(\get_option(SETTING__STRIPE_LIVE_PUBLISH_KEY))?>' />
-    <?php
-}
-
-function settings_field__stripe_live_secret_key() {
-    //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
-    ?>
-    <input type='text'
-           name='<?=SETTING__STRIPE_LIVE_SECRET_KEY?>'
-           size='40'
-           value='<?=\esc_attr(\get_option(SETTING__STRIPE_LIVE_SECRET_KEY))?>' />
-    <?php
-}
-
-function settings_field__stripe_test_publish_key() {
-    //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
-    ?>
-    <input type='text'
-           name='<?=SETTING__STRIPE_TEST_PUBLISH_KEY?>'
-           size='40'
-           value='<?=\esc_attr(\get_option(SETTING__STRIPE_TEST_PUBLISH_KEY))?>' />
-    <?php
-}
-
-function settings_field__stripe_test_secret_key() {
-    //  Based on: https://kovshenin.com/2012/the-wordpress-settings-api/
-    ?>
-    <input type='text'
-           name='<?=SETTING__STRIPE_TEST_SECRET_KEY?>'
-           size='40'
-           value='<?=\esc_attr(\get_option(SETTING__STRIPE_TEST_SECRET_KEY))?>' />
-    <?php
-}
-
-function settings_group__stripe_keys() {
 }
 
 function shortcode_stripe_payment_press($atts) {
