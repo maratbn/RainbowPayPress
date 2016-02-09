@@ -277,7 +277,7 @@ function action_wp_ajax_stripe_payment_press__admin__update_config() {
 function action_wp_ajax_stripe_payment_press__charge() {
     /** Possible errors:
      *      error__insufficient_permissions
-     *      error_select_transaction
+     *      error__select_transaction
      *      error_create_stripe_customer
      *      error_create_stripe_charge
      *      error_update_transaction
@@ -295,7 +295,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
         $id = $_POST['id'];
         $dataTransaction = DBUtil::selectTransaction($id);
         if (!$dataTransaction) {
-            \array_push($arrErrors, 'error_select_transaction');
+            \array_push($arrErrors, 'error__select_transaction');
         }
     }
 
