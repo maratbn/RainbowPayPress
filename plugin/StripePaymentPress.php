@@ -295,14 +295,7 @@ function action_wp_ajax_stripe_payment_press__admin__get_config() {
                'success'  => (\count($arrErrors) == 0)];
 
     if (\count($arrErrors) == 0) {
-        $objRet['config'] = ['stripe_key_live_secret'  => \get_option(
-                                                                SETTING__STRIPE_LIVE_SECRET_KEY),
-                             'stripe_key_live_publish' => \get_option(
-                                                                SETTING__STRIPE_LIVE_PUBLISH_KEY),
-                             'stripe_key_test_secret'  => \get_option(
-                                                                SETTING__STRIPE_TEST_SECRET_KEY),
-                             'stripe_key_test_publish' => \get_option(
-                                                                SETTING__STRIPE_TEST_PUBLISH_KEY)];
+        $objRet['config'] = Util::getConfig();
     }
 
     die(\json_encode($objRet));
@@ -344,14 +337,7 @@ function action_wp_ajax_stripe_payment_press__admin__update_config() {
                'success'  => (\count($arrErrors) == 0)];
 
     if (\count($arrErrors) == 0) {
-        $objRet['config'] = ['stripe_key_live_secret'  => \get_option(
-                                                                SETTING__STRIPE_LIVE_SECRET_KEY),
-                             'stripe_key_live_publish' => \get_option(
-                                                                SETTING__STRIPE_LIVE_PUBLISH_KEY),
-                             'stripe_key_test_secret'  => \get_option(
-                                                                SETTING__STRIPE_TEST_SECRET_KEY),
-                             'stripe_key_test_publish' => \get_option(
-                                                                SETTING__STRIPE_TEST_PUBLISH_KEY)];
+        $objRet['config'] = Util::getConfig();
     }
 
     die(\json_encode($objRet));
