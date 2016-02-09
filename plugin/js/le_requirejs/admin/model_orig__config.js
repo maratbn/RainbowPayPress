@@ -43,11 +43,11 @@ define(['backbone',
         return new (backbone.Model.extend({
 
                 defaults: {
-                        'flag_enable_email_notifications': false,
-                        'stripe_key_live_secret':   null,
-                        'stripe_key_live_publish':  null,
-                        'stripe_key_test_secret':   null,
-                        'stripe_key_test_publish':  null
+                        'flag_enable_email_notifications':  false,
+                        'stripe_key_live_secret':           null,
+                        'stripe_key_live_publish':          null,
+                        'stripe_key_test_secret':           null,
+                        'stripe_key_test_publish':          null
                     },
 
                 doXhrRefresh: function() {
