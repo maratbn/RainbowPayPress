@@ -381,7 +381,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
 function action_wp_ajax_stripe_payment_press__delete() {
     /** Possible errors:
      *      error__insufficient_permissions
-     *      error_delete_transaction
+     *      error__delete_transaction
      **/
 
     $arrErrors = [];
@@ -393,7 +393,7 @@ function action_wp_ajax_stripe_payment_press__delete() {
     if (count($arrErrors) == 0) {
         $id = $_POST['id'];
         if (!DBUtil::deleteTransaction($id)) {
-            \array_push($arrErrors, 'error_delete_transaction');
+            \array_push($arrErrors, 'error__delete_transaction');
         }
     }
 
