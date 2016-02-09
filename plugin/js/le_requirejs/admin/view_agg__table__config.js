@@ -6,9 +6,9 @@
 
   Version:        0.7.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/view_agg__table__stripe_config.js
+  Module:         js/le_requirejs/admin/view_agg__table__config.js
 
-  Description:    Widget 'ViewAgg_Table_StripeConfig' for configuration of
+  Description:    Widget 'ViewAgg_Table_Config' for configuration of
                   Stripe parameters.
 
   This file is part of StripePaymentPress.
