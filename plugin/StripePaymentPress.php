@@ -278,7 +278,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
     /** Possible errors:
      *      error__insufficient_permissions
      *      error__select_transaction
-     *      error_create_stripe_customer
+     *      error__create_stripe_customer
      *      error_create_stripe_charge
      *      error_update_transaction
      **/
@@ -341,7 +341,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
                 ));
 
             if (!$customer) {
-                \array_push($arrErrors, 'error_create_stripe_customer');
+                \array_push($arrErrors, 'error__create_stripe_customer');
             } else {
                 $dataRet['stripe_customer_id'] = $customer->id;
                 $charge = \plugin_StripePaymentPress\Stripe\Charge::create(array(
