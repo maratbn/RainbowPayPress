@@ -71,8 +71,6 @@ require_once('StripePaymentPress_util.php');
             '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__charge');
 \add_action('wp_ajax_stripe_payment_press__delete',
             '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__delete');
-\add_action('wp_ajax_stripe_payment_press__admin__get_transactions',
-            '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__get_transactions');
 \add_action('wp_ajax_stripe_payment_press__submit',
             '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__submit');
 \add_action('wp_ajax_nopriv_stripe_payment_press__submit',
@@ -93,6 +91,9 @@ if (\is_admin()) {
     \add_action(
         'wp_ajax_stripe_payment_press__admin__get_config',
         '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__get_config');
+    \add_action(
+        'wp_ajax_stripe_payment_press__admin__get_transactions',
+        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__get_transactions');
     \add_action(
         'wp_ajax_stripe_payment_press__admin__update_config',
         '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__update_config');
