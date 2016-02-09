@@ -65,7 +65,8 @@ define(['backbone',
                             params.field &&
                             params.prompt) {
 
-                            var $buttonChange = $('<button>').text("Change...").click(function() {
+                            var $buttonChange = $('<button>').addClass('button button-secondary')
+                                                             .text("Change...").click(function() {
                                     var strValNew = window.prompt(params.prompt,
                                                                   model_orig__config
                                                                                 .get(params.field)

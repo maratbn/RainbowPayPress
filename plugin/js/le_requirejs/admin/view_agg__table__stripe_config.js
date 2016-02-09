@@ -46,7 +46,8 @@ define(['jquery',
 
                 initialize: function() {
 
-                        var $buttonRefresh = $("<button>").text("Refresh");
+                        var $buttonRefresh = $("<button>").addClass('button button-secondary')
+                                                          .text("Refresh");
 
                         $buttonRefresh.click(function() {
                                 model_orig__config.doXhrRefresh();
