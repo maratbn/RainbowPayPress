@@ -82,6 +82,8 @@ define(['jquery',
                 model_orig__app_common.set('ajax_url', params.ajax_url);
 
                 model_orig__config.set({
+                        'flag_enable_email_notifications':
+                                                    params['flag_enable_email_notifications'],
                         'stripe_key_live_secret':   params['stripe_key_live_secret'],
                         'stripe_key_live_publish':  params['stripe_key_live_publish'],
                         'stripe_key_test_secret':   params['stripe_key_test_secret'],
