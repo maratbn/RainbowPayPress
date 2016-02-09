@@ -213,94 +213,6 @@ function action_admin_print_footer_scripts() {
 <?php
 }
 
-function action_wp_ajax_stripe_payment_press__admin__get_config() {
-    /** Possible errors:
-     *      error__insufficient_permissions
-     */
-
-    $arrErrors = [];
-
-    if (!\current_user_can('manage_options')) {
-        \array_push($arrErrors, 'error__insufficient_permissions');
-    }
-
-    $objRet = ['errors'   => $arrErrors,
-               'success'  => (\count($arrErrors) == 0)];
-
-    if (\count($arrErrors) == 0) {
-        $objRet['config'] = Util::getConfig();
-    }
-
-    die(\json_encode($objRet));
-}
-
-function action_wp_ajax_stripe_payment_press__admin__get_transactions() {
-    /** Possible errors:
-     *      error__insufficient_permissions
-     *      error__select_transactions
-     **/
-
-    $arrErrors = [];
-
-    if (!\current_user_can('manage_options')) {
-        \array_push($arrErrors, 'error__insufficient_permissions');
-    }
-
-    $arrTransactions = null;
-    if (count($arrErrors) == 0) {
-        $arrTransactions = DBUtil::selectTransactions();
-        if (!$arrTransactions) {
-            \array_push($arrErrors, 'error__select_transactions');
-        }
-    }
-
-    die(\json_encode(['success'       => (count($arrErrors) == 0),
-                      'errors'        => $arrErrors,
-                      'transactions'  => $arrTransactions]));
-}
-
-function action_wp_ajax_stripe_payment_press__admin__update_config() {
-    /** Possible errors:
-     *      error__insufficient_permissions
-     *      error__wp__update_option
-     */
-
-    $arrErrors = [];
-
-    if (!\current_user_can('manage_options')) {
-        \array_push($arrErrors, 'error__insufficient_permissions');
-    }
-
-    if (\count($arrErrors) == 0) {
-        $objConfig = $_POST['config'];
-
-        if (array_key_exists('stripe_key_live_secret', $objConfig)) {
-            \update_option(SETTING__STRIPE_LIVE_SECRET_KEY, $objConfig['stripe_key_live_secret']);
-        }
-        if (array_key_exists('stripe_key_live_publish', $objConfig)) {
-            \update_option(SETTING__STRIPE_LIVE_PUBLISH_KEY,
-                           $objConfig['stripe_key_live_publish']);
-        }
-
-        if (array_key_exists('stripe_key_test_secret', $objConfig)) {
-            \update_option(SETTING__STRIPE_TEST_SECRET_KEY, $objConfig['stripe_key_test_secret']);
-        }
-        if (array_key_exists('stripe_key_test_publish', $objConfig)) {
-            \update_option(SETTING__STRIPE_TEST_PUBLISH_KEY,
-                           $objConfig['stripe_key_test_publish']);
-        }
-    }
-
-    $objRet = ['errors'   => $arrErrors,
-               'success'  => (\count($arrErrors) == 0)];
-
-    if (\count($arrErrors) == 0) {
-        $objRet['config'] = Util::getConfig();
-    }
-
-    die(\json_encode($objRet));
-}
-
 function action_wp_ajax_stripe_payment_press__admin__charge() {
     /** Possible errors:
      *      error__insufficient_permissions
@@ -403,6 +315,94 @@ function action_wp_ajax_stripe_payment_press__admin__charge() {
     $dataRet['errors']   = $arrErrors;
 
     die(json_encode($dataRet));
+}
+
+function action_wp_ajax_stripe_payment_press__admin__get_config() {
+    /** Possible errors:
+     *      error__insufficient_permissions
+     */
+
+    $arrErrors = [];
+
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error__insufficient_permissions');
+    }
+
+    $objRet = ['errors'   => $arrErrors,
+               'success'  => (\count($arrErrors) == 0)];
+
+    if (\count($arrErrors) == 0) {
+        $objRet['config'] = Util::getConfig();
+    }
+
+    die(\json_encode($objRet));
+}
+
+function action_wp_ajax_stripe_payment_press__admin__get_transactions() {
+    /** Possible errors:
+     *      error__insufficient_permissions
+     *      error__select_transactions
+     **/
+
+    $arrErrors = [];
+
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error__insufficient_permissions');
+    }
+
+    $arrTransactions = null;
+    if (count($arrErrors) == 0) {
+        $arrTransactions = DBUtil::selectTransactions();
+        if (!$arrTransactions) {
+            \array_push($arrErrors, 'error__select_transactions');
+        }
+    }
+
+    die(\json_encode(['success'       => (count($arrErrors) == 0),
+                      'errors'        => $arrErrors,
+                      'transactions'  => $arrTransactions]));
+}
+
+function action_wp_ajax_stripe_payment_press__admin__update_config() {
+    /** Possible errors:
+     *      error__insufficient_permissions
+     *      error__wp__update_option
+     */
+
+    $arrErrors = [];
+
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error__insufficient_permissions');
+    }
+
+    if (\count($arrErrors) == 0) {
+        $objConfig = $_POST['config'];
+
+        if (array_key_exists('stripe_key_live_secret', $objConfig)) {
+            \update_option(SETTING__STRIPE_LIVE_SECRET_KEY, $objConfig['stripe_key_live_secret']);
+        }
+        if (array_key_exists('stripe_key_live_publish', $objConfig)) {
+            \update_option(SETTING__STRIPE_LIVE_PUBLISH_KEY,
+                           $objConfig['stripe_key_live_publish']);
+        }
+
+        if (array_key_exists('stripe_key_test_secret', $objConfig)) {
+            \update_option(SETTING__STRIPE_TEST_SECRET_KEY, $objConfig['stripe_key_test_secret']);
+        }
+        if (array_key_exists('stripe_key_test_publish', $objConfig)) {
+            \update_option(SETTING__STRIPE_TEST_PUBLISH_KEY,
+                           $objConfig['stripe_key_test_publish']);
+        }
+    }
+
+    $objRet = ['errors'   => $arrErrors,
+               'success'  => (\count($arrErrors) == 0)];
+
+    if (\count($arrErrors) == 0) {
+        $objRet['config'] = Util::getConfig();
+    }
+
+    die(\json_encode($objRet));
 }
 
 function action_wp_ajax_stripe_payment_press__delete() {
