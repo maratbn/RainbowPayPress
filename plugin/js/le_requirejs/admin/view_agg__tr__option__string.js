@@ -8,8 +8,8 @@
 
   Module:         js/le_requirejs/admin/view_agg__tr__option__string.js
 
-  Description:    Widget 'ViewAgg_Tr_Option_String' for displaying config
-                  options.
+  Description:    Widget 'ViewAgg_Tr_Option_String' for displaying string
+                  config options.
 
   This file is part of StripePaymentPress.
 
