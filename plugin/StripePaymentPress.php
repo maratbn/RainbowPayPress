@@ -337,7 +337,7 @@ function action_wp_ajax_stripe_payment_press__admin__update_config() {
 
 function action_wp_ajax_stripe_payment_press__charge() {
     /** Possible errors:
-     *      error_insufficient_permissions
+     *      error__insufficient_permissions
      *      error_select_transaction
      *      error_create_stripe_customer
      *      error_create_stripe_charge
@@ -347,7 +347,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
     $arrErrors = [];
 
     if (!\current_user_can('manage_options')) {
-        \array_push($arrErrors, 'error_insufficient_permissions');
+        \array_push($arrErrors, 'error__insufficient_permissions');
     }
 
     $dataTransaction = null;
@@ -441,14 +441,14 @@ function action_wp_ajax_stripe_payment_press__charge() {
 
 function action_wp_ajax_stripe_payment_press__delete() {
     /** Possible errors:
-     *      error_insufficient_permissions
+     *      error__insufficient_permissions
      *      error_delete_transaction
      **/
 
     $arrErrors = [];
 
     if (!\current_user_can('manage_options')) {
-        \array_push($arrErrors, 'error_insufficient_permissions');
+        \array_push($arrErrors, 'error__insufficient_permissions');
     }
 
     if (count($arrErrors) == 0) {
@@ -464,14 +464,14 @@ function action_wp_ajax_stripe_payment_press__delete() {
 
 function action_wp_ajax_stripe_payment_press__get_transactions() {
     /** Possible errors:
-     *      error_insufficient_permissions
+     *      error__insufficient_permissions
      *      error_select_transactions
      **/
 
     $arrErrors = [];
 
     if (!\current_user_can('manage_options')) {
-        \array_push($arrErrors, 'error_insufficient_permissions');
+        \array_push($arrErrors, 'error__insufficient_permissions');
     }
 
     $arrTransactions = null;
