@@ -428,7 +428,7 @@ function action_wp_ajax_stripe_payment_press__get_transactions() {
 
 function action_wp_ajax_stripe_payment_press__submit() {
     /** Possible errors:
-     *      error_insert_transaction
+     *      error__insert_transaction
      **/
 
     $arrErrors = [];
@@ -448,7 +448,7 @@ function action_wp_ajax_stripe_payment_press__submit() {
                                    $strStripeEmail,
                                    $strCustomerName,
                                    $strCustomerPhone)) {
-        \array_push($arrErrors, 'error_insert_transaction');
+        \array_push($arrErrors, 'error__insert_transaction');
     }
 
     die(json_encode(['success'  => (count($arrErrors) == 0),
