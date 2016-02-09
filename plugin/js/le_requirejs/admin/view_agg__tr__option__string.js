@@ -57,10 +57,7 @@ define(['admin/view_agg__tr__option',
 
                         ViewAgg_Tr_Option.prototype.initialize.apply(this, arguments);
 
-                        var $thButton  = $('<th>').appendTo(this.$el),
-                            $thLabel   = $('<th>').attr('align', 'left')
-                                                  .appendTo(this.$el),
-                            $tdValue   = $('<td>').appendTo(this.$el);
+                        var $thButton  = this.get_$thButton();
 
                         if (params &&
                             params.field &&
@@ -79,20 +76,6 @@ define(['admin/view_agg__tr__option',
 
                                     model_orig__config.doXhrUpdate(objConfig);
                                 }).appendTo($thButton);
-                        }
-
-                        if (params &&
-                            params.label) {
-                            $thLabel.text(params.label);
-                        }
-
-                        if (params &&
-                            params.field) {
-                            function _update() {
-                                $tdValue.text(model_orig__config.get(params.field));
-                            }
-                            _update.call(this);
-                            this.listenTo(model_orig__config, 'change:' + params.field, _update);
                         }
                     }
             });

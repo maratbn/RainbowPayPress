@@ -33,8 +33,12 @@
 (function(define) {
 
 
-define(['backbone'
-    ], function(backbone) {
+define(['backbone',
+        'jquery',
+        'admin/model_orig__config'
+    ], function(backbone,
+                $,
+                model_orig__config) {
 
 
         //  Widget 'ViewAgg_Tr_Option':
@@ -42,7 +46,40 @@ define(['backbone'
 
         return backbone.View.extend({
 
-                tagName: 'tr'
+                tagName: 'tr',
+
+                //  @param  params.field                The field in 'ModelOrig_Config' this widget
+                //                                      is associated with.
+                //
+                //  @param  params.label                The label to render for the option.
+                //
+                initialize: function(params) {
+
+                        var $thButton  = $('<th>').appendTo(this.$el),
+                            $thLabel   = $('<th>').attr('align', 'left')
+                                                  .appendTo(this.$el),
+                            $tdValue   = $('<td>').appendTo(this.$el);
+
+
+                        if (params &&
+                            params.label) {
+                            $thLabel.text(params.label);
+                        }
+
+                        if (params &&
+                            params.field) {
+                            function _update() {
+                                $tdValue.text(model_orig__config.get(params.field));
+                            }
+                            _update.call(this);
+                            this.listenTo(model_orig__config, 'change:' + params.field, _update);
+                        }
+
+
+                        this.get_$thButton = function() {
+                                return $thButton;
+                            };
+                    }
 
             });
     });
