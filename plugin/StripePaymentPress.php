@@ -279,7 +279,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
      *      error__insufficient_permissions
      *      error__select_transaction
      *      error__create_stripe_customer
-     *      error_create_stripe_charge
+     *      error__create_stripe_charge
      *      error_update_transaction
      **/
 
@@ -351,7 +351,7 @@ function action_wp_ajax_stripe_payment_press__charge() {
                         'metadata'  => array('charge_desc' => $dataTransaction['charge_description'])
                     ));
                 if (!$charge) {
-                    \array_push($arrErrors, 'error_create_stripe_charge');
+                    \array_push($arrErrors, 'error__create_stripe_charge');
                 } else {
                     $dataRet['stripe_charge_id'] = $charge->id;
                     $charged = DBUtil::updateTransactionAsCharged($id, $customer->id, $charge->id);
