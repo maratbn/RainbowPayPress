@@ -33,7 +33,12 @@
 (function(define) {
 
 
-define(['backbone'], function (backbone) {
+define(['backbone',
+        'jquery',
+        'model_orig__app_common'
+    ], function(backbone,
+                $,
+                model_orig__app_common) {
 
         return new (backbone.Model.extend({
 
@@ -42,8 +47,44 @@ define(['backbone'], function (backbone) {
                         'stripe_key_live_publish':  null,
                         'stripe_key_test_secret':   null,
                         'stripe_key_test_publish':  null
-                    }
+                    },
 
+                doXhrRefresh: function() {
+                        var $xhr = $.ajax(
+                            model_orig__app_common.get('ajax_url'), {
+                                data: {
+                                        'action': 'stripe_payment_press__admin__get_config'
+                                    },
+                                method: 'post'
+                            }),
+                            me = this;
+
+                        $xhr.success(function(strData) {
+                                var objData = JSON.parse(strData);
+                                if (!objData || !objData['success']) return;
+
+                                me.set(objData['config']);
+                            });
+                    },
+
+                doXhrUpdate: function(objConfig) {
+                        var $xhr = $.ajax(
+                            model_orig__app_common.get('ajax_url'), {
+                                data: {
+                                        'action': 'stripe_payment_press__admin__update_config',
+                                        'config': objConfig
+                                    },
+                                method: 'post'
+                            }),
+                            me = this;
+
+                        $xhr.success(function(strData) {
+                                var objData = JSON.parse(strData);
+                                if (!objData || !objData['success']) return;
+
+                                me.set(objData['config']);
+                            });
+                    }
             }));
 
     });

@@ -98,6 +98,17 @@ require_once('StripePaymentPress_util.php');
 \add_shortcode('stripe-payment-press',
                '\\plugin_StripePaymentPress\\shortcode_stripe_payment_press');
 
+
+if (\is_admin()) {
+    \add_action(
+        'wp_ajax_stripe_payment_press__admin__get_config',
+        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__get_config');
+    \add_action(
+        'wp_ajax_stripe_payment_press__admin__update_config',
+        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__update_config');
+}
+
+
 function action_admin_enqueue_scripts($hook) {
     if ($hook != 'settings_page_' . SLUG_INFO_SETTINGS) return;
 
@@ -226,6 +237,8 @@ function action_admin_menu() {
             \submit_button();
         ?>
       </form>
+      <h2>Stripe Configuration:</h2>
+      <span data-plugin-stripe-payment-press-role='stripe-config'></span>
       <h2>Pending Transactions:</h2>
       <span data-plugin-stripe-payment-press-role='transactions-pending'></span>
       <h2>Charged Transactions:</h2>
@@ -265,6 +278,83 @@ function action_admin_print_footer_scripts() {
         });
 </script>
 <?php
+}
+
+function action_wp_ajax_stripe_payment_press__admin__get_config() {
+    /** Possible errors:
+     *      error__insufficient_permissions
+     */
+
+    $arrErrors = [];
+
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error__insufficient_permissions');
+    }
+
+    $objRet = ['errors'   => $arrErrors,
+               'success'  => (\count($arrErrors) == 0)];
+
+    if (\count($arrErrors) == 0) {
+        $objRet['config'] = ['stripe_key_live_secret'  => \get_option(
+                                                                SETTING__STRIPE_LIVE_SECRET_KEY),
+                             'stripe_key_live_publish' => \get_option(
+                                                                SETTING__STRIPE_LIVE_PUBLISH_KEY),
+                             'stripe_key_test_secret'  => \get_option(
+                                                                SETTING__STRIPE_TEST_SECRET_KEY),
+                             'stripe_key_test_publish' => \get_option(
+                                                                SETTING__STRIPE_TEST_PUBLISH_KEY)];
+    }
+
+    die(\json_encode($objRet));
+}
+
+function action_wp_ajax_stripe_payment_press__admin__update_config() {
+    /** Possible errors:
+     *      error__insufficient_permissions
+     *      error__wp__update_option
+     */
+
+    $arrErrors = [];
+
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error__insufficient_permissions');
+    }
+
+    if (\count($arrErrors) == 0) {
+        $objConfig = $_POST['config'];
+
+        if (array_key_exists('stripe_key_live_secret', $objConfig)) {
+            \update_option(SETTING__STRIPE_LIVE_SECRET_KEY, $objConfig['stripe_key_live_secret']);
+        }
+        if (array_key_exists('stripe_key_live_publish', $objConfig)) {
+            \update_option(SETTING__STRIPE_LIVE_PUBLISH_KEY,
+                           $objConfig['stripe_key_live_publish']);
+        }
+
+        if (array_key_exists('stripe_key_test_secret', $objConfig)) {
+            \update_option(SETTING__STRIPE_TEST_SECRET_KEY, $objConfig['stripe_key_test_secret']);
+        }
+        if (array_key_exists('stripe_key_test_publish', $objConfig)) {
+            \update_option(SETTING__STRIPE_TEST_PUBLISH_KEY,
+                           $objConfig['stripe_key_test_publish']);
+        }
+    }
+
+    $objRet = ['errors'   => $arrErrors,
+               'success'  => (\count($arrErrors) == 0)];
+
+    if (\count($arrErrors) == 0) {
+        $objRet['config'] = ['stripe_key_live_secret'  => \get_option(
+                                                                SETTING__STRIPE_LIVE_SECRET_KEY),
+                             'stripe_key_live_publish' => \get_option(
+                                                                SETTING__STRIPE_LIVE_PUBLISH_KEY),
+                             'stripe_key_test_secret'  => \get_option(
+                                                                SETTING__STRIPE_TEST_SECRET_KEY),
+                             'stripe_key_test_publish' => \get_option(
+                                                                SETTING__STRIPE_TEST_PUBLISH_KEY)];
+    }
+
+    die(\json_encode($objRet));
 }
 
 function action_wp_ajax_stripe_payment_press__charge() {

@@ -37,14 +37,21 @@ define(['jquery',
         'model_orig__app_common',
         'admin/collection_orig__transaction',
         'admin/model_orig__config',
+        'admin/view_agg__table__stripe_config',
         'admin/view_agg__table__transactions'
     ], function($,
                 model_orig__app_common,
                 collection_orig_transaction,
                 model_orig__config,
+                ViewAgg_Table_StripeConfig,
                 ViewAgg_Table_Transactions) {
 
         function _processSpansWithRoles(params) {
+
+            (new ViewAgg_Table_StripeConfig())
+                        .$el
+                        .appendTo($("span[data-plugin-stripe-payment-press-role=stripe-config]"));
+
 
             collection_orig_transaction.fetch();
 
