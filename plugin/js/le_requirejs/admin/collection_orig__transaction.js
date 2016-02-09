@@ -94,7 +94,7 @@ define(['backbone',
 
                 url: function() {
                         return model_orig__app_common.get('ajax_url') +
-                                                 '?action=stripe_payment_press__get_transactions';
+                                                 '?action=stripe_payment_press__admin__get_transactions';
                     }
             }));
 
