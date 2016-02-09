@@ -33,10 +33,10 @@
 (function(define) {
 
 
-define(['backbone',
+define(['admin/view_agg__tr__option',
         'jquery',
         'admin/model_orig__config'
-    ], function(backbone,
+    ], function(ViewAgg_Tr_Option,
                 $,
                 model_orig__config) {
 
@@ -44,9 +44,7 @@ define(['backbone',
         //  Widget 'ViewAgg_Tr_Option_String':
 
 
-        return backbone.View.extend({
-
-                tagName: 'tr',
+        return ViewAgg_Tr_Option.extend({
 
                 //  @param  params.field                The field in 'ModelOrig_Config' this widget
                 //                                      is associated with.
@@ -56,6 +54,8 @@ define(['backbone',
                 //  @param  params.prompt               The prompt for the 'Change' button.
                 //
                 initialize: function(params) {
+
+                        ViewAgg_Tr_Option.prototype.initialize.apply(this, arguments);
 
                         var $thButton  = $('<th>').appendTo(this.$el),
                             $thLabel   = $('<th>').attr('align', 'left')
