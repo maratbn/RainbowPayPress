@@ -53,6 +53,16 @@ define(['admin/view_agg__tr__option',
                 //
                 initialize: function(params) {
                         ViewAgg_Tr_Option.prototype.initialize.apply(this, arguments);
+
+                        $('<button>')
+                                .addClass('button button-secondary')
+                                .text("Toggle")
+                                .click(function() {
+                                        objConfig = {};
+                                        objConfig[params.field] = !model_orig__config
+                                                                               .get(params.field);
+                                        model_orig__config.doXhrUpdate(objConfig);
+                                    }).appendTo(this.get_$thButton());
                     },
 
                 _translateValue: function(strValue) {
