@@ -70,7 +70,9 @@ define(['backbone',
                             params.field) {
                             function _update() {
                                 var strValue = model_orig__config.get(params.field);
-                                $tdValue.text(strValue);
+                                $tdValue.text(this._translateValue
+                                                ? this._translateValue.call(this, strValue)
+                                                : strValue);
                             }
                             _update.call(this);
                             this.listenTo(model_orig__config, 'change:' + params.field, _update);
@@ -80,8 +82,9 @@ define(['backbone',
                         this.get_$thButton = function() {
                                 return $thButton;
                             };
-                    }
+                    },
 
+                _translateValue: null
             });
     });
 
