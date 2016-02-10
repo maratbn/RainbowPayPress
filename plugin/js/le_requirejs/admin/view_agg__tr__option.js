@@ -69,7 +69,8 @@ define(['backbone',
                         if (params &&
                             params.field) {
                             function _update() {
-                                $tdValue.text(model_orig__config.get(params.field));
+                                var strValue = model_orig__config.get(params.field);
+                                $tdValue.text(strValue);
                             }
                             _update.call(this);
                             this.listenTo(model_orig__config, 'change:' + params.field, _update);
