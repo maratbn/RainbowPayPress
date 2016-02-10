@@ -51,14 +51,14 @@ const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-StripePaymentPress';
 
 const SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS
                          = 'plugin_StripePaymentPress__setting__flag__enable_email_notifications';
-const SETTING__STRIPE_LIVE_PUBLISH_KEY =
-                                  'plugin_StripePaymentPress__setting__stripe_live_publish_key';
-const SETTING__STRIPE_LIVE_SECRET_KEY =
-                                   'plugin_StripePaymentPress__setting__stripe_live_secret_key';
-const SETTING__STRIPE_TEST_PUBLISH_KEY =
-                                  'plugin_StripePaymentPress__setting__stripe_test_publish_key';
-const SETTING__STRIPE_TEST_SECRET_KEY =
-                                   'plugin_StripePaymentPress__setting__stripe_test_secret_key';
+const SETTING__STRIPE_LIVE_PUBLISH_KEY
+                                  = 'plugin_StripePaymentPress__setting__stripe_live_publish_key';
+const SETTING__STRIPE_LIVE_SECRET_KEY
+                                   = 'plugin_StripePaymentPress__setting__stripe_live_secret_key';
+const SETTING__STRIPE_TEST_PUBLISH_KEY
+                                  = 'plugin_StripePaymentPress__setting__stripe_test_publish_key';
+const SETTING__STRIPE_TEST_SECRET_KEY
+                                   = 'plugin_StripePaymentPress__setting__stripe_test_secret_key';
 const SLUG_INFO_SETTINGS = 'plugin_StripePaymentPress_info_settings';
 
 require_once('StripePaymentPress_util.php');
