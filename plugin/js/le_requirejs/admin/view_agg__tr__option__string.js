@@ -63,19 +63,21 @@ define(['admin/view_agg__tr__option',
                             params.field &&
                             params.prompt) {
 
-                            $('<button>').addClass('button button-secondary')
-                                         .text("Change...").click(function() {
-                                    var strValNew = window.prompt(params.prompt,
-                                                                  model_orig__config
+                            $('<button>')
+                                .addClass('button button-secondary')
+                                .text("Change...")
+                                .click(function() {
+                                        var strValNew = window.prompt(params.prompt,
+                                                                      model_orig__config
                                                                                 .get(params.field)
-                                                                  || "");
-                                    if (!strValNew) return;
+                                                                      || "");
+                                        if (!strValNew) return;
 
-                                    var objConfig = {};
-                                    objConfig[params.field] = strValNew;
+                                        var objConfig = {};
+                                        objConfig[params.field] = strValNew;
 
-                                    model_orig__config.doXhrUpdate(objConfig);
-                                }).appendTo($thButton);
+                                        model_orig__config.doXhrUpdate(objConfig);
+                                    }).appendTo($thButton);
                         }
                     }
             });
