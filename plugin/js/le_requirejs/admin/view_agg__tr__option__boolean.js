@@ -33,12 +33,12 @@
 (function(define) {
 
 
-define(['admin/view_agg__tr__option',
-        'jquery',
-        'admin/model_orig__config'
-    ], function(ViewAgg_Tr_Option,
-                $,
-                model_orig__config) {
+define(['jquery',
+        'admin/model_orig__config',
+        'admin/view_agg__tr__option'
+    ], function($,
+                model_orig__config,
+                ViewAgg_Tr_Option) {
 
 
         //  Widget 'ViewAgg_Tr_Option_Boolean':
