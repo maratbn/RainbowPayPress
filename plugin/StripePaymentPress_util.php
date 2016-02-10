@@ -201,7 +201,8 @@ class FragmentUtil {
 
 class Util {
     static function getConfig() {
-        return ['flag_enable_email_notifications'
+        return ['email_notifications'     => \get_option(SETTING__EMAIL_NOTIFICATIONS),
+                'flag_enable_email_notifications'
                               => (\get_option(SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS) == 'true')
                                                                                           ? true
                                                                                           : false,

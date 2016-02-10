@@ -49,6 +49,7 @@ const IS_MODE_RELEASE = false;
 
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-StripePaymentPress';
 
+const SETTING__EMAIL_NOTIFICATIONS = 'plugin_StripePaymentPress__setting__email_notifications';
 const SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS
                          = 'plugin_StripePaymentPress__setting__flag__enable_email_notifications';
 const SETTING__STRIPE_LIVE_PUBLISH_KEY
@@ -404,6 +405,11 @@ function action_wp_ajax_stripe_payment_press__admin__update_config() {
 
     if (\count($arrErrors) == 0) {
         $objConfig = $_POST['config'];
+
+        if (array_key_exists('email_notifications', $objConfig)) {
+            \update_option(SETTING__EMAIL_NOTIFICATIONS,
+                           $objConfig['email_notifications']);
+        }
 
         if (array_key_exists('flag_enable_email_notifications', $objConfig)) {
             \update_option(SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS,

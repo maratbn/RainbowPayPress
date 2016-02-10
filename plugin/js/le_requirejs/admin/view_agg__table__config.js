@@ -64,6 +64,13 @@ define(['jquery',
                                          .appendTo(this.$el);
 
                         (new ViewAgg_Tr_Option_String({
+                                                field:   'email_notifications',
+                                                label:   "Email address to send notifications to:",
+                                                prompt:  "Enter new email address for notifications:"
+                                            })).$el
+                                         .appendTo(this.$el);
+
+                        (new ViewAgg_Tr_Option_String({
                                                 field:   'stripe_key_live_secret',
                                                 label:   "Stripe live secret key:",
                                                 prompt:  "Enter new Stripe live secret key:"

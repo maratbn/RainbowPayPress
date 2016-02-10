@@ -43,6 +43,7 @@ define(['backbone',
         return new (backbone.Model.extend({
 
                 defaults: {
+                        'email_notifications':              null,
                         'flag_enable_email_notifications':  false,
                         'stripe_key_live_secret':           null,
                         'stripe_key_live_publish':          null,
