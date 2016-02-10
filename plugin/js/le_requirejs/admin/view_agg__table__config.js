@@ -36,12 +36,12 @@
 define(['jquery',
         'view_agg__table',
         'admin/model_orig__config',
-        'admin/view_agg__tr__option',
+        'admin/view_agg__tr__option__boolean',
         'admin/view_agg__tr__option__string'
     ], function($,
                 ViewAgg_Table,
                 model_orig__config,
-                ViewAgg_Tr_Option,
+                ViewAgg_Tr_Option_Boolean,
                 ViewAgg_Tr_Option_String) {
 
         return ViewAgg_Table.extend({
@@ -57,7 +57,8 @@ define(['jquery',
 
                         this.$el.append($("<tr>").append($("<th>").append($buttonRefresh)));
 
-                        (new ViewAgg_Tr_Option({field:   'flag_enable_email_notifications',
+                        (new ViewAgg_Tr_Option_Boolean({
+                                                field:   'flag_enable_email_notifications',
                                                 label:   "Enable email notifications:"
                                             })).$el
                                          .appendTo(this.$el);
