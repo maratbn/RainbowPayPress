@@ -118,7 +118,7 @@ define(['backbone',
 
                         var type = model_orig__transaction.get('type');
 
-                        this.$el.append($('<td>').append($buttonDelete)
+                        this.$el.append($('<th>').append($buttonDelete)
                                                  .append($buttonCharge))
                                 .append($('<td>').text(type || ""))
                                 .append($('<td>').text(model_orig__transaction
