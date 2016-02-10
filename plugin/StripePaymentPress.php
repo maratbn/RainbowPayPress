@@ -405,6 +405,11 @@ function action_wp_ajax_stripe_payment_press__admin__update_config() {
     if (\count($arrErrors) == 0) {
         $objConfig = $_POST['config'];
 
+        if (array_key_exists('flag_enable_email_notifications', $objConfig)) {
+            \update_option(SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS,
+                           $objConfig['flag_enable_email_notifications']);
+        }
+
         if (array_key_exists('stripe_key_live_secret', $objConfig)) {
             \update_option(SETTING__STRIPE_LIVE_SECRET_KEY, $objConfig['stripe_key_live_secret']);
         }
