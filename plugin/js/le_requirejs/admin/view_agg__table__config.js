@@ -61,42 +61,42 @@ define(['jquery',
                                                 field:   'flag_enable_email_notifications',
                                                 label:   "Enable email notifications:"
                                             })).$el
-                                         .appendTo(this.$el);
+                                               .appendTo(this.$el);
 
                         (new ViewAgg_Tr_Option_String({
                                                 field:   'email_notifications',
                                                 label:   "Email address to send notifications to:",
                                                 prompt:  "Enter new email address for notifications:"
                                             })).$el
-                                         .appendTo(this.$el);
+                                               .appendTo(this.$el);
 
                         (new ViewAgg_Tr_Option_String({
                                                 field:   'stripe_key_live_secret',
                                                 label:   "Stripe live secret key:",
                                                 prompt:  "Enter new Stripe live secret key:"
                                             })).$el
-                                         .appendTo(this.$el);
+                                               .appendTo(this.$el);
 
                         (new ViewAgg_Tr_Option_String({
                                                 field:   'stripe_key_live_publish',
                                                 label:   "Stripe live publishable key:",
                                                 prompt:  "Enter new Stripe live publishable key:"
                                             })).$el
-                                         .appendTo(this.$el);
+                                               .appendTo(this.$el);
 
                         (new ViewAgg_Tr_Option_String({
                                                 field:   'stripe_key_test_secret',
                                                 label:   "Stripe test secret key:",
                                                 prompt:  "Enter new Stripe test secret key:"
                                             })).$el
-                                         .appendTo(this.$el);
+                                               .appendTo(this.$el);
 
                         (new ViewAgg_Tr_Option_String({
                                                 field:   'stripe_key_test_publish',
                                                 label:   "Stripe test publishable key:",
                                                 prompt:  "Enter new Stripe test publishable key:"
                                             })).$el
-                                         .appendTo(this.$el);
+                                               .appendTo(this.$el);
                     }
             });
 
