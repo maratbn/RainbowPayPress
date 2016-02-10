@@ -37,12 +37,14 @@ define(['jquery',
         'view_agg__table',
         'admin/model_orig__config',
         'admin/view_agg__tr__option__boolean',
-        'admin/view_agg__tr__option__string'
+        'admin/view_agg__tr__option__string',
+        'admin/view_agg__tr__option__string__email_notifications'
     ], function($,
                 ViewAgg_Table,
                 model_orig__config,
                 ViewAgg_Tr_Option_Boolean,
-                ViewAgg_Tr_Option_String) {
+                ViewAgg_Tr_Option_String,
+                ViewAgg_Tr_Option_String_EmailNotifications) {
 
         return ViewAgg_Table.extend({
 
@@ -63,11 +65,8 @@ define(['jquery',
                                             })).$el
                                                .appendTo(this.$el);
 
-                        (new ViewAgg_Tr_Option_String({
-                                                field:   'email_notifications',
-                                                label:   "Email address to send notifications to:",
-                                                prompt:  "Enter new email address for notifications:"
-                                            })).$el
+                        (new ViewAgg_Tr_Option_String_EmailNotifications())
+                                               .$el
                                                .appendTo(this.$el);
 
                         (new ViewAgg_Tr_Option_String({
