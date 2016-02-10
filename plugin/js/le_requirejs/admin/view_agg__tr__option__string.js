@@ -57,8 +57,6 @@ define(['admin/view_agg__tr__option',
 
                         ViewAgg_Tr_Option.prototype.initialize.apply(this, arguments);
 
-                        var $thButton  = this.get_$thButton();
-
                         if (params &&
                             params.field &&
                             params.prompt) {
@@ -77,7 +75,7 @@ define(['admin/view_agg__tr__option',
                                         objConfig[params.field] = strValNew;
 
                                         model_orig__config.doXhrUpdate(objConfig);
-                                    }).appendTo($thButton);
+                                    }).appendTo(this.get_$thButton());
                         }
                     }
             });
