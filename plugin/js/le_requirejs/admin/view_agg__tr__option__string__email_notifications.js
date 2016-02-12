@@ -87,7 +87,7 @@ define(['jquery',
                                                     }
 
                                                     window
-                                                      .alert("Test email sent successfully.");
+                                                      .alert("Test email sent successfully.  Make sure to check your SPAM folder for it, and to configure your SPAM filter to not filter it if it is there.");
                                                 });
                                         });
                     }
