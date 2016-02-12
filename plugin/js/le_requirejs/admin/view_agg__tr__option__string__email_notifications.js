@@ -71,7 +71,17 @@ define(['jquery',
                                             $xhr.success(function(strData) {
                                                     var objData = JSON.parse(strData);
                                                     if (!objData || !objData['success']) {
-                                                        var strNotice = "Test email was not sent.";
+                                                        var arrErrors = objData['errors'];
+                                                            strNotice = "Test email was not sent.";
+
+                                                        if (arrErrors) {
+                                                            if (arrErrors.indexOf('error__no_recipient') >= 0) {
+                                                                strNotice = "Test email was not sent because the recipient email address was not configured.";
+                                                            } else if (arrErrors.indexOf('error__wp_mail') >= 0) {
+                                                                strNotice += "  Your server may not be properly configured to send emails.  Make sure sendmail is properly installed and configured.";
+                                                            }
+                                                        }
+
                                                         window.alert(strNotice);
                                                         return;
                                                     }
