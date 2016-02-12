@@ -71,8 +71,9 @@ define(['jquery',
                                             $xhr.success(function(strData) {
                                                     var objData = JSON.parse(strData);
                                                     if (!objData || !objData['success']) {
+                                                        var strNotice = "Test email was not sent.";
                                                         window
-                                                           .alert("Test email was not sent.");
+                                                           .alert(strNotice);
                                                         return;
                                                     }
 
