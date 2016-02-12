@@ -33,8 +33,9 @@
 (function(define) {
 
 
-define(['admin/view_agg__tr__option__string'
-    ], function(ViewAgg_Tr_Option_String) {
+define(['jquery',
+        'admin/view_agg__tr__option__string'
+    ], function($, ViewAgg_Tr_Option_String) {
 
 
         //  Widget 'ViewAgg_Tr_Option_String_EmailNotifications':
@@ -49,6 +50,12 @@ define(['admin/view_agg__tr__option__string'
                                 label:   "Email address to send notifications to:",
                                 prompt:  "Enter new email address for notifications:"
                             });
+
+                        $('<button>')
+                                .addClass('button button-secondary')
+                                .text("Send test email")
+                                .appendTo($('<td>')
+                                                .appendTo(this.$el));
                     }
             });
     });
