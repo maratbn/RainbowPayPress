@@ -101,6 +101,9 @@ if (\is_admin()) {
         'wp_ajax_stripe_payment_press__admin__get_transactions',
         '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__get_transactions');
     \add_action(
+        'wp_ajax_stripe_payment_press__admin__send_test_email',
+        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__send_test_email');
+    \add_action(
         'wp_ajax_stripe_payment_press__admin__update_config',
         '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__update_config');
 }
@@ -389,6 +392,39 @@ function action_wp_ajax_stripe_payment_press__admin__get_transactions() {
     die(\json_encode(['success'       => (count($arrErrors) == 0),
                       'errors'        => $arrErrors,
                       'transactions'  => $arrTransactions]));
+}
+
+function action_wp_ajax_stripe_payment_press__admin__send_test_email() {
+    /** Possible errors:
+     *      error__insufficient_permissions
+     *      error__no_recipient
+     *      error__wp_mail
+     **/
+
+    $arrErrors = [];
+
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error__insufficient_permissions');
+    }
+
+    if (count($arrErrors) == 0) {
+        $strRecipient = \get_option(SETTING__EMAIL_NOTIFICATIONS);
+        if (\strlen($strRecipient) > 0) {
+            if (!\wp_mail(
+                    $strRecipient,
+                    "StripePaymentPress test email",
+                    "This is a test email.  This address is configured to receive notifications from the StripePaymentPress plugin installed onto WordPress website "
+                    .
+                    \get_site_url())) {
+                \array_push($arrErrors, 'error__wp_mail');
+            }
+        } else {
+            \array_push($arrErrors, 'error__no_recipient');
+        }
+    }
+
+    die(\json_encode(['success'       => (count($arrErrors) == 0),
+                      'errors'        => $arrErrors]));
 }
 
 function action_wp_ajax_stripe_payment_press__admin__update_config() {

@@ -34,8 +34,11 @@
 
 
 define(['jquery',
+        'model_orig__app_common',
         'admin/view_agg__tr__option__string'
-    ], function($, ViewAgg_Tr_Option_String) {
+    ], function($,
+                model_orig__app_common,
+                ViewAgg_Tr_Option_String) {
 
 
         //  Widget 'ViewAgg_Tr_Option_String_EmailNotifications':
@@ -55,7 +58,28 @@ define(['jquery',
                                 .addClass('button button-secondary')
                                 .text("Send test email")
                                 .appendTo($('<td>')
-                                                .appendTo(this.$el));
+                                                .appendTo(this.$el))
+                                .click(function() {
+                                            var $xhr = $.ajax(
+                                                model_orig__app_common.get('ajax_url'), {
+                                                    data: {
+                                                            'action': 'stripe_payment_press__admin__send_test_email'
+                                                        },
+                                                    method: 'post'
+                                                });
+
+                                            $xhr.success(function(strData) {
+                                                    var objData = JSON.parse(strData);
+                                                    if (!objData || !objData['success']) {
+                                                        window
+                                                           .alert("Test email was not sent.");
+                                                        return;
+                                                    }
+
+                                                    window
+                                                      .alert("Test email sent successfully.");
+                                                });
+                                        });
                     }
             });
     });
