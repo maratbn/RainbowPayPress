@@ -34,11 +34,9 @@
 
 
 define(['jquery',
-        'model_orig__app_common',
         'admin/view_agg__button__send_test_email',
         'admin/view_agg__tr__option__string'
     ], function($,
-                model_orig__app_common,
                 ViewAgg_Button_SendTestEmail,
                 ViewAgg_Tr_Option_String) {
 
@@ -59,38 +57,7 @@ define(['jquery',
                         (new ViewAgg_Button_SendTestEmail)
                                 .$el
                                 .appendTo($('<td>')
-                                                .appendTo(this.$el))
-                                .click(function() {
-                                            var $xhr = $.ajax(
-                                                model_orig__app_common.get('ajax_url'), {
-                                                    data: {
-                                                            'action': 'stripe_payment_press__admin__send_test_email'
-                                                        },
-                                                    method: 'post'
-                                                });
-
-                                            $xhr.success(function(strData) {
-                                                    var objData = JSON.parse(strData);
-                                                    if (!objData || !objData['success']) {
-                                                        var arrErrors = objData['errors'];
-                                                            strNotice = "Test email was not sent.";
-
-                                                        if (arrErrors) {
-                                                            if (arrErrors.indexOf('error__no_recipient') >= 0) {
-                                                                strNotice = "Test email was not sent because the recipient email address was not configured.";
-                                                            } else if (arrErrors.indexOf('error__wp_mail') >= 0) {
-                                                                strNotice += "  Your server may not be properly configured to send emails.  Make sure sendmail is properly installed and configured.";
-                                                            }
-                                                        }
-
-                                                        window.alert(strNotice);
-                                                        return;
-                                                    }
-
-                                                    window
-                                                      .alert("Test email sent successfully.  Make sure to check your SPAM folder for it, and to configure your SPAM filter to not filter it if it is there.");
-                                                });
-                                        });
+                                                .appendTo(this.$el));
                     }
             });
     });
