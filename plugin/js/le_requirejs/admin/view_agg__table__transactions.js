@@ -36,7 +36,10 @@ define(['jquery',
         'view_agg__table',
         'admin/collection_orig__transaction',
         'admin/view_agg__tr__transaction'
-    ], function ($, ViewAgg_Table, collection_orig__transaction, ViewAgg_Tr_Transaction) {
+    ], function($,
+                ViewAgg_Table,
+                collection_orig__transaction,
+                ViewAgg_Tr_Transaction) {
 
         return ViewAgg_Table.extend({
 
