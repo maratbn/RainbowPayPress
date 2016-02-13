@@ -36,7 +36,10 @@ define(['backbone',
         'jquery',
         'util',
         'admin/collection_orig__transaction'
-    ], function (backbone, $, util, collection_orig__transaction) {
+    ], function(backbone,
+                $,
+                util,
+                collection_orig__transaction) {
 
         function _getStripeUrlForCharge(type, stripe_charge_id) {
             if (!type || !stripe_charge_id) return null;
