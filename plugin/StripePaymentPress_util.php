@@ -203,13 +203,15 @@ class Util {
     static function getConfig() {
         return ['email_notifications'     => \get_option(SETTING__EMAIL_NOTIFICATIONS),
                 'flag_enable_email_notifications'
-                              => (\get_option(SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS) == 'true')
-                                                                                          ? true
-                                                                                          : false,
+                                          => Util::getFlagEnableEmailNotifications(),
                 'stripe_key_live_secret'  => \get_option(SETTING__STRIPE_LIVE_SECRET_KEY),
                 'stripe_key_live_publish' => \get_option(SETTING__STRIPE_LIVE_PUBLISH_KEY),
                 'stripe_key_test_secret'  => \get_option(SETTING__STRIPE_TEST_SECRET_KEY),
                 'stripe_key_test_publish' => \get_option(SETTING__STRIPE_TEST_PUBLISH_KEY)];
+    }
+
+    static function getFlagEnableEmailNotifications() {
+        return (\get_option(SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS) == 'true') ? true : false;
     }
 }
 ?>
