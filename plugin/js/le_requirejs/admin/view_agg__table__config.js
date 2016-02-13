@@ -71,7 +71,9 @@ define(['jquery',
 
                         $('<td>')
                             .attr('colspan', 3)
-                            .text("Make sure you have a mailing agent such as 'sendmail' configured properly on your server to send emails.")
+                            .append(
+                                $('<p>')
+                                    .text("Make sure you have a mailing agent such as 'sendmail' configured properly on your server to send emails."))
                             .appendTo($('<tr>').append('<th>')
                                                .appendTo(this.$el));
 
