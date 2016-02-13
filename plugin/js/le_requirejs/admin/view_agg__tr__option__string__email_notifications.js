@@ -35,11 +35,11 @@
 
 define(['jquery',
         'model_orig__app_common',
-        'admin/view_agg__button',
+        'admin/view_agg__button__send_test_email',
         'admin/view_agg__tr__option__string'
     ], function($,
                 model_orig__app_common,
-                ViewAgg_Button,
+                ViewAgg_Button_SendTestEmail,
                 ViewAgg_Tr_Option_String) {
 
 
@@ -56,9 +56,8 @@ define(['jquery',
                                 prompt:  "Enter new email address for notifications:"
                             });
 
-                        (new ViewAgg_Button)
+                        (new ViewAgg_Button_SendTestEmail)
                                 .$el
-                                .text("Send test email")
                                 .appendTo($('<td>')
                                                 .appendTo(this.$el))
                                 .click(function() {
