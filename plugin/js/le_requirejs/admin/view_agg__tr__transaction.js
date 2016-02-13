@@ -35,11 +35,13 @@
 define(['backbone',
         'jquery',
         'util',
-        'admin/collection_orig__transaction'
+        'admin/collection_orig__transaction',
+        'admin/view_agg__button'
     ], function(backbone,
                 $,
                 util,
-                collection_orig__transaction) {
+                collection_orig__transaction,
+                ViewAgg_Button) {
 
         function _getStripeUrlForCharge(type, stripe_charge_id) {
             if (!type || !stripe_charge_id) return null;
@@ -86,7 +88,8 @@ define(['backbone',
                         var flagExcludeCharged       = params.flag_exclude_charged,
                             model_orig__transaction  = params.model_orig__transaction;
 
-                        var $buttonDelete = $('<button>').addClass('button button-secondary')
+                        var $buttonDelete = (new ViewAgg_Button)
+                                                         .$el
                                                          .text("Delete"),
                             strChargeAmount = util.formatCurrency(model_orig__transaction
                                                                            .get('charge_amount'));
@@ -108,7 +111,8 @@ define(['backbone',
 
                         var $buttonCharge = model_orig__transaction.get('charged')
                                           ? null
-                                          : $('<button>').addClass('button button-secondary')
+                                          : (new ViewAgg_Button)
+                                                         .$el
                                                          .text("Charge");
 
                         if ($buttonCharge) {

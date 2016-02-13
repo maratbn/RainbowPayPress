@@ -35,9 +35,11 @@
 
 define(['jquery',
         'admin/model_orig__config',
+        'admin/view_agg__button',
         'admin/view_agg__tr__option'
     ], function($,
                 model_orig__config,
+                ViewAgg_Button,
                 ViewAgg_Tr_Option) {
 
 
@@ -54,8 +56,8 @@ define(['jquery',
                 initialize: function(params) {
                         ViewAgg_Tr_Option.prototype.initialize.apply(this, arguments);
 
-                        $('<button>')
-                                .addClass('button button-secondary')
+                        (new ViewAgg_Button)
+                                .$el
                                 .text("Toggle")
                                 .click(function() {
                                         objConfig = {};

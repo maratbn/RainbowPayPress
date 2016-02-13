@@ -35,10 +35,12 @@
 define(['jquery',
         'view_agg__table',
         'admin/collection_orig__transaction',
+        'admin/view_agg__button',
         'admin/view_agg__tr__transaction'
     ], function($,
                 ViewAgg_Table,
                 collection_orig__transaction,
+                ViewAgg_Button,
                 ViewAgg_Tr_Transaction) {
 
         return ViewAgg_Table.extend({
@@ -54,8 +56,8 @@ define(['jquery',
 
                         this.$el.addClass('widget_view_agg__table__transactions');
 
-                        ($('<tr>').append($('<th>').append($('<button>')
-                                                              .addClass('button button-secondary')
+                        ($('<tr>').append($('<th>').append((new ViewAgg_Button)
+                                                              .$el
                                                               .click(
                                                                 function() {
                                                                   collection_orig__transaction

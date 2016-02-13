@@ -36,12 +36,14 @@
 define(['jquery',
         'view_agg__table',
         'admin/model_orig__config',
+        'admin/view_agg__button',
         'admin/view_agg__tr__option__boolean',
         'admin/view_agg__tr__option__string',
         'admin/view_agg__tr__option__string__email_notifications'
     ], function($,
                 ViewAgg_Table,
                 model_orig__config,
+                ViewAgg_Button,
                 ViewAgg_Tr_Option_Boolean,
                 ViewAgg_Tr_Option_String,
                 ViewAgg_Tr_Option_String_EmailNotifications) {
@@ -66,7 +68,8 @@ define(['jquery',
 
                 initialize: function() {
 
-                        var $buttonRefresh = $("<button>").addClass('button button-secondary')
+                        var $buttonRefresh = (new ViewAgg_Button)
+                                                          .$el
                                                           .text("Refresh");
 
                         $buttonRefresh.click(function() {

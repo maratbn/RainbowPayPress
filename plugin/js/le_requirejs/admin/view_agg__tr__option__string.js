@@ -35,10 +35,12 @@
 
 define(['admin/view_agg__tr__option',
         'jquery',
-        'admin/model_orig__config'
+        'admin/model_orig__config',
+        'admin/view_agg__button'
     ], function(ViewAgg_Tr_Option,
                 $,
-                model_orig__config) {
+                model_orig__config,
+                ViewAgg_Button) {
 
 
         //  Widget 'ViewAgg_Tr_Option_String':
@@ -61,8 +63,8 @@ define(['admin/view_agg__tr__option',
                             params.field &&
                             params.prompt) {
 
-                            $('<button>')
-                                .addClass('button button-secondary')
+                            (new ViewAgg_Button)
+                                .$el
                                 .text("Change...")
                                 .click(function() {
                                         var strValNew = window.prompt(params.prompt,
