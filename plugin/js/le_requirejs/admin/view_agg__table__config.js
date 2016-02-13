@@ -46,6 +46,22 @@ define(['jquery',
                 ViewAgg_Tr_Option_String,
                 ViewAgg_Tr_Option_String_EmailNotifications) {
 
+
+        function _get_$ulWithURLs(arrURLs) {
+            var $ul = $('<ul>');
+
+            for (var i = 0; i < arrURLs.length; i++) {
+                var strURL = arrURLs[i];
+
+                $ul.append($('<li>').append($('<a>').attr('href', strURL)
+                                                    .attr('target', '_blank')
+                                                    .text(strURL)));
+            }
+
+            return $ul;
+        }
+
+
         return ViewAgg_Table.extend({
 
                 initialize: function() {
@@ -77,17 +93,11 @@ define(['jquery',
                             .append(
                                 $('<p>')
                                     .text("If you're using 'sendmail', and sending email is taking a strangely long time, and you see an error in '/var/log/mail.err' that says 'My unqualified host name ([hostname]) unknown; sleeping for retry', then read this:")
-                                    .append($('<ul>')
-                                                .append($('<li>')
-                                                            .append($('<a>')
-                                                                        .attr('href', 'http://forum.linuxcareer.com/threads/1697-Sendmail-quot-unqualified-hostname-unknown-sleeping-for-retry-unqualified-hostname')
-                                                                        .attr('target', '_blank')
-                                                                        .text('http://forum.linuxcareer.com/threads/1697-Sendmail-quot-unqualified-hostname-unknown-sleeping-for-retry-unqualified-hostname')))
-                                                .append($('<li>')
-                                                            .append($('<a>')
-                                                                        .attr('href', 'http://forums.fedoraforum.org/archive/index.php/t-85365.html')
-                                                                        .attr('target', '_blank')
-                                                                        .text('http://forums.fedoraforum.org/archive/index.php/t-85365.html')))))
+                                    .append(
+                                        _get_$ulWithURLs([
+                                                'http://forum.linuxcareer.com/threads/1697-Sendmail-quot-unqualified-hostname-unknown-sleeping-for-retry-unqualified-hostname',
+                                                'http://forums.fedoraforum.org/archive/index.php/t-85365.html'
+                                            ])))
                             .appendTo($('<tr>').append('<th>')
                                                .appendTo(this.$el));
 
