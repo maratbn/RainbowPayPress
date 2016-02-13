@@ -69,6 +69,12 @@ define(['jquery',
                                                .$el
                                                .appendTo(this.$el);
 
+                        $('<td>')
+                            .attr('colspan', 3)
+                            .text("Make sure you have a mailing agent such as 'sendmail' configured properly on your server to send emails.")
+                            .appendTo($('<tr>').append('<th>')
+                                               .appendTo(this.$el));
+
                         (new ViewAgg_Tr_Option_String({
                                                 field:   'stripe_key_live_secret',
                                                 label:   "Stripe live secret key:",
