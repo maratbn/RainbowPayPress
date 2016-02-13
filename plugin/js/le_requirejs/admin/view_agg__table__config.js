@@ -74,6 +74,20 @@ define(['jquery',
                             .append(
                                 $('<p>')
                                     .text("Make sure you have a mailing agent such as 'sendmail' configured properly on your server to send emails."))
+                            .append(
+                                $('<p>')
+                                    .text("If you're using 'sendmail', and sending email is taking a strangely long time, and you see an error in '/var/log/mail.err' that says 'My unqualified host name ([hostname]) unknown; sleeping for retry', then read this:")
+                                    .append($('<ul>')
+                                                .append($('<li>')
+                                                            .append($('<a>')
+                                                                        .attr('href', 'http://forum.linuxcareer.com/threads/1697-Sendmail-quot-unqualified-hostname-unknown-sleeping-for-retry-unqualified-hostname')
+                                                                        .attr('target', '_blank')
+                                                                        .text('http://forum.linuxcareer.com/threads/1697-Sendmail-quot-unqualified-hostname-unknown-sleeping-for-retry-unqualified-hostname')))
+                                                .append($('<li>')
+                                                            .append($('<a>')
+                                                                        .attr('href', 'http://forums.fedoraforum.org/archive/index.php/t-85365.html')
+                                                                        .attr('target', '_blank')
+                                                                        .text('http://forums.fedoraforum.org/archive/index.php/t-85365.html')))))
                             .appendTo($('<tr>').append('<th>')
                                                .appendTo(this.$el));
 
