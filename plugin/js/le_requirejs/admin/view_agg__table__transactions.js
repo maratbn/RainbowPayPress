@@ -97,7 +97,7 @@ define(['jquery',
                                     new ViewAgg_Tr_Transaction({
                                                 flag_exclude_charged:     flagExcludeCharged,
                                                 model_orig__transaction:  model_orig__transaction
-                                            })).$el.appendTo($tbody);
+                                            })).$el.prependTo($tbody);
                             });
 
                         this.listenTo(
@@ -142,7 +142,7 @@ define(['jquery',
                                     new ViewAgg_Tr_Transaction({
                                                 flag_exclude_charged:     flagExcludeCharged,
                                                 model_orig__transaction:  model_orig__transaction
-                                            })).$el.appendTo($tbody);
+                                            })).$el.prependTo($tbody);
                             });
                     }
             });
