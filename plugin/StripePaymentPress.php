@@ -134,7 +134,7 @@ function action_admin_enqueue_scripts($hook) {
 
 function action_admin_menu() {
     \add_plugins_page(
-        \__('StripePaymentPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+        \__('StripePaymentPress Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
         \__('StripePaymentPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
         'manage_options',
         SLUG_ROOT,
