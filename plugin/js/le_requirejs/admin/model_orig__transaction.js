@@ -33,10 +33,7 @@
 (function(define) {
 
 
-define(['backbone',
-        'jquery',
-        'model_orig__app_common'
-    ], function (backbone, $, model_orig__app_common) {
+define(['backbone'], function (backbone) {
 
         return backbone.Model.extend({
 
