@@ -155,49 +155,7 @@ function action_admin_menu() {
         }
     ?>
     <div class="wrap">
-      <h2>Usage Info:</h2>
-      <p>Use the shortcode
-         <code>[stripe-payment-press type='<span style='color:red'>live</span>' amount=1234 name="My entity" desc="Buy this" label="Click to buy"]</code>
-         to embed a Stripe payment widget on
-         any page or post.
-      </p>
-      <p>
-        <h5>Required shortcode attributes:</h5>
-        <ul>
-          <li>
-            <code>amount</code>
-            <p>The amount to charge in cents.</p>
-          </li>
-          <li>
-            <code>name</code>
-            <p>Your site / company / organization name.</p>
-          </li>
-          <li>
-            <code>desc</code>
-            <p>Description of the product / service / fee you're charging for.</p>
-          </li>
-        </ul>
-        <h5>Optional shortcode attributes:</h5>
-        <ul>
-          <li>
-            <code style='color:red'>type</code>
-            <p>Stripe transaction type, either 'test' or 'live'.  Test by default.  Test
-               transactions are for testing only, live transactions can be used to charge a real
-               credit card.
-               <b>This attribute is optional; however, if it is not explicitly set to
-                  <code style='color:red'>live</code>, then no real credit card can be charged.
-               </b></p>
-          </li>
-          <li>
-            <code>info</code>
-            <p>Miscellaneous additional information for the user.</p>
-          </li>
-          <li>
-            <code>label</code>
-            <p>Stripe payment button label, otherwise defaults to "Pay with card" or similar.</p>
-          </li>
-        </ul>
-      </p>
+      <?php FragmentUtil::renderAdmin_UsageInfo(); ?>
       <h2>Configuration:</h2>
       <span data-plugin-stripe-payment-press-role='app-config'></span>
       <h2>Pending Transactions:</h2>
