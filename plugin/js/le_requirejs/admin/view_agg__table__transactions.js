@@ -77,6 +77,7 @@ define(['jquery',
                                   .append(flagExcludeCharged ? null : $('<th>').text("Charge ID:"))
                                   .appendTo($('<thead>').appendTo(this.$el));
 
+
                         var mapViewAgg_Tr_Transaction = {};
 
                         this.listenTo(
