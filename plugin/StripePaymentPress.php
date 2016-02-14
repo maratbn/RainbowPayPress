@@ -68,7 +68,6 @@ require_once('StripePaymentPress_util.php');
 
 \add_action('admin_enqueue_scripts',
             '\\plugin_StripePaymentPress\\action_admin_enqueue_scripts');
-\add_action('admin_menu', '\\plugin_StripePaymentPress\\action_admin_menu');
 \add_action('admin_print_footer_scripts',
             '\\plugin_StripePaymentPress\\action_admin_print_footer_scripts');
 \add_action('wp_ajax_stripe_payment_press__submit',
@@ -88,6 +87,9 @@ require_once('StripePaymentPress_util.php');
 
 
 if (\is_admin()) {
+    \add_action(
+        'admin_menu',
+        '\\plugin_StripePaymentPress\\action_admin_menu');
     \add_action(
         'wp_ajax_stripe_payment_press__admin__charge',
         '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__charge');
