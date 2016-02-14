@@ -75,7 +75,7 @@ define(['jquery',
                                   .append($('<th>').text("Customer phone:"))
                                   .append(flagExcludeCharged ? null : $('<th>').text("Customer ID:"))
                                   .append(flagExcludeCharged ? null : $('<th>').text("Charge ID:"))
-                                  .appendTo(this.$el);
+                                  .appendTo($('<thead>').appendTo(this.$el));
 
                         var mapViewAgg_Tr_Transaction = {};
 
