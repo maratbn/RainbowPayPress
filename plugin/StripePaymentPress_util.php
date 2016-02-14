@@ -167,6 +167,23 @@ class FragmentUtil {
     <?php
     }
 
+    static function renderAdmin_Root() {
+        //  Based on http://codex.wordpress.org/Administration_Menus
+        if (!\current_user_can('manage_options' ))  {
+            \wp_die(__('You do not have sufficient permissions to access this page.',
+                       DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS));
+        }
+    ?>
+    <div class="wrap">
+      <?php
+          FragmentUtil::renderAdmin_UsageInfo();
+          FragmentUtil::renderAdmin_Configuration();
+          FragmentUtil::renderAdmin_Transactions();
+      ?>
+    </div>
+    <?php
+    }
+
     static function renderAdmin_Transactions() {
     ?>
     <h2>Pending Transactions:</h2>

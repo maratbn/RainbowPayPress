@@ -138,31 +138,14 @@ function action_admin_menu() {
         \__('StripePaymentPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
         'manage_options',
         SLUG_ROOT,
-        '\\plugin_StripePaymentPress\\render_info_settings');
+        '\\plugin_StripePaymentPress\\FragmentUtil::renderAdmin_Root');
 
     \add_options_page(
         \__('StripePaymentPress Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
         \__('StripePaymentPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
         'manage_options',
         SLUG_INFO_SETTINGS,
-        '\\plugin_StripePaymentPress\\render_info_settings');
-
-    function render_info_settings() {
-        //  Based on http://codex.wordpress.org/Administration_Menus
-        if (!\current_user_can('manage_options' ))  {
-            \wp_die(__('You do not have sufficient permissions to access this page.',
-                       DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS));
-        }
-    ?>
-    <div class="wrap">
-      <?php
-          FragmentUtil::renderAdmin_UsageInfo();
-          FragmentUtil::renderAdmin_Configuration();
-          FragmentUtil::renderAdmin_Transactions();
-      ?>
-    </div>
-    <?php
-    }
+        '\\plugin_StripePaymentPress\\FragmentUtil::renderAdmin_Root');
 }
 
 function action_admin_print_footer_scripts() {
