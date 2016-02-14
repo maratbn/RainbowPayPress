@@ -158,11 +158,8 @@ function action_admin_menu() {
       <?php
           FragmentUtil::renderAdmin_UsageInfo();
           FragmentUtil::renderAdmin_Configuration();
+          FragmentUtil::renderAdmin_Transactions();
       ?>
-      <h2>Pending Transactions:</h2>
-      <span data-plugin-stripe-payment-press-role='transactions-pending'></span>
-      <h2>Charged Transactions:</h2>
-      <span data-plugin-stripe-payment-press-role='transactions-charged'></span>
     </div>
     <?php
     }
