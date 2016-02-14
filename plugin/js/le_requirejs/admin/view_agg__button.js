@@ -52,6 +52,10 @@ define(['backbone'], function(backbone) {
                         this.$el.click(function(dataEventClick) {
                                 me.trigger('click', dataEventClick);
                             });
+                    },
+
+                setDisabled: function(flagDisabled) {
+                        this.$el.prop('disabled', flagDisabled);
                     }
             });
     });

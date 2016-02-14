@@ -54,15 +54,20 @@ define(['jquery',
                         this.on(
                             'click',
                             function() {
+                                    this.setDisabled(true);
+
                                     var $xhr = $.ajax(
                                         model_orig__app_common.get('ajax_url'), {
                                             data: {
                                                     'action': 'stripe_payment_press__admin__send_test_email'
                                                 },
                                             method: 'post'
-                                        });
+                                        }),
+                                        me = this;
 
                                     $xhr.success(function(strData) {
+                                            me.setDisabled(false);
+
                                             var objData = JSON.parse(strData);
                                             if (!objData || !objData['success']) {
                                                 var arrErrors = objData['errors'];
