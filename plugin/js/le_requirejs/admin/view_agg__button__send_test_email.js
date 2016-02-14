@@ -58,6 +58,7 @@ define(['jquery',
                             'click',
                             function() {
                                     this.setDisabled(true);
+                                    this.$el.text("Sending test email.  Please wait...");
 
                                     var $xhr = $.ajax(
                                         model_orig__app_common.get('ajax_url'), {
@@ -70,6 +71,7 @@ define(['jquery',
 
                                     $xhr.success(function(strData) {
                                             me.setDisabled(false);
+                                            me.$el.text(strCaptionDoSend);
 
                                             var objData = JSON.parse(strData);
                                             if (!objData || !objData['success']) {
