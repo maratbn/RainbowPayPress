@@ -45,6 +45,13 @@ define(['backbone'], function(backbone) {
 
                 initialize: function() {
                         this.$el.addClass('button button-secondary');
+
+
+                        var me = this;
+
+                        this.$el.click(function(dataEventClick) {
+                                me.trigger('click', dataEventClick);
+                            });
                     }
             });
     });
