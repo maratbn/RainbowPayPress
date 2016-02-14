@@ -141,7 +141,7 @@ class DBUtil {
                                           customer_phone,
                                           stripe_customer_id,
                                           stripe_charge_id
-                                     FROM $strTableName", ARRAY_A);
+                                     FROM $strTableName ORDER BY charged, created", ARRAY_A);
     }
 
     static function updateTransactionAsCharged($id, $stripe_customer_id, $stripe_charge_id) {
