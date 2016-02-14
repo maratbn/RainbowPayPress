@@ -44,12 +44,15 @@ define(['jquery',
         //  Widget 'ViewAgg_Button_SendTestEmail':
 
 
+        var strCaptionDoSend = "Send test email";
+
+
         return ViewAgg_Button.extend({
 
                 initialize: function() {
                         ViewAgg_Button.prototype.initialize.apply(this, arguments);
 
-                        this.$el.text("Send test email");
+                        this.$el.text(strCaptionDoSend);
 
                         this.on(
                             'click',
