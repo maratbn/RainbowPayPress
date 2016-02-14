@@ -160,6 +160,13 @@ class DBUtil {
 }
 
 class FragmentUtil {
+    static function renderAdmin_Configuration() {
+    ?>
+    <h2>Configuration:</h2>
+    <span data-plugin-stripe-payment-press-role='app-config'></span>
+    <?php
+    }
+
     static function renderAdmin_UsageInfo() {
     ?>
     <h2>Usage Info:</h2>
