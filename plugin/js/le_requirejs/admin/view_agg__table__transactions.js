@@ -78,7 +78,8 @@ define(['jquery',
                                   .appendTo($('<thead>').appendTo(this.$el));
 
 
-                        var mapViewAgg_Tr_Transaction = {};
+                        var $tbody                     = $('<tbody>').appendTo(this.$el),
+                            mapViewAgg_Tr_Transaction  = {};
 
                         this.listenTo(
                             collection_orig__transaction,
@@ -96,7 +97,7 @@ define(['jquery',
                                     new ViewAgg_Tr_Transaction({
                                                 flag_exclude_charged:     flagExcludeCharged,
                                                 model_orig__transaction:  model_orig__transaction
-                                            })).$el.appendTo(this.$el);
+                                            })).$el.appendTo($tbody);
                             });
 
                         this.listenTo(
@@ -141,7 +142,7 @@ define(['jquery',
                                     new ViewAgg_Tr_Transaction({
                                                 flag_exclude_charged:     flagExcludeCharged,
                                                 model_orig__transaction:  model_orig__transaction
-                                            })).$el.appendTo(this.$el);
+                                            })).$el.appendTo($tbody);
                             });
                     }
             });
