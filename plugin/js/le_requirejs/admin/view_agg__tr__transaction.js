@@ -128,12 +128,12 @@ define(['backbone',
                         this.$el.append($('<th>').append($buttonDelete)
                                                  .append($buttonCharge))
                                 .append($('<td>').text(type || ""))
-                                .append($('<td>').text(model_orig__transaction
-                                                                    .get('created') || ""))
                                 .append(flagExcludeCharged
                                         ? null
                                         : $('<td>').text(model_orig__transaction
                                                                     .get('charged') || ""))
+                                .append($('<td>').text(model_orig__transaction
+                                                                    .get('created') || ""))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('charge_description') ||
                                                                                               ""))
