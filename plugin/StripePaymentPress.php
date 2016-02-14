@@ -131,12 +131,12 @@ function action_admin_enqueue_scripts($hook) {
 }
 
 function action_admin_menu() {
-    \add_options_page(\__('StripePaymentPress Info / Settings',
-                          DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                      \__('StripePaymentPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                      'manage_options',
-                      SLUG_INFO_SETTINGS,
-                      '\\plugin_StripePaymentPress\\render_info_settings');
+    \add_options_page(
+        \__('StripePaymentPress Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+        \__('StripePaymentPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+        'manage_options',
+        SLUG_INFO_SETTINGS,
+        '\\plugin_StripePaymentPress\\render_info_settings');
 
     function render_info_settings() {
         //  Based on http://codex.wordpress.org/Administration_Menus
