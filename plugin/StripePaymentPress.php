@@ -455,61 +455,61 @@ function action_wp_ajax_stripe_payment_press__submit() {
         $strRecipient = \get_option(SETTING__EMAIL_NOTIFICATIONS);
         if (\strlen($strRecipient) > 0) {
             \wp_mail(
-                    $strRecipient,
-                    'StripePaymentPress new pending transaction submitted',
-                    'New pending transaction has been submitted via the StripePaymentPress plugin installed onto WordPress website '
-                    .
-                    \get_site_url()
-                    .
-                    "\r\n"
-                    .
-                    "\r\n"
-                    .
-                    'Stripe transaction type:'
-                    .
-                    "\r\n"
-                    .
-                    $strType
-                    .
-                    "\r\n"
-                    .
-                    "\r\n"
-                    .
-                    'Charge:'
-                    .
-                    "\r\n"
-                    .
-                    $strChargeDescription
-                    .
-                    ' -- '
-                    .
-                    $strProductCost
-                    .
-                    "\r\n"
-                    .
-                    "\r\n"
-                    .
-                    'Customer:'
-                    .
-                    "\r\n"
-                    .
-                    $strStripeEmail
-                    .
-                    ' -- '
-                    .
-                    $strCustomerName
-                    .
-                    ' -- '
-                    .
-                    $strCustomerPhone
-                    .
-                    "\r\n"
-                    .
-                    "\r\n"
-                    .
-                    'View / charge / delete this transaction at '
-                    .
-                    getUrlInfoSettings());
+                $strRecipient,
+                'StripePaymentPress new pending transaction submitted',
+                'New pending transaction has been submitted via the StripePaymentPress plugin installed onto WordPress website '
+                .
+                \get_site_url()
+                .
+                "\r\n"
+                .
+                "\r\n"
+                .
+                'Stripe transaction type:'
+                .
+                "\r\n"
+                .
+                $strType
+                .
+                "\r\n"
+                .
+                "\r\n"
+                .
+                'Charge:'
+                .
+                "\r\n"
+                .
+                $strChargeDescription
+                .
+                ' -- '
+                .
+                $strProductCost
+                .
+                "\r\n"
+                .
+                "\r\n"
+                .
+                'Customer:'
+                .
+                "\r\n"
+                .
+                $strStripeEmail
+                .
+                ' -- '
+                .
+                $strCustomerName
+                .
+                ' -- '
+                .
+                $strCustomerPhone
+                .
+                "\r\n"
+                .
+                "\r\n"
+                .
+                'View / charge / delete this transaction at '
+                .
+                getUrlInfoSettings());
         }
     }
 
