@@ -456,7 +456,8 @@ function action_wp_ajax_stripe_payment_press__submit() {
         if (\strlen($strRecipient) > 0) {
             \wp_mail(
                 $strRecipient,
-                'StripePaymentPress new pending transaction submitted',
+                \__('StripePaymentPress new pending transaction submitted',
+                    DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                 'New pending transaction has been submitted via the StripePaymentPress plugin installed onto WordPress website '
                 .
                 \get_site_url()
