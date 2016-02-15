@@ -459,7 +459,8 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 \__('StripePaymentPress new pending transaction submitted',
                     DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                 \sprintf(
-                    'New pending transaction has been submitted via the StripePaymentPress plugin installed onto WordPress website %s',
+                    \__('New pending transaction has been submitted via the StripePaymentPress plugin installed onto WordPress website %s',
+                        DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                     \get_site_url())
                 .
                 "\r\n"
