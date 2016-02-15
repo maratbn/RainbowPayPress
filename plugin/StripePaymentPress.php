@@ -47,6 +47,8 @@ const PLUGIN_VERSION = '0.7.0-development_unreleased';
 const IS_MODE_RELEASE = false;
 
 
+const PHP_VERSION_MIN_SUPPORTED = '5.4';
+
 const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-StripePaymentPress';
 
 const SETTING__EMAIL_NOTIFICATIONS = 'plugin_StripePaymentPress__setting__email_notifications';
@@ -578,6 +580,17 @@ function getUrlInfoSettings() {
 }
 
 function plugin_activation_hook() {
+
+    if (\version_compare(\strtolower(PHP_VERSION), PHP_VERSION_MIN_SUPPORTED, '<')) {
+        \wp_die(
+            \sprintf(
+                \__('StripePaymentPress plugin cannot be activated because the currently active PHP version on this server is %s < %s and not supported.  PHP version >= %s is required.',
+                    DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                PHP_VERSION,
+                PHP_VERSION_MIN_SUPPORTED,
+                PHP_VERSION_MIN_SUPPORTED));
+    }
+
     DBUtil::initializeTable_Transactions();
 }
 
