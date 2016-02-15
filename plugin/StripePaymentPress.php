@@ -510,7 +510,8 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 "\r\n"
                 .
                 \sprintf(
-                    'View / charge / delete this transaction at %s',
+                    \__('View / charge / delete this transaction at %s',
+                        DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                     getUrlInfoSettings()));
         }
     }
