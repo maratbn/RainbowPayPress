@@ -162,7 +162,7 @@ class DBUtil {
 class FragmentUtil {
     static function renderAdmin_Configuration() {
     ?>
-    <h2>Configuration:</h2>
+    <h2><?=\__('Configuration:', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)?></h2>
     <span data-plugin-stripe-payment-press-role='app-config'></span>
     <?php
     }
@@ -186,16 +186,16 @@ class FragmentUtil {
 
     static function renderAdmin_Transactions() {
     ?>
-    <h2>Pending Transactions:</h2>
+    <h2><?=\__('Pending Transactions:', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)?></h2>
     <span data-plugin-stripe-payment-press-role='transactions-pending'></span>
-    <h2>Charged Transactions:</h2>
+    <h2><?=\__('Charged Transactions:', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)?></h2>
     <span data-plugin-stripe-payment-press-role='transactions-charged'></span>
     <?php
     }
 
     static function renderAdmin_UsageInfo() {
     ?>
-    <h2>Usage Info:</h2>
+    <h2><?=\__('Usage Info:', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)?></h2>
     <p>Use the shortcode
        <code>[stripe-payment-press type='<span style='color:red'>live</span>' amount=1234 name="My entity" desc="Buy this" label="Click to buy"]</code>
        to embed a Stripe payment widget on
