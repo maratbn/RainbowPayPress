@@ -281,6 +281,13 @@ class FragmentUtil {
 }
 
 class Util {
+    static function formatUSD($amountInCents) {
+        $dollars  = \floor($amountInCents / 100);
+        $cents    = $amountInCents % 100;
+
+        return '$' . \number_format($dollars) . '.' . \str_pad($cents, 2, '0', \STR_PAD_LEFT);
+    }
+
     static function getConfig() {
         return ['email_notifications'     => \get_option(SETTING__EMAIL_NOTIFICATIONS),
                 'flag_enable_email_notifications'

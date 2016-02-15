@@ -487,7 +487,7 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 .
                 ' -- '
                 .
-                $strProductCost
+                Util::formatUSD($strProductCost)
                 .
                 "\r\n"
                 .
