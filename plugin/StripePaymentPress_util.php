@@ -170,8 +170,8 @@ class FragmentUtil {
     static function renderAdmin_Root() {
         //  Based on http://codex.wordpress.org/Administration_Menus
         if (!\current_user_can('manage_options' ))  {
-            \wp_die(__('You do not have sufficient permissions to access this page.',
-                       DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS));
+            \wp_die(\__('You do not have sufficient permissions to access this page.',
+                        DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS));
         }
     ?>
     <div class="wrap">
