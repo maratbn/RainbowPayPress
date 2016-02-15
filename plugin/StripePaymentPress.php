@@ -61,7 +61,7 @@ const SETTING__STRIPE_TEST_PUBLISH_KEY
 const SETTING__STRIPE_TEST_SECRET_KEY
                                    = 'plugin_StripePaymentPress__setting__stripe_test_secret_key';
 
-const SLUG_INFO_SETTINGS = 'plugin_StripePaymentPress_root';
+const SLUG_INFO_SETTINGS = 'plugin_StripePaymentPress_admin';
 
 require_once('StripePaymentPress_util.php');
 
