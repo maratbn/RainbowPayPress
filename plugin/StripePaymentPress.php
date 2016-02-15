@@ -360,7 +360,8 @@ function action_wp_ajax_stripe_payment_press__admin__send_test_email() {
                     \__('StripePaymentPress test email',
                         DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                     \sprintf(
-                        'This is a test email.  This address is configured to receive notifications from the StripePaymentPress plugin installed onto WordPress website %s',
+                        \__('This is a test email.  This address is configured to receive notifications from the StripePaymentPress plugin installed onto WordPress website %s',
+                            DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                         \get_site_url()))) {
                 \array_push($arrErrors, 'error__wp_mail');
             }
