@@ -61,7 +61,7 @@ const SETTING__STRIPE_TEST_PUBLISH_KEY
 const SETTING__STRIPE_TEST_SECRET_KEY
                                    = 'plugin_StripePaymentPress__setting__stripe_test_secret_key';
 
-const SLUG_ROOT = 'plugin_StripePaymentPress_root';
+const SLUG_INFO_SETTINGS = 'plugin_StripePaymentPress_root';
 
 require_once('StripePaymentPress_util.php');
 
@@ -113,7 +113,7 @@ if (\is_admin()) {
 
 
 function action_admin_enqueue_scripts($hook) {
-    if ($hook != 'plugins_page_' . SLUG_ROOT) return;
+    if ($hook != 'plugins_page_' . SLUG_INFO_SETTINGS) return;
 
     \wp_enqueue_style('plugin__StripePaymentPress__style_css',
                       plugin_dir_url(__FILE__) . '/style.css',
@@ -136,7 +136,7 @@ function action_admin_menu() {
         \__('StripePaymentPress Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
         \__('StripePaymentPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
         'manage_options',
-        SLUG_ROOT,
+        SLUG_INFO_SETTINGS,
         '\\plugin_StripePaymentPress\\FragmentUtil::renderAdmin_Root');
 }
 
@@ -574,7 +574,7 @@ function filter_plugin_action_links($arrLinks) {
 }
 
 function getUrlInfoSettings() {
-    return \admin_url('plugins.php?page=' . SLUG_ROOT);
+    return \admin_url('plugins.php?page=' . SLUG_INFO_SETTINGS);
 }
 
 function plugin_activation_hook() {
