@@ -456,8 +456,8 @@ function action_wp_ajax_stripe_payment_press__submit() {
         if (\strlen($strRecipient) > 0) {
             \wp_mail(
                     $strRecipient,
-                    "StripePaymentPress new pending transaction submitted",
-                    "New pending transaction has been submitted via the StripePaymentPress plugin installed onto WordPress website "
+                    'StripePaymentPress new pending transaction submitted',
+                    'New pending transaction has been submitted via the StripePaymentPress plugin installed onto WordPress website '
                     .
                     \get_site_url()
                     .
@@ -465,7 +465,7 @@ function action_wp_ajax_stripe_payment_press__submit() {
                     .
                     "\r\n"
                     .
-                    "Stripe transaction type:"
+                    'Stripe transaction type:'
                     .
                     "\r\n"
                     .
@@ -475,13 +475,13 @@ function action_wp_ajax_stripe_payment_press__submit() {
                     .
                     "\r\n"
                     .
-                    "Charge:"
+                    'Charge:'
                     .
                     "\r\n"
                     .
                     $strChargeDescription
                     .
-                    " -- "
+                    ' -- '
                     .
                     $strProductCost
                     .
@@ -489,17 +489,17 @@ function action_wp_ajax_stripe_payment_press__submit() {
                     .
                     "\r\n"
                     .
-                    "Customer:"
+                    'Customer:'
                     .
                     "\r\n"
                     .
                     $strStripeEmail
                     .
-                    " -- "
+                    ' -- '
                     .
                     $strCustomerName
                     .
-                    " -- "
+                    ' -- '
                     .
                     $strCustomerPhone
                     .
@@ -507,7 +507,7 @@ function action_wp_ajax_stripe_payment_press__submit() {
                     .
                     "\r\n"
                     .
-                    "View / charge / delete this transaction at "
+                    'View / charge / delete this transaction at '
                     .
                     getUrlInfoSettings());
         }
