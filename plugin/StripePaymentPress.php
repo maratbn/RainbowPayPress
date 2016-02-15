@@ -358,9 +358,9 @@ function action_wp_ajax_stripe_payment_press__admin__send_test_email() {
             if (!\wp_mail(
                     $strRecipient,
                     'StripePaymentPress test email',
-                    'This is a test email.  This address is configured to receive notifications from the StripePaymentPress plugin installed onto WordPress website '
-                    .
-                    \get_site_url())) {
+                    \sprintf(
+                        'This is a test email.  This address is configured to receive notifications from the StripePaymentPress plugin installed onto WordPress website %s',
+                        \get_site_url()))) {
                 \array_push($arrErrors, 'error__wp_mail');
             }
         } else {
