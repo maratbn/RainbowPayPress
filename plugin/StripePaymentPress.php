@@ -607,7 +607,9 @@ function shortcode_stripe_payment_press($atts) {
         $atts['amount'] == null ||
         $atts['desc'] == null ||
         $atts['name'] == null) {
-        return '<b><i>Short-code [stripe-payment-press] missconfigured.</i></b>';
+        return '<b><i>' .
+               'Short-code [stripe-payment-press] missconfigured.' .
+               '</i></b>';
     }
 
     return '<span data-plugin-stripe-payment-press-role="root"' .
