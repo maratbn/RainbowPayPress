@@ -357,7 +357,8 @@ function action_wp_ajax_stripe_payment_press__admin__send_test_email() {
         if (\strlen($strRecipient) > 0) {
             if (!\wp_mail(
                     $strRecipient,
-                    'StripePaymentPress test email',
+                    \__('StripePaymentPress test email',
+                        DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                     \sprintf(
                         'This is a test email.  This address is configured to receive notifications from the StripePaymentPress plugin installed onto WordPress website %s',
                         \get_site_url()))) {
