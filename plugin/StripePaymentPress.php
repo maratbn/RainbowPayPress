@@ -467,7 +467,8 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 .
                 "\r\n"
                 .
-                'Stripe transaction type:'
+                \__('Stripe transaction type:',
+                    DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)
                 .
                 "\r\n"
                 .
@@ -477,7 +478,8 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 .
                 "\r\n"
                 .
-                'Charge:'
+                \__('Charge:',
+                    DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)
                 .
                 "\r\n"
                 .
@@ -491,7 +493,8 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 .
                 "\r\n"
                 .
-                'Customer:'
+                \__('Customer:',
+                    DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)
                 .
                 "\r\n"
                 .
