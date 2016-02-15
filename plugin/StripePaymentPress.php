@@ -508,9 +508,9 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 .
                 "\r\n"
                 .
-                'View / charge / delete this transaction at '
-                .
-                getUrlInfoSettings());
+                \sprintf(
+                    'View / charge / delete this transaction at %s',
+                    getUrlInfoSettings()));
         }
     }
 
