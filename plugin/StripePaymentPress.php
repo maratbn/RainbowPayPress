@@ -67,7 +67,7 @@ const SHORTCODE__STRIPE_PAYMENT_PRESS = 'rainbow-pay-press';
 
 const SLUG_INFO_SETTINGS = 'plugin_StripePaymentPress_admin';
 
-require_once('StripePaymentPress_util.php');
+require_once('RainbowPayPress_util.php');
 
 \register_activation_hook(__FILE__, '\\plugin_StripePaymentPress\\plugin_activation_hook');
 

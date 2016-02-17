@@ -7,7 +7,7 @@
 
   Version:        0.9.0-development_unreleased
 
-  Module:         StripePaymentPress_util.php
+  Module:         RainbowPayPress_util.php
 
   Description:    PHP utility logic for the WordPress plugin
                   'RainbowPayPress'.
