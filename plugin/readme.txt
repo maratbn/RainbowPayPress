@@ -1,4 +1,4 @@
-=== StripePaymentPress ===
+=== RainbowPayPress ===
 Contributors: maratbn
 Tags: Stripe, accept payments, accept credit card, accept credit card payments, pay, payment, credit card, pay online, sell online
 Requires at least: 3.8.1
@@ -69,6 +69,6 @@ Official project URLs:
 
 == Installation ==
 
-1. Unzip contents of `stripe-payment-press.zip` into the directory `/wp-content/plugins/stripe-payment-press/`.
+1. Unzip contents of `rainbow-pay-press.zip` into the directory `/wp-content/plugins/rainbow-pay-press/`.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 

@@ -1,17 +1,17 @@
 <?php
 /*
-  Plugin Name: StripePaymentPress
+  Plugin Name: RainbowPayPress
   Description: WordPress plugin for embedding Stripe checkouts via shortcodes.
   Author: Marat Nepomnyashy
   Author URI: http://www.maratbn.com
   License: GPL3
   Version: 0.9.0-development_unreleased
-  Text Domain: domain-plugin-StripePaymentPress
+  Text Domain: domain-plugin-RainbowPayPress
 */
 
 /*
-  StripePaymentPress -- WordPress plugin for embedding Stripe checkouts via
-                        shortcodes.
+  RainbowPayPress -- WordPress plugin for embedding Stripe checkouts via
+                     shortcodes.
 
   Copyright (C) 2015-2016  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
 
@@ -19,24 +19,24 @@
 
   Module:         StripePaymentPress.php
 
-  Description:    Main PHP file for the WordPress plugin 'StripePaymentPress'.
+  Description:    Main PHP file for the WordPress plugin 'RainbowPayPress'.
 
-  This file is part of StripePaymentPress.
+  This file is part of RainbowPayPress.
 
   Licensed under the GNU General Public License Version 3.
 
-  StripePaymentPress is free software: you can redistribute it and/or modify
+  RainbowPayPress is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  StripePaymentPress is distributed in the hope that it will be useful,
+  RainbowPayPress is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with StripePaymentPress.  If not, see <http://www.gnu.org/licenses/>.
+  along with RainbowPayPress.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 namespace plugin_StripePaymentPress;
@@ -49,7 +49,7 @@ const IS_MODE_RELEASE = false;
 
 const PHP_VERSION_MIN_SUPPORTED = '5.4';
 
-const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-StripePaymentPress';
+const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-RainbowPayPress';
 
 const SETTING__EMAIL_NOTIFICATIONS = 'plugin_StripePaymentPress__setting__email_notifications';
 const SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS
@@ -137,8 +137,8 @@ function action_admin_enqueue_scripts($hook) {
 
 function action_admin_menu() {
     \add_plugins_page(
-        \__('StripePaymentPress Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-        \__('StripePaymentPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+        \__('RainbowPayPress Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+        \__('RainbowPayPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
         'manage_options',
         SLUG_INFO_SETTINGS,
         '\\plugin_StripePaymentPress\\FragmentUtil::renderAdmin_Root');
@@ -359,10 +359,10 @@ function action_wp_ajax_stripe_payment_press__admin__send_test_email() {
         if (\strlen($strRecipient) > 0) {
             if (!\wp_mail(
                     $strRecipient,
-                    \__('StripePaymentPress test email',
+                    \__('RainbowPayPress test email',
                         DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                     \sprintf(
-                        \__('This is a test email.  This address is configured to receive notifications from the StripePaymentPress plugin installed onto WordPress website %s',
+                        \__('This is a test email.  This address is configured to receive notifications from the RainbowPayPress plugin installed onto WordPress website %s',
                             DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                         \get_site_url()))) {
                 \array_push($arrErrors, 'error__wp_mail');
@@ -458,10 +458,10 @@ function action_wp_ajax_stripe_payment_press__submit() {
         if (\strlen($strRecipient) > 0) {
             \wp_mail(
                 $strRecipient,
-                \__('StripePaymentPress new pending transaction submitted',
+                \__('RainbowPayPress new pending transaction submitted',
                     DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                 \sprintf(
-                    \__('New pending transaction has been submitted via the StripePaymentPress plugin installed onto WordPress website %s',
+                    \__('New pending transaction has been submitted via the RainbowPayPress plugin installed onto WordPress website %s',
                         DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                     \get_site_url())
                 .
@@ -594,7 +594,7 @@ function plugin_activation_hook() {
     if (\version_compare(\strtolower(PHP_VERSION), PHP_VERSION_MIN_SUPPORTED, '<')) {
         \wp_die(
             \sprintf(
-                \__('StripePaymentPress plugin cannot be activated because the currently active PHP version on this server is %s < %s and not supported.  PHP version >= %s is required.',
+                \__('RainbowPayPress plugin cannot be activated because the currently active PHP version on this server is %s < %s and not supported.  PHP version >= %s is required.',
                     DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
                 PHP_VERSION,
                 PHP_VERSION_MIN_SUPPORTED,
