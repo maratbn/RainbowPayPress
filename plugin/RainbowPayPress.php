@@ -63,7 +63,7 @@ const SETTING__STRIPE_TEST_SECRET_KEY = 'plugin_RainbowPayPress__setting__stripe
 
 const SHORTCODE__STRIPE_PAYMENT_PRESS = 'rainbow-pay-press';
 
-const SLUG_INFO_SETTINGS = 'plugin_StripePaymentPress_admin';
+const SLUG_INFO_SETTINGS = 'plugin_RainbowPayPress_admin';
 
 require_once('RainbowPayPress_util.php');
 
