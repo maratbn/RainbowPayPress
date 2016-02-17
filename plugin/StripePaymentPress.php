@@ -63,6 +63,8 @@ const SETTING__STRIPE_TEST_PUBLISH_KEY
 const SETTING__STRIPE_TEST_SECRET_KEY
                                    = 'plugin_StripePaymentPress__setting__stripe_test_secret_key';
 
+const SHORTCODE__STRIPE_PAYMENT_PRESS = 'stripe-payment-press';
+
 const SLUG_INFO_SETTINGS = 'plugin_StripePaymentPress_admin';
 
 require_once('StripePaymentPress_util.php');
@@ -85,7 +87,7 @@ require_once('StripePaymentPress_util.php');
 \add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
                                      '\\plugin_StripePaymentPress\\filter_plugin_action_links');
 
-\add_shortcode('stripe-payment-press',
+\add_shortcode(SHORTCODE__STRIPE_PAYMENT_PRESS,
                '\\plugin_StripePaymentPress\\shortcode_stripe_payment_press');
 
 
@@ -527,7 +529,7 @@ function action_wp_enqueue_scripts() {
 
     global $post;
     if ($post instanceof \WP_Post &&
-        \has_shortcode($post->post_content, 'stripe-payment-press')) {
+        \has_shortcode($post->post_content, SHORTCODE__STRIPE_PAYMENT_PRESS)) {
         \wp_enqueue_script('plugin__StripePaymentPress__stripe_checkout',
                            'https://checkout.stripe.com/checkout.js',
                            null,
@@ -611,7 +613,7 @@ function shortcode_stripe_payment_press($atts) {
                \sprintf(
                    \__('Short-code [%s] missconfigured.',
                        DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-                   'stripe-payment-press') .
+                   SHORTCODE__STRIPE_PAYMENT_PRESS) .
                '</i></b>';
     }
 

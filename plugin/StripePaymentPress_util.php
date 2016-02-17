@@ -197,7 +197,7 @@ class FragmentUtil {
     ?>
     <h2><?=\__('Usage Info:', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)?></h2>
     <p>Use the shortcode
-       <code>[stripe-payment-press type='<span style='color:red'>live</span>' amount=1234 name="My entity" desc="Buy this" label="Click to buy"]</code>
+       <code>[<?=SHORTCODE__STRIPE_PAYMENT_PRESS?> type='<span style='color:red'>live</span>' amount=1234 name="My entity" desc="Buy this" label="Click to buy"]</code>
        to embed a Stripe payment widget on
        any page or post.
     </p>
