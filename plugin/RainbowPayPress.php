@@ -49,7 +49,7 @@ const IS_MODE_RELEASE = false;
 
 const PHP_VERSION_MIN_SUPPORTED = '5.4';
 
-const DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS = 'domain-plugin-RainbowPayPress';
+const DOMAIN_PLUGIN_RAINBOW_PAY_PRESS = 'domain-plugin-RainbowPayPress';
 
 const SETTING__EMAIL_NOTIFICATIONS = 'plugin_StripePaymentPress__setting__email_notifications';
 const SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS
@@ -137,8 +137,8 @@ function action_admin_enqueue_scripts($hook) {
 
 function action_admin_menu() {
     \add_plugins_page(
-        \__('RainbowPayPress Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
-        \__('RainbowPayPress', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+        \__('RainbowPayPress Info / Settings', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+        \__('RainbowPayPress', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         'manage_options',
         SLUG_INFO_SETTINGS,
         '\\plugin_StripePaymentPress\\FragmentUtil::renderAdmin_Root');
@@ -360,10 +360,10 @@ function action_wp_ajax_stripe_payment_press__admin__send_test_email() {
             if (!\wp_mail(
                     $strRecipient,
                     \__('RainbowPayPress test email',
-                        DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                     \sprintf(
                         \__('This is a test email.  This address is configured to receive notifications from the RainbowPayPress plugin installed onto WordPress website %s',
-                            DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                            DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                         \get_site_url()))) {
                 \array_push($arrErrors, 'error__wp_mail');
             }
@@ -459,10 +459,10 @@ function action_wp_ajax_stripe_payment_press__submit() {
             \wp_mail(
                 $strRecipient,
                 \__('RainbowPayPress new pending transaction submitted',
-                    DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                 \sprintf(
                     \__('New pending transaction has been submitted via the RainbowPayPress plugin installed onto WordPress website %s',
-                        DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                     \get_site_url())
                 .
                 "\r\n"
@@ -470,7 +470,7 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 "\r\n"
                 .
                 \__('Stripe transaction type:',
-                    DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)
+                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)
                 .
                 "\r\n"
                 .
@@ -481,7 +481,7 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 "\r\n"
                 .
                 \__('Charge:',
-                    DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)
+                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)
                 .
                 "\r\n"
                 .
@@ -496,7 +496,7 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 "\r\n"
                 .
                 \__('Customer:',
-                    DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS)
+                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)
                 .
                 "\r\n"
                 .
@@ -516,7 +516,7 @@ function action_wp_ajax_stripe_payment_press__submit() {
                 .
                 \sprintf(
                     \__('View / charge / delete this transaction at %s',
-                        DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                     getUrlInfoSettings()));
         }
     }
@@ -578,10 +578,10 @@ function action_wp_print_footer_scripts() {
 function filter_plugin_action_links($arrLinks) {
     \array_push($arrLinks,
                 '<a href=\'' . getUrlInfoSettings() . '\'>'
-                          . \__('Info / Settings', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS) . '</a>');
+                          . \__('Info / Settings', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS) . '</a>');
     \array_push($arrLinks,
                 '<a href=\'' . \plugin_dir_url(__FILE__) . 'LICENSE\'>'
-                          . \__('License', DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS) . '</a>');
+                          . \__('License', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS) . '</a>');
     return $arrLinks;
 }
 
@@ -595,7 +595,7 @@ function plugin_activation_hook() {
         \wp_die(
             \sprintf(
                 \__('RainbowPayPress plugin cannot be activated because the currently active PHP version on this server is %s < %s and not supported.  PHP version >= %s is required.',
-                    DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                 PHP_VERSION,
                 PHP_VERSION_MIN_SUPPORTED,
                 PHP_VERSION_MIN_SUPPORTED));
@@ -612,7 +612,7 @@ function shortcode_stripe_payment_press($atts) {
         return '<b><i>' .
                \sprintf(
                    \__('Short-code [%s] missconfigured.',
-                       DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                       DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                    SHORTCODE__STRIPE_PAYMENT_PRESS) .
                '</i></b>';
     }
