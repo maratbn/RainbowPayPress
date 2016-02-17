@@ -4,7 +4,7 @@
 
   Copyright (C) 2015-2016  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
 
-  Version:        0.9.0-development_unreleased
+  Version:        0.10.0-development_unreleased
 
   Module:         js/le_requirejs/admin/view_agg__tr__option__string__email_notifications.js
 
