@@ -7,7 +7,8 @@ Stable tag: 4.4.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Easy way to accept credit card payments via Stripe.
+Easy way to accept credit card payments via Stripe by embedding Stripe
+checkouts via shortcodes.
 
 
 == Description ==
