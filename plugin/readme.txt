@@ -69,6 +69,6 @@ Official project URLs:
 
 == Installation ==
 
-1. Unzip contents of `stripepaymentpress.zip` into the directory `/wp-content/plugins/stripepaymentpress/`.
+1. Unzip contents of `stripe-payment-press.zip` into the directory `/wp-content/plugins/stripe-payment-press/`.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
