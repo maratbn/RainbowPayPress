@@ -51,17 +51,15 @@ const PHP_VERSION_MIN_SUPPORTED = '5.4';
 
 const DOMAIN_PLUGIN_RAINBOW_PAY_PRESS = 'domain-plugin-RainbowPayPress';
 
-const SETTING__EMAIL_NOTIFICATIONS = 'plugin_StripePaymentPress__setting__email_notifications';
+const SETTING__EMAIL_NOTIFICATIONS = 'plugin_RainbowPayPress__setting__email_notifications';
 const SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS
-                         = 'plugin_StripePaymentPress__setting__flag__enable_email_notifications';
+                            = 'plugin_RainbowPayPress__setting__flag__enable_email_notifications';
 const SETTING__STRIPE_LIVE_PUBLISH_KEY
-                                  = 'plugin_StripePaymentPress__setting__stripe_live_publish_key';
-const SETTING__STRIPE_LIVE_SECRET_KEY
-                                   = 'plugin_StripePaymentPress__setting__stripe_live_secret_key';
+                                     = 'plugin_RainbowPayPress__setting__stripe_live_publish_key';
+const SETTING__STRIPE_LIVE_SECRET_KEY = 'plugin_RainbowPayPress__setting__stripe_live_secret_key';
 const SETTING__STRIPE_TEST_PUBLISH_KEY
-                                  = 'plugin_StripePaymentPress__setting__stripe_test_publish_key';
-const SETTING__STRIPE_TEST_SECRET_KEY
-                                   = 'plugin_StripePaymentPress__setting__stripe_test_secret_key';
+                                     = 'plugin_RainbowPayPress__setting__stripe_test_publish_key';
+const SETTING__STRIPE_TEST_SECRET_KEY = 'plugin_RainbowPayPress__setting__stripe_test_secret_key';
 
 const SHORTCODE__STRIPE_PAYMENT_PRESS = 'rainbow-pay-press';
 
