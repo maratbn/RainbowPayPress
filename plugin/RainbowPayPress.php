@@ -17,7 +17,7 @@
 
   Version:        0.9.0-development_unreleased
 
-  Module:         StripePaymentPress.php
+  Module:         RainbowPayPress.php
 
   Description:    Main PHP file for the WordPress plugin 'RainbowPayPress'.
 
