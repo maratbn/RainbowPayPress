@@ -63,7 +63,7 @@ const SETTING__STRIPE_TEST_PUBLISH_KEY
 const SETTING__STRIPE_TEST_SECRET_KEY
                                    = 'plugin_StripePaymentPress__setting__stripe_test_secret_key';
 
-const SHORTCODE__STRIPE_PAYMENT_PRESS = 'stripe-payment-press';
+const SHORTCODE__STRIPE_PAYMENT_PRESS = 'rainbow-pay-press';
 
 const SLUG_INFO_SETTINGS = 'plugin_StripePaymentPress_admin';
 
