@@ -608,8 +608,10 @@ function shortcode_stripe_payment_press($atts) {
         $atts['desc'] == null ||
         $atts['name'] == null) {
         return '<b><i>' .
-               \__('Short-code [stripe-payment-press] missconfigured.',
-                   DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS) .
+               \sprintf(
+                   \__('Short-code [%s] missconfigured.',
+                       DOMAIN_PLUGIN_STRIPE_PAYMENT_PRESS),
+                   'stripe-payment-press') .
                '</i></b>';
     }
 
