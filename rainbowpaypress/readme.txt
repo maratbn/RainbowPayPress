@@ -3,7 +3,7 @@ Contributors: maratbn
 Tags: Stripe, accept payments, accept credit card, accept credit card payments, pay, payment, credit card, pay online, sell online
 Requires at least: 3.8.1
 Tested up to: 4.4.2
-Stable tag: 4.4.2
+Stable tag: 1.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
