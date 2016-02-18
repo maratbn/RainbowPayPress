@@ -65,8 +65,8 @@ Technical summary and special considerations:
 
 Requires:
 
-  PHP version >= 5.4
-  php5-curl module enabled
+  * PHP version >= 5.4
+  * php5-curl module enabled
 
 Official project URLs:
 
