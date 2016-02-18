@@ -116,3 +116,9 @@ From your Stripe account.
 
 Check if you have a mail transfer agent (MTA) installed and properly
 configured on your server.  Also check your SPAM folder.
+
+
+== Changelog ==
+
+= 0.1.0 =
+* Initial public release.
