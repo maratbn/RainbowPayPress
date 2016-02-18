@@ -65,7 +65,7 @@ Technical summary and special considerations:
 
 Official project URLs:
 
-  (none yet)
+  https://github.com/maratbn/RainbowPayPress
 
 
 == Installation ==
