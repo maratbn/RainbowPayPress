@@ -31,7 +31,7 @@ Overview:
   be any credit card numbers for them to steal.
 
   The way this plugin is used, is that first, the administrators specify which
-  products and services are being sold, their descriptions, costs, etc. by
+  products and services are being sold, their descriptions, prices, etc. by
   inserting special shortcodes with that information directly into the pages
   and posts on which they want to render the user payment buttons for these
   sales.  When site visitors load these pages, they see the associated payment
