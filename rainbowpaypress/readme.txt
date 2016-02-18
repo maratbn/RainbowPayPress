@@ -79,3 +79,40 @@ Official project URLs:
 1. Unzip contents of `rainbowpaypress.zip` into the directory `/wp-content/plugins/rainbowpaypress/`.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
+
+== Frequently Asked Questions ==
+
+= What do I do if I get this error "Plugin could not be activated because it triggered a fatal error." when trying to activate? =
+
+Upgrade to PHP >= 5.4  See
+https://wordpress.org/support/topic/crashes-on-activate
+
+Make sure to check your PHP version with
+https://wordpress.org/plugins/display-php-version/
+
+= Where can I ask a question about RainbowPayPress? =
+
+Ask your questions at: https://wordpress.org/support/plugin/rainbowpaypress
+
+= Where can I post issues / bugs / feature requests? =
+
+Post issues / bugs / feature requests at:
+https://github.com/maratbn/RainbowPayPress/issues
+
+= Where can I post pull requests? =
+
+Post pull requests at: https://github.com/maratbn/RainbowPayPress/pulls
+
+= Plugin is missing feature X that I really want, what do I do? =
+
+Post a bug / feature request, or implement the feature at your leisure, and
+submit a pull request.
+
+= Where do I get the publish and secret keys needed for plugin's configuration? =
+
+From your Stripe account.
+
+= Why are notification emails not sending? =
+
+Check if you have a mail transfer agent (MTA) installed and properly
+configured on your server.  Also check your SPAM folder.
