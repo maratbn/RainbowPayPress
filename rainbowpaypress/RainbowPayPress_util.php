@@ -7,7 +7,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         RainbowPayPress_util.php
+  Module:         rainbowpaypress/RainbowPayPress_util.php
 
   Description:    PHP utility logic for the WordPress plugin
                   'RainbowPayPress'.

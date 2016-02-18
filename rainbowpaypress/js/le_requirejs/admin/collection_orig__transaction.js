@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/collection_orig__transaction.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/collection_orig__transaction.js
 
   Description:    Single instance of collection 'CollectionOrig_Transaction'
                   to be shared across the app.

@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/util.js
+  Module:         rainbowpaypress/js/le_requirejs/util.js
 
   Description:    Client-side JavaScript utility logic.
 

@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/public/view_agg__div__transaction.js
+  Module:         rainbowpaypress/js/le_requirejs/public/view_agg__div__transaction.js
 
   Description:    Widget 'ViewAgg_Div_Transaction'.
 

@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/view_agg__table__transactions.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__table__transactions.js
 
   Description:    Widget 'ViewAgg_Table_Transactions'.
 

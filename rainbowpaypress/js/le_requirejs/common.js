@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/common.js
+  Module:         rainbowpaypress/js/le_requirejs/common.js
 
   Description:    Aggregator module for logic common between the admin and public UIs.
 

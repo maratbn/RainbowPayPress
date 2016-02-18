@@ -17,7 +17,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         RainbowPayPress.php
+  Module:         rainbowpaypress/RainbowPayPress.php
 
   Description:    Main PHP file for the WordPress plugin 'RainbowPayPress'.
 

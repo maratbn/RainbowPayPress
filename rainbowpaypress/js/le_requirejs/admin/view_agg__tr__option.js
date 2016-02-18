@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/view_agg__tr__option.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__option.js
 
   Description:    Base widget 'ViewAgg_Tr_Option' for displaying config
                   options.

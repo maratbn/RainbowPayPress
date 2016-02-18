@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/view_agg__button__send_test_email.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__button__send_test_email.js
 
   Description:    Widget 'ViewAgg_Button_SendTestEmail' is specifically for
                   the logic for the button to send test emails.

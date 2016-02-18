@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/model_orig__transaction.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/model_orig__transaction.js
 
   Description:    Model 'ModelOrig_Transaction' for caching single transaction
                   information from the server.

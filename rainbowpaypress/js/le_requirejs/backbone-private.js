@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/backbone-private.js
+  Module:         rainbowpaypress/js/le_requirejs/backbone-private.js
 
   Description:    Proxy module for loading BackboneJS with 'noConflict'.
 

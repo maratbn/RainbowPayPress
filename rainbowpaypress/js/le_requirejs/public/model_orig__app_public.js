@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/public/model_orig__app_public.js
+  Module:         rainbowpaypress/js/le_requirejs/public/model_orig__app_public.js
 
   Description:    Single instance of model 'ModelOrig_AppPublic' for storing
                   information for the public front-end.

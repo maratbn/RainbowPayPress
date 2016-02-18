@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/main_admin.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/main_admin.js
 
   Description:    Main JavaScript file for the internal admin pages for the
                   WordPress plugin 'RainbowPayPress'.

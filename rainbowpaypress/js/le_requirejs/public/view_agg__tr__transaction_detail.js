@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/view_agg__tr__transaction_detail.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__transaction_detail.js
 
   Description:    Widget 'ViewAgg_Tr_TransactionDetail'.  Renders a row inside
                   'ViewAgg_Table_TransactionDetails'.

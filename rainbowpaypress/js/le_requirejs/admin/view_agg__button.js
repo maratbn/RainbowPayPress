@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/view_agg__button.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__button.js
 
   Description:    Widget 'ViewAgg_Button' for rendering <button>s on admin
                   pages.

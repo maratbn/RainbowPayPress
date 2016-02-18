@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/main.js
+  Module:         rainbowpaypress/js/le_requirejs/main.js
 
   Description:    Bootstraps either the public or the admin logic.
 

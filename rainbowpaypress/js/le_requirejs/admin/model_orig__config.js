@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/model_orig__config.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/model_orig__config.js
 
   Description:    Single instance of model 'ModelOrig_Config' for storing
                   configuration parameters.

@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/jquery-private.js
+  Module:         rainbowpaypress/js/le_requirejs/jquery-private.js
 
   Description:    Proxy module for loading jQuery with 'noConflict'.
 

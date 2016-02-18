@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/public/main_public.js
+  Module:         rainbowpaypress/js/le_requirejs/public/main_public.js
 
   Description:    Main JavaScript file for the public-facing pages for the
                   WordPress plugin 'RainbowPayPress'.

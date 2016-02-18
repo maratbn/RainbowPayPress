@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/view_agg__table.js
+  Module:         rainbowpaypress/js/le_requirejs/view_agg__table.js
 
   Description:    Widget 'ViewAgg_Table'.
 

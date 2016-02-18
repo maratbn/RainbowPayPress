@@ -6,7 +6,7 @@
 
   Version:        0.10.0-development_unreleased
 
-  Module:         js/le_requirejs/admin/view_agg__table__config.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__table__config.js
 
   Description:    Widget 'ViewAgg_Table_Config' for configuration of
                   Stripe parameters.
