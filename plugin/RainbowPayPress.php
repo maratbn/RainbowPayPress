@@ -10,8 +10,8 @@
 */
 
 /*
-  RainbowPayPress -- WordPress plugin for embedding Stripe checkouts via
-                     shortcodes.
+  RainbowPayPress -- WordPress plugin for accepting credit card payments via
+                     Stripe by embedding Stripe checkouts via shortcodes.
 
   Copyright (C) 2015-2016  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
 
