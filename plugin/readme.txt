@@ -70,6 +70,6 @@ Official project URLs:
 
 == Installation ==
 
-1. Unzip contents of `rainbow-pay-press.zip` into the directory `/wp-content/plugins/rainbow-pay-press/`.
+1. Unzip contents of `rainbowpaypress.zip` into the directory `/wp-content/plugins/rainbowpaypress/`.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
