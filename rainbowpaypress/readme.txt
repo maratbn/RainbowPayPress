@@ -120,5 +120,5 @@ configured on your server.  Also check your SPAM folder.
 
 == Changelog ==
 
-= 0.1.0 =
+= 1.0.0 =
 * Initial public release.
