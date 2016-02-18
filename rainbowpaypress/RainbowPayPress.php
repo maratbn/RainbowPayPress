@@ -5,7 +5,7 @@
   Author: Marat Nepomnyashy
   Author URI: http://www.maratbn.com
   License: GPL3
-  Version: 1.0.0-development_unreleased
+  Version: 1.1.0-development_unreleased
   Text Domain: domain-plugin-RainbowPayPress
 */
 
@@ -15,7 +15,7 @@
 
   Copyright (C) 2015-2016  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
 
-  Version:        1.0.0-development_unreleased
+  Version:        1.1.0-development_unreleased
 
   Module:         rainbowpaypress/RainbowPayPress.php
 
@@ -41,7 +41,7 @@
 
 namespace plugin_StripePaymentPress;
 
-const PLUGIN_VERSION = '1.0.0-development_unreleased';
+const PLUGIN_VERSION = '1.1.0-development_unreleased';
 
 
 const IS_MODE_RELEASE = false;
