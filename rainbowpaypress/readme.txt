@@ -63,6 +63,8 @@ Technical summary and special considerations:
   email notifications are still likely to get filtered by SPAM filters, so
   adjustment of SPAM filters might also be needed.
 
+  Requires PHP version >= 5.4
+
 Official project URLs:
 
   https://wordpress.org/plugins/rainbowpaypress
