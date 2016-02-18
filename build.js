@@ -2,9 +2,9 @@
     preserveLicenseComments:            false,
     removeCombined:                     true,
 
-    appDir:                             'plugin/js/le_requirejs',
+    appDir:                             'rainbowpaypress/js/le_requirejs',
     baseUrl:                            '.',
-    dir:                                'plugin/js/le_requirejs_min/',
+    dir:                                'rainbowpaypress/js/le_requirejs_min/',
     paths: {
             'backbone':                 'lib/backbone-1.2.1-src--tweaked--2015-09-24--01--require_js_namespaced--5decf311fc2fa509f63fda82e4bc2e465aeb5545',
             'jquery':                   'lib/jquery-1.11.3--tweaked--2015-09-24--01--require_js_namespaced--4c456884bd01dd192d549715b5ef4312f4f82b12',
