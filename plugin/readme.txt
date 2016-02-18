@@ -49,7 +49,7 @@ Overview:
 
   Currently only USD are supported.
 
-Technical summary:
+Technical summary and special considerations:
 
   Initially, buyer identity, stored partially on the website server, is tied
   to their credit card number stored entirely on Stripe servers, via a special
