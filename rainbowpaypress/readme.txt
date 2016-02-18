@@ -65,6 +65,7 @@ Technical summary and special considerations:
 
 Official project URLs:
 
+  https://wordpress.org/plugins/rainbowpaypress
   https://github.com/maratbn/RainbowPayPress
 
 
