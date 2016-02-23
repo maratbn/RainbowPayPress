@@ -32,16 +32,16 @@
 (function(define) {
 
 
-define(['backbone',
-        'jquery',
+define(['jquery',
         'util',
         'admin/collection_orig__transaction',
-        'admin/view_agg__button'
-    ], function(backbone,
-                $,
+        'admin/view_agg__button',
+        'admin/view_agg__tr__w_header'
+    ], function($,
                 util,
                 collection_orig__transaction,
-                ViewAgg_Button) {
+                ViewAgg_Button,
+                ViewAgg_Tr_WHeader) {
 
         function _getStripeUrlForCharge(type, stripe_charge_id) {
             if (!type || !stripe_charge_id) return null;
@@ -77,13 +77,14 @@ define(['backbone',
                                   'target':  '_blank'}).text(stripe_customer_id);
         }
 
-        return backbone.View.extend({
-
-                tagName: 'tr',
+        return ViewAgg_Tr_WHeader.extend({
 
                 //  @param  params.flag_exclude_charged
                 //  @param  params.model_orig__transaction
                 initialize: function(params) {
+
+                        ViewAgg_Tr_WHeader.prototype.initialize.apply(this, arguments);
+
 
                         var flagExcludeCharged       = params.flag_exclude_charged,
                             model_orig__transaction  = params.model_orig__transaction;
@@ -123,11 +124,12 @@ define(['backbone',
                         }
 
 
+                        this.get_$thHeader().append($buttonDelete).append($buttonCharge);
+
+
                         var type = model_orig__transaction.get('type');
 
-                        this.$el.append($('<th>').append($buttonDelete)
-                                                 .append($buttonCharge))
-                                .append($('<td>').text(type || ""))
+                        this.$el.append($('<td>').text(type || ""))
                                 .append(flagExcludeCharged
                                         ? null
                                         : $('<td>').text(model_orig__transaction

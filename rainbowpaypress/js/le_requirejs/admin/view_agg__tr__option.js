@@ -33,20 +33,18 @@
 (function(define) {
 
 
-define(['backbone',
-        'jquery',
-        'admin/model_orig__config'
-    ], function(backbone,
-                $,
-                model_orig__config) {
+define(['jquery',
+        'admin/model_orig__config',
+        'admin/view_agg__tr__w_header'
+    ], function($,
+                model_orig__config,
+                ViewAgg_Tr_WHeader) {
 
 
         //  Widget 'ViewAgg_Tr_Option':
 
 
-        return backbone.View.extend({
-
-                tagName: 'tr',
+        return ViewAgg_Tr_WHeader.extend({
 
                 //  @param  params.field                The field in 'ModelOrig_Config' this widget
                 //                                      is associated with.
@@ -55,7 +53,10 @@ define(['backbone',
                 //
                 initialize: function(params) {
 
-                        var $thButton  = $('<th>').appendTo(this.$el),
+                        ViewAgg_Tr_WHeader.prototype.initialize.apply(this, arguments);
+
+
+                        var $thButton  = this.get_$thHeader(),
                             $thLabel   = $('<th>').attr('align', 'left')
                                                   .appendTo(this.$el),
                             $tdValue   = $('<td>').appendTo(this.$el);
