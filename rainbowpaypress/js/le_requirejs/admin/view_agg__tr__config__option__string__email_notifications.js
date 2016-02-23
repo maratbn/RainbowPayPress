@@ -36,20 +36,20 @@
 
 define(['jquery',
         'admin/view_agg__button__send_test_email',
-        'admin/view_agg__tr__option__string'
+        'admin/view_agg__tr__config__option__string'
     ], function($,
                 ViewAgg_Button_SendTestEmail,
-                ViewAgg_Tr_Option_String) {
+                ViewAgg_Tr_Config_Option_String) {
 
 
         //  Widget 'ViewAgg_Tr_Config_Option_String_EmailNotifications':
 
 
-        return ViewAgg_Tr_Option_String.extend({
+        return ViewAgg_Tr_Config_Option_String.extend({
 
                 initialize: function(params) {
 
-                        ViewAgg_Tr_Option_String.prototype.initialize.call(this, {
+                        ViewAgg_Tr_Config_Option_String.prototype.initialize.call(this, {
                                 field:   'email_notifications',
                                 label:   "Email address to send notifications to:",
                                 prompt:  "Enter new email address for notifications:"

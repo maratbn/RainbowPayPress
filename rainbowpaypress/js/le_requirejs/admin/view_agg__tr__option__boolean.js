@@ -6,7 +6,7 @@
 
   Version:        1.1.0-development_unreleased
 
-  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__option__string.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__config__option__string.js
 
   Description:    Widget 'ViewAgg_Tr_Option_Boolean' for displaying boolean
                   config options.

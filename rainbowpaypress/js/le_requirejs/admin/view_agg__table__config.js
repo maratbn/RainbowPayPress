@@ -38,7 +38,7 @@ define(['jquery',
         'admin/model_orig__config',
         'admin/view_agg__button',
         'admin/view_agg__tr__option__boolean',
-        'admin/view_agg__tr__option__string',
+        'admin/view_agg__tr__config__option__string',
         'admin/view_agg__tr__config__option__string__email_notifications',
         'admin/view_agg__tr__w_header'
     ], function($,
@@ -46,7 +46,7 @@ define(['jquery',
                 model_orig__config,
                 ViewAgg_Button,
                 ViewAgg_Tr_Option_Boolean,
-                ViewAgg_Tr_Option_String,
+                ViewAgg_Tr_Config_Option_String,
                 ViewAgg_Tr_Config_Option_String_EmailNotifications,
                 ViewAgg_Tr_WHeader) {
 
@@ -105,28 +105,28 @@ define(['jquery',
                                             ])))
                             .appendTo((new ViewAgg_Tr_WHeader).$el.appendTo(this.$el));
 
-                        (new ViewAgg_Tr_Option_String({
+                        (new ViewAgg_Tr_Config_Option_String({
                                                 field:   'stripe_key_live_secret',
                                                 label:   "Stripe live secret key:",
                                                 prompt:  "Enter new Stripe live secret key:"
                                             })).$el
                                                .appendTo(this.$el);
 
-                        (new ViewAgg_Tr_Option_String({
+                        (new ViewAgg_Tr_Config_Option_String({
                                                 field:   'stripe_key_live_publish',
                                                 label:   "Stripe live publishable key:",
                                                 prompt:  "Enter new Stripe live publishable key:"
                                             })).$el
                                                .appendTo(this.$el);
 
-                        (new ViewAgg_Tr_Option_String({
+                        (new ViewAgg_Tr_Config_Option_String({
                                                 field:   'stripe_key_test_secret',
                                                 label:   "Stripe test secret key:",
                                                 prompt:  "Enter new Stripe test secret key:"
                                             })).$el
                                                .appendTo(this.$el);
 
-                        (new ViewAgg_Tr_Option_String({
+                        (new ViewAgg_Tr_Config_Option_String({
                                                 field:   'stripe_key_test_publish',
                                                 label:   "Stripe test publishable key:",
                                                 prompt:  "Enter new Stripe test publishable key:"

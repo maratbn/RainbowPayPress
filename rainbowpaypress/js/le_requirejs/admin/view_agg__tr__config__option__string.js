@@ -6,10 +6,10 @@
 
   Version:        1.1.0-development_unreleased
 
-  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__option__string.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__config__option__string.js
 
-  Description:    Widget 'ViewAgg_Tr_Option_String' for displaying string
-                  config options.
+  Description:    Widget 'ViewAgg_Tr_Config_Option_String' for displaying
+                  string config options.
 
   This file is part of RainbowPayPress.
 
@@ -43,7 +43,7 @@ define(['admin/view_agg__tr__option',
                 ViewAgg_Button) {
 
 
-        //  Widget 'ViewAgg_Tr_Option_String':
+        //  Widget 'ViewAgg_Tr_Config_Option_String':
 
 
         return ViewAgg_Tr_Option.extend({
