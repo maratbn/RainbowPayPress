@@ -39,14 +39,16 @@ define(['jquery',
         'admin/view_agg__button',
         'admin/view_agg__tr__option__boolean',
         'admin/view_agg__tr__option__string',
-        'admin/view_agg__tr__option__string__email_notifications'
+        'admin/view_agg__tr__option__string__email_notifications',
+        'admin/view_agg__tr__w_header'
     ], function($,
                 ViewAgg_Table,
                 model_orig__config,
                 ViewAgg_Button,
                 ViewAgg_Tr_Option_Boolean,
                 ViewAgg_Tr_Option_String,
-                ViewAgg_Tr_Option_String_EmailNotifications) {
+                ViewAgg_Tr_Option_String_EmailNotifications,
+                ViewAgg_Tr_WHeader) {
 
 
         function _get_$ulWithURLs(arrURLs) {
@@ -101,8 +103,7 @@ define(['jquery',
                                                 'http://forum.linuxcareer.com/threads/1697-Sendmail-quot-unqualified-hostname-unknown-sleeping-for-retry-unqualified-hostname',
                                                 'http://forums.fedoraforum.org/archive/index.php/t-85365.html'
                                             ])))
-                            .appendTo($('<tr>').append('<th>')
-                                               .appendTo(this.$el));
+                            .appendTo((new ViewAgg_Tr_WHeader).$el.appendTo(this.$el));
 
                         (new ViewAgg_Tr_Option_String({
                                                 field:   'stripe_key_live_secret',
