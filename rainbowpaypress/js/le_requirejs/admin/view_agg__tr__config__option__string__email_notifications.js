@@ -6,10 +6,11 @@
 
   Version:        1.1.0-development_unreleased
 
-  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__option__string__email_notifications.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__config__option__string__email_notifications.js
 
-  Description:    Widget 'ViewAgg_Tr_Option_String_EmailNotifications' is
-                  specifically for the email address for notifications field.
+  Description:    Widget 'ViewAgg_Tr_Config_Option_String_EmailNotifications'
+                  is specifically for the email address for notifications
+                  field.
 
   This file is part of RainbowPayPress.
 
@@ -41,7 +42,7 @@ define(['jquery',
                 ViewAgg_Tr_Option_String) {
 
 
-        //  Widget 'ViewAgg_Tr_Option_String_EmailNotifications':
+        //  Widget 'ViewAgg_Tr_Config_Option_String_EmailNotifications':
 
 
         return ViewAgg_Tr_Option_String.extend({

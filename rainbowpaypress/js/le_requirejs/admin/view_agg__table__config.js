@@ -39,7 +39,7 @@ define(['jquery',
         'admin/view_agg__button',
         'admin/view_agg__tr__option__boolean',
         'admin/view_agg__tr__option__string',
-        'admin/view_agg__tr__option__string__email_notifications',
+        'admin/view_agg__tr__config__option__string__email_notifications',
         'admin/view_agg__tr__w_header'
     ], function($,
                 ViewAgg_Table,
@@ -47,7 +47,7 @@ define(['jquery',
                 ViewAgg_Button,
                 ViewAgg_Tr_Option_Boolean,
                 ViewAgg_Tr_Option_String,
-                ViewAgg_Tr_Option_String_EmailNotifications,
+                ViewAgg_Tr_Config_Option_String_EmailNotifications,
                 ViewAgg_Tr_WHeader) {
 
 
@@ -86,7 +86,7 @@ define(['jquery',
                                             })).$el
                                                .appendTo(this.$el);
 
-                        (new ViewAgg_Tr_Option_String_EmailNotifications())
+                        (new ViewAgg_Tr_Config_Option_String_EmailNotifications())
                                                .$el
                                                .appendTo(this.$el);
 
