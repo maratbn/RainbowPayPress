@@ -8,8 +8,8 @@
 
   Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__config__option__string.js
 
-  Description:    Widget 'ViewAgg_Tr_Option_Boolean' for displaying boolean
-                  config options.
+  Description:    Widget 'ViewAgg_Tr_Config_Option_Boolean' for displaying
+                  boolean config options.
 
   This file is part of RainbowPayPress.
 
@@ -43,7 +43,7 @@ define(['jquery',
                 ViewAgg_Tr_Option) {
 
 
-        //  Widget 'ViewAgg_Tr_Option_Boolean':
+        //  Widget 'ViewAgg_Tr_Config_Option_Boolean':
 
 
         return ViewAgg_Tr_Option.extend({
