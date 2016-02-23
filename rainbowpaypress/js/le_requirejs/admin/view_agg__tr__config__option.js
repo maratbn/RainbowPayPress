@@ -6,9 +6,9 @@
 
   Version:        1.1.0-development_unreleased
 
-  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__option.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__config__option.js
 
-  Description:    Base widget 'ViewAgg_Tr_Option' for displaying config
+  Description:    Base widget 'ViewAgg_Tr_Config_Option' for displaying config
                   options.
 
   This file is part of RainbowPayPress.
@@ -41,7 +41,7 @@ define(['jquery',
                 ViewAgg_Tr_WHeader) {
 
 
-        //  Widget 'ViewAgg_Tr_Option':
+        //  Widget 'ViewAgg_Tr_Config_Option':
 
 
         return ViewAgg_Tr_WHeader.extend({

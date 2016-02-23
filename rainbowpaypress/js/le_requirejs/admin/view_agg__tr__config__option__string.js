@@ -33,11 +33,11 @@
 (function(define) {
 
 
-define(['admin/view_agg__tr__option',
+define(['admin/view_agg__tr__config__option',
         'jquery',
         'admin/model_orig__config',
         'admin/view_agg__button'
-    ], function(ViewAgg_Tr_Option,
+    ], function(ViewAgg_Tr_Config_Option,
                 $,
                 model_orig__config,
                 ViewAgg_Button) {
@@ -46,7 +46,7 @@ define(['admin/view_agg__tr__option',
         //  Widget 'ViewAgg_Tr_Config_Option_String':
 
 
-        return ViewAgg_Tr_Option.extend({
+        return ViewAgg_Tr_Config_Option.extend({
 
                 //  @param  params.field                The field in 'ModelOrig_Config' this widget
                 //                                      is associated with.
@@ -57,7 +57,7 @@ define(['admin/view_agg__tr__option',
                 //
                 initialize: function(params) {
 
-                        ViewAgg_Tr_Option.prototype.initialize.apply(this, arguments);
+                        ViewAgg_Tr_Config_Option.prototype.initialize.apply(this, arguments);
 
                         if (params &&
                             params.field &&
