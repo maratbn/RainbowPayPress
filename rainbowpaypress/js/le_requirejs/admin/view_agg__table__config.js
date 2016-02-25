@@ -134,6 +134,14 @@ define(['jquery',
                                                 prompt:  "Enter new Stripe test publishable key:"
                                             })).$el
                                                .appendTo(this.$el);
+
+                        (new ViewAgg_Tr_Config_Notes({
+                                                content: [
+                                                        $('<p>')
+                                                            .text("Get your Stripe API keys from: https://dashboard.stripe.com/account/apikeys")
+                                                    ]
+                                            })).$el
+                                               .appendTo(this.$el);
                     }
             });
 
