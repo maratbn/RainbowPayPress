@@ -142,8 +142,14 @@ define(['jquery',
                                                 content: [
                                                         $('<p>')
                                                             .text(
-                                                                "Get your Stripe API keys from: "
-                                                                                + strURLStripeAPI)
+                                                                "Get your Stripe API keys from: ")
+                                                            .append(
+                                                                $('<a>')
+                                                                    .attr({
+                                                                         'href':   strURLStripeAPI,
+                                                                         'target': '_blank'
+                                                                        })
+                                                                    .text(strURLStripeAPI))
                                                     ]
                                             })).$el
                                                .appendTo(this.$el);
