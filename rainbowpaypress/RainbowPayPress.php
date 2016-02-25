@@ -169,6 +169,7 @@ function action_admin_print_footer_scripts() {
 function action_wp_ajax_stripe_payment_press__admin__charge() {
     /** Possible errors:
      *      error__insufficient_permissions
+     *      error__no_curl
      *      error__select_transaction
      *      error__create_stripe_customer
      *      error__create_stripe_charge
@@ -179,6 +180,10 @@ function action_wp_ajax_stripe_payment_press__admin__charge() {
 
     if (!\current_user_can('manage_options')) {
         \array_push($arrErrors, 'error__insufficient_permissions');
+    }
+
+    if (!\function_exists('\\curl_init')) {
+        \array_push($arrErrors, 'error__no_curl');
     }
 
     $dataTransaction = null;
