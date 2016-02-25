@@ -37,6 +37,7 @@ define(['jquery',
         'view_agg__table',
         'admin/model_orig__config',
         'admin/view_agg__button',
+        'admin/view_agg__tr__config__notes',
         'admin/view_agg__tr__config__option__boolean',
         'admin/view_agg__tr__config__option__string',
         'admin/view_agg__tr__config__option__string__email_notifications',
@@ -45,6 +46,7 @@ define(['jquery',
                 ViewAgg_Table,
                 model_orig__config,
                 ViewAgg_Button,
+                ViewAgg_Tr_Config_Notes,
                 ViewAgg_Tr_Config_Option_Boolean,
                 ViewAgg_Tr_Config_Option_String,
                 ViewAgg_Tr_Config_Option_String_EmailNotifications,
@@ -90,20 +92,20 @@ define(['jquery',
                                                .$el
                                                .appendTo(this.$el);
 
-                        $('<td>')
-                            .attr('colspan', 3)
-                            .append(
-                                $('<p>')
-                                    .text("Make sure you have a mailing agent such as 'sendmail' configured properly on your server to send emails."))
-                            .append(
-                                $('<p>')
-                                    .text("If you're using 'sendmail', and sending email is taking a strangely long time, and you see an error in '/var/log/mail.err' that says 'My unqualified host name ([hostname]) unknown; sleeping for retry', then read this:")
-                                    .append(
-                                        _get_$ulWithURLs([
-                                                'http://forum.linuxcareer.com/threads/1697-Sendmail-quot-unqualified-hostname-unknown-sleeping-for-retry-unqualified-hostname',
-                                                'http://forums.fedoraforum.org/archive/index.php/t-85365.html'
-                                            ])))
-                            .appendTo((new ViewAgg_Tr_WHeader).$el.appendTo(this.$el));
+                        (new ViewAgg_Tr_Config_Notes({
+                                                content: [
+                                                        $('<p>')
+                                                            .text("Make sure you have a mailing agent such as 'sendmail' configured properly on your server to send emails."),
+                                                        $('<p>')
+                                                            .text("If you're using 'sendmail', and sending email is taking a strangely long time, and you see an error in '/var/log/mail.err' that says 'My unqualified host name ([hostname]) unknown; sleeping for retry', then read this:")
+                                                            .append(
+                                                                _get_$ulWithURLs([
+                                                                        'http://forum.linuxcareer.com/threads/1697-Sendmail-quot-unqualified-hostname-unknown-sleeping-for-retry-unqualified-hostname',
+                                                                        'http://forums.fedoraforum.org/archive/index.php/t-85365.html'
+                                                                    ]))
+                                                    ]
+                                            })).$el
+                                               .appendTo(this.$el);
 
                         (new ViewAgg_Tr_Config_Option_String({
                                                 field:   'stripe_key_live_secret',
