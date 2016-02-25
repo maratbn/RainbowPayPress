@@ -56,7 +56,13 @@ define(['backbone',
 
                         $xhr.success(function(strData) {
                                 var objData = JSON.parse(strData);
-                                if (!objData || !objData.success) return;
+                                if (!objData || !objData.success) {
+                                    if (objData.errors &&
+                                        objData.errors.indexOf('error__no_curl') >= 0) {
+                                        window.alert("Unable to charge transactions because your PHP environment lacks cURL support, without which it cannot communicate with the Stripe servers.  Please enable PHP cURL support on your server.  If your server is running Debian or Ubuntu, this can be done by installing the package 'php5-curl'.");
+                                    }
+                                    return;
+                                }
 
                                 model_orig__transaction.set({
                                         'charged':             objData.charged,
