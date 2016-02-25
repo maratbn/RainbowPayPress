@@ -68,6 +68,9 @@ define(['jquery',
         }
 
 
+        var strURLStripeAPI = 'https://dashboard.stripe.com/account/apikeys';
+
+
         return ViewAgg_Table.extend({
 
                 initialize: function() {
@@ -138,7 +141,9 @@ define(['jquery',
                         (new ViewAgg_Tr_Config_Notes({
                                                 content: [
                                                         $('<p>')
-                                                            .text("Get your Stripe API keys from: https://dashboard.stripe.com/account/apikeys")
+                                                            .text(
+                                                                "Get your Stripe API keys from: "
+                                                                                + strURLStripeAPI)
                                                     ]
                                             })).$el
                                                .appendTo(this.$el);
