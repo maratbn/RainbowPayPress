@@ -128,33 +128,43 @@ define(['jquery',
                         $('<tr>').append($('<td>').attr('colspan', '2').append($buttonSubmit))
                                  .appendTo(this.$el);
 
-                        //  Based on: https://stripe.com/docs/checkout#integration-custom
-                        var handler = StripeCheckout.configure({
-                                'allow-remember-me':
-                                                false,
-                                'key':          model_transaction_details.getPublishKey(),
-                                'panel-label':  "Obtain Stripe token",
-                                'token':        function(dataToken) {
-                                                    // Use the token to create the charge with a
-                                                    // server-side script.
-                                                    // You can access the token ID with `token.id`
 
-                                                    model_transaction_details.set({
-                                                            'stripe_token_id':  dataToken.id,
-                                                            'stripe_email':     dataToken.email
-                                                        });
-                                                }
-                            });
+                        var handler = null;
 
                         // Close Checkout on page navigation
                         $(window).on('popstate', function() {
-                                handler.close();
+                                if (handler) handler.close();
                             });
 
                         this.listenTo(model_transaction_details, 'do_prompt', function(event) {
                                 var field = event.field;
 
                                 if (field == 'stripe_token_id' || field == 'stripe_email') {
+                                    //  Based on:
+                                    //  https://stripe.com/docs/checkout#integration-custom
+                                    if (!handler) {
+                                        handler = StripeCheckout.configure({
+                                                'allow-remember-me':
+                                                                false,
+                                                'key':          model_transaction_details
+                                                                                 .getPublishKey(),
+                                                'panel-label':  "Obtain Stripe token",
+                                                'token':        function(dataToken) {
+                                                                    // Use the token to create the
+                                                                    // charge with a server-side
+                                                                    // script.  You can access the
+                                                                    // token ID with `token.id`
+
+                                                                    model_transaction_details.set({
+                                                                            'stripe_token_id':
+                                                                                    dataToken.id,
+                                                                            'stripe_email':
+                                                                                    dataToken.email
+                                                                        });
+                                                                }
+                                            });
+                                    }
+
                                     // Open Checkout with further options
                                     handler.open({
                                             name:         params.name,
