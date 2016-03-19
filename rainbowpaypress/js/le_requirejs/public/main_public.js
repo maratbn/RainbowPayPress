@@ -84,7 +84,7 @@ define(['jquery',
             }
         }
 
-        function StripePaymentPressPublicClient() {
+        function RainbowPayPressPublicClient() {
 
             //  @param  params.ajax_url
             //  @param  params.publish_key_live
@@ -103,7 +103,7 @@ define(['jquery',
                 };
         }
 
-        var client = new StripePaymentPressPublicClient();
+        var client = new RainbowPayPressPublicClient();
         return client;
     });
 
