@@ -250,6 +250,7 @@ class FragmentUtil {
         _plugin_StripePaymentPress__requirejs.config({
                 baseUrl: strUrlRoot,
                 paths: {
+                        'stripe_checkout': 'https://checkout.stripe.com/checkout.js?<?=\date('Y-m-d')?>',
                         'backbone': strUrlRoot
                                         + 'lib/backbone-1.2.1-src--tweaked--2015-09-24--01--require_js_namespaced--5decf311fc2fa509f63fda82e4bc2e465aeb5545',
                         'jquery': strUrlRoot

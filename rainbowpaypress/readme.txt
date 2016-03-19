@@ -123,6 +123,8 @@ configured on your server.  Also check your SPAM folder.
 = 1.1.0 =
 * Having stripe-php 3.4.0 explicitly request the Stripe servers to communicate via Stripe API
   version 2016-03-07.
+* For better privacy, loading Stripe checkout.js only when the user clicks to open the Stripe
+  Checkout dialog.
 
 = 1.0.0 =
 * Initial public release.

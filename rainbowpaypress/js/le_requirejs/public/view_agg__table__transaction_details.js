@@ -29,7 +29,7 @@
 */
 
 
-(function(define) {
+(function(define, require) {
 
 
 define(['jquery',
@@ -140,39 +140,45 @@ define(['jquery',
                                 var field = event.field;
 
                                 if (field == 'stripe_token_id' || field == 'stripe_email') {
-                                    //  Based on:
-                                    //  https://stripe.com/docs/checkout#integration-custom
-                                    if (!handler) {
-                                        handler = StripeCheckout.configure({
-                                                'allow-remember-me':
-                                                                false,
-                                                'key':          model_transaction_details
+                                    require(
+                                        ['stripe_checkout'],
+                                        function(stripe_checkout) {
+                                            //  Based on:
+                                            //  https://stripe.com/docs/checkout#integration-custom
+                                            if (!handler) {
+                                                handler = StripeCheckout.configure({
+                                                        'allow-remember-me':
+                                                                        false,
+                                                        'key':          model_transaction_details
                                                                                  .getPublishKey(),
-                                                'panel-label':  "Obtain Stripe token",
-                                                'token':        function(dataToken) {
-                                                                    // Use the token to create the
-                                                                    // charge with a server-side
-                                                                    // script.  You can access the
-                                                                    // token ID with `token.id`
+                                                        'panel-label':  "Obtain Stripe token",
 
-                                                                    model_transaction_details.set({
-                                                                            'stripe_token_id':
+                                                        'token': function(dataToken) {
+                                                                // Use the token to create the
+                                                                // charge with a server-side
+                                                                // script.  You can access the
+                                                                // token ID with `token.id`
+
+                                                                model_transaction_details.set({
+                                                                        'stripe_token_id':
                                                                                     dataToken.id,
-                                                                            'stripe_email':
+                                                                        'stripe_email':
                                                                                     dataToken.email
-                                                                        });
-                                                                }
-                                            });
-                                    }
+                                                                    });
+                                                            }
+                                                    });
+                                            }
 
-                                    // Open Checkout with further options
-                                    handler.open({
-                                            name:         params.name,
-                                            description:  model_transaction_details
-                                                                       .get('charge_description'),
-                                            amount:       model_transaction_details
-                                                                             .get('charge_amount')
+                                            // Open Checkout with further options
+                                            handler.open({
+                                                    name:         params.name,
+                                                    description:  model_transaction_details
+                                                                        .get('charge_description'),
+                                                    amount:       model_transaction_details
+                                                                        .get('charge_amount')
+                                                });
                                         });
+
                                     return;
                                 }
 
@@ -224,4 +230,4 @@ define(['jquery',
     });
 
 
-})(_plugin_StripePaymentPress__define);
+})(_plugin_StripePaymentPress__define, _plugin_StripePaymentPress__require);
