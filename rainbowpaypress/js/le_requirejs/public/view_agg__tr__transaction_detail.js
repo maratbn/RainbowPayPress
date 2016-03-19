@@ -63,7 +63,15 @@ define(['backbone',
                                                                     : null)
                                                             .append($divValue);
 
-                        if ($aModify) $aModify.appendTo($tdValue);
+
+                        var $divBottom = $('<div>').appendTo($tdValue);
+
+                        this.get$divBottom = function() {
+                                return $divBottom;
+                            };
+
+
+                        if ($aModify) $aModify.appendTo($divBottom);
 
                         this.$el.append($("<td width='34%'>").text(params.name))
                                 .append($tdValue);
