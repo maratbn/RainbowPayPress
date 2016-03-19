@@ -143,7 +143,6 @@ define(['jquery',
                                                             .doStripeCheckout(
                                                                 model_info__transaction_details,
                                                                 params.name);
-                                    return;
                                 }
 
                                 if (field == 'customer_name') {
@@ -156,7 +155,6 @@ define(['jquery',
 
                                     model_info__transaction_details.set('customer_name',
                                                                   strCustomerName);
-                                    return;
                                 }
 
                                 if (field == 'customer_phone') {
@@ -169,7 +167,6 @@ define(['jquery',
 
                                     model_info__transaction_details.set('customer_phone',
                                                                   strCustomerPhone);
-                                    return;
                                 }
                             });
 
