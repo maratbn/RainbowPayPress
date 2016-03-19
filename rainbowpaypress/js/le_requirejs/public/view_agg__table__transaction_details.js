@@ -40,23 +40,23 @@ define(['jquery',
 
         return ViewAgg_Table.extend({
 
-                //  @param  params.model_transaction_details
+                //  @param  params.model_info__transaction_details
                 //  @param  params.name                 Name of the seller
                 //  @param  params.info                 Miscellaneous additional information
                 initialize: function(params) {
 
                         ViewAgg_Table.prototype.initialize.apply(this, arguments);
 
-                        var model_transaction_details = params.model_transaction_details;
+                        var model_info__transaction_details = params.model_info__transaction_details;
 
                         (new ViewAgg_Tr_TransactionDetail({
-                                    model_transaction_details: model_transaction_details,
+                                    model_info__transaction_details: model_info__transaction_details,
                                     field: 'type',
                                     name: "Stripe transaction type:"
                                 })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_TransactionDetail({
-                                    model_transaction_details: model_transaction_details,
+                                    model_info__transaction_details: model_info__transaction_details,
                                     field: 'charge_description',
                                     name: "Description:"
                                 })).$el.appendTo(this.$el);
@@ -70,15 +70,15 @@ define(['jquery',
 
                         (new ViewAgg_Tr_TransactionDetail({
                                     callback_format_value: util.formatCurrency,
-                                    model_transaction_details: model_transaction_details,
+                                    model_info__transaction_details: model_info__transaction_details,
                                     field: 'charge_amount',
                                     name: "Puchase amount:"
                                 })).$el.appendTo(this.$el);
 
                         var view_agg__tr__transaction_detailStripeToken =
                                                 new ViewAgg_Tr_TransactionDetail({
-                                                            model_transaction_details:
-                                                                        model_transaction_details,
+                                                            model_info__transaction_details:
+                                                                        model_info__transaction_details,
                                                             field: 'stripe_token_id',
                                                             name: "Stripe token id:",
                                                             text_enter: "Enter credit card info",
@@ -89,8 +89,8 @@ define(['jquery',
 
                         var view_agg__tr__transaction_detailStripeEmail =
                                                 new ViewAgg_Tr_TransactionDetail({
-                                                            model_transaction_details:
-                                                                        model_transaction_details,
+                                                            model_info__transaction_details:
+                                                                        model_info__transaction_details,
                                                             field: 'stripe_email',
                                                             name: "Stripe card email:",
                                                             text_enter: "Enter credit card info",
@@ -101,8 +101,8 @@ define(['jquery',
 
                         var view_agg__tr__transaction_detailCustomerName =
                                                 new ViewAgg_Tr_TransactionDetail({
-                                                            model_transaction_details:
-                                                                        model_transaction_details,
+                                                            model_info__transaction_details:
+                                                                        model_info__transaction_details,
                                                             field: 'customer_name',
                                                             name: "Customer name:",
                                                             text_enter: "Enter customer name",
@@ -113,8 +113,8 @@ define(['jquery',
 
                         var view_agg__tr__transaction_detailCustomerPhone =
                                                 new ViewAgg_Tr_TransactionDetail({
-                                                            model_transaction_details:
-                                                                        model_transaction_details,
+                                                            model_info__transaction_details:
+                                                                        model_info__transaction_details,
                                                             field: 'customer_phone',
                                                             name: "Customer phone:",
                                                             text_enter: "Enter customer phone",
@@ -136,7 +136,7 @@ define(['jquery',
                                 if (handler) handler.close();
                             });
 
-                        this.listenTo(model_transaction_details, 'do_prompt', function(event) {
+                        this.listenTo(model_info__transaction_details, 'do_prompt', function(event) {
                                 var field = event.field;
 
                                 if (field == 'stripe_token_id' || field == 'stripe_email') {
@@ -149,7 +149,7 @@ define(['jquery',
                                                 handler = StripeCheckout.configure({
                                                         'allow-remember-me':
                                                                         false,
-                                                        'key':          model_transaction_details
+                                                        'key':          model_info__transaction_details
                                                                                  .getPublishKey(),
                                                         'panel-label':  "Obtain Stripe token",
 
@@ -159,7 +159,7 @@ define(['jquery',
                                                                 // script.  You can access the
                                                                 // token ID with `token.id`
 
-                                                                model_transaction_details.set({
+                                                                model_info__transaction_details.set({
                                                                         'stripe_token_id':
                                                                                     dataToken.id,
                                                                         'stripe_email':
@@ -172,9 +172,9 @@ define(['jquery',
                                             // Open Checkout with further options
                                             handler.open({
                                                     name:         params.name,
-                                                    description:  model_transaction_details
+                                                    description:  model_info__transaction_details
                                                                         .get('charge_description'),
-                                                    amount:       model_transaction_details
+                                                    amount:       model_info__transaction_details
                                                                         .get('charge_amount')
                                                 });
                                         });
@@ -185,12 +185,12 @@ define(['jquery',
                                 if (field == 'customer_name') {
                                     var strCustomerName = window.prompt(
                                                                 "Enter customer name:",
-                                                                model_transaction_details
+                                                                model_info__transaction_details
                                                                           .get('customer_name')
                                                                                            || "");
                                     if (!strCustomerName) return;
 
-                                    model_transaction_details.set('customer_name',
+                                    model_info__transaction_details.set('customer_name',
                                                                   strCustomerName);
                                     return;
                                 }
@@ -198,12 +198,12 @@ define(['jquery',
                                 if (field == 'customer_phone') {
                                     var strCustomerPhone = window.prompt(
                                                                 "Enter customer phone:",
-                                                                model_transaction_details
+                                                                model_info__transaction_details
                                                                           .get('customer_phone')
                                                                                            || "");
                                     if (!strCustomerPhone) return;
 
-                                    model_transaction_details.set('customer_phone',
+                                    model_info__transaction_details.set('customer_phone',
                                                                   strCustomerPhone);
                                     return;
                                 }
@@ -214,7 +214,7 @@ define(['jquery',
                         $buttonSubmit.click(function(event) {
                                 event.preventDefault();
 
-                                if (model_transaction_details
+                                if (model_info__transaction_details
                                                      .doCheckForFieldsWithMissingValues()) {
                                     window.alert("Please specify the required information by clicking on the links in red.");
                                     return;
@@ -222,7 +222,7 @@ define(['jquery',
 
                                 if (!window.confirm("Submit this transaction?")) return;
 
-                                model_transaction_details.doXhrSubmit();
+                                model_info__transaction_details.doXhrSubmit();
                             });
                     }
             });

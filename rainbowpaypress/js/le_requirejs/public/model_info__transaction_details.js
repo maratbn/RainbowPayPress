@@ -6,9 +6,9 @@
 
   Version:        1.1.0-development_unreleased
 
-  Module:         rainbowpaypress/js/le_requirejs/public/model_transaction_details.js
+  Module:         rainbowpaypress/js/le_requirejs/public/model_info__transaction_details.js
 
-  Description:    Model 'ModelTransactionDetails'.
+  Description:    Model 'ModelInfo_TransactionDetails'.
 
   This file is part of RainbowPayPress.
 

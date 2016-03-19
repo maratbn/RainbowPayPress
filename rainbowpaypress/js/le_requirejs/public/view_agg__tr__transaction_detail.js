@@ -42,7 +42,7 @@ define(['backbone',
 
                 //  @param  params.callback_format_value
                 //                                  Optional value formatting callback.
-                //  @param  params.model_transaction_details
+                //  @param  params.model_info__transaction_details
                 //  @param  params.field
                 //  @param  params.name             The name of this detail.
                 //  @param  params.text             Text to place into the value field.
@@ -80,16 +80,16 @@ define(['backbone',
 
 
                         var field                      = params.field,
-                            model_transaction_details  = params.model_transaction_details;
+                            model_info__transaction_details  = params.model_info__transaction_details;
 
-                        if (model_transaction_details) {
+                        if (model_info__transaction_details) {
                             this.on('click_modify', function() {
-                                    model_transaction_details.trigger('do_prompt', {field: field});
+                                    model_info__transaction_details.trigger('do_prompt', {field: field});
                                 }, this);
                         }
 
                         function _updateValue() {
-                            var value = model_transaction_details.get(field);
+                            var value = model_info__transaction_details.get(field);
 
                             if (params.callback_format_value) {
                                 value = params.callback_format_value(value);
@@ -106,15 +106,15 @@ define(['backbone',
                             }
                         }
 
-                        if (model_transaction_details) {
+                        if (model_info__transaction_details) {
                             _updateValue.call(this);
 
-                            this.listenTo(model_transaction_details,
+                            this.listenTo(model_info__transaction_details,
                                           'change:' + field,
                                           _updateValue);
 
                             this.listenTo(
-                                model_transaction_details,
+                                model_info__transaction_details,
                                 'fields_with_missing_values',
                                 function(event) {
                                     if ($aModify && event.fields.indexOf(field) >= 0) {

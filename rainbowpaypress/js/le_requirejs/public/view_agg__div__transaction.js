@@ -34,11 +34,11 @@
 
 define(['backbone',
         'jquery',
-        'public/model_transaction_details',
+        'public/model_info__transaction_details',
         'public/view_agg__table__transaction_details'
     ], function(backbone,
                 $,
-                ModelTransactionDetails,
+                ModelInfo_TransactionDetails,
                 ViewAgg_Table_TransactionDetails) {
 
         return backbone.View.extend({
@@ -51,22 +51,22 @@ define(['backbone',
                 initialize: function(params) {
 
                         function _doTransactionCycle() {
-                            var model_transaction_details =
-                                new ModelTransactionDetails({
+                            var model_info__transaction_details =
+                                new ModelInfo_TransactionDetails({
                                             'type':                 params.type,
                                             'charge_description':   params.desc,
                                             'charge_amount':        params.amount
                                         });
 
                             (new ViewAgg_Table_TransactionDetails({
-                                        model_transaction_details:  model_transaction_details,
+                                        model_info__transaction_details:  model_info__transaction_details,
                                         name:                       params.name,
                                         info:                       params.info
                                     })).$el.appendTo(this.$el);
 
 
                             this.listenTo(
-                                model_transaction_details,
+                                model_info__transaction_details,
                                 'xhr__always__stripe_payment_press__submit',
                                 function(event) {
                                     if (event.success) {
@@ -81,7 +81,7 @@ define(['backbone',
                                                                    });
                                         this.$el.text(
                                             "Your transaction has been submitted successfully.  Your confirmation code is: "
-                                              + model_transaction_details.get('stripe_token_id'))
+                                              + model_info__transaction_details.get('stripe_token_id'))
                                                 .append($buttonAnotherTransaction);
                                     }
                                 });
