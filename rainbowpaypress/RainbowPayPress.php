@@ -39,7 +39,7 @@
   along with RainbowPayPress.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace plugin_StripePaymentPress;
+namespace plugin_RainbowPayPress;
 
 const PLUGIN_VERSION = '1.1.0-development_unreleased';
 
@@ -67,54 +67,54 @@ const SLUG_INFO_SETTINGS = 'plugin_RainbowPayPress_admin';
 
 require_once('RainbowPayPress_util.php');
 
-\register_activation_hook(__FILE__, '\\plugin_StripePaymentPress\\plugin_activation_hook');
+\register_activation_hook(__FILE__, '\\plugin_RainbowPayPress\\plugin_activation_hook');
 
 
 \add_action('wp_ajax_nopriv_stripe_payment_press__submit',
-            '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__submit');
-\add_action('wp_enqueue_scripts', '\\plugin_StripePaymentPress\\action_wp_enqueue_scripts');
+            '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__submit');
+\add_action('wp_enqueue_scripts', '\\plugin_RainbowPayPress\\action_wp_enqueue_scripts');
 \add_action('wp_print_footer_scripts',
-            '\\plugin_StripePaymentPress\\action_wp_print_footer_scripts');
+            '\\plugin_RainbowPayPress\\action_wp_print_footer_scripts');
 
 
 \add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
-                                     '\\plugin_StripePaymentPress\\filter_plugin_action_links');
+                                     '\\plugin_RainbowPayPress\\filter_plugin_action_links');
 
 \add_shortcode(SHORTCODE__STRIPE_PAYMENT_PRESS,
-               '\\plugin_StripePaymentPress\\shortcode_stripe_payment_press');
+               '\\plugin_RainbowPayPress\\shortcode_stripe_payment_press');
 
 
 if (\is_admin()) {
     \add_action(
         'admin_enqueue_scripts',
-        '\\plugin_StripePaymentPress\\action_admin_enqueue_scripts');
+        '\\plugin_RainbowPayPress\\action_admin_enqueue_scripts');
     \add_action(
         'admin_menu',
-        '\\plugin_StripePaymentPress\\action_admin_menu');
+        '\\plugin_RainbowPayPress\\action_admin_menu');
     \add_action(
         'admin_print_footer_scripts',
-        '\\plugin_StripePaymentPress\\action_admin_print_footer_scripts');
+        '\\plugin_RainbowPayPress\\action_admin_print_footer_scripts');
     \add_action(
         'wp_ajax_stripe_payment_press__admin__charge',
-        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__charge');
+        '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__admin__charge');
     \add_action(
         'wp_ajax_stripe_payment_press__admin__delete',
-        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__delete');
+        '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__admin__delete');
     \add_action(
         'wp_ajax_stripe_payment_press__admin__get_config',
-        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__get_config');
+        '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__admin__get_config');
     \add_action(
         'wp_ajax_stripe_payment_press__admin__get_transactions',
-        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__get_transactions');
+        '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__admin__get_transactions');
     \add_action(
         'wp_ajax_stripe_payment_press__admin__send_test_email',
-        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__send_test_email');
+        '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__admin__send_test_email');
     \add_action(
         'wp_ajax_stripe_payment_press__admin__update_config',
-        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__update_config');
+        '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__admin__update_config');
     \add_action(
         'wp_ajax_stripe_payment_press__submit',
-        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__submit');
+        '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__submit');
 }
 
 
@@ -143,7 +143,7 @@ function action_admin_menu() {
         \__('RainbowPayPress', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         'manage_options',
         SLUG_INFO_SETTINGS,
-        '\\plugin_StripePaymentPress\\FragmentUtil::renderAdmin_Root');
+        '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Root');
 }
 
 function action_admin_print_footer_scripts() {
@@ -207,7 +207,7 @@ function action_wp_ajax_stripe_payment_press__admin__charge() {
         //  Based on:   https://stripe.com/docs/checkout/guides/php
 
         require_once(dirname(__FILE__) .
-                               '/stripe-php-3.4.0--tweaked--2015-11-05--01--namespaced/init.php');
+                               '/stripe-php-3.4.0--tweaked--2016-03-18--01--namespaced/init.php');
 
         $type = $dataTransaction['type'];
 
@@ -231,10 +231,10 @@ function action_wp_ajax_stripe_payment_press__admin__charge() {
     $dataRet = [];
 
     if (count($arrErrors) == 0) {
-        \plugin_StripePaymentPress\Stripe\Stripe::setApiKey($stripe['secret_key']);
+        \plugin_RainbowPayPress\Stripe\Stripe::setApiKey($stripe['secret_key']);
 
         try {
-            $customer = \plugin_StripePaymentPress\Stripe\Customer::create(array(
+            $customer = \plugin_RainbowPayPress\Stripe\Customer::create(array(
                     'email'        => $dataTransaction['stripe_email'],
                     'source'       => $dataTransaction['stripe_token_id'],
                     'description'  => 'Name: ' . $dataTransaction['customer_name'] . ' -- ' .
@@ -245,7 +245,7 @@ function action_wp_ajax_stripe_payment_press__admin__charge() {
                 \array_push($arrErrors, 'error__create_stripe_customer');
             } else {
                 $dataRet['stripe_customer_id'] = $customer->id;
-                $charge = \plugin_StripePaymentPress\Stripe\Charge::create(array(
+                $charge = \plugin_RainbowPayPress\Stripe\Charge::create(array(
                         'customer'  => $customer->id,
                         'amount'    => $dataTransaction['charge_amount'],
                         'currency'  => 'usd',
@@ -263,7 +263,7 @@ function action_wp_ajax_stripe_payment_press__admin__charge() {
                     }
                 }
             }
-        } catch (plugin_StripePaymentPress\Stripe\Error\InvalidArgumentException
+        } catch (plugin_RainbowPayPress\Stripe\Error\InvalidArgumentException
                                                                     $invalid_argument_exception) {
             \array_push($arrErrors, 'error_stripe_invalid_argument_exception');
         } catch (\Exception $exception) {

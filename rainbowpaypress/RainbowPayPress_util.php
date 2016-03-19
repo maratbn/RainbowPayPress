@@ -30,7 +30,7 @@
   along with RainbowPayPress.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace plugin_StripePaymentPress;
+namespace plugin_RainbowPayPress;
 
 
 function getDateTimeNow() {
