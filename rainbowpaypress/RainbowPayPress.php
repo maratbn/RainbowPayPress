@@ -130,8 +130,8 @@ function action_admin_enqueue_scripts($hook) {
         'plugin_StripePaymentPress__requirejs',
         plugin_dir_url(__FILE__) . (
             IS_MODE_RELEASE
-            ? 'js/lib/require_js-2.1.20-src--tweaked--2015-09-24--01--namespaced--plugin_StripePaymentPress--45576dbca1a4f9ff7385a89c3c1f6db4917fe2c1.min.js'
-            : 'js/lib/require_js-2.1.20-src--tweaked--2015-09-24--01--namespaced--plugin_StripePaymentPress--45576dbca1a4f9ff7385a89c3c1f6db4917fe2c1.js'),
+            ? 'js/lib/require_js-2.1.20-src--tweaked--2016-03-18--01--namespaced--plugin_RainbowPayPress--8e39eca3d1a77552f8d1b2daf78fe382a3aa3ab3.min.js'
+            : 'js/lib/require_js-2.1.20-src--tweaked--2016-03-18--01--namespaced--plugin_RainbowPayPress--8e39eca3d1a77552f8d1b2daf78fe382a3aa3ab3.js'),
         null,
         '2015-09-25--1',
         false);
@@ -155,7 +155,7 @@ function action_admin_print_footer_scripts() {
 <script type='text/javascript'>
     <?php FragmentUtil::renderJavaScriptRequireJSConfig() ?>
 
-    _plugin_StripePaymentPress__requirejs([
+    _plugin_RainbowPayPress__requirejs([
             'backbone',
             'main'
         ], function(backbone, main) {
@@ -544,8 +544,8 @@ function action_wp_enqueue_scripts() {
                 'plugin_StripePaymentPress__requirejs',
                 plugin_dir_url(__FILE__) . (
                     IS_MODE_RELEASE
-                    ? 'js/lib/require_js-2.1.20-src--tweaked--2015-09-24--01--namespaced--plugin_StripePaymentPress--45576dbca1a4f9ff7385a89c3c1f6db4917fe2c1.min.js'
-                    : 'js/lib/require_js-2.1.20-src--tweaked--2015-09-24--01--namespaced--plugin_StripePaymentPress--45576dbca1a4f9ff7385a89c3c1f6db4917fe2c1.js'),
+                    ? 'js/lib/require_js-2.1.20-src--tweaked--2016-03-18--01--namespaced--plugin_RainbowPayPress--8e39eca3d1a77552f8d1b2daf78fe382a3aa3ab3.min.js'
+                    : 'js/lib/require_js-2.1.20-src--tweaked--2016-03-18--01--namespaced--plugin_RainbowPayPress--8e39eca3d1a77552f8d1b2daf78fe382a3aa3ab3.js'),
                 null,
                 '2015-09-25--1',
                 false);
@@ -561,7 +561,7 @@ function action_wp_print_footer_scripts() {
 <script type='text/javascript'>
     <?php FragmentUtil::renderJavaScriptRequireJSConfig() ?>
 
-    _plugin_StripePaymentPress__requirejs([
+    _plugin_RainbowPayPress__requirejs([
             'backbone',
             'main'
         ], function(backbone, main) {

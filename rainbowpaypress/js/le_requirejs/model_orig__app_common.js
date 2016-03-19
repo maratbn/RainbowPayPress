@@ -46,4 +46,4 @@ define(['backbone'], function (backbone) {
     });
 
 
-})(_plugin_StripePaymentPress__define);
+})(_plugin_RainbowPayPress__define);

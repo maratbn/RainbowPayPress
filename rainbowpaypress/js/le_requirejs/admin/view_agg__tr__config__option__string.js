@@ -84,4 +84,4 @@ define(['admin/view_agg__tr__config__option',
     });
 
 
-})(_plugin_StripePaymentPress__define);
+})(_plugin_RainbowPayPress__define);
