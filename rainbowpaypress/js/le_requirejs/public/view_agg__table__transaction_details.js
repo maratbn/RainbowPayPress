@@ -36,7 +36,7 @@ define(['jquery',
         'util',
         'view_agg__table',
         'public/view_agg__tr__transaction_detail'
-    ], function ($, util, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
+    ], function($, util, ViewAgg_Table, ViewAgg_Tr_TransactionDetail) {
 
         return ViewAgg_Table.extend({
 
