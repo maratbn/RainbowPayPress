@@ -36,12 +36,14 @@ define(['jquery',
         'util',
         'view_agg__table',
         'public/model_info__stripe_checkout',
-        'public/view_agg__tr__transaction_detail'
+        'public/view_agg__tr__transaction_detail',
+        'public/view_agg__tr__transaction_detail__stripe'
     ], function($,
                 util,
                 ViewAgg_Table,
                 model_info__stripe_checkout,
-                ViewAgg_Tr_TransactionDetail) {
+                ViewAgg_Tr_TransactionDetail,
+                ViewAgg_Tr_TransactionDetail_Stripe) {
 
         return ViewAgg_Table.extend({
 
@@ -81,7 +83,7 @@ define(['jquery',
                                 })).$el.appendTo(this.$el);
 
                         var view_agg__tr__transaction_detailStripeToken =
-                                                new ViewAgg_Tr_TransactionDetail({
+                                                new ViewAgg_Tr_TransactionDetail_Stripe({
                                                             model_info__transaction_details:
                                                                         model_info__transaction_details,
                                                             field: 'stripe_token_id',
@@ -93,7 +95,7 @@ define(['jquery',
                         view_agg__tr__transaction_detailStripeToken.$el.appendTo(this.$el);
 
                         var view_agg__tr__transaction_detailStripeEmail =
-                                                new ViewAgg_Tr_TransactionDetail({
+                                                new ViewAgg_Tr_TransactionDetail_Stripe({
                                                             model_info__transaction_details:
                                                                         model_info__transaction_details,
                                                             field: 'stripe_email',
