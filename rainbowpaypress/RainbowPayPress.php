@@ -70,8 +70,6 @@ require_once('RainbowPayPress_util.php');
 \register_activation_hook(__FILE__, '\\plugin_StripePaymentPress\\plugin_activation_hook');
 
 
-\add_action('wp_ajax_stripe_payment_press__submit',
-            '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__submit');
 \add_action('wp_ajax_nopriv_stripe_payment_press__submit',
             '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__submit');
 \add_action('wp_enqueue_scripts', '\\plugin_StripePaymentPress\\action_wp_enqueue_scripts');
@@ -114,6 +112,9 @@ if (\is_admin()) {
     \add_action(
         'wp_ajax_stripe_payment_press__admin__update_config',
         '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__admin__update_config');
+    \add_action(
+        'wp_ajax_stripe_payment_press__submit',
+        '\\plugin_StripePaymentPress\\action_wp_ajax_stripe_payment_press__submit');
 }
 
 
