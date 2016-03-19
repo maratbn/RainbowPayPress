@@ -70,7 +70,7 @@ define(['jquery',
                           {flag_exclude_charged: true});
         }
 
-        function StripePaymentPressAdminClient() {
+        function RainbowPayPressAdminClient() {
 
             //  @param  params.ajax_url
             //  @param  params.stripe_key_live_secret
@@ -99,7 +99,7 @@ define(['jquery',
             };
         }
 
-        var client = new StripePaymentPressAdminClient();
+        var client = new RainbowPayPressAdminClient();
         return client;
     });
 
