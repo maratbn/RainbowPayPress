@@ -143,9 +143,7 @@ define(['jquery',
                                                             .doStripeCheckout(
                                                                 model_info__transaction_details,
                                                                 params.name);
-                                }
-
-                                if (field == 'customer_name') {
+                                } else if (field == 'customer_name') {
                                     var strCustomerName = window.prompt(
                                                                 "Enter customer name:",
                                                                 model_info__transaction_details
@@ -155,9 +153,7 @@ define(['jquery',
 
                                     model_info__transaction_details.set('customer_name',
                                                                   strCustomerName);
-                                }
-
-                                if (field == 'customer_phone') {
+                                } else if (field == 'customer_phone') {
                                     var strCustomerPhone = window.prompt(
                                                                 "Enter customer phone:",
                                                                 model_info__transaction_details
