@@ -39,9 +39,14 @@ define(['backbone',
 
         return new (backbone.Model.extend({
 
+                defaults: {
+                        'flag_stripe_initialized': false
+                    },
+
                 initialize: function() {
 
-                        var handler = null;
+                        var handler  = null,
+                            me       = this;
 
                         // Close Checkout on page navigation
                         $(window).on('popstate', function() {
@@ -71,6 +76,8 @@ define(['backbone',
                                                             });
                                                     }
                                             });
+
+                                        me.set('flag_stripe_initialized', true);
 
                                         // Open Checkout with further options
                                         handler.open({
