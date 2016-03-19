@@ -32,15 +32,28 @@
 (function(define) {
 
 
-define(['public/view_agg__tr__transaction_detail'
-    ], function (ViewAgg_Tr_TransactionDetail) {
+define(['public/model_info__stripe_checkout',
+        'public/view_agg__tr__transaction_detail'
+    ], function(model_info__stripe_checkout,
+                ViewAgg_Tr_TransactionDetail) {
 
         return ViewAgg_Tr_TransactionDetail.extend({
 
-                initialize: function() {
+                //  @param  params.model_info__transaction_details
+                //  @param  params.name                 Name of the seller
+                initialize: function(params) {
                         ViewAgg_Tr_TransactionDetail.prototype.initialize.apply(this, arguments);
 
 
+                        var model_info__transaction_details = params
+                                                                 .model_info__transaction_details;
+
+
+                        this.on('click_modify', function() {
+                                model_info__stripe_checkout.doStripeCheckout(
+                                                                model_info__transaction_details,
+                                                                params.name);
+                            }, this);
                     }
 
             });

@@ -35,13 +35,11 @@
 define(['jquery',
         'util',
         'view_agg__table',
-        'public/model_info__stripe_checkout',
         'public/view_agg__tr__transaction_detail',
         'public/view_agg__tr__transaction_detail__stripe'
     ], function($,
                 util,
                 ViewAgg_Table,
-                model_info__stripe_checkout,
                 ViewAgg_Tr_TransactionDetail,
                 ViewAgg_Tr_TransactionDetail_Stripe) {
 
@@ -139,13 +137,7 @@ define(['jquery',
                         this.listenTo(model_info__transaction_details, 'do_prompt', function(event) {
                                 var field = event.field;
 
-                                if (field == 'stripe_token_id' || field == 'stripe_email') {
-
-                                    model_info__stripe_checkout
-                                                            .doStripeCheckout(
-                                                                model_info__transaction_details,
-                                                                params.name);
-                                } else if (field == 'customer_name') {
+                                if (field == 'customer_name') {
                                     var strCustomerName = window.prompt(
                                                                 "Enter customer name:",
                                                                 model_info__transaction_details
