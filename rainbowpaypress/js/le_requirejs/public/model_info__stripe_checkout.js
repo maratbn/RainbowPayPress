@@ -40,7 +40,8 @@ define(['backbone',
         return new (backbone.Model.extend({
 
                 defaults: {
-                        'flag_stripe_initialized': false
+                        'flag_stripe_initialized':   false,
+                        'flag_stripe_initializing':  false
                     },
 
                 initialize: function() {
@@ -55,6 +56,9 @@ define(['backbone',
 
                         this.doStripeCheckout = function(model_info__transaction_details,
                                                          strName) {
+
+                                this.set('flag_stripe_initializing', true);
+
                                 require(['stripe_checkout'], function(stripe_checkout) {
                                         //  Based on:
                                         //  https://stripe.com/docs/checkout#integration-custom
@@ -77,7 +81,10 @@ define(['backbone',
                                                     }
                                             });
 
-                                        me.set('flag_stripe_initialized', true);
+                                        me.set({
+                                                'flag_stripe_initialized':   true,
+                                                'flag_stripe_initializing':  false
+                                            });
 
                                         // Open Checkout with further options
                                         handler.open({
