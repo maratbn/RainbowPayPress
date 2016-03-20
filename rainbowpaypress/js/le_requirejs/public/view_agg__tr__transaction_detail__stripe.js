@@ -73,23 +73,33 @@ define(['jquery',
                                         .css({'display':     'none',
                                               'color':       'red'})
                                         .text("Stripe Checkout opening.  Please wait...")
+                                        .appendTo($divBottom),
+
+                            $spanStripeOpened
+                                = $('<span>')
+                                        .css({'display':     'none'})
+                                        .text("Stripe Checkout opened.")
                                         .appendTo($divBottom);
 
                         function _updateStatus() {
                             var flagInitializing = model_info__stripe_checkout
                                                                 .get('flag_stripe_initializing'),
                                 flagOpening = model_info__stripe_checkout
-                                                                .get('flag_stripe_opening');
+                                                                .get('flag_stripe_opening'),
+                                flagOpened = model_info__stripe_checkout
+                                                                .get('flag_stripe_opened');
 
-                            $aModify.css('display',
-                                         (flagInitializing || flagOpening) ? 'none' : "");
+                            $aModify.css('display', (flagInitializing || flagOpening || flagOpened)
+                                                    ? 'none'
+                                                    : "");
                             $spanStripeInitializing.css('display', flagInitializing ? "" : 'none');
                             $spanStripeOpening.css('display', flagOpening ? "" : 'none');
+                            $spanStripeOpened.css('display', flagOpened ? "" : 'none');
                         }
                         _updateStatus.call(this);
                         this.listenTo(
                             model_info__stripe_checkout,
-                            'change:flag_stripe_initializing change:flag_stripe_opening',
+                            'change:flag_stripe_initializing change:flag_stripe_opening change:flag_stripe_opened',
                             _updateStatus);
                     }
 
