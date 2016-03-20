@@ -125,6 +125,7 @@ configured on your server.  Also check your SPAM folder.
   version 2016-03-07.
 * For better privacy, loading Stripe checkout.js only when the user clicks to open the Stripe
   Checkout dialog.
+* Indicating to the user when the Stripe Checkout dialog is initializing and opening.
 
 = 1.0.0 =
 * Initial public release.
