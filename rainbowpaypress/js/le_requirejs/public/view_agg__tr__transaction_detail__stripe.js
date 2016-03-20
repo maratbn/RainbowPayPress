@@ -87,9 +87,10 @@ define(['jquery',
                             $spanStripeOpening.css('display', flagOpening ? "" : 'none');
                         }
                         _updateStatus.call(this);
-                        this.listenTo(model_info__stripe_checkout,
-                                      'change:flag_stripe_initializing change:flag_stripe_opening',
-                                      _updateStatus);
+                        this.listenTo(
+                            model_info__stripe_checkout,
+                            'change:flag_stripe_initializing change:flag_stripe_opening',
+                            _updateStatus);
                     }
 
             });
