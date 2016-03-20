@@ -43,7 +43,8 @@ define(['backbone',
                         'flag_stripe_closed':        false,
                         'flag_stripe_initialized':   false,
                         'flag_stripe_initializing':  false,
-                        'flag_stripe_opening':       false
+                        'flag_stripe_opening':       false,
+                        'flag_stripe_opened':        false
                     },
 
                 initialize: function() {
@@ -75,11 +76,13 @@ define(['backbone',
                                                 'panel-label':  "Obtain Stripe token",
 
                                                 'closed': function() {
-                                                        me.set('flag_stripe_closed', true);
+                                                        me.set({'flag_stripe_closed':   true,
+                                                                'flag_stripe_opened':   false});
                                                     },
 
                                                 'opened': function() {
-                                                        me.set('flag_stripe_opening', false);
+                                                        me.set({'flag_stripe_opening':  false,
+                                                                'flag_stripe_opened':   true});
                                                     },
 
                                                 'token': function(dataToken) {
