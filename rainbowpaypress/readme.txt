@@ -120,5 +120,9 @@ configured on your server.  Also check your SPAM folder.
 
 == Changelog ==
 
+= 1.1.0 =
+* Having stripe-php 3.4.0 explicitly request the Stripe servers to communicate via Stripe API
+  version 2016-03-07.
+
 = 1.0.0 =
 * Initial public release.
