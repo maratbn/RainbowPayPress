@@ -41,7 +41,8 @@ define(['backbone',
 
                 defaults: {
                         'flag_stripe_initialized':   false,
-                        'flag_stripe_initializing':  false
+                        'flag_stripe_initializing':  false,
+                        'flag_stripe_opening':       false
                     },
 
                 initialize: function() {
@@ -69,6 +70,10 @@ define(['backbone',
                                                                                  .getPublishKey(),
                                                 'panel-label':  "Obtain Stripe token",
 
+                                                'opened': function() {
+                                                        me.set('flag_stripe_opening', false);
+                                                    },
+
                                                 'token': function(dataToken) {
                                                         // Use the token to create the charge with
                                                         // a server-side script.  You can access
@@ -83,7 +88,8 @@ define(['backbone',
 
                                         me.set({
                                                 'flag_stripe_initialized':   true,
-                                                'flag_stripe_initializing':  false
+                                                'flag_stripe_initializing':  false,
+                                                'flag_stripe_opening':       true
                                             });
 
                                         // Open Checkout with further options
