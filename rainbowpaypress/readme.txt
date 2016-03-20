@@ -126,6 +126,10 @@ configured on your server.  Also check your SPAM folder.
 * For better privacy, loading Stripe checkout.js only when the user clicks to open the Stripe
   Checkout dialog.
 * Indicating to the user when the Stripe Checkout dialog is initializing and opening.
+* Renamed MySQL database table 'plugin_stripe_payment_press_transactions' to
+  'plugin_rainbow_pay_press_transactions'.  Users of version 1.0.0 upgrading to 2.0.0 who already
+  have data in the old table will have to manually export it from the old table and import it into
+  the new table using Adminer or a similar plugin that can export / import database tables.
 
 = 1.0.0 =
 * Initial public release.

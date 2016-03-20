@@ -54,7 +54,7 @@ class DBUtil {
 
     static function getTableName_Transactions() {
         global $wpdb;
-        return $wpdb->prefix . 'plugin_stripe_payment_press_transactions';
+        return $wpdb->prefix . 'plugin_rainbow_pay_press_transactions';
     }
 
     static function initializeTable_Transactions() {
