@@ -32,9 +32,11 @@
 (function(define) {
 
 
-define(['public/model_info__stripe_checkout',
+define(['jquery',
+        'public/model_info__stripe_checkout',
         'public/view_agg__tr__transaction_detail'
-    ], function(model_info__stripe_checkout,
+    ], function($,
+                model_info__stripe_checkout,
                 ViewAgg_Tr_TransactionDetail) {
 
         return ViewAgg_Tr_TransactionDetail.extend({
@@ -54,6 +56,29 @@ define(['public/model_info__stripe_checkout',
                                                                 model_info__transaction_details,
                                                                 params.name);
                             }, this);
+
+
+                        var $aModify    = this.get$aModify(),
+                            $divBottom  = this.get$divBottom();
+
+                        var $spanStripeInitializing
+                                = $('<span>')
+                                        .css({'display':     'none',
+                                              'color':       'red'})
+                                        .text("Stripe Checkout initializing.  Please wait...")
+                                        .appendTo($divBottom);
+
+                        function _updateStatus() {
+                            var flagInitializing = model_info__stripe_checkout
+                                                                .get('flag_stripe_initializing');
+
+                            $aModify.css('display', flagInitializing ? 'none' : "");
+                            $spanStripeInitializing.css('display', flagInitializing ? "" : 'none');
+                        }
+                        _updateStatus.call(this);
+                        this.listenTo(model_info__stripe_checkout,
+                                      'change:flag_stripe_initializing',
+                                      _updateStatus);
                     }
 
             });
