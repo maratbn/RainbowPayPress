@@ -55,8 +55,15 @@ define(['backbone',
 
                         var $aModify = params.text_enter
                                      ? $('<a>').attr('href', '#')
-                                     : null,
-                            $divValue = $('<div>');
+                                     : null;
+
+
+                        this.get$aModify = function() {
+                                return $aModify;
+                            };
+
+
+                        var $divValue = $('<div>');
 
                         var $tdValue = $("<td width='66%'>").append(params.text
                                                                     ? $('<span>').text(params.text)
