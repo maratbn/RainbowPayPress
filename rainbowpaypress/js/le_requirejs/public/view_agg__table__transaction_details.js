@@ -148,29 +148,26 @@ define(['jquery',
                                         function(stripe_checkout) {
                                             //  Based on:
                                             //  https://stripe.com/docs/checkout#integration-custom
-                                            if (!handler) {
-                                                handler = StripeCheckout.configure({
-                                                        'allow-remember-me':
-                                                                        false,
-                                                        'key':          model_info__transaction_details
+
+                                            handler = StripeCheckout.configure({
+                                                    'allow-remember-me':
+                                                                    false,
+                                                    'key':          model_info__transaction_details
                                                                                  .getPublishKey(),
-                                                        'panel-label':  "Obtain Stripe token",
+                                                    'panel-label':  "Obtain Stripe token",
 
-                                                        'token': function(dataToken) {
-                                                                // Use the token to create the
-                                                                // charge with a server-side
-                                                                // script.  You can access the
-                                                                // token ID with `token.id`
+                                                    'token': function(dataToken) {
+                                                            // Use the token to create the charge
+                                                            // with a server-side script.  You can
+                                                            // access the token ID with `token.id`
 
-                                                                model_info__transaction_details.set({
-                                                                        'stripe_token_id':
+                                                            model_info__transaction_details.set({
+                                                                    'stripe_token_id':
                                                                                     dataToken.id,
-                                                                        'stripe_email':
-                                                                                    dataToken.email
-                                                                    });
-                                                            }
-                                                    });
-                                            }
+                                                                    'stripe_email': dataToken.email
+                                                                });
+                                                        }
+                                                });
 
                                             // Open Checkout with further options
                                             handler.open({
