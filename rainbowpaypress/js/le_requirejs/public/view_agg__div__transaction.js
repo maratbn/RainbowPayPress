@@ -59,9 +59,10 @@ define(['backbone',
                                         });
 
                             (new ViewAgg_Table_TransactionDetails({
-                                        model_info__transaction_details:  model_info__transaction_details,
-                                        name:                       params.name,
-                                        info:                       params.info
+                                        model_info__transaction_details:
+                                                                  model_info__transaction_details,
+                                        name:                     params.name,
+                                        info:                     params.info
                                     })).$el.appendTo(this.$el);
 
 
