@@ -40,6 +40,7 @@ define(['backbone',
         return new (backbone.Model.extend({
 
                 defaults: {
+                        'flag_stripe_closed':        false,
                         'flag_stripe_initialized':   false,
                         'flag_stripe_initializing':  false,
                         'flag_stripe_opening':       false
@@ -58,7 +59,10 @@ define(['backbone',
                         this.doStripeCheckout = function(model_info__transaction_details,
                                                          strName) {
 
-                                this.set('flag_stripe_initializing', true);
+                                this.set({
+                                        'flag_stripe_closed':        false,
+                                        'flag_stripe_initializing':  true
+                                    });
 
                                 require(['stripe_checkout'], function(stripe_checkout) {
                                         //  Based on:
@@ -69,6 +73,10 @@ define(['backbone',
                                                 'key':          model_info__transaction_details
                                                                                  .getPublishKey(),
                                                 'panel-label':  "Obtain Stripe token",
+
+                                                'closed': function() {
+                                                        me.set('flag_stripe_closed', true);
+                                                    },
 
                                                 'opened': function() {
                                                         me.set('flag_stripe_opening', false);
