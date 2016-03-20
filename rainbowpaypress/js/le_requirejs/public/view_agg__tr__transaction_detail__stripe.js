@@ -66,18 +66,29 @@ define(['jquery',
                                         .css({'display':     'none',
                                               'color':       'red'})
                                         .text("Stripe Checkout initializing.  Please wait...")
+                                        .appendTo($divBottom),
+
+                            $spanStripeOpening
+                                = $('<span>')
+                                        .css({'display':     'none',
+                                              'color':       'red'})
+                                        .text("Stripe Checkout opening.  Please wait...")
                                         .appendTo($divBottom);
 
                         function _updateStatus() {
                             var flagInitializing = model_info__stripe_checkout
-                                                                .get('flag_stripe_initializing');
+                                                                .get('flag_stripe_initializing'),
+                                flagOpening = model_info__stripe_checkout
+                                                                .get('flag_stripe_opening');
 
-                            $aModify.css('display', flagInitializing ? 'none' : "");
+                            $aModify.css('display',
+                                         (flagInitializing || flagOpening) ? 'none' : "");
                             $spanStripeInitializing.css('display', flagInitializing ? "" : 'none');
+                            $spanStripeOpening.css('display', flagOpening ? "" : 'none');
                         }
                         _updateStatus.call(this);
                         this.listenTo(model_info__stripe_checkout,
-                                      'change:flag_stripe_initializing',
+                                      'change:flag_stripe_initializing change:flag_stripe_opening',
                                       _updateStatus);
                     }
 
