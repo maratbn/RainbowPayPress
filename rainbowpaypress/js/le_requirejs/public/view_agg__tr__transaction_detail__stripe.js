@@ -61,7 +61,14 @@ define(['jquery',
                         var $aModify    = this.get$aModify(),
                             $divBottom  = this.get$divBottom();
 
-                        var $spanStripeBlockedOnInitialize
+                        var $spanStripeBlockedOnException
+                                = $('<span>')
+                                        .css({'display':     'none',
+                                              'color':       'red'})
+                                        .text("Stripe Checkout appears to be blocked by an ad or a popup blocker, or by a JavaScript security policy.  Check your configuration and reload.")
+                                        .appendTo($divBottom),
+
+                            $spanStripeBlockedOnInitialize
                                 = $('<span>')
                                         .css({'display':     'none',
                                               'color':       'red'})
@@ -96,7 +103,9 @@ define(['jquery',
                                         .appendTo($divBottom);
 
                         function _updateStatus() {
-                            var flagTimeout = model_info__stripe_checkout
+                            var flagException = model_info__stripe_checkout
+                                                             .get('flag_stripe_exception'),
+                                flagTimeout = model_info__stripe_checkout
                                                              .get('flag_stripe_timeout'),
                                 flagInitializing = model_info__stripe_checkout
                                                                 .get('flag_stripe_initializing'),
@@ -109,20 +118,29 @@ define(['jquery',
                                                     ? 'none'
                                                     : "");
 
+                            $spanStripeBlockedOnException.css('display',
+                                                              (flagException && !flagTimeout
+                                                                             && flagInitializing)
+                                                              ? ""
+                                                              : 'none');
                             $spanStripeBlockedOnInitialize.css('display',
-                                                               (flagTimeout && flagInitializing)
+                                                               (!flagException && flagTimeout
+                                                                               && flagInitializing)
                                                                ? ""
                                                                : 'none');
                             $spanStripeBlockedOnOpen.css('display',
-                                                         (flagTimeout && flagOpening)
+                                                         (!flagException && flagTimeout
+                                                                         && flagOpening)
                                                          ? ""
                                                          : 'none');
 
                             $spanStripeInitializing.css('display',
-                                                        (!flagTimeout && flagInitializing)
+                                                        (!flagException && !flagTimeout
+                                                                        && flagInitializing)
                                                         ? ""
                                                         : 'none');
-                            $spanStripeOpening.css('display', (!flagTimeout && flagOpening)
+                            $spanStripeOpening.css('display', (!flagException && !flagTimeout
+                                                                              && flagOpening)
                                                             ? ""
                                                             : 'none');
                             $spanStripeOpened.css('display', flagOpened ? "" : 'none');
@@ -130,7 +148,7 @@ define(['jquery',
                         _updateStatus.call(this);
                         this.listenTo(
                             model_info__stripe_checkout,
-                            'change:flag_stripe_timeout change:flag_stripe_initializing change:flag_stripe_opening change:flag_stripe_opened',
+                            'change:flag_stripe_exception change:flag_stripe_timeout change:flag_stripe_initializing change:flag_stripe_opening change:flag_stripe_opened',
                             _updateStatus);
                     }
 
