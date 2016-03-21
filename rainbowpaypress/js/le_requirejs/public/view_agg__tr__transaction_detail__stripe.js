@@ -97,7 +97,7 @@ define(['jquery',
 
                         function _updateStatus() {
                             var flagBlocked = model_info__stripe_checkout
-                                                             .get('flag_stripe_could_be_blocked'),
+                                                             .get('flag_stripe_timeout'),
                                 flagInitializing = model_info__stripe_checkout
                                                                 .get('flag_stripe_initializing'),
                                 flagOpening = model_info__stripe_checkout
@@ -129,7 +129,7 @@ define(['jquery',
                         _updateStatus.call(this);
                         this.listenTo(
                             model_info__stripe_checkout,
-                            'change:flag_stripe_could_be_blocked change:flag_stripe_initializing change:flag_stripe_opening change:flag_stripe_opened',
+                            'change:flag_stripe_timeout change:flag_stripe_initializing change:flag_stripe_opening change:flag_stripe_opened',
                             _updateStatus);
                     }
 

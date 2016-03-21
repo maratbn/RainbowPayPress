@@ -41,7 +41,7 @@ define(['backbone',
 
                 defaults: {
                         'flag_stripe_closed':            false,
-                        'flag_stripe_could_be_blocked':  false,
+                        'flag_stripe_timeout':           false,
                         'flag_stripe_initialized':       false,
                         'flag_stripe_initializing':      false,
                         'flag_stripe_opening':           false,
@@ -74,7 +74,7 @@ define(['backbone',
                                         }
 
                                         timeoutBlock = setTimeout(function() {
-                                                me.set('flag_stripe_could_be_blocked', true);
+                                                me.set('flag_stripe_timeout', true);
                                                 timeoutBlock = null;
                                             }, 6500);
 
@@ -98,7 +98,7 @@ define(['backbone',
                                                             timeoutBlock = null;
                                                         }
 
-                                                        me.set({'flag_stripe_could_be_blocked':
+                                                        me.set({'flag_stripe_timeout':
                                                                                            false,
                                                                 'flag_stripe_opening':     false,
                                                                 'flag_stripe_opened':      true});
