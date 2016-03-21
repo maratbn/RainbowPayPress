@@ -120,6 +120,10 @@ configured on your server.  Also check your SPAM folder.
 
 == Changelog ==
 
+= 2.1.0 =
+* Indicating to the user when Stripe Checkout dialog may be blocked by an ad or a popup blocker,
+  by a JavaScript security policy, or by a broken network connection.
+
 = 2.0.0 =
 * Having stripe-php 3.4.0 explicitly request the Stripe servers to communicate via Stripe API
   version 2016-03-07.
