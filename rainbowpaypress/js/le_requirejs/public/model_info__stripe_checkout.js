@@ -99,9 +99,9 @@ define(['backbone',
                                                         }
 
                                                         me.set({'flag_stripe_could_be_blocked':
-                                                                                        false,
-                                                                'flag_stripe_opening':  false,
-                                                                'flag_stripe_opened':   true});
+                                                                                           false,
+                                                                'flag_stripe_opening':     false,
+                                                                'flag_stripe_opened':      true});
                                                     },
 
                                                 'token': function(dataToken) {
