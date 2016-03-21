@@ -41,11 +41,11 @@ define(['backbone',
 
                 defaults: {
                         'flag_stripe_closed':            false,
-                        'flag_stripe_timeout':           false,
                         'flag_stripe_initialized':       false,
                         'flag_stripe_initializing':      false,
                         'flag_stripe_opening':           false,
-                        'flag_stripe_opened':            false
+                        'flag_stripe_opened':            false,
+                        'flag_stripe_timeout':           false
                     },
 
                 initialize: function() {
