@@ -41,6 +41,8 @@ define(['backbone',
 
                 defaults: {
                         'flag_stripe_closed':        false,
+                        'flag_stripe_could_be_blocked':
+                                                     false,
                         'flag_stripe_initialized':   false,
                         'flag_stripe_initializing':  false,
                         'flag_stripe_opening':       false,
@@ -50,7 +52,8 @@ define(['backbone',
                 initialize: function() {
 
                         var handleStripe  = null,
-                            me            = this;
+                            me            = this,
+                            timeoutBlock  = null;
 
                         // Close Checkout on page navigation
                         $(window).on('popstate', function() {
@@ -66,6 +69,16 @@ define(['backbone',
                                     });
 
                                 require(['stripe_checkout'], function(stripe_checkout) {
+
+                                        if (timeoutBlock) {
+                                            window.clearTimeout(timeoutBlock);
+                                        }
+
+                                        timeoutBlock = setTimeout(function() {
+                                                me.set('flag_stripe_could_be_blocked', true);
+                                                timeoutBlock = null;
+                                            }, 6500);
+
                                         //  Based on:
                                         //  https://stripe.com/docs/checkout#integration-custom
                                         handleStripe = StripeCheckout.configure({
@@ -81,7 +94,14 @@ define(['backbone',
                                                     },
 
                                                 'opened': function() {
-                                                        me.set({'flag_stripe_opening':  false,
+                                                        if (timeoutBlock) {
+                                                            window.clearTimeout(timeoutBlock);
+                                                            timeoutBlock = null;
+                                                        }
+
+                                                        me.set({'flag_stripe_could_be_blocked':
+                                                                                        false,
+                                                                'flag_stripe_opening':  false,
                                                                 'flag_stripe_opened':   true});
                                                     },
 
