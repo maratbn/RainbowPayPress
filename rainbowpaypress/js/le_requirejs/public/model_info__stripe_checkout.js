@@ -40,13 +40,12 @@ define(['backbone',
         return new (backbone.Model.extend({
 
                 defaults: {
-                        'flag_stripe_closed':        false,
-                        'flag_stripe_could_be_blocked':
-                                                     false,
-                        'flag_stripe_initialized':   false,
-                        'flag_stripe_initializing':  false,
-                        'flag_stripe_opening':       false,
-                        'flag_stripe_opened':        false
+                        'flag_stripe_closed':            false,
+                        'flag_stripe_could_be_blocked':  false,
+                        'flag_stripe_initialized':       false,
+                        'flag_stripe_initializing':      false,
+                        'flag_stripe_opening':           false,
+                        'flag_stripe_opened':            false
                     },
 
                 initialize: function() {
