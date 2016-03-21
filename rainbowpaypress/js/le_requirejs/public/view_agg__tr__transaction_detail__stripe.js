@@ -61,7 +61,21 @@ define(['jquery',
                         var $aModify    = this.get$aModify(),
                             $divBottom  = this.get$divBottom();
 
-                        var $spanStripeInitializing
+                        var $spanStripeBlockedOnInitialize
+                                = $('<span>')
+                                        .css({'display':     'none',
+                                              'color':       'red'})
+                                        .text("Stripe Checkout is taking too long to initialize...  It could be blocked by an ad or a popup blocker, or by a JavaScript security policy.  Check your configuration and reload.")
+                                        .appendTo($divBottom),
+
+                            $spanStripeBlockedOnOpen
+                                = $('<span>')
+                                        .css({'display':     'none',
+                                              'color':       'red'})
+                                        .text("Stripe Checkout is taking too long to open...  It could be blocked by an ad or a popup blocker, by a JavaScript security policy, or by a broken network connection.  Give it a little more time if on a very slow connection, otherwise check your configuration and reload.")
+                                        .appendTo($divBottom),
+
+                            $spanStripeInitializing
                                 = $('<span>')
                                         .css({'display':     'none',
                                               'color':       'red'})
@@ -82,7 +96,9 @@ define(['jquery',
                                         .appendTo($divBottom);
 
                         function _updateStatus() {
-                            var flagInitializing = model_info__stripe_checkout
+                            var flagBlocked = model_info__stripe_checkout
+                                                             .get('flag_stripe_could_be_blocked'),
+                                flagInitializing = model_info__stripe_checkout
                                                                 .get('flag_stripe_initializing'),
                                 flagOpening = model_info__stripe_checkout
                                                                 .get('flag_stripe_opening'),
@@ -92,14 +108,28 @@ define(['jquery',
                             $aModify.css('display', (flagInitializing || flagOpening || flagOpened)
                                                     ? 'none'
                                                     : "");
-                            $spanStripeInitializing.css('display', flagInitializing ? "" : 'none');
-                            $spanStripeOpening.css('display', flagOpening ? "" : 'none');
+
+                            $spanStripeBlockedOnInitialize.css('display',
+                                                               (flagBlocked && flagInitializing)
+                                                               ? ""
+                                                               : 'none');
+                            $spanStripeBlockedOnOpen.css('display',
+                                                         (flagBlocked && flagOpening)
+                                                         ? ""
+                                                         : 'none');
+
+                            $spanStripeInitializing.css('display', (!flagBlocked && flagInitializing)
+                                                                 ? ""
+                                                                 : 'none');
+                            $spanStripeOpening.css('display', (!flagBlocked && flagOpening)
+                                                            ? ""
+                                                            : 'none');
                             $spanStripeOpened.css('display', flagOpened ? "" : 'none');
                         }
                         _updateStatus.call(this);
                         this.listenTo(
                             model_info__stripe_checkout,
-                            'change:flag_stripe_initializing change:flag_stripe_opening change:flag_stripe_opened',
+                            'change:flag_stripe_could_be_blocked change:flag_stripe_initializing change:flag_stripe_opening change:flag_stripe_opened',
                             _updateStatus);
                     }
 
