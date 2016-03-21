@@ -96,7 +96,7 @@ define(['jquery',
                                         .appendTo($divBottom);
 
                         function _updateStatus() {
-                            var flagBlocked = model_info__stripe_checkout
+                            var flagTimeout = model_info__stripe_checkout
                                                              .get('flag_stripe_timeout'),
                                 flagInitializing = model_info__stripe_checkout
                                                                 .get('flag_stripe_initializing'),
@@ -110,19 +110,19 @@ define(['jquery',
                                                     : "");
 
                             $spanStripeBlockedOnInitialize.css('display',
-                                                               (flagBlocked && flagInitializing)
+                                                               (flagTimeout && flagInitializing)
                                                                ? ""
                                                                : 'none');
                             $spanStripeBlockedOnOpen.css('display',
-                                                         (flagBlocked && flagOpening)
+                                                         (flagTimeout && flagOpening)
                                                          ? ""
                                                          : 'none');
 
                             $spanStripeInitializing.css('display',
-                                                        (!flagBlocked && flagInitializing)
+                                                        (!flagTimeout && flagInitializing)
                                                         ? ""
                                                         : 'none');
-                            $spanStripeOpening.css('display', (!flagBlocked && flagOpening)
+                            $spanStripeOpening.css('display', (!flagTimeout && flagOpening)
                                                             ? ""
                                                             : 'none');
                             $spanStripeOpened.css('display', flagOpened ? "" : 'none');
