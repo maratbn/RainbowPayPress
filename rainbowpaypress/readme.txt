@@ -123,6 +123,9 @@ configured on your server.  Also check your SPAM folder.
 = 2.1.0 =
 * Indicating to the user when Stripe Checkout dialog may be blocked by an ad or a popup blocker,
   by a JavaScript security policy, or by a broken network connection.
+* To bypass browser popup blockers, loading Stripe checkout when the user opens the payment UI
+  rather than when the user clicks to open the Stripe Checkout dialog, as that will keep the
+  popup-loading logic in the same user-initiated UI callback.
 
 = 2.0.0 =
 * Having stripe-php 3.4.0 explicitly request the Stripe servers to communicate via Stripe API
