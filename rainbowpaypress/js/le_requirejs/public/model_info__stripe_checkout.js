@@ -98,8 +98,7 @@ define(['backbone',
                                                             timeoutBlock = null;
                                                         }
 
-                                                        me.set({'flag_stripe_timeout':
-                                                                                           false,
+                                                        me.set({'flag_stripe_timeout':     false,
                                                                 'flag_stripe_opening':     false,
                                                                 'flag_stripe_opened':      true});
                                                     },
