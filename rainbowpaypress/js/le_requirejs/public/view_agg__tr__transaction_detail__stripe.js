@@ -118,9 +118,10 @@ define(['jquery',
                                                          ? ""
                                                          : 'none');
 
-                            $spanStripeInitializing.css('display', (!flagBlocked && flagInitializing)
-                                                                 ? ""
-                                                                 : 'none');
+                            $spanStripeInitializing.css('display',
+                                                        (!flagBlocked && flagInitializing)
+                                                        ? ""
+                                                        : 'none');
                             $spanStripeOpening.css('display', (!flagBlocked && flagOpening)
                                                             ? ""
                                                             : 'none');
