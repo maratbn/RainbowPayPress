@@ -49,12 +49,12 @@ define(['backbone',
 
                 initialize: function() {
 
-                        var handler  = null,
-                            me       = this;
+                        var handleStripe  = null,
+                            me            = this;
 
                         // Close Checkout on page navigation
                         $(window).on('popstate', function() {
-                                if (handler) handler.close();
+                                if (handleStripe) handleStripe.close();
                             });
 
                         this.doStripeCheckout = function(model_info__transaction_details,
@@ -68,7 +68,7 @@ define(['backbone',
                                 require(['stripe_checkout'], function(stripe_checkout) {
                                         //  Based on:
                                         //  https://stripe.com/docs/checkout#integration-custom
-                                        handler = StripeCheckout.configure({
+                                        handleStripe = StripeCheckout.configure({
                                                 'allow-remember-me':
                                                                 false,
                                                 'key':          model_info__transaction_details
@@ -104,7 +104,7 @@ define(['backbone',
                                             });
 
                                         // Open Checkout with further options
-                                        handler.open({
+                                        handleStripe.open({
                                                 name:         strName,
                                                 description:  model_info__transaction_details
                                                                        .get('charge_description'),
