@@ -103,16 +103,16 @@ define(['jquery',
                                         .appendTo($divBottom);
 
                         function _updateStatus() {
-                            var flagException = model_info__stripe_checkout
-                                                             .get('flag_stripe_exception'),
-                                flagTimeout = model_info__stripe_checkout
-                                                             .get('flag_stripe_timeout'),
-                                flagInitializing = model_info__stripe_checkout
-                                                                .get('flag_stripe_initializing'),
-                                flagOpening = model_info__stripe_checkout
-                                                                .get('flag_stripe_opening'),
-                                flagOpened = model_info__stripe_checkout
-                                                                .get('flag_stripe_opened');
+                            var flagException     = model_info__stripe_checkout
+                                                                    .get('flag_stripe_exception'),
+                                flagTimeout       = model_info__stripe_checkout
+                                                                      .get('flag_stripe_timeout'),
+                                flagInitializing  = model_info__stripe_checkout
+                                                                 .get('flag_stripe_initializing'),
+                                flagOpening       = model_info__stripe_checkout
+                                                                      .get('flag_stripe_opening'),
+                                flagOpened        = model_info__stripe_checkout
+                                                                       .get('flag_stripe_opened');
 
                             $aModify.css('display', (flagInitializing || flagOpening || flagOpened)
                                                     ? 'none'
