@@ -110,8 +110,8 @@ if (\is_admin()) {
         'wp_ajax_rainbow_pay_press__admin__send_test_email',
         '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__admin__send_test_email');
     \add_action(
-        'wp_ajax_stripe_payment_press__admin__update_config',
-        '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__admin__update_config');
+        'wp_ajax_rainbow_pay_press__admin__update_config',
+        '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__admin__update_config');
     \add_action(
         'wp_ajax_stripe_payment_press__submit',
         '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__submit');
@@ -385,7 +385,7 @@ function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {
                       'errors'        => $arrErrors]));
 }
 
-function action_wp_ajax_stripe_payment_press__admin__update_config() {
+function action_wp_ajax_rainbow_pay_press__admin__update_config() {
     /** Possible errors:
      *      error__insufficient_permissions
      *      error__wp__update_option
