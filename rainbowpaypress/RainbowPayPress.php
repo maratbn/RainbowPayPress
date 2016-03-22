@@ -81,7 +81,7 @@ require_once('RainbowPayPress_util.php');
                                      '\\plugin_RainbowPayPress\\filter_plugin_action_links');
 
 \add_shortcode(SHORTCODE__RAINBOW_PAY_PRESS,
-               '\\plugin_RainbowPayPress\\shortcode_stripe_payment_press');
+               '\\plugin_RainbowPayPress\\shortcode_rainbow_pay_press');
 
 
 if (\is_admin()) {
@@ -609,7 +609,7 @@ function plugin_activation_hook() {
     DBUtil::initializeTable_Transactions();
 }
 
-function shortcode_stripe_payment_press($atts) {
+function shortcode_rainbow_pay_press($atts) {
     if ($atts == null ||
         $atts['amount'] == null ||
         $atts['desc'] == null ||
