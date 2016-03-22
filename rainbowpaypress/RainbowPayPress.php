@@ -95,8 +95,8 @@ if (\is_admin()) {
         'admin_print_footer_scripts',
         '\\plugin_RainbowPayPress\\action_admin_print_footer_scripts');
     \add_action(
-        'wp_ajax_stripe_payment_press__admin__charge',
-        '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__admin__charge');
+        'wp_ajax_rainbow_pay_press__admin__charge',
+        '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__admin__charge');
     \add_action(
         'wp_ajax_stripe_payment_press__admin__delete',
         '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__admin__delete');
@@ -170,7 +170,7 @@ function action_admin_print_footer_scripts() {
 <?php
 }
 
-function action_wp_ajax_stripe_payment_press__admin__charge() {
+function action_wp_ajax_rainbow_pay_press__admin__charge() {
     /** Possible errors:
      *      error__insufficient_permissions
      *      error__no_curl
