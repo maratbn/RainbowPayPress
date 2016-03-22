@@ -55,7 +55,7 @@ define(['backbone',
                         var $xhr = $.ajax(
                             model_orig__app_common.get('ajax_url'), {
                                 data: {
-                                        'action': 'stripe_payment_press__admin__get_config'
+                                        'action': 'rainbow_pay_press__admin__get_config'
                                     },
                                 method: 'post'
                             }),
