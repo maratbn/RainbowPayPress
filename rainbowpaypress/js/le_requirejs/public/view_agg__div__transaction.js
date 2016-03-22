@@ -73,7 +73,7 @@ define(['backbone',
 
                             this.listenTo(
                                 model_info__transaction_details,
-                                'xhr__always__stripe_payment_press__submit',
+                                'xhr__always__rainbow_pay_press__submit',
                                 function(event) {
                                     if (event.success) {
                                         var me = this;

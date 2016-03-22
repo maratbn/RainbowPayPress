@@ -70,8 +70,8 @@ require_once('RainbowPayPress_util.php');
 \register_activation_hook(__FILE__, '\\plugin_RainbowPayPress\\plugin_activation_hook');
 
 
-\add_action('wp_ajax_nopriv_stripe_payment_press__submit',
-            '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__submit');
+\add_action('wp_ajax_nopriv_rainbow_pay_press__submit',
+            '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__submit');
 \add_action('wp_enqueue_scripts', '\\plugin_RainbowPayPress\\action_wp_enqueue_scripts');
 \add_action('wp_print_footer_scripts',
             '\\plugin_RainbowPayPress\\action_wp_print_footer_scripts');
@@ -113,8 +113,8 @@ if (\is_admin()) {
         'wp_ajax_rainbow_pay_press__admin__update_config',
         '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__admin__update_config');
     \add_action(
-        'wp_ajax_stripe_payment_press__submit',
-        '\\plugin_RainbowPayPress\\action_wp_ajax_stripe_payment_press__submit');
+        'wp_ajax_rainbow_pay_press__submit',
+        '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__submit');
 }
 
 
@@ -437,7 +437,7 @@ function action_wp_ajax_rainbow_pay_press__admin__update_config() {
     die(\json_encode($objRet));
 }
 
-function action_wp_ajax_stripe_payment_press__submit() {
+function action_wp_ajax_rainbow_pay_press__submit() {
     /** Possible errors:
      *      error__insert_transaction
      **/

@@ -70,7 +70,7 @@ define(['backbone',
                 doXhrSubmit: function() {
                         var $xhr = $.post
                                       (model_orig__app_common.get('ajax_url'), {
-                                          action:              'stripe_payment_press__submit',
+                                          action:              'rainbow_pay_press__submit',
                                           type:                this.attributes['type'],
                                           charge_description:  this.attributes
                                                                            ['charge_description'],
@@ -85,7 +85,7 @@ define(['backbone',
                         $xhr.always(function(strData) {
                                 var objData = JSON.parse(strData);
 
-                                me.trigger('xhr__always__stripe_payment_press__submit', {
+                                me.trigger('xhr__always__rainbow_pay_press__submit', {
                                                success: objData && objData.success
                                            });
                             });
