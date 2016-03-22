@@ -63,7 +63,7 @@ define(['jquery',
                                     var $xhr = $.ajax(
                                         model_orig__app_common.get('ajax_url'), {
                                             data: {
-                                                    'action': 'stripe_payment_press__admin__send_test_email'
+                                                    'action': 'rainbow_pay_press__admin__send_test_email'
                                                 },
                                             method: 'post'
                                         }),
