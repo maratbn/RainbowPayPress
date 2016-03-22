@@ -74,7 +74,7 @@ define(['backbone',
                                             window.clearTimeout(timeoutBlock);
                                         }
 
-                                        timeoutBlock = setTimeout(function() {
+                                        timeoutBlock = window.setTimeout(function() {
                                                 if (me.get('flag_stripe_exception')) return;
 
                                                 me.set('flag_stripe_timeout', true);
