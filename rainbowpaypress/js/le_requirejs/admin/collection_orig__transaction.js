@@ -77,7 +77,7 @@ define(['backbone',
 
                         var $xhr = $.ajax(model_orig__app_common.get('ajax_url'), {
                                               data: {
-                                                      'action':  'stripe_payment_press__admin__delete',
+                                                      'action':  'rainbow_pay_press__admin__delete',
                                                       'id':      model_orig__transaction.get('id')
                                                   },
                                               method: 'post'
