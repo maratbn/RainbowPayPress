@@ -61,7 +61,7 @@ const SETTING__STRIPE_TEST_PUBLISH_KEY
                                      = 'plugin_RainbowPayPress__setting__stripe_test_publish_key';
 const SETTING__STRIPE_TEST_SECRET_KEY = 'plugin_RainbowPayPress__setting__stripe_test_secret_key';
 
-const SHORTCODE__STRIPE_PAYMENT_PRESS = 'rainbow-pay-press';
+const SHORTCODE__RAINBOW_PAY_PRESS = 'rainbow-pay-press';
 
 const SLUG_INFO_SETTINGS = 'plugin_RainbowPayPress_admin';
 
@@ -80,7 +80,7 @@ require_once('RainbowPayPress_util.php');
 \add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
                                      '\\plugin_RainbowPayPress\\filter_plugin_action_links');
 
-\add_shortcode(SHORTCODE__STRIPE_PAYMENT_PRESS,
+\add_shortcode(SHORTCODE__RAINBOW_PAY_PRESS,
                '\\plugin_RainbowPayPress\\shortcode_stripe_payment_press');
 
 
@@ -538,7 +538,7 @@ function action_wp_enqueue_scripts() {
 
     global $post;
     if ($post instanceof \WP_Post &&
-        \has_shortcode($post->post_content, SHORTCODE__STRIPE_PAYMENT_PRESS)) {
+        \has_shortcode($post->post_content, SHORTCODE__RAINBOW_PAY_PRESS)) {
 
         \wp_enqueue_script(
                 'plugin__RainbowPayPress__requirejs',
@@ -618,7 +618,7 @@ function shortcode_stripe_payment_press($atts) {
                \sprintf(
                    \__('Short-code [%s] missconfigured.',
                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                   SHORTCODE__STRIPE_PAYMENT_PRESS) .
+                   SHORTCODE__RAINBOW_PAY_PRESS) .
                '</i></b>';
     }
 
