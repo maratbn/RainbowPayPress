@@ -41,6 +41,7 @@ define(['backbone',
 
                 defaults: {
                         'flag_stripe_closed':            false,
+                        'flag_stripe_loaded':            false,
                         'flag_stripe_initialized':       false,
                         'flag_stripe_initializing':      false,
                         'flag_stripe_opening':           false,
@@ -51,8 +52,16 @@ define(['backbone',
 
                 initialize: function() {
 
+                        var me = this;
+
+                        this.doStripeLoad = function() {
+                                require(['stripe_checkout'], function(stripe_checkout) {
+                                        me.set('flag_stripe_loaded', true);
+                                    });
+                            };
+
+
                         var handleStripe  = null,
-                            me            = this,
                             timeoutBlock  = null;
 
                         // Close Checkout on page navigation
@@ -63,81 +72,81 @@ define(['backbone',
                         this.doStripeCheckout = function(model_info__transaction_details,
                                                          strName) {
 
+                                if (!this.get('flag_stripe_loaded')) return;
+
+
                                 this.set({
                                         'flag_stripe_closed':        false,
                                         'flag_stripe_initializing':  true
                                     });
 
-                                require(['stripe_checkout'], function(stripe_checkout) {
 
-                                        if (timeoutBlock) {
-                                            window.clearTimeout(timeoutBlock);
-                                        }
+                                if (timeoutBlock) {
+                                    window.clearTimeout(timeoutBlock);
+                                }
 
-                                        timeoutBlock = window.setTimeout(function() {
-                                                if (me.get('flag_stripe_exception')) return;
+                                timeoutBlock = window.setTimeout(function() {
+                                        if (me.get('flag_stripe_exception')) return;
 
-                                                me.set('flag_stripe_timeout', true);
-                                                timeoutBlock = null;
-                                            }, 6500);
+                                        me.set('flag_stripe_timeout', true);
+                                        timeoutBlock = null;
+                                    }, 6500);
 
-                                        try {
-                                            //  Based on:
-                                            //  https://stripe.com/docs/checkout#integration-custom
-                                            handleStripe = StripeCheckout.configure({
-                                                    'allow-remember-me':
-                                                            false,
-                                                    'key':  model_info__transaction_details
+                                try {
+                                    //  Based on:
+                                    //  https://stripe.com/docs/checkout#integration-custom
+                                    handleStripe = StripeCheckout.configure({
+                                            'allow-remember-me':
+                                                    false,
+                                            'key':  model_info__transaction_details
                                                                                  .getPublishKey(),
-                                                    'panel-label': "Obtain Stripe token",
+                                            'panel-label': "Obtain Stripe token",
 
-                                                    'closed': function() {
-                                                            me.set({'flag_stripe_closed': true,
-                                                                    'flag_stripe_opened': false});
-                                                        },
+                                            'closed': function() {
+                                                    me.set({'flag_stripe_closed': true,
+                                                            'flag_stripe_opened': false});
+                                                },
 
-                                                    'opened': function() {
-                                                            if (timeoutBlock) {
-                                                                window.clearTimeout(timeoutBlock);
-                                                                timeoutBlock = null;
-                                                            }
+                                            'opened': function() {
+                                                    if (timeoutBlock) {
+                                                        window.clearTimeout(timeoutBlock);
+                                                        timeoutBlock = null;
+                                                    }
 
-                                                            me.set({'flag_stripe_timeout':  false,
-                                                                    'flag_stripe_opening':  false,
-                                                                    'flag_stripe_opened':   true});
-                                                        },
+                                                    me.set({'flag_stripe_timeout':  false,
+                                                            'flag_stripe_opening':  false,
+                                                            'flag_stripe_opened':   true});
+                                                },
 
-                                                    'token': function(dataToken) {
-                                                            // Use the token to create the charge
-                                                            // with a server-side script.  You can
-                                                            // access the token ID with `token.id`
+                                            'token': function(dataToken) {
+                                                    // Use the token to create the charge with a
+                                                    // server-side script.  You can access the
+                                                    // token ID with `token.id`
 
-                                                            model_info__transaction_details.set({
-                                                                    'stripe_token_id':
-                                                                                    dataToken.id,
-                                                                    'stripe_email': dataToken.email
-                                                                });
-                                                        }
-                                                });
+                                                    model_info__transaction_details.set({
+                                                            'stripe_token_id':  dataToken.id,
+                                                            'stripe_email':     dataToken.email
+                                                        });
+                                                }
+                                        });
 
-                                            me.set({
-                                                    'flag_stripe_initialized':   true,
-                                                    'flag_stripe_initializing':  false,
-                                                    'flag_stripe_opening':       true
-                                                });
+                                    this.set({
+                                            'flag_stripe_initialized':   true,
+                                            'flag_stripe_initializing':  false,
+                                            'flag_stripe_opening':       true
+                                        });
 
-                                            // Open Checkout with further options
-                                            handleStripe.open({
-                                                    name:         strName,
-                                                    description:  model_info__transaction_details
+                                    // Open Checkout with further options
+                                    handleStripe.open({
+                                            name:         strName,
+                                            description:  model_info__transaction_details
                                                                        .get('charge_description'),
-                                                    amount:       model_info__transaction_details
+                                            amount:       model_info__transaction_details
                                                                              .get('charge_amount')
-                                                });
-                                        } catch (e) {
-                                            me.set('flag_stripe_exception', true);
-                                        }
-                                    });
+                                        });
+                                } catch (e) {
+                                    this.set('flag_stripe_exception', true);
+                                }
                             };
                     }
             }));

@@ -34,10 +34,12 @@
 
 define(['backbone',
         'jquery',
+        'public/model_info__stripe_checkout',
         'public/model_info__transaction_details',
         'public/view_agg__table__transaction_details'
     ], function(backbone,
                 $,
+                model_info__stripe_checkout,
                 ModelInfo_TransactionDetails,
                 ViewAgg_Table_TransactionDetails) {
 
@@ -51,6 +53,9 @@ define(['backbone',
                 initialize: function(params) {
 
                         function _doTransactionCycle() {
+
+                            model_info__stripe_checkout.doStripeLoad();
+
                             var model_info__transaction_details =
                                 new ModelInfo_TransactionDetails({
                                             'type':                 params.type,
