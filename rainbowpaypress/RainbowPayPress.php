@@ -122,13 +122,13 @@ function action_admin_enqueue_scripts($hook) {
     if ($hook != 'plugins_page_' . SLUG_INFO_SETTINGS) return;
 
     \wp_enqueue_style('plugin__RainbowPayPress__style_css',
-                      plugin_dir_url(__FILE__) . '/style.css',
+                      \plugin_dir_url(__FILE__) . '/style.css',
                       null,
                       getUVArg());
 
     \wp_enqueue_script(
         'plugin__RainbowPayPress__requirejs',
-        plugin_dir_url(__FILE__) . (
+        \plugin_dir_url(__FILE__) . (
             IS_MODE_RELEASE
             ? 'js/lib/require_js-2.1.20-src--tweaked--2016-03-18--01--namespaced--plugin_RainbowPayPress--8e39eca3d1a77552f8d1b2daf78fe382a3aa3ab3.min.js'
             : 'js/lib/require_js-2.1.20-src--tweaked--2016-03-18--01--namespaced--plugin_RainbowPayPress--8e39eca3d1a77552f8d1b2daf78fe382a3aa3ab3.js'),
@@ -148,7 +148,7 @@ function action_admin_menu() {
 
 function action_admin_print_footer_scripts() {
 
-    if (!wp_script_is('plugin__RainbowPayPress__requirejs')) return;
+    if (!\wp_script_is('plugin__RainbowPayPress__requirejs')) return;
 
     $strUrlBase = \plugin_dir_url(__FILE__);
 ?>
