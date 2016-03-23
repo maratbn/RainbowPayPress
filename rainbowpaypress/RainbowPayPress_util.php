@@ -72,6 +72,7 @@ class DBUtil {
                 stripe_email varchar(200) NOT NULL,
                 customer_name varchar(200) NOT NULL,
                 customer_phone varchar(100) NOT NULL,
+                shipping_address varchar(300),
                 stripe_customer_id varchar(100),
                 stripe_charge_id varchar(100)
             );";
