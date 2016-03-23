@@ -634,7 +634,7 @@ function shortcode_rainbow_pay_press($atts) {
                                                        '"' .
                 ($atts['info'] == null ? "" :
                 ' data-plugin-stripe-payment-press-info="' . \esc_attr($atts['info']) .
-                                                        '"') .
+                                                       '"') .
 
                 ($atts['label'] == null ? "" :
                 ' data-plugin-stripe-payment-press-label="' . \esc_attr($atts['label']) .
