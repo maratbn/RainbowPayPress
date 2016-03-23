@@ -46,6 +46,7 @@ define(['jquery',
             function _processSpan($elSpan) {
                 var type    = $elSpan.attr('data-plugin-rainbow-pay-press-type') || 'test',
                     amount  = $elSpan.attr('data-plugin-rainbow-pay-press-amount'),
+                    fields  = $elSpan.attr('data-plugin-rainbow-pay-press-fields'),
                     name    = $elSpan.attr('data-plugin-rainbow-pay-press-name'),
                     desc    = $elSpan.attr('data-plugin-rainbow-pay-press-desc'),
                     info    = $elSpan.attr('data-plugin-rainbow-pay-press-info'),
@@ -71,7 +72,8 @@ define(['jquery',
                                                                 amount:        amount,
                                                                 name:          name,
                                                                 desc:          desc,
-                                                                info:          info
+                                                                info:          info,
+                                                                fields:        fields
                                                             })).$el.appendTo($elSpan);
                         }
                     });

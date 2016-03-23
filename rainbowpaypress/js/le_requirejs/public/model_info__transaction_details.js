@@ -47,7 +47,8 @@ define(['backbone',
                         'stripe_token_id':      null,
                         'stripe_email':         null,
                         'customer_name':        null,
-                        'customer_phone':       null
+                        'customer_phone':       null,
+                        'shipping_address':     null
                     },
 
                 doCheckForFieldsWithMissingValues: function(model_orig__fields) {
@@ -80,7 +81,8 @@ define(['backbone',
                                           stripe_token_id:     this.attributes['stripe_token_id'],
                                           stripe_email:        this.attributes['stripe_email'],
                                           customer_name:       this.attributes['customer_name'],
-                                          customer_phone:      this.attributes['customer_phone']
+                                          customer_phone:      this.attributes['customer_phone'],
+                                          shipping_address:    this.attributes['shipping_address']
                                       }),
                             me = this;
 

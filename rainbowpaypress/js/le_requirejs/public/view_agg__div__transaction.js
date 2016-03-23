@@ -49,12 +49,18 @@ define(['backbone',
 
                 //  @param  params.type                 Transaction type -- 'test' or 'live'.
                 //  @param  params.amount
+                //  @param  params.fields               Included and excluded fields.
+                //                                                 (excluded fields preceded by !)
                 //  @param  params.name                 Name of the seller
                 //  @param  params.desc                 Product description
                 //  @param  params.info                 Miscellaneous additional information
                 initialize: function(params) {
 
                         var model_orig__fields = new ModelOrig_Fields();
+
+                        if (params && params.fields) {
+                            model_orig__fields.parse(params.fields);
+                        }
 
 
                         function _doTransactionCycle() {

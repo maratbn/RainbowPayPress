@@ -86,7 +86,8 @@ class DBUtil {
                                       $strStripeTokenId,
                                       $strStripeEmail,
                                       $strCustomerName,
-                                      $strCustomerPhone) {
+                                      $strCustomerPhone,
+                                      $strShippingAddress) {
 
         global $wpdb;
         if (!$wpdb->insert(DBUtil::getTableName_Transactions(), [
@@ -98,7 +99,8 @@ class DBUtil {
                             'stripe_token_id'      => $strStripeTokenId,
                             'stripe_email'         => $strStripeEmail,
                             'customer_name'        => $strCustomerName,
-                            'customer_phone'       => $strCustomerPhone])) return false;
+                            'customer_phone'       => $strCustomerPhone,
+                            'shipping_address'     => $strShippingAddress])) return false;
 
         return true;
     }
@@ -116,7 +118,8 @@ class DBUtil {
                                                                     stripe_token_id,
                                                                     stripe_email,
                                                                     customer_name,
-                                                                    customer_phone
+                                                                    customer_phone,
+                                                                    shipping_address
                                                                FROM $strTableName
                                                               WHERE id=%d",
                                                             $id),
@@ -140,6 +143,7 @@ class DBUtil {
                                           stripe_email,
                                           customer_name,
                                           customer_phone,
+                                          shipping_address,
                                           stripe_customer_id,
                                           stripe_charge_id
                                      FROM $strTableName ORDER BY charged, created", ARRAY_A);

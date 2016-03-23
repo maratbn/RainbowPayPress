@@ -131,6 +131,18 @@ define(['jquery',
 
                         view_agg__tr__transaction_detailCustomerPhone.$el.appendTo(this.$el);
 
+                        if (model_orig__fields.get('flag_show_shipping')) {
+                            (new ViewAgg_Tr_TransactionDetail({
+                                    model_info__transaction_details:
+                                                model_info__transaction_details,
+                                    field: 'shipping_address',
+                                    name: "Shipping address:",
+                                    text_enter: "Enter shipping address",
+                                    text_modify: "Modify"
+                                })).$el.appendTo(this.$el);
+                        }
+
+
                         var $buttonSubmit = $('<button>').text("Submit").appendTo(this.$el);
 
                         $('<tr>').append($('<td>').attr('colspan', '2').append($buttonSubmit))
@@ -160,6 +172,16 @@ define(['jquery',
 
                                     model_info__transaction_details.set('customer_phone',
                                                                   strCustomerPhone);
+                                } else if (field == 'shipping_address') {
+                                    var strShippingAddress = window.prompt(
+                                                                "Enter shipping address:",
+                                                                model_info__transaction_details
+                                                                          .get('shipping_address')
+                                                                                           || "");
+                                    if (strShippingAddress == null) return;
+
+                                    model_info__transaction_details.set('shipping_address',
+                                                                        strShippingAddress);
                                 }
                             });
 

@@ -32,10 +32,16 @@
 (function(define) {
 
 
-    define(['backbone'
-        ], function(backbone) {
+    define(['backbone',
+            'underscore'
+        ], function(backbone,
+                    _) {
 
             return backbone.Model.extend({
+
+                    defaults: {
+                            'flag_show_shipping': false
+                        },
 
                     initialize: function() {
 
@@ -47,8 +53,39 @@
                             this.getFieldsRequired = function() {
                                     return arrFieldsRequired;
                                 };
-                        }
 
+
+                            function _excludeField(strField) {
+                                arrFieldsRequired = _.difference(arrFieldsRequired, [strField]);
+                            }
+
+                            function _includeField(strField) {
+                                arrFieldsRequired = _.union(arrFieldsRequired, [strField]);
+                            }
+
+                            this.on('change:flag_show_shipping', function() {
+                                    if (this.get('flag_show_shipping')) {
+                                        _includeField('shipping_address');
+                                    } else {
+                                        _excludeField('shipping_address');
+                                    }
+                                }, this);
+                        },
+
+                    parse: function(strFields) {
+                            if (!strFields) return;
+
+                            var arrFields = strFields.split(/\s/g);
+                            if (!arrFields) return;
+
+                            for (var i = 0; i < arrFields.length; i++) {
+                                var strField = arrFields[i];
+
+                                if (strField == 'shipping') {
+                                    this.set('flag_show_shipping', true);
+                                }
+                            }
+                        }
                 });
 
         });

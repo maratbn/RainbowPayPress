@@ -451,6 +451,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
     $strStripeEmail         = $_POST['stripe_email'];
     $strCustomerName        = $_POST['customer_name'];
     $strCustomerPhone       = $_POST['customer_phone'];
+    $strShippingAddress     = $_POST['shipping_address'];
 
     if (!DBUtil::insertTransaction($strType,
                                    $strChargeDescription,
@@ -458,7 +459,8 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                    $strStripeTokenId,
                                    $strStripeEmail,
                                    $strCustomerName,
-                                   $strCustomerPhone)) {
+                                   $strCustomerPhone,
+                                   $strShippingAddress)) {
         \array_push($arrErrors, 'error__insert_transaction');
     }
 
@@ -632,6 +634,11 @@ function shortcode_rainbow_pay_press($atts) {
                                                     '"' .
                 ' data-plugin-rainbow-pay-press-desc="' . \esc_attr($atts['desc']) .
                                                     '"' .
+
+                ($atts['fields'] == null ? "" :
+                ' data-plugin-rainbow-pay-press-fields="' . \esc_attr($atts['fields']) .
+                                                     '"') .
+
                 ($atts['info'] == null ? "" :
                 ' data-plugin-rainbow-pay-press-info="' . \esc_attr($atts['info']) .
                                                     '"') .
