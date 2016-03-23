@@ -52,7 +52,8 @@ define(['jquery',
 
                         ViewAgg_Table.prototype.initialize.apply(this, arguments);
 
-                        var model_info__transaction_details = params.model_info__transaction_details;
+                        var model_info__transaction_details = params
+                                                                 .model_info__transaction_details;
 
                         (new ViewAgg_Tr_TransactionDetail({
                                     model_info__transaction_details: model_info__transaction_details,
