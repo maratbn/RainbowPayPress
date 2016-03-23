@@ -227,6 +227,9 @@ class FragmentUtil {
              <b>This attribute is optional; however, if it is not explicitly set to
                 <code style='color:red'>live</code>, then no real credit card can be charged.
              </b></p>
+          <p>Credit card numbers that can be used in test mode are listed at:
+            <a href='https://stripe.com/docs/testing#cards'
+               target='_blank'>https://stripe.com/docs/testing#cards</a>.</p>
         </li>
         <li>
           <code>info</code>
