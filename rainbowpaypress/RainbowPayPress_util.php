@@ -163,7 +163,7 @@ class FragmentUtil {
     static function renderAdmin_Configuration() {
     ?>
     <h2><?=\__('Configuration:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
-    <span data-plugin-stripe-payment-press-role='app-config'></span>
+    <span data-plugin-rainbow-pay-press-role='app-config'></span>
     <?php
     }
 
@@ -187,9 +187,9 @@ class FragmentUtil {
     static function renderAdmin_Transactions() {
     ?>
     <h2><?=\__('Pending Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
-    <span data-plugin-stripe-payment-press-role='transactions-pending'></span>
+    <span data-plugin-rainbow-pay-press-role='transactions-pending'></span>
     <h2><?=\__('Charged Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
-    <span data-plugin-stripe-payment-press-role='transactions-charged'></span>
+    <span data-plugin-rainbow-pay-press-role='transactions-charged'></span>
     <?php
     }
 

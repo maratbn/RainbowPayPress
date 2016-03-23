@@ -50,7 +50,7 @@ define(['jquery',
 
             (new ViewAgg_Table_Config())
                         .$el
-                        .appendTo($("span[data-plugin-stripe-payment-press-role=app-config]"));
+                        .appendTo($("span[data-plugin-rainbow-pay-press-role=app-config]"));
 
 
             collection_orig_transaction.fetch();
@@ -63,10 +63,10 @@ define(['jquery',
                 }
             }
 
-            _processSpans($("span[data-plugin-stripe-payment-press-role=transactions]"));
-            _processSpans($("span[data-plugin-stripe-payment-press-role=transactions-charged]"),
+            _processSpans($("span[data-plugin-rainbow-pay-press-role=transactions]"));
+            _processSpans($("span[data-plugin-rainbow-pay-press-role=transactions-charged]"),
                           {flag_exclude_uncharged: true});
-            _processSpans($("span[data-plugin-stripe-payment-press-role=transactions-pending]"),
+            _processSpans($("span[data-plugin-rainbow-pay-press-role=transactions-pending]"),
                           {flag_exclude_charged: true});
         }
 

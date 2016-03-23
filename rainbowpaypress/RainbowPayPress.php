@@ -622,23 +622,23 @@ function shortcode_rainbow_pay_press($atts) {
                '</i></b>';
     }
 
-    return '<span data-plugin-stripe-payment-press-role="root"' .
+    return '<span data-plugin-rainbow-pay-press-role="root"' .
                 ($atts['type'] == null ? "" :
-                ' data-plugin-stripe-payment-press-type="' . \esc_attr($atts['type']) .
-                                                       '"') .
-                ' data-plugin-stripe-payment-press-amount="' . \esc_attr($atts['amount']) .
-                                                         '"' .
-                ' data-plugin-stripe-payment-press-name="' . \esc_attr($atts['name']) .
-                                                       '"' .
-                ' data-plugin-stripe-payment-press-desc="' . \esc_attr($atts['desc']) .
-                                                       '"' .
+                ' data-plugin-rainbow-pay-press-type="' . \esc_attr($atts['type']) .
+                                                    '"') .
+                ' data-plugin-rainbow-pay-press-amount="' . \esc_attr($atts['amount']) .
+                                                      '"' .
+                ' data-plugin-rainbow-pay-press-name="' . \esc_attr($atts['name']) .
+                                                    '"' .
+                ' data-plugin-rainbow-pay-press-desc="' . \esc_attr($atts['desc']) .
+                                                    '"' .
                 ($atts['info'] == null ? "" :
-                ' data-plugin-stripe-payment-press-info="' . \esc_attr($atts['info']) .
-                                                       '"') .
+                ' data-plugin-rainbow-pay-press-info="' . \esc_attr($atts['info']) .
+                                                    '"') .
 
                 ($atts['label'] == null ? "" :
-                ' data-plugin-stripe-payment-press-label="' . \esc_attr($atts['label']) .
-                                                        '"') . '>' .
+                ' data-plugin-rainbow-pay-press-label="' . \esc_attr($atts['label']) .
+                                                     '"') . '>' .
            '</span>';
 }
 ?>

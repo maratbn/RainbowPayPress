@@ -44,12 +44,12 @@ define(['jquery',
 
         function _processShortcodes() {
             function _processSpan($elSpan) {
-                var type    = $elSpan.attr('data-plugin-stripe-payment-press-type') || 'test',
-                    amount  = $elSpan.attr('data-plugin-stripe-payment-press-amount'),
-                    name    = $elSpan.attr('data-plugin-stripe-payment-press-name'),
-                    desc    = $elSpan.attr('data-plugin-stripe-payment-press-desc'),
-                    info    = $elSpan.attr('data-plugin-stripe-payment-press-info'),
-                    label   = $elSpan.attr('data-plugin-stripe-payment-press-label');
+                var type    = $elSpan.attr('data-plugin-rainbow-pay-press-type') || 'test',
+                    amount  = $elSpan.attr('data-plugin-rainbow-pay-press-amount'),
+                    name    = $elSpan.attr('data-plugin-rainbow-pay-press-name'),
+                    desc    = $elSpan.attr('data-plugin-rainbow-pay-press-desc'),
+                    info    = $elSpan.attr('data-plugin-rainbow-pay-press-info'),
+                    label   = $elSpan.attr('data-plugin-rainbow-pay-press-label');
 
                 var $buttonMakePayment = $('<button>').text(label || "Pay with Stripe")
                                                       .appendTo($elSpan),
@@ -77,7 +77,7 @@ define(['jquery',
                     });
             }
 
-            var $elSpans = $("span[data-plugin-stripe-payment-press-role=root]");
+            var $elSpans = $("span[data-plugin-rainbow-pay-press-role=root]");
 
             for (var i = 0; i < $elSpans.length; i++) {
                 _processSpan($($elSpans[i]));
