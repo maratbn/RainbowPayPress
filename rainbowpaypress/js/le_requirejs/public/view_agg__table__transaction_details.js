@@ -144,7 +144,7 @@ define(['jquery',
                                                                 model_info__transaction_details
                                                                           .get('customer_name')
                                                                                            || "");
-                                    if (!strCustomerName) return;
+                                    if (strCustomerName == null) return;
 
                                     model_info__transaction_details.set('customer_name',
                                                                   strCustomerName);
@@ -154,7 +154,7 @@ define(['jquery',
                                                                 model_info__transaction_details
                                                                           .get('customer_phone')
                                                                                            || "");
-                                    if (!strCustomerPhone) return;
+                                    if (strCustomerPhone == null) return;
 
                                     model_info__transaction_details.set('customer_phone',
                                                                   strCustomerPhone);
