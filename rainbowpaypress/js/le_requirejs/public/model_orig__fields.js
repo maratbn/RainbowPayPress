@@ -38,6 +38,15 @@
             return backbone.Model.extend({
 
                     initialize: function() {
+
+                            var arrFieldsRequired = ['stripe_token_id',
+                                                     'stripe_email',
+                                                     'customer_name',
+                                                     'customer_phone'];
+
+                            this.getFieldsRequired = function() {
+                                    return arrFieldsRequired;
+                                };
                         }
 
                 });

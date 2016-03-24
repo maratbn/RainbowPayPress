@@ -169,7 +169,7 @@ define(['jquery',
                                 event.preventDefault();
 
                                 if (model_info__transaction_details
-                                                     .doCheckForFieldsWithMissingValues()) {
+                                         .doCheckForFieldsWithMissingValues(model_orig__fields)) {
                                     window.alert("Please specify the required information by clicking on the links in red.");
                                     return;
                                 }

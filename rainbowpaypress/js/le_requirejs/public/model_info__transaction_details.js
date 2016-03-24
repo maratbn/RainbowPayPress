@@ -50,10 +50,12 @@ define(['backbone',
                         'customer_phone':       null
                     },
 
-                doCheckForFieldsWithMissingValues: function() {
-                        var arrFieldsWithMissingValues = [];
+                doCheckForFieldsWithMissingValues: function(model_orig__fields) {
+                        var arrFieldsRequired = model_orig__fields.getFieldsRequired();
+                            arrFieldsWithMissingValues = [];
 
-                        for (var field in this.defaults) {
+                        for (var i = 0; i < arrFieldsRequired.length; i++) {
+                            var field = arrFieldsRequired[i];
                             var value = this.attributes[field];
                             if (!value) {
                                 arrFieldsWithMissingValues.push(field);
