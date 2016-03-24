@@ -40,7 +40,7 @@
             return backbone.Model.extend({
 
                     defaults: {
-                            'flag_show_shipping': false
+                            'flag_query_shipping': false
                         },
 
                     initialize: function() {
@@ -63,8 +63,8 @@
                                 arrFieldsRequired = _.union(arrFieldsRequired, [strField]);
                             }
 
-                            this.on('change:flag_show_shipping', function() {
-                                    if (this.get('flag_show_shipping')) {
+                            this.on('change:flag_query_shipping', function() {
+                                    if (this.get('flag_query_shipping')) {
                                         _includeField('shipping_address');
                                     } else {
                                         _excludeField('shipping_address');
@@ -86,7 +86,7 @@
 
                                 switch (strField) {
                                     case 'shipping':
-                                        this.set('flag_show_shipping', true);
+                                        this.set('flag_query_shipping', true);
                                         break;
                                 }
                             }

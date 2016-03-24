@@ -119,7 +119,7 @@ define(['jquery',
                                 text_modify: "Modify"
                             })).$el.appendTo(this.$el);
 
-                        if (model_orig__fields.get('flag_show_shipping')) {
+                        if (model_orig__fields.get('flag_query_shipping')) {
                             (new ViewAgg_Tr_TransactionDetail({
                                     model_info__transaction_details:
                                                 model_info__transaction_details,
