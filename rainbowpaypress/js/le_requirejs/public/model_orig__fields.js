@@ -84,8 +84,10 @@
 
                                 strField = strField.toLowerCase();
 
-                                if (strField == 'shipping') {
-                                    this.set('flag_show_shipping', true);
+                                switch (strField) {
+                                    case 'shipping':
+                                        this.set('flag_show_shipping', true);
+                                        break;
                                 }
                             }
                         }
