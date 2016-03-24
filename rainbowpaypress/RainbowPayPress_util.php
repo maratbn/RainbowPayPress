@@ -202,7 +202,7 @@ class FragmentUtil {
     ?>
     <h2><?=\__('Usage Info:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
     <p>Use the shortcode
-       <code>[<?=SHORTCODE__RAINBOW_PAY_PRESS?> type='<span style='color:red'>live</span>' amount=1234 name="My entity" desc="Buy this" label="Click to buy" fields='shipping']</code>
+       <code>[<?=SHORTCODE__RAINBOW_PAY_PRESS?> type='<span style='color:red'>live</span>' amount=1234 name="My entity" desc="Buy this" label="Click to buy" fields='!phone shipping']</code>
        to embed a Stripe payment widget on
        any page or post.
     </p>
@@ -255,6 +255,10 @@ class FragmentUtil {
             Specifies which fields to include or exclude on the buyer entry form.
             Available fields:
             <ul class='rpp_subitems'>
+              <li>
+                <code>!phone</code>
+                <p>Excludes the customer phone field from the buyer entry form.  Included by default.</p>
+              </li>
               <li>
                 <code>shipping</code>
                 <p>Includes the shipping address field on the buyer entry form.  Excluded by default.</p>
