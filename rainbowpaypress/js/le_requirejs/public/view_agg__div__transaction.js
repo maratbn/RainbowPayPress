@@ -36,11 +36,13 @@ define(['backbone',
         'jquery',
         'public/model_info__stripe_checkout',
         'public/model_info__transaction_details',
+        'public/model_orig__fields',
         'public/view_agg__table__transaction_details'
     ], function(backbone,
                 $,
                 model_info__stripe_checkout,
                 ModelInfo_TransactionDetails,
+                ModelOrig_Fields,
                 ViewAgg_Table_TransactionDetails) {
 
         return backbone.View.extend({
@@ -51,6 +53,9 @@ define(['backbone',
                 //  @param  params.desc                 Product description
                 //  @param  params.info                 Miscellaneous additional information
                 initialize: function(params) {
+
+                        var model_orig__fields = new ModelOrig_Fields();
+
 
                         function _doTransactionCycle() {
 
