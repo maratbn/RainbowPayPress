@@ -521,6 +521,8 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                 .
                 $strCustomerPhone
                 .
+                ($strShippingAddress != "" ? (' -- ' . $strShippingAddress) : "")
+                .
                 "\r\n"
                 .
                 "\r\n"
