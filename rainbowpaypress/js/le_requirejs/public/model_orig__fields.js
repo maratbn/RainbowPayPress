@@ -80,6 +80,7 @@
 
                             for (var i = 0; i < arrFields.length; i++) {
                                 var strField = arrFields[i];
+                                if (!strField) continue;
 
                                 if (strField == 'shipping') {
                                     this.set('flag_show_shipping', true);
