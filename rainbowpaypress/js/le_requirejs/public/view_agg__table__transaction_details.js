@@ -107,17 +107,14 @@ define(['jquery',
 
                         view_agg__tr__transaction_detailStripeEmail.$el.appendTo(this.$el);
 
-                        var view_agg__tr__transaction_detailCustomerName =
-                                                new ViewAgg_Tr_TransactionDetail({
-                                                            model_info__transaction_details:
-                                                                        model_info__transaction_details,
-                                                            field: 'customer_name',
-                                                            name: "Customer name:",
-                                                            text_enter: "Enter customer name",
-                                                            text_modify: "Modify"
-                                                        });
-
-                        view_agg__tr__transaction_detailCustomerName.$el.appendTo(this.$el);
+                        (new ViewAgg_Tr_TransactionDetail({
+                                model_info__transaction_details:
+                                            model_info__transaction_details,
+                                field: 'customer_name',
+                                name: "Customer name:",
+                                text_enter: "Enter customer name",
+                                text_modify: "Modify"
+                            })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_TransactionDetail({
                                 model_info__transaction_details:
