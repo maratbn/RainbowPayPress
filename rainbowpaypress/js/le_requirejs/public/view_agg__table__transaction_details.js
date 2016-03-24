@@ -119,17 +119,14 @@ define(['jquery',
 
                         view_agg__tr__transaction_detailCustomerName.$el.appendTo(this.$el);
 
-                        var view_agg__tr__transaction_detailCustomerPhone =
-                                                new ViewAgg_Tr_TransactionDetail({
-                                                            model_info__transaction_details:
-                                                                        model_info__transaction_details,
-                                                            field: 'customer_phone',
-                                                            name: "Customer phone:",
-                                                            text_enter: "Enter customer phone",
-                                                            text_modify: "Modify"
-                                                        });
-
-                        view_agg__tr__transaction_detailCustomerPhone.$el.appendTo(this.$el);
+                        (new ViewAgg_Tr_TransactionDetail({
+                                model_info__transaction_details:
+                                                model_info__transaction_details,
+                                field: 'customer_phone',
+                                name: "Customer phone:",
+                                text_enter: "Enter customer phone",
+                                text_modify: "Modify"
+                            })).$el.appendTo(this.$el);
 
                         if (model_orig__fields.get('flag_show_shipping')) {
                             (new ViewAgg_Tr_TransactionDetail({
