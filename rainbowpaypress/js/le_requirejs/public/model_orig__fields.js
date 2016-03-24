@@ -82,6 +82,8 @@
                                 var strField = arrFields[i];
                                 if (!strField) continue;
 
+                                strField = strField.toLowerCase();
+
                                 if (strField == 'shipping') {
                                     this.set('flag_show_shipping', true);
                                 }
