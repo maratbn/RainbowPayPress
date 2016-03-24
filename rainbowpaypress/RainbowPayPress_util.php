@@ -257,7 +257,7 @@ class FragmentUtil {
             <ul class='rpp_subitems'>
               <li>
                 <code>shipping</code>
-                <p>Includes the shipping address field on the buyer entry form.</p>
+                <p>Includes the shipping address field on the buyer entry form.  Excluded by default.</p>
               </li>
             </ul>
           </p>
