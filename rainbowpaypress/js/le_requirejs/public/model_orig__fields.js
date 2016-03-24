@@ -40,6 +40,7 @@
             return backbone.Model.extend({
 
                     defaults: {
+                            'flag_query_phone':    true,
                             'flag_query_shipping': false
                         },
 
