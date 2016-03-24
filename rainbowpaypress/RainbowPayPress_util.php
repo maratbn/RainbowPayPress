@@ -208,7 +208,12 @@ class FragmentUtil {
     </p>
     <p>
       <h5>Required shortcode attributes:</h5>
-      <ul>
+      <style>
+          .rpp_subitems {
+              padding-left:   1em;
+          }
+      </style>
+      <ul class='rpp_subitems'>
         <li>
           <code>amount</code>
           <p>The amount to charge in cents.</p>
@@ -223,7 +228,7 @@ class FragmentUtil {
         </li>
       </ul>
       <h5>Optional shortcode attributes:</h5>
-      <ul>
+      <ul class='rpp_subitems'>
         <li>
           <code style='color:red'>type</code>
           <p>Stripe transaction type, either 'test' or 'live'.  Test by default.  Test
@@ -249,7 +254,7 @@ class FragmentUtil {
           <p>
             Specifies which fields to include or exclude on the buyer entry form.
             Available fields:
-            <ul>
+            <ul class='rpp_subitems'>
               <li>
                 <code>shipping</code>
                 <p>Enables the shipping address field on the buyer entry form.</p>
