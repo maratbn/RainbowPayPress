@@ -37,6 +37,9 @@
 
             return backbone.Model.extend({
 
+                    initialize: function() {
+                        }
+
                 });
 
         });
