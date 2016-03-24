@@ -95,17 +95,14 @@ define(['jquery',
 
                         view_agg__tr__transaction_detailStripeToken.$el.appendTo(this.$el);
 
-                        var view_agg__tr__transaction_detailStripeEmail =
-                                                new ViewAgg_Tr_TransactionDetail_Stripe({
-                                                            model_info__transaction_details:
-                                                                        model_info__transaction_details,
-                                                            field: 'stripe_email',
-                                                            name: "Stripe card email:",
-                                                            text_enter: "Enter credit card info",
-                                                            text_modify: "Modify"
-                                                        });
-
-                        view_agg__tr__transaction_detailStripeEmail.$el.appendTo(this.$el);
+                        (new ViewAgg_Tr_TransactionDetail_Stripe({
+                                model_info__transaction_details:
+                                            model_info__transaction_details,
+                                field: 'stripe_email',
+                                name: "Stripe card email:",
+                                text_enter: "Enter credit card info",
+                                text_modify: "Modify"
+                            })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_TransactionDetail({
                                 model_info__transaction_details:
