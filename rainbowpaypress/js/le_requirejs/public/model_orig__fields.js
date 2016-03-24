@@ -92,6 +92,9 @@
                                 strField = strField.toLowerCase();
 
                                 switch (strField) {
+                                    case '!phone':
+                                        this.set('flag_query_phone', false);
+                                        break;
                                     case 'shipping':
                                         this.set('flag_query_shipping', true);
                                         break;
