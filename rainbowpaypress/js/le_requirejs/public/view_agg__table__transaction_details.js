@@ -46,14 +46,16 @@ define(['jquery',
         return ViewAgg_Table.extend({
 
                 //  @param  params.model_info__transaction_details
+                //  @param  params.model_orig__fields
                 //  @param  params.name                 Name of the seller
                 //  @param  params.info                 Miscellaneous additional information
                 initialize: function(params) {
 
                         ViewAgg_Table.prototype.initialize.apply(this, arguments);
 
-                        var model_info__transaction_details = params
-                                                                 .model_info__transaction_details;
+                        var model_info__transaction_details  = params
+                                                                 .model_info__transaction_details,
+                            model_orig__fields               = params.model_orig__fields;
 
                         (new ViewAgg_Tr_TransactionDetail({
                                     model_info__transaction_details: model_info__transaction_details,
