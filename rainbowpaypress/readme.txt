@@ -120,6 +120,9 @@ configured on your server.  Also check your SPAM folder.
 
 == Changelog ==
 
+= 2.2.0 =
+* Added ability to ask buyer for shipping address.
+
 = 2.1.0 =
 * Indicating to the user when Stripe Checkout dialog may be blocked by an ad or a popup blocker,
   by a JavaScript security policy, or by a broken network connection.
