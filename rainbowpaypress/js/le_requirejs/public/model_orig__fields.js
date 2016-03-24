@@ -64,7 +64,13 @@
                                 arrFieldsRequired = _.union(arrFieldsRequired, [strField]);
                             }
 
-                            this.on('change:flag_query_shipping', function() {
+                            this.on('change:flag_query_phone change:flag_query_shipping', function() {
+                                    if (this.get('flag_query_phone')) {
+                                        _includeField('customer_phone');
+                                    } else {
+                                        _excludeField('customer_phone');
+                                    }
+
                                     if (this.get('flag_query_shipping')) {
                                         _includeField('shipping_address');
                                     } else {
