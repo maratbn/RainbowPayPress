@@ -73,6 +73,7 @@ define(['jquery',
                                   .append($('<th>').text("Stripe email:"))
                                   .append($('<th>').text("Customer name:"))
                                   .append($('<th>').text("Customer phone:"))
+                                  .append($('<th>').text("Shipping address:"))
                                   .append(flagExcludeCharged ? null : $('<th>').text("Customer ID:"))
                                   .append(flagExcludeCharged ? null : $('<th>').text("Charge ID:"))
                                   .appendTo($('<thead>').appendTo(this.$el));

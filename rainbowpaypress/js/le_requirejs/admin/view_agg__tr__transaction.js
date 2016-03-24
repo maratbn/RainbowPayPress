@@ -148,6 +148,9 @@ define(['jquery',
                                                                     .get('customer_name') || ""))
                                 .append($('<td>').text(model_orig__transaction
                                                                     .get('customer_phone') || ""))
+                                .append($('<td>').text(model_orig__transaction
+                                                                    .get('shipping_address') ||
+                                                                                              ""))
                                 .append(flagExcludeCharged
                                         ? null
                                         : $('<td>').append(_getAggA_Customer(
