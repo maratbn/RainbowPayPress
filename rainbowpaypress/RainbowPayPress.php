@@ -146,8 +146,7 @@ function action_admin_menu() {
         \__('RainbowPayPress Help / Info / Settings', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         \__('RainbowPayPress', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         'manage_options',
-        SLUG_INFO_ROOT,
-        '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Root');
+        SLUG_INFO_ROOT);
 
     \add_submenu_page(
         SLUG_INFO_ROOT,
