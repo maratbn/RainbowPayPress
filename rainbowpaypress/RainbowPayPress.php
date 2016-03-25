@@ -64,7 +64,6 @@ const SETTING__STRIPE_TEST_SECRET_KEY = 'plugin_RainbowPayPress__setting__stripe
 const SHORTCODE__RAINBOW_PAY_PRESS = 'rainbow-pay-press';
 
 const SLUG_INFO_ROOT     = 'plugin_RainbowPayPress_root';
-const SLUG_HELP          = 'plugin_RainbowPayPress_help';
 const SLUG_SETTINGS      = 'plugin_RainbowPayPress_settings';
 const SLUG_TRANSACTIONS  = 'plugin_RainbowPayPress_transactions';
 
@@ -155,7 +154,7 @@ function action_admin_menu() {
         \__('RainbowPayPress Help', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         \__('Help', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         'manage_options',
-        SLUG_HELP,
+        SLUG_INFO_ROOT,
         '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Help');
 
     \add_submenu_page(
@@ -615,7 +614,7 @@ function action_wp_print_footer_scripts() {
 
 function filter_plugin_action_links($arrLinks) {
     \array_push($arrLinks,
-                '<a href=\'' . \admin_url('admin.php?page=' . SLUG_HELP) . '\'>'
+                '<a href=\'' . \admin_url('admin.php?page=' . SLUG_INFO_ROOT) . '\'>'
                           . \__('About', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS) . '</a>');
     \array_push($arrLinks,
                 '<a href=\'' . \plugin_dir_url(__FILE__) . 'LICENSE\'>'
