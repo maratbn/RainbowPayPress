@@ -166,6 +166,11 @@ class DBUtil {
 
 class FragmentUtil {
     static function renderAdmin_Configuration() {
+        //  Based on http://codex.wordpress.org/Administration_Menus
+        if (!\current_user_can('manage_options' ))  {
+            \wp_die(\__('You do not have sufficient permissions to access this page.',
+                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS));
+        }
     ?>
     <h2><?=\__('Configuration:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
     <span data-plugin-rainbow-pay-press-role='app-config'></span>
