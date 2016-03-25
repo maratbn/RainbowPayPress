@@ -205,6 +205,11 @@ class FragmentUtil {
     }
 
     static function renderAdmin_Transactions() {
+        //  Based on http://codex.wordpress.org/Administration_Menus
+        if (!\current_user_can('manage_options' ))  {
+            \wp_die(\__('You do not have sufficient permissions to access this page.',
+                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS));
+        }
     ?>
     <h2><?=\__('Pending Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
     <span data-plugin-rainbow-pay-press-role='transactions-pending'></span>
