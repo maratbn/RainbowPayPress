@@ -119,7 +119,8 @@ if (\is_admin()) {
 
 
 function action_admin_enqueue_scripts($hook) {
-    if ($hook != 'plugins_page_' . SLUG_INFO_SETTINGS) return;
+    if (($hook != 'plugins_page_' . SLUG_INFO_SETTINGS) &&
+        ($hook != 'toplevel_page_' . SLUG_INFO_SETTINGS)) return;
 
     \wp_enqueue_style('plugin__RainbowPayPress__style_css',
                       \plugin_dir_url(__FILE__) . '/style.css',
@@ -140,6 +141,13 @@ function action_admin_enqueue_scripts($hook) {
 function action_admin_menu() {
     \add_plugins_page(
         \__('RainbowPayPress Info / Settings', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+        \__('RainbowPayPress', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+        'manage_options',
+        SLUG_INFO_SETTINGS,
+        '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Root');
+
+    \add_menu_page(
+        \__('RainbowPayPress Help / Info / Settings', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         \__('RainbowPayPress', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         'manage_options',
         SLUG_INFO_SETTINGS,
