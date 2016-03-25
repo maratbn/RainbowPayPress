@@ -63,7 +63,7 @@ const SETTING__STRIPE_TEST_SECRET_KEY = 'plugin_RainbowPayPress__setting__stripe
 
 const SHORTCODE__RAINBOW_PAY_PRESS = 'rainbow-pay-press';
 
-const SLUG_INFO_SETTINGS = 'plugin_RainbowPayPress_admin';
+const SLUG_INFO_ROOT     = 'plugin_RainbowPayPress_admin';
 const SLUG_HELP          = 'plugin_RainbowPayPress_help';
 const SLUG_TRANSACTIONS  = 'plugin_RainbowPayPress_transactions';
 
@@ -121,7 +121,7 @@ if (\is_admin()) {
 
 
 function action_admin_enqueue_scripts($hook) {
-    if (($hook != 'toplevel_page_' . SLUG_INFO_SETTINGS) &&
+    if (($hook != 'toplevel_page_' . SLUG_INFO_ROOT) &&
         ($hook != 'rainbowpaypress_page_' . SLUG_TRANSACTIONS)) return;
 
     \wp_enqueue_style('plugin__RainbowPayPress__style_css',
@@ -145,11 +145,11 @@ function action_admin_menu() {
         \__('RainbowPayPress Help / Info / Settings', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         \__('RainbowPayPress', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         'manage_options',
-        SLUG_INFO_SETTINGS,
+        SLUG_INFO_ROOT,
         '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Root');
 
     \add_submenu_page(
-        SLUG_INFO_SETTINGS,
+        SLUG_INFO_ROOT,
         \__('RainbowPayPress Help', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         \__('Help', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         'manage_options',
@@ -157,7 +157,7 @@ function action_admin_menu() {
         '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Help');
 
     \add_submenu_page(
-        SLUG_INFO_SETTINGS,
+        SLUG_INFO_ROOT,
         \__('RainbowPayPress Transactions', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         \__('Transactions', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
         'manage_options',
@@ -614,7 +614,7 @@ function filter_plugin_action_links($arrLinks) {
 }
 
 function getUrlInfoSettings() {
-    return \admin_url('admin.php?page=' . SLUG_INFO_SETTINGS);
+    return \admin_url('admin.php?page=' . SLUG_INFO_ROOT);
 }
 
 function plugin_activation_hook() {
