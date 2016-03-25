@@ -65,6 +65,7 @@ const SHORTCODE__RAINBOW_PAY_PRESS = 'rainbow-pay-press';
 
 const SLUG_INFO_ROOT     = 'plugin_RainbowPayPress_root';
 const SLUG_HELP          = 'plugin_RainbowPayPress_help';
+const SLUG_SETTINGS      = 'plugin_RainbowPayPress_settings';
 const SLUG_TRANSACTIONS  = 'plugin_RainbowPayPress_transactions';
 
 require_once('RainbowPayPress_util.php');
@@ -122,7 +123,8 @@ if (\is_admin()) {
 
 function action_admin_enqueue_scripts($hook) {
     if (($hook != 'toplevel_page_' . SLUG_INFO_ROOT) &&
-        ($hook != 'rainbowpaypress_page_' . SLUG_TRANSACTIONS)) return;
+        ($hook != 'rainbowpaypress_page_' . SLUG_TRANSACTIONS) &&
+        ($hook != 'rainbowpaypress_page_' . SLUG_SETTINGS)) return;
 
     \wp_enqueue_style('plugin__RainbowPayPress__style_css',
                       \plugin_dir_url(__FILE__) . '/style.css',
@@ -163,6 +165,14 @@ function action_admin_menu() {
         'manage_options',
         SLUG_TRANSACTIONS,
         '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Transactions');
+
+    \add_submenu_page(
+        SLUG_INFO_ROOT,
+        \__('RainbowPayPress Settings', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+        \__('Settings', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+        'manage_options',
+        SLUG_SETTINGS,
+        '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Configuration');
 }
 
 function action_admin_print_footer_scripts() {
