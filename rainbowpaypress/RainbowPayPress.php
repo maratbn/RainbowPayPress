@@ -504,7 +504,9 @@ function action_wp_ajax_rainbow_pay_press__submit() {
     }
 
     if (count($arrErrors) == 0 && Util::getFlagEnableEmailNotifications()) {
-        $strRecipient = \get_option(SETTING__EMAIL_NOTIFICATIONS);
+        $strRecipient  = \get_option(SETTING__EMAIL_NOTIFICATIONS);
+        $strSiteURL    = \get_site_url();
+
         if (\strlen($strRecipient) > 0) {
             \wp_mail(
                 $strRecipient,
@@ -514,7 +516,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                         \sprintf(
                             \__('New pending transaction has been submitted via the RainbowPayPress plugin installed onto the WordPress website at: %s',
                                 DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                            \get_site_url()),
+                            $strSiteURL),
                         "\r\n\r\n",
                         \sprintf(
                             \__('Stripe transaction type: %s',
