@@ -123,7 +123,7 @@ configured on your server.  Also check your SPAM folder.
 = 2.2.0 =
 * Added ability to ask buyer for shipping address.
 * Split-out the plugin's admin page into 3 separate pages, for Help, Transactions, and Settings.
-* Included the URL of the configuration settings page in test emails.
+* Included configuration settings page URL in test emails.
 
 = 2.1.0 =
 * Indicating to the user when Stripe Checkout dialog may be blocked by an ad or a popup blocker,
