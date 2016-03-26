@@ -403,7 +403,7 @@ function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {
                                     DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                             "\r\n\r\n",
                             \sprintf(
-                                \__('This address is configured to receive notifications from the RainbowPayPress plugin installed onto WordPress website %s',
+                                \__('This address is configured to receive notifications from the RainbowPayPress plugin installed onto the WordPress website at: %s',
                                     DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                                 \get_site_url()),
                             "\r\n\r\n",
