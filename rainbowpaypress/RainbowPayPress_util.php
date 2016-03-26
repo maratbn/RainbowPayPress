@@ -342,5 +342,9 @@ class Util {
         if ($valueRaw === false) return null;
         return $valueRaw;
     }
+
+    static function isCurlAvailable() {
+        return \function_exists('\\curl_init');
+    }
 }
 ?>

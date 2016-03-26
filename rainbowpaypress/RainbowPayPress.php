@@ -213,7 +213,7 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
         \array_push($arrErrors, 'error__insufficient_permissions');
     }
 
-    if (!\function_exists('\\curl_init')) {
+    if (!Util::isCurlAvailable()) {
         \array_push($arrErrors, 'error__no_curl');
     }
 
