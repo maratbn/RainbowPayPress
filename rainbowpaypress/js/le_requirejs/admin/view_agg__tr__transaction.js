@@ -77,6 +77,10 @@ define(['jquery',
                                   'target':  '_blank'}).text(stripe_customer_id);
         }
 
+        function _td() {
+            return $('<td>');
+        }
+
         return ViewAgg_Tr_WHeader.extend({
 
                 //  @param  params.flag_exclude_charged
@@ -129,37 +133,37 @@ define(['jquery',
 
                         var type = model_orig__transaction.get('type');
 
-                        this.$el.append($('<td>').text(type || ""))
+                        this.$el.append(_td().text(type || ""))
                                 .append(flagExcludeCharged
                                         ? null
-                                        : $('<td>').text(model_orig__transaction
+                                        : _td().text(model_orig__transaction
                                                                     .get('charged') || ""))
-                                .append($('<td>').text(model_orig__transaction
+                                .append(_td().text(model_orig__transaction
                                                                     .get('created') || ""))
-                                .append($('<td>').text(model_orig__transaction
+                                .append(_td().text(model_orig__transaction
                                                                     .get('charge_description') ||
                                                                                               ""))
-                                .append($('<td>').text(strChargeAmount || ""))
-                                .append($('<td>').text(model_orig__transaction
+                                .append(_td().text(strChargeAmount || ""))
+                                .append(_td().text(model_orig__transaction
                                                                     .get('stripe_token_id') || ""))
-                                .append($('<td>').text(model_orig__transaction
+                                .append(_td().text(model_orig__transaction
                                                                     .get('stripe_email') || ""))
-                                .append($('<td>').text(model_orig__transaction
+                                .append(_td().text(model_orig__transaction
                                                                     .get('customer_name') || ""))
-                                .append($('<td>').text(model_orig__transaction
+                                .append(_td().text(model_orig__transaction
                                                                     .get('customer_phone') || ""))
-                                .append($('<td>').text(model_orig__transaction
+                                .append(_td().text(model_orig__transaction
                                                                     .get('shipping_address') ||
                                                                                               ""))
                                 .append(flagExcludeCharged
                                         ? null
-                                        : $('<td>').append(_getAggA_Customer(
+                                        : _td().append(_getAggA_Customer(
                                                                 type,
                                                                 model_orig__transaction
                                                                     .get('stripe_customer_id'))))
                                 .append(flagExcludeCharged
                                         ? null
-                                        : $('<td>').append(_getAggA_Charge(
+                                        : _td().append(_getAggA_Charge(
                                                                 type,
                                                                 model_orig__transaction
                                                                     .get('stripe_charge_id'))));
