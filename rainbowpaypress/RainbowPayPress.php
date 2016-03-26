@@ -549,7 +549,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                 \sprintf(
                     \__('View / charge / delete this transaction at %s',
                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                    getUrlInfoSettings()));
+                    \admin_url('admin.php?page=' . SLUG_TRANSACTIONS)));
         }
     }
 
