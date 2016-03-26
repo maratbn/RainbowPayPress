@@ -397,7 +397,7 @@ function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {
         if (\strlen($strRecipient) > 0) {
             if (!\wp_mail(
                     $strRecipient,
-                    \__('RainbowPayPress test email',
+                    \__('RainbowPayPress test email from: ' . $strSiteURL,
                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                     \implode([
                             \sprintf(
