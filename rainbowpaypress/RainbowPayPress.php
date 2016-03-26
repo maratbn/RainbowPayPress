@@ -515,22 +515,19 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                             \__('New pending transaction has been submitted via the RainbowPayPress plugin installed onto the WordPress website at: %s',
                                 DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                             \get_site_url()),
-                        "\r\n",
-                        "\r\n",
+                        "\r\n\r\n",
                         \sprintf(
                             \__('Stripe transaction type: %s',
                                 DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                             $strType),
-                        "\r\n",
-                        "\r\n",
+                        "\r\n\r\n",
                         \sprintf(
                             \__('Charge: %s',
                                 DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                             \implode([$strChargeDescription,
                                       ' -- ',
                                       Util::formatUSD($strProductCost)])),
-                        "\r\n",
-                        "\r\n",
+                        "\r\n\r\n",
                         \sprintf(
                             \__('Customer: %s',
                                 DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
@@ -541,8 +538,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                       $strCustomerPhone,
                                       ($strShippingAddress != "" ? (' -- ' . $strShippingAddress)
                                                                  : "")])),
-                        "\r\n",
-                        "\r\n",
+                        "\r\n\r\n",
                         \sprintf(
                             \__('View / charge / delete this transaction at: %s',
                                 DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
