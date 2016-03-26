@@ -405,7 +405,12 @@ function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {
                             \sprintf(
                                 \__('This address is configured to receive notifications from the RainbowPayPress plugin installed onto WordPress website %s',
                                     DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                                \get_site_url())
+                                \get_site_url()),
+                            "\r\n\r\n",
+                            \sprintf(
+                                \__('The configuration settings for these notifications can be modified at: %s',
+                                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                                \admin_url('admin.php?page=' . SLUG_SETTINGS))
                         ])
                 )) {
                 \array_push($arrErrors, 'error__wp_mail');
