@@ -185,9 +185,74 @@ class FragmentUtil {
         }
     ?>
     <div class="wrap">
-      <?php
-          FragmentUtil::renderAdmin_UsageInfo();
-      ?>
+      <h2><?=\__('Usage Info:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
+      <p>Use the shortcode
+         <code>[<?=SHORTCODE__RAINBOW_PAY_PRESS?> type='<span style='color:red'>live</span>' amount=1234 name="My entity" desc="Buy this" label="Click to buy" fields='!phone shipping']</code>
+         to embed a Stripe payment widget on
+         any page or post.
+      </p>
+      <p>
+        <h5>Required shortcode attributes:</h5>
+        <style>
+            .rpp_subitems {
+                padding-left:   1em;
+            }
+        </style>
+        <ul class='rpp_subitems'>
+          <li>
+            <code>amount</code>
+            <p>The amount to charge in cents.</p>
+          </li>
+          <li>
+            <code>name</code>
+            <p>Your site / company / organization name.</p>
+          </li>
+          <li>
+            <code>desc</code>
+            <p>Description of the product / service / fee you're charging for.</p>
+          </li>
+        </ul>
+        <h5>Optional shortcode attributes:</h5>
+        <ul class='rpp_subitems'>
+          <li>
+            <code style='color:red'>type</code>
+            <p>Stripe transaction type, either 'test' or 'live'.  Test by default.  Test
+               transactions are for testing only, live transactions can be used to charge a real
+               credit card.
+               <b>This attribute is optional; however, if it is not explicitly set to
+                  <code style='color:red'>live</code>, then no real credit card can be charged.
+               </b></p>
+            <p>Credit card numbers that can be used in test mode are listed at:
+              <a href='https://stripe.com/docs/testing#cards'
+                 target='_blank'>https://stripe.com/docs/testing#cards</a>.</p>
+          </li>
+          <li>
+            <code>info</code>
+            <p>Miscellaneous additional information for the user.</p>
+          </li>
+          <li>
+            <code>label</code>
+            <p>Stripe payment button label, otherwise defaults to "Pay with card" or similar.</p>
+          </li>
+          <li>
+            <code>fields</code>
+            <p>
+              Specifies which fields to include or exclude on the buyer entry form.
+              Available fields:
+              <ul class='rpp_subitems'>
+                <li>
+                  <code>!phone</code>
+                  <p>Excludes the customer phone field from the buyer entry form.  Included by default.</p>
+                </li>
+                <li>
+                  <code>shipping</code>
+                  <p>Includes the shipping address field on the buyer entry form.  Excluded by default.</p>
+                </li>
+              </ul>
+            </p>
+          </li>
+        </ul>
+      </p>
     </div>
     <?php
     }
@@ -203,79 +268,6 @@ class FragmentUtil {
     <span data-plugin-rainbow-pay-press-role='transactions-pending'></span>
     <h2><?=\__('Charged Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
     <span data-plugin-rainbow-pay-press-role='transactions-charged'></span>
-    <?php
-    }
-
-    static function renderAdmin_UsageInfo() {
-    ?>
-    <h2><?=\__('Usage Info:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
-    <p>Use the shortcode
-       <code>[<?=SHORTCODE__RAINBOW_PAY_PRESS?> type='<span style='color:red'>live</span>' amount=1234 name="My entity" desc="Buy this" label="Click to buy" fields='!phone shipping']</code>
-       to embed a Stripe payment widget on
-       any page or post.
-    </p>
-    <p>
-      <h5>Required shortcode attributes:</h5>
-      <style>
-          .rpp_subitems {
-              padding-left:   1em;
-          }
-      </style>
-      <ul class='rpp_subitems'>
-        <li>
-          <code>amount</code>
-          <p>The amount to charge in cents.</p>
-        </li>
-        <li>
-          <code>name</code>
-          <p>Your site / company / organization name.</p>
-        </li>
-        <li>
-          <code>desc</code>
-          <p>Description of the product / service / fee you're charging for.</p>
-        </li>
-      </ul>
-      <h5>Optional shortcode attributes:</h5>
-      <ul class='rpp_subitems'>
-        <li>
-          <code style='color:red'>type</code>
-          <p>Stripe transaction type, either 'test' or 'live'.  Test by default.  Test
-             transactions are for testing only, live transactions can be used to charge a real
-             credit card.
-             <b>This attribute is optional; however, if it is not explicitly set to
-                <code style='color:red'>live</code>, then no real credit card can be charged.
-             </b></p>
-          <p>Credit card numbers that can be used in test mode are listed at:
-            <a href='https://stripe.com/docs/testing#cards'
-               target='_blank'>https://stripe.com/docs/testing#cards</a>.</p>
-        </li>
-        <li>
-          <code>info</code>
-          <p>Miscellaneous additional information for the user.</p>
-        </li>
-        <li>
-          <code>label</code>
-          <p>Stripe payment button label, otherwise defaults to "Pay with card" or similar.</p>
-        </li>
-        <li>
-          <code>fields</code>
-          <p>
-            Specifies which fields to include or exclude on the buyer entry form.
-            Available fields:
-            <ul class='rpp_subitems'>
-              <li>
-                <code>!phone</code>
-                <p>Excludes the customer phone field from the buyer entry form.  Included by default.</p>
-              </li>
-              <li>
-                <code>shipping</code>
-                <p>Includes the shipping address field on the buyer entry form.  Excluded by default.</p>
-              </li>
-            </ul>
-          </p>
-        </li>
-      </ul>
-    </p>
     <?php
     }
 
