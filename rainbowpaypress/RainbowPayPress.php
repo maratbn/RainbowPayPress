@@ -397,10 +397,13 @@ function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {
                     $strRecipient,
                     \__('RainbowPayPress test email',
                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                    \sprintf(
-                        \__('This is a test email.  This address is configured to receive notifications from the RainbowPayPress plugin installed onto WordPress website %s',
-                            DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                        \get_site_url()))) {
+                    \implode([
+                            \sprintf(
+                                \__('This is a test email.  This address is configured to receive notifications from the RainbowPayPress plugin installed onto WordPress website %s',
+                                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                                \get_site_url())
+                        ])
+                )) {
                 \array_push($arrErrors, 'error__wp_mail');
             }
         } else {
