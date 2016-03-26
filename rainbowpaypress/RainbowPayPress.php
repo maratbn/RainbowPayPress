@@ -603,7 +603,7 @@ function filter_plugin_action_links($arrLinks) {
 }
 
 function getUrlInfoSettings() {
-    return \admin_url('plugins.php?page=' . SLUG_INFO_SETTINGS);
+    return \admin_url('admin.php?page=' . SLUG_INFO_SETTINGS);
 }
 
 function plugin_activation_hook() {
