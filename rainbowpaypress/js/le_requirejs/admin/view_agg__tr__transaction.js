@@ -137,24 +137,22 @@ define(['jquery',
                                 .append(flagExcludeCharged
                                         ? null
                                         : _td().text(model_orig__transaction
-                                                                    .get('charged') || ""))
+                                                                .get('charged') || ""))
                                 .append(_td().text(model_orig__transaction
-                                                                    .get('created') || ""))
+                                                                .get('created') || ""))
                                 .append(_td().text(model_orig__transaction
-                                                                    .get('charge_description') ||
-                                                                                              ""))
+                                                                .get('charge_description') || ""))
                                 .append(_td().text(strChargeAmount || ""))
                                 .append(_td().text(model_orig__transaction
-                                                                    .get('stripe_token_id') || ""))
+                                                                .get('stripe_token_id') || ""))
                                 .append(_td().text(model_orig__transaction
-                                                                    .get('stripe_email') || ""))
+                                                                .get('stripe_email') || ""))
                                 .append(_td().text(model_orig__transaction
-                                                                    .get('customer_name') || ""))
+                                                                .get('customer_name') || ""))
                                 .append(_td().text(model_orig__transaction
-                                                                    .get('customer_phone') || ""))
+                                                                .get('customer_phone') || ""))
                                 .append(_td().text(model_orig__transaction
-                                                                    .get('shipping_address') ||
-                                                                                              ""))
+                                                                .get('shipping_address') || ""))
                                 .append(flagExcludeCharged
                                         ? null
                                         : _td().append(_getAggA_Customer(
