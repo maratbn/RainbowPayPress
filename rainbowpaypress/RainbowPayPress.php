@@ -633,10 +633,6 @@ function filter_plugin_action_links($arrLinks) {
     return $arrLinks;
 }
 
-function getUrlInfoSettings() {
-    return \admin_url('admin.php?page=' . SLUG_INFO_ROOT);
-}
-
 function plugin_activation_hook() {
 
     if (\version_compare(\strtolower(PHP_VERSION), PHP_VERSION_MIN_SUPPORTED, '<')) {
