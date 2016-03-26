@@ -510,7 +510,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
         if (\strlen($strRecipient) > 0) {
             \wp_mail(
                 $strRecipient,
-                \__('RainbowPayPress new pending transaction submitted',
+                \__('RainbowPayPress new pending transaction submitted at: ' . $strSiteURL,
                     DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                 \implode([
                         \sprintf(
