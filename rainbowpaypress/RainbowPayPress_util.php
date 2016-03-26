@@ -172,8 +172,10 @@ class FragmentUtil {
                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS));
         }
     ?>
-    <h2><?=\__('Configuration:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
-    <span data-plugin-rainbow-pay-press-role='app-config'></span>
+    <div class="wrap">
+      <h2><?=\__('Configuration:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
+      <span data-plugin-rainbow-pay-press-role='app-config'></span>
+    </div>
     <?php
     }
 
