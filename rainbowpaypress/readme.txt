@@ -125,6 +125,7 @@ configured on your server.  Also check your SPAM folder.
 * Split-out the plugin's admin page into 3 separate pages, for Help, Transactions, and Settings.
 * Included configuration settings page URL in test emails.
 * Included site URL in test and notification emails.
+* Added admin UI warning notification for when server-side cURL support is unavailable.
 
 = 2.1.0 =
 * Indicating to the user when Stripe Checkout dialog may be blocked by an ad or a popup blocker,
