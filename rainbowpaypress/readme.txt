@@ -57,6 +57,12 @@ Technical summary and special considerations:
   JavaScript logic, running in the buyer's browser.  For this reason,
   JavaScript needs to be enabled in the buyer's browser.
 
+  Plugin relies on special server-side PHP library stripe-php to communicate
+  with the Stripe servers to direct them to charge credit cards.  This PHP
+  library in turn relies on PHP cURL support enabled on the server.  The
+  plugin will check if this support is enabled, and will issue admin dashboard
+  notification if it is not, which will also give advise on how to enable it.
+
   If website administrators wish to enable automatic email notifications, they
   would need to insure that a Mail Transfer Agent (MTA) is properly configured
   on their website server.  Even when the MTA is properly configured, the
