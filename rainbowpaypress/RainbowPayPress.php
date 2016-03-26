@@ -399,7 +399,11 @@ function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {
                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                     \implode([
                             \sprintf(
-                                \__('This is a test email.  This address is configured to receive notifications from the RainbowPayPress plugin installed onto WordPress website %s',
+                                \__('This is a test email.'),
+                                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                            "\r\n\r\n",
+                            \sprintf(
+                                \__('This address is configured to receive notifications from the RainbowPayPress plugin installed onto WordPress website %s',
                                     DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                                 \get_site_url())
                         ])
