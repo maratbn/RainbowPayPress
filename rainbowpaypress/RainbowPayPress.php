@@ -94,6 +94,9 @@ if (\is_admin()) {
         'admin_menu',
         '\\plugin_RainbowPayPress\\action_admin_menu');
     \add_action(
+        'admin_notices',
+        '\\plugin_RainbowPayPress\\action_admin_notices');
+    \add_action(
         'admin_print_footer_scripts',
         '\\plugin_RainbowPayPress\\action_admin_print_footer_scripts');
     \add_action(
@@ -171,6 +174,24 @@ function action_admin_menu() {
         'manage_options',
         SLUG_SETTINGS,
         '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Configuration');
+}
+
+function action_admin_notices() {
+    $wp_screen = \get_current_screen();
+    if (!$wp_screen || $wp_screen->parent_base != SLUG_INFO_ROOT) return;
+
+    if (Util::isCurlAvailable()) return;
+
+    $strWarning = \implode([
+            \__('RainbowPayPress warning:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+            '  ',
+            \sprintf(
+                \__('Your PHP environment is lacking cURL support, without which it cannot communicate with the Stripe servers.  This will prevent you from charging your transactions with RainbowPayPress, for which you would need to enable PHP cURL support on your server.  If your server is running Debian or Ubuntu, this can be done by installing the package \'%s\'.',
+                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                'php5-curl')
+        ]);
+
+    ?><div class='notice notice-warning is-dismissible'><p><?=$strWarning?></p></div><?php
 }
 
 function action_admin_print_footer_scripts() {
