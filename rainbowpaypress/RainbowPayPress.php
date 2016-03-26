@@ -511,7 +511,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                 \__('RainbowPayPress new pending transaction submitted',
                     DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                 \sprintf(
-                    \__('New pending transaction has been submitted via the RainbowPayPress plugin installed onto WordPress website %s',
+                    \__('New pending transaction has been submitted via the RainbowPayPress plugin installed onto the WordPress website at: %s',
                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                     \get_site_url())
                 .
