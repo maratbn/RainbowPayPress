@@ -391,7 +391,9 @@ function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {
     }
 
     if (count($arrErrors) == 0) {
-        $strRecipient = \get_option(SETTING__EMAIL_NOTIFICATIONS);
+        $strRecipient  = \get_option(SETTING__EMAIL_NOTIFICATIONS);
+        $strSiteURL    = \get_site_url();
+
         if (\strlen($strRecipient) > 0) {
             if (!\wp_mail(
                     $strRecipient,
@@ -405,7 +407,7 @@ function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {
                             \sprintf(
                                 \__('This address is configured to receive notifications from the RainbowPayPress plugin installed onto the WordPress website at: %s',
                                     DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                                \get_site_url()),
+                                $strSiteURL),
                             "\r\n\r\n",
                             \sprintf(
                                 \__('The configuration settings for these notifications can be modified at: %s',
