@@ -119,7 +119,15 @@ define(['jquery',
                                 if (!view_agg__tr__transaction) return;
 
                                 mapViewAgg_Tr_Transaction[id] = null;
-                                view_agg__tr__transaction.$el.remove();
+
+                                var totalCols = view_agg__tr__transaction.$el.children().length;
+
+                                view_agg__tr__transaction
+                                        .$el
+                                        .empty()
+                                        .append($('<td>').attr({'colspan':  totalCols,
+                                                                'style':    'text-align:center'})
+                                                         .text("--- Deleted ---"));
                             });
 
                         this.listenTo(
