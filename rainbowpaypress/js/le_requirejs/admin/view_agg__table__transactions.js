@@ -64,19 +64,19 @@ define(['jquery',
                                                                                          .fetch();
                                                                 })
                                                               .text("Refresh")))
-                                  .append($('<th>').text("Type:"))
-                                  .append(flagExcludeCharged ? null : $('<th>').text("Charged:"))
-                                  .append($('<th>').text("Created:"))
-                                  .append($('<th>').text("Product description:"))
-                                  .append($('<th>').text("Amount:"))
-                                  .append($('<th>').text("Stripe token:"))
-                                  .append($('<th>').text("Stripe email:"))
-                                  .append($('<th>').text("Customer name:"))
-                                  .append($('<th>').text("Customer phone:"))
-                                  .append($('<th>').text("Shipping address:"))
-                                  .append(flagExcludeCharged ? null : $('<th>').text("Customer ID:"))
-                                  .append(flagExcludeCharged ? null : $('<th>').text("Charge ID:"))
-                                  .appendTo($('<thead>').appendTo(this.$el));
+                                 .append($('<th>').text("Type:"))
+                                 .append(flagExcludeCharged ? null : $('<th>').text("Charged:"))
+                                 .append($('<th>').text("Created:"))
+                                 .append($('<th>').text("Product description:"))
+                                 .append($('<th>').text("Amount:"))
+                                 .append($('<th>').text("Stripe token:"))
+                                 .append($('<th>').text("Stripe email:"))
+                                 .append($('<th>').text("Customer name:"))
+                                 .append($('<th>').text("Customer phone:"))
+                                 .append($('<th>').text("Shipping address:"))
+                                 .append(flagExcludeCharged ? null : $('<th>').text("Customer ID:"))
+                                 .append(flagExcludeCharged ? null : $('<th>').text("Charge ID:"))
+                                 .appendTo($('<thead>').appendTo(this.$el));
 
 
                         var $tbody                     = $('<tbody>').appendTo(this.$el),
