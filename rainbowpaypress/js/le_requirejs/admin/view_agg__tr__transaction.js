@@ -165,6 +165,15 @@ define(['jquery',
                                                                 type,
                                                                 model_orig__transaction
                                                                     .get('stripe_charge_id'))));
+                    },
+
+                markAsDeleted: function() {
+                        var totalCols = this.$el.children().length;
+
+                        this.$el.empty()
+                                .append($('<td>').attr({'colspan':  totalCols,
+                                                        'style':    'text-align:center'})
+                                                 .text("--- Deleted ---"));
                     }
             });
 

@@ -120,14 +120,7 @@ define(['jquery',
 
                                 mapViewAgg_Tr_Transaction[id] = null;
 
-                                var totalCols = view_agg__tr__transaction.$el.children().length;
-
-                                view_agg__tr__transaction
-                                        .$el
-                                        .empty()
-                                        .append($('<td>').attr({'colspan':  totalCols,
-                                                                'style':    'text-align:center'})
-                                                         .text("--- Deleted ---"));
+                                view_agg__tr__transaction.markAsDeleted();
                             });
 
                         this.listenTo(
