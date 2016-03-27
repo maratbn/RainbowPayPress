@@ -50,8 +50,26 @@ define(['backbone'], function (backbone) {
                         'customer_phone':       null,
                         'stripe_customer_id':   null,
                         'stripe_charge_id':     null
-                    }
+                    },
 
+                parse: function(data) {
+                        if (!data) return null;
+
+                        return {
+                                'id':                   data['id'],
+                                'type':                 data['type'],
+                                'created':              data['created'],
+                                'charged':              data['charged'],
+                                'charge_description':   data['charge_description'],
+                                'charge_amount':        data['charge_amount'],
+                                'stripe_token_id':      data['stripe_token_id'],
+                                'stripe_email':         data['stripe_email'],
+                                'customer_name':        data['customer_name'],
+                                'customer_phone':       data['customer_phone'],
+                                'stripe_customer_id':   data['stripe_customer_id'],
+                                'stripe_charge_id':     data['stripe_charge_id']
+                            };
+                    }
             });
 
     });
