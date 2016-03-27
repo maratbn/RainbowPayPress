@@ -81,6 +81,16 @@ define(['jquery',
             return $('<td>');
         }
 
+        function _flipToSingleCol() {
+            var totalCols = this.$el.children().length;
+
+            this.$el.empty();
+
+            return _td().attr({'colspan':  totalCols,
+                               'style':    'text-align:center'})
+                        .appendTo(this.$el);
+        }
+
         return ViewAgg_Tr_WHeader.extend({
 
                 //  @param  params.flag_exclude_charged
@@ -168,14 +178,7 @@ define(['jquery',
                     },
 
                 markAsDeleted: function() {
-                        var totalCols = this.$el.children().length;
-
-                        this.$el.empty();
-
-                        _td().attr({'colspan':  totalCols,
-                                    'style':    'text-align:center'})
-                             .appendTo(this.$el)
-                             .text("--- Deleted ---");
+                        _flipToSingleCol.call(this).text("--- Deleted ---");
                     }
             });
 
