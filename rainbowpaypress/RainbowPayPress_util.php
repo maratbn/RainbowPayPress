@@ -266,7 +266,7 @@ class FragmentUtil {
                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS));
         }
     ?>
-    <div class="wrap">
+    <div class='wrap'>
       <h2><?=\__('Pending Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
       <span data-plugin-rainbow-pay-press-role='transactions-pending'></span>
       <h2><?=\__('Charged Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
