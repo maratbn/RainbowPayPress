@@ -266,6 +266,14 @@ class FragmentUtil {
                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS));
         }
     ?>
+    <style>
+        .transaction--even {
+            background-color: #eee;
+        }
+        .transaction--odd {
+            background-color: #ddd;
+        }
+    </style>
     <div class='wrap'>
       <h2><?=\__('Pending Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
       <span data-plugin-rainbow-pay-press-role='transactions-pending'></span>

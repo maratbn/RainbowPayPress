@@ -79,12 +79,18 @@ define(['jquery',
                                  .appendTo($('<thead>').appendTo(this.$el));
 
 
-                        var $tbody = $('<tbody>').appendTo(this.$el);
+                        var totalRows  = 0,
+                            $tbody     = $('<tbody>').appendTo(this.$el);
 
                         function _prependViewAgg_Tr_Transaction(params) {
                             var view_agg__tr__transaction = new ViewAgg_Tr_Transaction(params);
 
                             view_agg__tr__transaction.$el.prependTo($tbody);
+
+                            totalRows++;
+                            view_agg__tr__transaction.$el.addClass((totalRows % 2)
+                                                                    ? 'transaction--even'
+                                                                    : 'transaction--odd');
 
                             return view_agg__tr__transaction;
                         }
