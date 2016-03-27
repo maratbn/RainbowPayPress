@@ -171,9 +171,9 @@ define(['jquery',
                         var totalCols = this.$el.children().length;
 
                         this.$el.empty()
-                                .append($('<td>').attr({'colspan':  totalCols,
-                                                        'style':    'text-align:center'})
-                                                 .text("--- Deleted ---"));
+                                .append(_td().attr({'colspan':  totalCols,
+                                                    'style':    'text-align:center'})
+                                             .text("--- Deleted ---"));
                     }
             });
 
