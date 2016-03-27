@@ -177,6 +177,10 @@ define(['jquery',
                                                                     .get('stripe_charge_id'))));
                     },
 
+                markAsCharged: function() {
+                        _flipToSingleCol.call(this).text("--- Charged ---");
+                    },
+
                 markAsDeleted: function() {
                         _flipToSingleCol.call(this).text("--- Deleted ---");
                     }

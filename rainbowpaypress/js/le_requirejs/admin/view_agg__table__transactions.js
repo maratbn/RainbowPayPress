@@ -135,6 +135,11 @@ define(['jquery',
 
                                 var view_agg__tr__transaction = mapViewAgg_Tr_Transaction[id];
 
+                                if (view_agg__tr__transaction && charged && flagExcludeCharged) {
+                                    view_agg__tr__transaction.markAsCharged();
+                                    return;
+                                }
+
                                 //  This logic checks if the table has the 'ViewAgg_Tr_Transaction'
                                 //  associated with this id but if it has to be excluded now:
                                 if (view_agg__tr__transaction &&
