@@ -79,8 +79,9 @@ define(['jquery',
                                  .appendTo($('<thead>').appendTo(this.$el));
 
 
-                        var $tbody                     = $('<tbody>').appendTo(this.$el),
-                            mapViewAgg_Tr_Transaction  = {};
+                        var $tbody = $('<tbody>').appendTo(this.$el);
+
+                        var mapViewAgg_Tr_Transaction = {};
 
                         this.listenTo(
                             collection_orig__transaction,
