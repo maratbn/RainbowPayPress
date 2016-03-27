@@ -170,10 +170,12 @@ define(['jquery',
                 markAsDeleted: function() {
                         var totalCols = this.$el.children().length;
 
-                        this.$el.empty()
-                                .append(_td().attr({'colspan':  totalCols,
-                                                    'style':    'text-align:center'})
-                                             .text("--- Deleted ---"));
+                        this.$el.empty();
+
+                        _td().attr({'colspan':  totalCols,
+                                    'style':    'text-align:center'})
+                             .appendTo(this.$el)
+                             .text("--- Deleted ---");
                     }
             });
 
