@@ -65,9 +65,9 @@ define(['backbone',
                                 }
 
                                 model_orig__transaction.set({
-                                        'charged':             objData.charged,
-                                        'stripe_customer_id':  objData.stripe_customer_id,
-                                        'stripe_charge_id':    objData.stripe_charge_id
+                                        'charged':             objData['charged'],
+                                        'stripe_customer_id':  objData['stripe_customer_id'],
+                                        'stripe_charge_id':    objData['stripe_charge_id']
                                     });
                             });
                     },
