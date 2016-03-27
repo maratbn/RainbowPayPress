@@ -625,7 +625,7 @@ function action_wp_print_footer_scripts() {
 function filter_plugin_action_links($arrLinks) {
     \array_push($arrLinks,
                 '<a href=\'' . \admin_url('admin.php?page=' . SLUG_INFO_ROOT) . '\'>'
-                          . \__('About', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS) . '</a>');
+                          . \__('Help', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS) . '</a>');
     \array_push($arrLinks,
                 '<a href=\'' . \plugin_dir_url(__FILE__) . 'LICENSE\'>'
                           . \__('License', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS) . '</a>');
