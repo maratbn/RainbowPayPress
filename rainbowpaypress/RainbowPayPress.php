@@ -79,9 +79,6 @@ require_once('RainbowPayPress_util.php');
             '\\plugin_RainbowPayPress\\action_wp_print_footer_scripts');
 
 
-\add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
-            '\\plugin_RainbowPayPress\\filter_plugin_action_links');
-
 \add_shortcode(SHORTCODE__RAINBOW_PAY_PRESS,
                '\\plugin_RainbowPayPress\\shortcode_rainbow_pay_press');
 
@@ -120,6 +117,9 @@ if (\is_admin()) {
     \add_action(
         'wp_ajax_rainbow_pay_press__submit',
         '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__submit');
+
+    \add_filter('plugin_action_links_' . \plugin_basename(__FILE__),
+                '\\plugin_RainbowPayPress\\filter_plugin_action_links');
 }
 
 
