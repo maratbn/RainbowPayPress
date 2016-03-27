@@ -81,6 +81,15 @@ define(['jquery',
 
                         var $tbody = $('<tbody>').appendTo(this.$el);
 
+                        function _prependViewAgg_Tr_Transaction(params) {
+                            var view_agg__tr__transaction = new ViewAgg_Tr_Transaction(params);
+
+                            view_agg__tr__transaction.$el.prependTo($tbody);
+
+                            return view_agg__tr__transaction;
+                        }
+
+
                         var mapViewAgg_Tr_Transaction = {};
 
                         this.listenTo(
@@ -95,11 +104,10 @@ define(['jquery',
                                 var id = model_orig__transaction.get('id');
                                 if (mapViewAgg_Tr_Transaction[id]) return;
 
-                                (mapViewAgg_Tr_Transaction[id] =
-                                    new ViewAgg_Tr_Transaction({
+                                mapViewAgg_Tr_Transaction[id] = _prependViewAgg_Tr_Transaction({
                                                 flag_exclude_charged:     flagExcludeCharged,
                                                 model_orig__transaction:  model_orig__transaction
-                                            })).$el.prependTo($tbody);
+                                            });
                             });
 
                         this.listenTo(
@@ -140,11 +148,10 @@ define(['jquery',
                                 if (view_agg__tr__transaction) return;
 
                                 //  This table does not already have it but needs to have it.
-                                (mapViewAgg_Tr_Transaction[id] =
-                                    new ViewAgg_Tr_Transaction({
+                                mapViewAgg_Tr_Transaction[id] = _prependViewAgg_Tr_Transaction({
                                                 flag_exclude_charged:     flagExcludeCharged,
                                                 model_orig__transaction:  model_orig__transaction
-                                            })).$el.prependTo($tbody);
+                                            });
                             });
                     }
             });
