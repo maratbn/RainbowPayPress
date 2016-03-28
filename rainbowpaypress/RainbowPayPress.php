@@ -317,7 +317,7 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
                                                                     $invalid_argument_exception) {
             \array_push($arrErrors, 'error_stripe_invalid_argument_exception');
         } catch (\Exception $exception) {
-            \array_push($arrErrors, 'error_stripe_exception');
+            \array_push($arrErrors, 'error__stripe_exception');
         }
     }
 
