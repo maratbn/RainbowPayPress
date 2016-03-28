@@ -36,11 +36,13 @@ define(['jquery',
         'util',
         'admin/collection_orig__transaction',
         'admin/view_agg__button',
+        'admin/view_agg__span__date',
         'admin/view_agg__tr__w_header'
     ], function($,
                 util,
                 collection_orig__transaction,
                 ViewAgg_Button,
+                ViewAgg_Span_Date,
                 ViewAgg_Tr_WHeader) {
 
         function _flipToSingleCol() {
@@ -51,62 +53,6 @@ define(['jquery',
             return _td().attr({'colspan':  totalCols,
                                'style':    'text-align:center'})
                         .appendTo(this.$el);
-        }
-
-        function _getDigits(num, len) {
-            var str = "" + num;
-            while (str.length < len) {
-                str = '0' + str;
-            }
-            return str;
-        }
-
-        function _getDateComponents(date) {
-            if (!date) return null;
-
-            return {
-                    year:   date.getFullYear(),
-                    month:  _getDigits(date.getMonth() + 1, 2),
-                    day:    _getDigits(date.getDate(), 2),
-                    hour:   _getDigits(date.getHours(), 2),
-                    min:    _getDigits(date.getMinutes(), 2),
-                    sec:    _getDigits(date.getSeconds(), 2),
-                    msec:   _getDigits(date.getMilliseconds(), 3)
-                };
-        }
-
-        function _getDateReprTZName(date) {
-            var arrMatchTZ = date && date.toString().match(/\([^)]+\)/g);
-            return arrMatchTZ && arrMatchTZ.length == 1 && arrMatchTZ[0] || "";
-        }
-
-        function _getDateStrings(date) {
-
-            var date_components = _getDateComponents(date);
-            if (!date_components) return null;
-
-            function _getWeekday() {
-                return (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])[date.getDay()];
-            }
-
-            return {
-                    'weekday':  _getWeekday(),
-                    'date':     date_components.year + '-' + date_components.month
-                                                     + '-' + date_components.day,
-                    'time':     date_components.hour + ':' + date_components.min
-                                                     + ':' + date_components.sec,
-                    'tz':       _getDateReprTZName(date)
-                };
-        }
-
-        function _getDateRepr(date) {
-
-            var date_strings = _getDateStrings(date);
-            if (!date_strings) return null;
-
-            return date_strings.weekday + ' ' + date_strings.date
-                                       + '  ' + date_strings.time
-                                       + '  ' + date_strings.tz;
         }
 
         function _getStripeUrlForCharge(type, stripe_charge_id) {
@@ -197,17 +143,24 @@ define(['jquery',
                         this.get_$thHeader().append($buttonDelete).append($buttonCharge);
 
 
-                        var type = model_orig__transaction.get('type');
+                        var type                         = model_orig__transaction.get('type'),
+                            view_agg__span__dateCharged  = flagExcludeCharged
+                                                         ? null
+                                                         : new ViewAgg_Span_Date(),
+                            view_agg__span__dateCreated  = new ViewAgg_Span_Date();
+
+                        if (view_agg__span__dateCharged) {
+                            view_agg__span__dateCharged.setDate(model_orig__transaction
+                                                                                 .get('charged'));
+                        }
+                        view_agg__span__dateCreated.setDate(model_orig__transaction
+                                                                                 .get('created'));
 
                         this.$el.append(_td().text(type || ""))
-                                .append(flagExcludeCharged
-                                        ? null
-                                        : _td().text(_getDateRepr(
-                                                            model_orig__transaction
-                                                                          .get('charged')) || ""))
-                                .append(_td().text(_getDateRepr(
-                                                            model_orig__transaction
-                                                                          .get('created')) || ""))
+                                .append(view_agg__span__dateCharged
+                                                   ? _td().append(view_agg__span__dateCharged.$el)
+                                                   : null)
+                                .append(_td().append(view_agg__span__dateCreated.$el))
                                 .append(_td().text(model_orig__transaction
                                                                 .get('charge_description') || ""))
                                 .append(_td().text(strChargeAmount || ""))
