@@ -43,6 +43,16 @@ define(['jquery',
                 ViewAgg_Button,
                 ViewAgg_Tr_WHeader) {
 
+        function _flipToSingleCol() {
+            var totalCols = this.$el.children().length;
+
+            this.$el.empty();
+
+            return _td().attr({'colspan':  totalCols,
+                               'style':    'text-align:center'})
+                        .appendTo(this.$el);
+        }
+
         function _getStripeUrlForCharge(type, stripe_charge_id) {
             if (!type || !stripe_charge_id) return null;
 
@@ -79,16 +89,6 @@ define(['jquery',
 
         function _td() {
             return $('<td>');
-        }
-
-        function _flipToSingleCol() {
-            var totalCols = this.$el.children().length;
-
-            this.$el.empty();
-
-            return _td().attr({'colspan':  totalCols,
-                               'style':    'text-align:center'})
-                        .appendTo(this.$el);
         }
 
         return ViewAgg_Tr_WHeader.extend({
