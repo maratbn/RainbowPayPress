@@ -81,14 +81,16 @@ define(['jquery',
         }
 
         function _getDateRepr(date) {
-            if (!date) return null;
+
+            var date_components = _getDateComponents(date);
+            if (!date_components) return null;
 
             function _getWeekday() {
                 return (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])[date.getDay()];
             }
 
-            var date_components  = _getDateComponents(date),
-                strDateRepr      = "";
+
+            var strDateRepr = "";
 
             strDateRepr += _getWeekday();
             strDateRepr += ' ';
