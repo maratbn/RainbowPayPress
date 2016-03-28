@@ -65,7 +65,11 @@ define(['backbone',
                                 }
 
                                 model_orig__transaction.set({
-                                        'charged':             objData['charged'],
+                                        'charged':             objData['charged'] == null
+                                                                ? null
+                                                                : new window
+                                                                       .Date(objData['charged']
+                                                                                        + ' GMT'),
                                         'stripe_customer_id':  objData['stripe_customer_id'],
                                         'stripe_charge_id':    objData['stripe_charge_id']
                                     });

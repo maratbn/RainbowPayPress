@@ -58,8 +58,14 @@ define(['backbone'], function (backbone) {
                         return {
                                 'id':                   data['id'],
                                 'type':                 data['type'],
-                                'created':              data['created'],
-                                'charged':              data['charged'],
+                                'created':              data['created'] == null
+                                                            ? null
+                                                            : new window.Date(data['created']
+                                                                                        + ' GMT'),
+                                'charged':              data['charged'] == null
+                                                            ? null
+                                                            : new window.Date(data['charged']
+                                                                                        + ' GMT'),
                                 'charge_description':   data['charge_description'],
                                 'charge_amount':        data['charge_amount'],
                                 'stripe_token_id':      data['stripe_token_id'],
