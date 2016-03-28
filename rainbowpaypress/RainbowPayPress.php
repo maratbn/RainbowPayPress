@@ -226,6 +226,8 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
      *      error__create_stripe_customer
      *      error__create_stripe_charge
      *      error__update_transaction
+     *      error__stripe_exception
+     *      error__stripe_invalid_argument_exception
      **/
 
     $arrErrors = [];
