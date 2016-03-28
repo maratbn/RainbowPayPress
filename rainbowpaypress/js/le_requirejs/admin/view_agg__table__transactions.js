@@ -61,6 +61,8 @@ define(['jquery',
                                                               .click(
                                                                 function() {
                                                                   collection_orig__transaction
+                                                                                         .reset();
+                                                                  collection_orig__transaction
                                                                                          .fetch();
                                                                 })
                                                               .text("Refresh")))
@@ -164,6 +166,21 @@ define(['jquery',
                                                 flag_exclude_charged:     flagExcludeCharged,
                                                 model_orig__transaction:  model_orig__transaction
                                             });
+                            });
+
+                        this.listenTo(
+                            collection_orig__transaction,
+                            'reset',
+                            function() {
+                                for (var id in mapViewAgg_Tr_Transaction) {
+                                    var view_agg__tr__transaction = mapViewAgg_Tr_Transaction[id];
+                                    if (!view_agg__tr__transaction) continue;
+
+                                    view_agg__tr__transaction.$el.remove();
+                                    mapViewAgg_Tr_Transaction[id] = null;
+                                }
+
+                                $tbody.empty();
                             });
                     }
             });
