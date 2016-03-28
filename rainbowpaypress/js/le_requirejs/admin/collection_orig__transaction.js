@@ -74,6 +74,13 @@ define(['backbone',
                                         var strEncStripeErr =
                                                 "Encountered an error from Stripe!  This transaction could not be charged!";
 
+                                        if (objData['stripe_error_message']) {
+                                            strEncStripeErr += "  ";
+                                            strEncStripeErr += "Message from Stripe:";
+                                            strEncStripeErr += " ";
+                                            strEncStripeErr += objData['stripe_error_message'];
+                                        }
+
                                         window.alert(strEncStripeErr);
                                         return;
                                     }
