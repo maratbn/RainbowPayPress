@@ -80,7 +80,7 @@ define(['jquery',
             return arrMatchTZ && arrMatchTZ.length == 1 && arrMatchTZ[0] || "";
         }
 
-        function _getDateRepr(date) {
+        function _getDateStrings(date) {
 
             var date_components = _getDateComponents(date);
             if (!date_components) return null;
@@ -89,28 +89,24 @@ define(['jquery',
                 return (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])[date.getDay()];
             }
 
+            return {
+                    'weekday':  _getWeekday(),
+                    'date':     date_components.year + '-' + date_components.month
+                                                     + '-' + date_components.day,
+                    'time':     date_components.hour + ':' + date_components.min
+                                                     + ':' + date_components.sec,
+                    'tz':       _getDateReprTZName(date)
+                };
+        }
 
-            var strDateRepr = "";
+        function _getDateRepr(date) {
 
-            strDateRepr += _getWeekday();
-            strDateRepr += ' ';
+            var date_strings = _getDateStrings(date);
+            if (!date_strings) return null;
 
-            strDateRepr += date_components.year;
-            strDateRepr += '-';
-            strDateRepr += date_components.month;
-            strDateRepr += '-';
-            strDateRepr += date_components.day;
-            strDateRepr += '  ';
-            strDateRepr += date_components.hour;
-            strDateRepr += ':';
-            strDateRepr += date_components.min;
-            strDateRepr += ':';
-            strDateRepr += date_components.sec;
-
-            strDateRepr += '  ';
-            strDateRepr += _getDateReprTZName(date);
-
-            return strDateRepr;
+            return date_strings.weekday + ' ' + date_strings.date
+                                       + '  ' + date_strings.time
+                                       + '  ' + date_strings.tz;
         }
 
         function _getStripeUrlForCharge(type, stripe_charge_id) {
