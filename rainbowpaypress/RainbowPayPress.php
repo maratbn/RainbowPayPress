@@ -318,8 +318,10 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
         } catch (plugin_RainbowPayPress\Stripe\Error\InvalidArgumentException
                                                                     $invalid_argument_exception) {
             \array_push($arrErrors, 'error__stripe_invalid_argument_exception');
+            $dataRet['stripe_error_message'] = $invalid_argument_exception->getMessage();
         } catch (\Exception $exception) {
             \array_push($arrErrors, 'error__stripe_exception');
+            $dataRet['stripe_error_message'] = $exception->getMessage();
         }
     }
 
