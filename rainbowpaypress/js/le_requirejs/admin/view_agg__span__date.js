@@ -96,13 +96,17 @@ define(['backbone', 'jquery'], function(backbone, $) {
                 tagName: 'span',
 
                 setDate: function(date) {
-                        var $spanWeekday  = $('<span>').appendTo(this.$el)
+                        var $spanWeekday  = $('<span>').attr('style', 'white-space:nowrap')
+                                                       .appendTo(this.$el)
                                                        .after(' '),
-                            $spanDate     = $('<span>').appendTo(this.$el)
+                            $spanDate     = $('<span>').attr('style', 'white-space:nowrap')
+                                                       .appendTo(this.$el)
                                                        .after(' '),
-                            $spanTime     = $('<span>').appendTo(this.$el)
+                            $spanTime     = $('<span>').attr('style', 'white-space:nowrap')
+                                                       .appendTo(this.$el)
                                                        .after(' '),
-                            $spanTZ       = $('<span>').appendTo(this.$el);
+                            $spanTZ       = $('<span>').attr('style', 'white-space:nowrap')
+                                                       .appendTo(this.$el);
 
                         var date_strings = _getDateStrings(date);
                         if (!date_strings) {
