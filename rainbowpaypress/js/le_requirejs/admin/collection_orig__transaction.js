@@ -70,9 +70,11 @@ define(['backbone',
                                          objData.errors
                                            .indexOf(
                                               'error__stripe_invalid_argument_exception') >= 0)) {
-                                        window
-                                          .alert(
-                                             "Encountered an error from Stripe!  This transaction could not be charged!");
+
+                                        var strEncStripeErr =
+                                                "Encountered an error from Stripe!  This transaction could not be charged!";
+
+                                        window.alert(strEncStripeErr);
                                         return;
                                     }
 
