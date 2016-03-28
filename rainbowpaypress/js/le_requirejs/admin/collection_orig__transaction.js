@@ -65,6 +65,17 @@ define(['backbone',
                                         return;
                                     }
 
+                                    if (objData.errors &&
+                                        (objData.errors.indexOf('error__stripe_exception') >= 0 ||
+                                         objData.errors
+                                           .indexOf(
+                                              'error__stripe_invalid_argument_exception') >= 0)) {
+                                        window
+                                          .alert(
+                                             "Encountered an error from Stripe!  This transaction could not be charged!");
+                                        return;
+                                    }
+
                                     window
                                       .alert(
                                          "Encountered a server-side error!  This transaction could not be charged!");
