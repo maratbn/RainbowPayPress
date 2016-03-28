@@ -53,6 +53,64 @@ define(['jquery',
                         .appendTo(this.$el);
         }
 
+        function _getDigits(num, len) {
+            var str = "" + num;
+            while (str.length < len) {
+                str = '0' + str;
+            }
+            return str;
+        }
+
+        function _getDateComponents(date) {
+            if (!date) return null;
+
+            return {
+                    year:   date.getFullYear(),
+                    month:  _getDigits(date.getMonth() + 1, 2),
+                    day:    _getDigits(date.getDate(), 2),
+                    hour:   _getDigits(date.getHours(), 2),
+                    min:    _getDigits(date.getMinutes(), 2),
+                    sec:    _getDigits(date.getSeconds(), 2),
+                    msec:   _getDigits(date.getMilliseconds(), 3)
+                };
+        }
+
+        function _getDateReprTZName(date) {
+            var arrMatchTZ = date && date.toString().match(/\([^)]+\)/g);
+            return arrMatchTZ && arrMatchTZ.length == 1 && arrMatchTZ[0] || "";
+        }
+
+        function _getDateRepr(date) {
+            if (!date) return null;
+
+            function getWeekday() {
+                return (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])[date.getDay()];
+            }
+
+            var date_components  = _getDateComponents(date),
+                strDateRepr      = "";
+
+            strDateRepr += getWeekday();
+            strDateRepr += ' ';
+
+            strDateRepr += date_components.year;
+            strDateRepr += '-';
+            strDateRepr += date_components.month;
+            strDateRepr += '-';
+            strDateRepr += date_components.day;
+            strDateRepr += '  ';
+            strDateRepr += date_components.hour;
+            strDateRepr += ':';
+            strDateRepr += date_components.min;
+            strDateRepr += ':';
+            strDateRepr += date_components.sec;
+
+            strDateRepr += '  ';
+            strDateRepr += _getDateReprTZName(date);
+
+            return strDateRepr;
+        }
+
         function _getStripeUrlForCharge(type, stripe_charge_id) {
             if (!type || !stripe_charge_id) return null;
 
@@ -146,10 +204,12 @@ define(['jquery',
                         this.$el.append(_td().text(type || ""))
                                 .append(flagExcludeCharged
                                         ? null
-                                        : _td().text(model_orig__transaction
-                                                                .get('charged') || ""))
-                                .append(_td().text(model_orig__transaction
-                                                                .get('created') || ""))
+                                        : _td().text(_getDateRepr(
+                                                            model_orig__transaction
+                                                                          .get('charged')) || ""))
+                                .append(_td().text(_getDateRepr(
+                                                            model_orig__transaction
+                                                                          .get('created')) || ""))
                                 .append(_td().text(model_orig__transaction
                                                                 .get('charge_description') || ""))
                                 .append(_td().text(strChargeAmount || ""))
