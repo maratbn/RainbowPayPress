@@ -32,7 +32,7 @@
 (function(define) {
 
 
-define(['backbone'], function(backbone) {
+define(['backbone', 'jquery'], function(backbone, $) {
 
 
         function _getDigits(num, len) {
@@ -96,7 +96,27 @@ define(['backbone'], function(backbone) {
                 tagName: 'span',
 
                 setDate: function(date) {
-                        this.$el.text(_getDateRepr(date) || "");
+                        var $spanWeekday  = $('<span>').appendTo(this.$el)
+                                                       .after(' '),
+                            $spanDate     = $('<span>').appendTo(this.$el)
+                                                       .after(' '),
+                            $spanTime     = $('<span>').appendTo(this.$el)
+                                                       .after(' '),
+                            $spanTZ       = $('<span>').appendTo(this.$el);
+
+                        var date_strings = _getDateStrings(date);
+                        if (!date_strings) {
+                            $spanWeekday.text("");
+                            $spanDate.text("");
+                            $spanTime.text("");
+                            $spanTZ.text("");
+                            return;
+                        }
+
+                        $spanWeekday.text(date_strings.weekday);
+                        $spanDate.text(date_strings.date);
+                        $spanTime.text(date_strings.time);
+                        $spanTZ.text(date_strings.tz);
                     }
             });
     });
