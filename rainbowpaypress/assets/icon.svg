@@ -1,0 +1,64 @@
+<!--
+  RainbowPayPress -  WordPress plugin for accepting credit card payments via
+                     Stripe by embedding Stripe checkouts via shortcodes.
+
+  Copyright (C) 2015-2016  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
+
+  Version:        2.2.0-development_unreleased
+
+  Module:         rainbowpaypress/RainbowPayPress.php
+
+  Description:    Main icon for the WordPress plugin 'RainbowPayPress'.
+
+  This file is part of RainbowPayPress.
+
+  Licensed under the GNU General Public License Version 3.
+
+  RainbowPayPress is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  RainbowPayPress is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with RainbowPayPress.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<svg xmlns='http://www.w3.org/2000/svg'
+     xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 128 128' enable-background='new 0 0 128 128'>
+
+  <defs>
+
+    <g id='rainbow'>
+      <circle cx='4' cy='179' r='195' fill='red' />
+      <circle cx='4' cy='179' r='176' fill='orange' />
+      <circle cx='4' cy='179' r='157' fill='yellow' />
+      <circle cx='4' cy='179' r='138' fill='green' />
+      <circle cx='4' cy='179' r='119' fill='blue' />
+      <circle cx='4' cy='179' r='100' fill='indigo' />
+      <circle cx='4' cy='179' r='81' fill='violet' />
+      <circle cx='4' cy='179' r='62' fill='pink' />
+    </g>
+
+    <g id='dollar' transform='scale(0.107)'>
+      <path
+         d="M 311.79366,1033.2094 Q 240.14072,1031.87 162.4609,1017.1377 85.450741,1002.4053 48.619793,985.66395 l 0,-214.28915 44.197138,0 22.768219,127.90384 q 20.75926,27.45579 78.34947,52.23298 58.25987,24.10753 117.85904,27.45579 l 0,-379.02393 Q 232.10488,572.48768 199.96151,557.08565 167.81813,541.01396 142.3713,521.59401 116.92446,502.17406 98.174159,476.05757 80.093512,449.94108 70.048708,416.4584 q -9.37515,-34.15234 -9.37515,-75.67086 0,-96.43012 68.304662,-157.3686 68.97432,-60.93847 182.81544,-70.31362 l 0,-86.385316 54.91159,0 0,85.046006 q 102.457,4.01792 205.58365,28.7951 l 0,186.83336 -43.52748,0 -19.41995,-109.82319 q -20.08961,-18.7503 -60.93848,-32.81303 -40.17922,-14.06272 -81.69774,-16.74134 l 0,319.42477 63.61709,22.76822 q 110.49285,40.84887 156.69894,101.11769 46.2061,59.59917 46.2061,149.33275 0,117.18938 -72.32259,189.51197 -71.65293,71.65289 -194.19954,80.35839 l 0,93.7515 -54.91159,0 0,-91.0728 z M 519.38627,798.8306 q 0,-62.94744 -32.81303,-103.79631 -32.14337,-40.84887 -119.86799,-74.33155 l 0,354.91641 q 73.6619,-11.38411 113.17146,-55.58125 39.50956,-44.19714 39.50956,-121.2073 z M 173.17536,305.2959 q 0,39.50956 12.72342,67.63501 13.39307,27.4558 38.17026,48.21506 24.77718,20.08961 87.72462,46.2061 l 0,-296.65654 Q 244.8283,179.40102 208.667,214.89266 173.17536,250.3843 173.17536,305.2959 Z"
+         fill='white'
+         stroke='gold' stroke-width='17' />
+    </g>
+
+    <mask id='circle'>
+      <circle cx='64' cy='64' r='64' fill='white' />
+    </mask>
+
+  </defs>
+
+  <use xlink:href='#rainbow' mask='url(#circle)' />
+  <circle cx='64' cy='64' r='63' fill='none' stroke-width='2' stroke='gold' />
+  <use xlink:href='#dollar' x='27.5' y='2.5' stroke='gold' />
+
+</svg>
