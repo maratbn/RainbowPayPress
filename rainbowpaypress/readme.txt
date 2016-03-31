@@ -135,6 +135,9 @@ configured on your server.  Also check your SPAM folder.
 * Added admin UI warning notification for when server-side cURL support is unavailable.
 * Displaying the transaction creation and charging times in the timezone local to the client.
 * Added plugin icon.
+* No longer explicitly requesting to communicate with Stripe via any specific Stripe API version,
+  as Stripe servers are expected to automatically communicate via the most appropriate version for
+  the client library bindings version.
 
 = 2.1.0 =
 * Indicating to the user when Stripe Checkout dialog may be blocked by an ad or a popup blocker,
