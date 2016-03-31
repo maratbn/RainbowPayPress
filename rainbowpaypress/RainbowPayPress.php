@@ -283,8 +283,6 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
     if (count($arrErrors) == 0) {
         \plugin_RainbowPayPress\Stripe\Stripe::setApiKey($stripe['secret_key']);
 
-        \plugin_RainbowPayPress\Stripe\Stripe::setApiVersion("2016-03-07");
-
         try {
             $customer = \plugin_RainbowPayPress\Stripe\Customer::create(array(
                     'email'        => $dataTransaction['stripe_email'],
