@@ -134,6 +134,7 @@ configured on your server.  Also check your SPAM folder.
 * Included site URL in test and notification emails.
 * Added admin UI warning notification for when server-side cURL support is unavailable.
 * Displaying the transaction creation and charging times in the timezone local to the client.
+* Added plugin icon.
 
 = 2.1.0 =
 * Indicating to the user when Stripe Checkout dialog may be blocked by an ad or a popup blocker,
