@@ -68,3 +68,9 @@ Technical summary and special considerations:
   on their website server.  Even when the MTA is properly configured, the
   email notifications are still likely to get filtered by SPAM filters, so
   adjustment of SPAM filters might also be needed.
+
+Requirements:
+
+  * PHP version >= 5.4
+  * PHP cURL support enabled (Install module 'php5-curl' on Debian / Ubuntu)
+  * Proper Mail Transfer Agent (MTA) configuration for notification emails.
