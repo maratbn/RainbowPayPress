@@ -42,7 +42,7 @@ define(['jquery',
         return ViewAgg_Tr_TransactionDetail.extend({
 
                 //  @param  params.model_info__transaction_details
-                //  @param  params.name                 Name of the seller
+                //  @param  params.name_seller                          Name of the seller
                 initialize: function(params) {
                         ViewAgg_Tr_TransactionDetail.prototype.initialize.apply(this, arguments);
 
@@ -54,7 +54,7 @@ define(['jquery',
                         this.on('click_modify', function() {
                                 model_info__stripe_checkout.doStripeCheckout(
                                                                 model_info__transaction_details,
-                                                                params.name);
+                                                                params.name_seller);
                             }, this);
 
 

@@ -88,6 +88,7 @@ define(['jquery',
                                             model_info__transaction_details,
                                 field: 'stripe_token_id',
                                 name: "Stripe token id:",
+                                name_seller: params.name,
                                 text_enter: "Enter credit card info",
                                 text_modify: "Modify"
                             })).$el.appendTo(this.$el);
@@ -97,6 +98,7 @@ define(['jquery',
                                             model_info__transaction_details,
                                 field: 'stripe_email',
                                 name: "Stripe card email:",
+                                name_seller: params.name,
                                 text_enter: "Enter credit card info",
                                 text_modify: "Modify"
                             })).$el.appendTo(this.$el);
