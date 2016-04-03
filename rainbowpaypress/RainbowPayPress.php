@@ -580,20 +580,15 @@ function action_wp_ajax_rainbow_pay_press__submit() {
 
 function action_wp_enqueue_scripts() {
 
-    global $post;
-    if ($post instanceof \WP_Post &&
-        \has_shortcode($post->post_content, SHORTCODE__RAINBOW_PAY_PRESS)) {
-
-        \wp_enqueue_script(
-            'plugin__RainbowPayPress__requirejs',
-            plugin_dir_url(__FILE__) . (
-                IS_MODE_RELEASE
-                ? 'js/lib/require_js-2.1.20-src--tweaked--2016-03-18--01--namespaced--plugin_RainbowPayPress--8e39eca3d1a77552f8d1b2daf78fe382a3aa3ab3.min.js'
-                : 'js/lib/require_js-2.1.20-src--tweaked--2016-03-18--01--namespaced--plugin_RainbowPayPress--8e39eca3d1a77552f8d1b2daf78fe382a3aa3ab3.js'),
-            null,
-            '2015-09-25--1',
-            false);
-    }
+    \wp_enqueue_script(
+        'plugin__RainbowPayPress__requirejs',
+        plugin_dir_url(__FILE__) . (
+            IS_MODE_RELEASE
+            ? 'js/lib/require_js-2.1.20-src--tweaked--2016-03-18--01--namespaced--plugin_RainbowPayPress--8e39eca3d1a77552f8d1b2daf78fe382a3aa3ab3.min.js'
+            : 'js/lib/require_js-2.1.20-src--tweaked--2016-03-18--01--namespaced--plugin_RainbowPayPress--8e39eca3d1a77552f8d1b2daf78fe382a3aa3ab3.js'),
+        null,
+        '2015-09-25--1',
+        false);
 }
 
 function action_wp_print_footer_scripts() {
