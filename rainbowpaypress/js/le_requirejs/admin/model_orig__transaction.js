@@ -35,6 +35,15 @@
 
 define(['backbone'], function (backbone) {
 
+        //  This will parse a date string in the format "2016-04-03 05:10:41" that is assumed to
+        //  be in UTC time.
+        function _parseDate(strDate) {
+            if (!strDate) return null;
+
+            var arrParts = strDate.split(' ');
+            return new Date(arrParts[0] + 'T' + arrParts[1] + 'Z');
+        }
+
         return backbone.Model.extend({
 
                 defaults: {
@@ -58,14 +67,8 @@ define(['backbone'], function (backbone) {
                         return {
                                 'id':                   data['id'],
                                 'type':                 data['type'],
-                                'created':              data['created'] == null
-                                                            ? null
-                                                            : new window.Date(data['created']
-                                                                                        + ' GMT'),
-                                'charged':              data['charged'] == null
-                                                            ? null
-                                                            : new window.Date(data['charged']
-                                                                                        + ' GMT'),
+                                'created':              _parseDate(data['created']),
+                                'charged':              _parseDate(data['charged']),
                                 'charge_description':   data['charge_description'],
                                 'charge_amount':        data['charge_amount'],
                                 'stripe_token_id':      data['stripe_token_id'],
