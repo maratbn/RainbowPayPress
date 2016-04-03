@@ -127,6 +127,11 @@ configured on your server.  Also check your SPAM folder.
 
 == Changelog ==
 
+= 2.3.0 =
+* For better reliability and better server-side performance, loading the plugin's JavaScript logic
+  on every page.  Client-side performance should not be effected that much due to local caching.
+  Stripe Checkout JavaScript dialog logic is still loading only when the user opens the payment UI.
+
 = 2.2.0 =
 * Added ability to ask buyer for shipping address.
 * Split-out the plugin's admin page into 3 separate pages, for Help, Transactions, and Settings.
