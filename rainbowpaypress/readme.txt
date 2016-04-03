@@ -132,6 +132,7 @@ configured on your server.  Also check your SPAM folder.
   on every page.  Client-side performance should not be effected that much due to local caching.
   Stripe Checkout JavaScript dialog logic is still loading only when the user opens the payment UI.
 * Fixed bug with the seller name not getting propagated into the Stripe Checkout dialog.
+* Fixed bug with date parsing algorithm so that it works on Firefox.
 
 = 2.2.0 =
 * Added ability to ask buyer for shipping address.
