@@ -52,9 +52,27 @@ class DBUtil {
         return $wpdb->delete(DBUtil::getTableName_Transactions(), ['id' => $id]);
     }
 
+    static function getTableName_Items() {
+        global $wpdb;
+        return $wpdb->prefix . 'plugin_rainbow_pay_press_items';
+    }
+
     static function getTableName_Transactions() {
         global $wpdb;
         return $wpdb->prefix . 'plugin_rainbow_pay_press_transactions';
+    }
+
+    static function initializeTable_Items() {
+        $strTableName = DBUtil::getTableName_Items();
+        global $wpdb;
+        $sql = "CREATE TABLE $strTableName (
+                id bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                handle varchar(20) NOT NULL,
+                cost int unsigned NOT NULL,
+                description varchar(1000) NOT NULL
+            );";
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        dbDelta($sql);
     }
 
     static function initializeTable_Transactions() {
