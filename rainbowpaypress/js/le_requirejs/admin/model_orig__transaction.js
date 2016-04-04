@@ -57,6 +57,7 @@ define(['backbone'], function (backbone) {
                         'stripe_email':         null,
                         'customer_name':        null,
                         'customer_phone':       null,
+                        'shipping_address':     null,
                         'stripe_customer_id':   null,
                         'stripe_charge_id':     null
                     },
@@ -75,6 +76,7 @@ define(['backbone'], function (backbone) {
                                 'stripe_email':         data['stripe_email'],
                                 'customer_name':        data['customer_name'],
                                 'customer_phone':       data['customer_phone'],
+                                'shipping_address':     data['shipping_address'],
                                 'stripe_customer_id':   data['stripe_customer_id'],
                                 'stripe_charge_id':     data['stripe_charge_id']
                             };
