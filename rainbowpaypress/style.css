@@ -29,6 +29,8 @@
 */
 
 
+.widget_view_agg__table__items th,
+.widget_view_agg__table__items td,
 .widget_view_agg__table__transactions th,
 .widget_view_agg__table__transactions td {
     padding: 2px 5px;

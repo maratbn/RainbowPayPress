@@ -38,12 +38,14 @@ define(['jquery',
         'admin/collection_orig__transaction',
         'admin/model_orig__config',
         'admin/view_agg__table__config',
+        'admin/view_agg__table__items',
         'admin/view_agg__table__transactions'
     ], function($,
                 model_orig__app_common,
                 collection_orig_transaction,
                 model_orig__config,
                 ViewAgg_Table_Config,
+                ViewAgg_Table_Items,
                 ViewAgg_Table_Transactions) {
 
         function _processSpansWithRoles(params) {
@@ -51,6 +53,12 @@ define(['jquery',
             var $snapAppConfig = $("span[data-plugin-rainbow-pay-press-role=app-config]");
             if ($snapAppConfig) {
                 (new ViewAgg_Table_Config()).$el.appendTo($snapAppConfig);
+            }
+
+
+            var $snapItems = $("span[data-plugin-rainbow-pay-press-role=items]");
+            if ($snapItems) {
+                (new ViewAgg_Table_Items()).$el.appendTo($snapItems);
             }
 
 
