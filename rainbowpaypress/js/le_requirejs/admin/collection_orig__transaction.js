@@ -35,9 +35,10 @@
 
 define(['backbone',
         'jquery',
+        'util',
         'model_orig__app_common',
         'admin/model_orig__transaction'
-    ], function (backbone, $, model_orig__app_common, ModelOrig_Transaction) {
+    ], function (backbone, $, util, model_orig__app_common, ModelOrig_Transaction) {
 
         return new (backbone.Collection.extend({
 
@@ -92,11 +93,7 @@ define(['backbone',
                                 }
 
                                 model_orig__transaction.set({
-                                        'charged':             objData['charged'] == null
-                                                                ? null
-                                                                : new window
-                                                                       .Date(objData['charged']
-                                                                                        + ' GMT'),
+                                        'charged':             util.parseDate(objData['charged']),
                                         'stripe_customer_id':  objData['stripe_customer_id'],
                                         'stripe_charge_id':    objData['stripe_charge_id']
                                     });
