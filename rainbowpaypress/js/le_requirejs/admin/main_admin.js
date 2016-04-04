@@ -49,8 +49,9 @@ define(['jquery',
         function _processSpansWithRoles(params) {
 
             var $snapAppConfig = $("span[data-plugin-rainbow-pay-press-role=app-config]");
-
-            (new ViewAgg_Table_Config()).$el.appendTo($snapAppConfig);
+            if ($snapAppConfig) {
+                (new ViewAgg_Table_Config()).$el.appendTo($snapAppConfig);
+            }
 
 
             collection_orig_transaction.fetch();
