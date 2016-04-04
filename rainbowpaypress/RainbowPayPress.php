@@ -126,6 +126,7 @@ if (\is_admin()) {
 
 function action_admin_enqueue_scripts($hook) {
     if (($hook != 'toplevel_page_' . SLUG_INFO_ROOT) &&
+        ($hook != 'rainbowpaypress_page_' . SLUG_ITEMS) &&
         ($hook != 'rainbowpaypress_page_' . SLUG_TRANSACTIONS) &&
         ($hook != 'rainbowpaypress_page_' . SLUG_SETTINGS)) return;
 
