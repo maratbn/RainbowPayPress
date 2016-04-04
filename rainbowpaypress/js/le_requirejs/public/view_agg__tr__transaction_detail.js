@@ -100,7 +100,8 @@ define(['backbone',
 
                         if (model_info__transaction_details) {
                             this.on('click_modify', function() {
-                                    model_info__transaction_details.trigger('do_prompt', {field: field});
+                                    model_info__transaction_details.trigger('do_prompt',
+                                                                            {field: field});
                                 }, this);
                         }
 
