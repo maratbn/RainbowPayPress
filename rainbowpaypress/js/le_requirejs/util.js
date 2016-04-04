@@ -50,8 +50,18 @@ define([], function() {
             return '$' + _formatDollars(Math.floor(amount / 100)) + '.' + strCents;
         }
 
+        //  This will parse a date string in the format "2016-04-03 05:10:41" that is assumed to
+        //  be in UTC time.
+        function _parseDate(strDate) {
+            if (!strDate) return null;
+
+            var arrParts = strDate.split(' ');
+            return new Date(arrParts[0] + 'T' + arrParts[1] + 'Z');
+        }
+
         return {
-                formatCurrency: _formatCurrency
+                formatCurrency:  _formatCurrency,
+                parseDate:       _parseDate
             };
     });
 
