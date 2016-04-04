@@ -95,7 +95,8 @@ define(['backbone',
 
 
                         var field                      = params.field,
-                            model_info__transaction_details  = params.model_info__transaction_details;
+                            model_info__transaction_details
+                                                       = params.model_info__transaction_details;
 
                         if (model_info__transaction_details) {
                             this.on('click_modify', function() {
