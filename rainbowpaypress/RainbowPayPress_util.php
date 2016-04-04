@@ -286,7 +286,12 @@ class FragmentUtil {
     ?>
     <div class='wrap'>
       <h3><?=\__('Items to be included in transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h3>
-      <span data-plugin-rainbow-pay-press-role='items'></span>
+      <p>
+        <span data-plugin-rainbow-pay-press-role='add-new-item'></span>
+      </p>
+      <p>
+        <span data-plugin-rainbow-pay-press-role='items'></span>
+      </p>
     </div>
     <?php
     }

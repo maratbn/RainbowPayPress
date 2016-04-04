@@ -6,9 +6,9 @@
 
   Version:        2.4.0-development_unreleased
 
-  Module:         rainbowpaypress/style.css
+  Module:         rainbowpaypress/js/le_requirejs/public/view_agg__button__add_new_item.js
 
-  Description:    External CSS for the WordPress plugin 'RainbowPayPress'.
+  Description:    Widget 'ViewAgg_Button_AddNewItem'.
 
   This file is part of RainbowPayPress.
 
@@ -29,18 +29,21 @@
 */
 
 
-.widget_view_agg__table__transaction_details {
-    width: 100%;
-}
+(function(define) {
 
 
-.widget_view_agg__button__add_new_item {
-    font-weight: bold;
-}
+define(['backbone'], function(backbone) {
 
-.widget_view_agg__table__items th,
-.widget_view_agg__table__items td,
-.widget_view_agg__table__transactions th,
-.widget_view_agg__table__transactions td {
-    padding: 2px 5px;
-}
+        return backbone.View.extend({
+                tagName: 'button',
+
+                initialize: function() {
+                        this.$el.addClass('button button-secondary widget_view_agg__button__add_new_item')
+                                .text("Add new item...");
+                    }
+            });
+
+    });
+
+
+})(_plugin_RainbowPayPress__define);

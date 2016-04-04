@@ -37,6 +37,7 @@ define(['jquery',
         'model_orig__app_common',
         'admin/collection_orig__transaction',
         'admin/model_orig__config',
+        'admin/view_agg__button__add_new_item',
         'admin/view_agg__table__config',
         'admin/view_agg__table__items',
         'admin/view_agg__table__transactions'
@@ -44,6 +45,7 @@ define(['jquery',
                 model_orig__app_common,
                 collection_orig_transaction,
                 model_orig__config,
+                ViewAgg_Button_AddNewItem,
                 ViewAgg_Table_Config,
                 ViewAgg_Table_Items,
                 ViewAgg_Table_Transactions) {
@@ -53,6 +55,12 @@ define(['jquery',
             var $snapAppConfig = $("span[data-plugin-rainbow-pay-press-role=app-config]");
             if ($snapAppConfig) {
                 (new ViewAgg_Table_Config()).$el.appendTo($snapAppConfig);
+            }
+
+
+            var $snapAddNewItem = $("span[data-plugin-rainbow-pay-press-role=add-new-item]");
+            if ($snapAddNewItem) {
+                (new ViewAgg_Button_AddNewItem()).$el.appendTo($snapAddNewItem);
             }
 
 
