@@ -49,6 +49,8 @@ Overview:
 
   Currently only USD are supported.
 
+  Demo at: http://maratbn.com/projects/rainbow-pay-press/#demo
+
 Technical summary and special considerations:
 
   Initially, buyer identity, stored partially on the website server, is tied
