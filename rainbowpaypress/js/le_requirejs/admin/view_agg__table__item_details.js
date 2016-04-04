@@ -36,7 +36,8 @@ define(['view_agg__table'], function(ViewAgg_Table) {
 
         return ViewAgg_Table.extend({
 
-                initialize: function() {
+                //  @param  params.model_info__item_details
+                initialize: function(params) {
 
                         ViewAgg_Table.prototype.initialize.apply(this, arguments);
 

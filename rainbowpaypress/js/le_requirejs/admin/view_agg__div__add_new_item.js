@@ -33,14 +33,18 @@
 
 
 define(['backbone',
+        'admin/model_info__item_details',
         'admin/view_agg__table__item_details'
     ], function(backbone,
+                ModelInfo_ItemDetails,
                 ViewAgg_Table_ItemDetails) {
 
         return backbone.View.extend({
 
                 initialize: function() {
-                        (new ViewAgg_Table_ItemDetails).$el.appendTo(this.$el);
+                        (new ViewAgg_Table_ItemDetails({
+                                    model_info__item_details: new ModelInfo_ItemDetails()
+                                })).$el.appendTo(this.$el);
                     }
             });
 
