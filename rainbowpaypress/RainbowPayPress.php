@@ -64,6 +64,7 @@ const SETTING__STRIPE_TEST_SECRET_KEY = 'plugin_RainbowPayPress__setting__stripe
 const SHORTCODE__RAINBOW_PAY_PRESS = 'rainbow-pay-press';
 
 const SLUG_INFO_ROOT     = 'plugin_RainbowPayPress_root';
+const SLUG_ITEMS         = 'plugin_RainbowPayPress_items';
 const SLUG_SETTINGS      = 'plugin_RainbowPayPress_settings';
 const SLUG_TRANSACTIONS  = 'plugin_RainbowPayPress_transactions';
 
@@ -158,6 +159,14 @@ function action_admin_menu() {
         'manage_options',
         SLUG_INFO_ROOT,
         '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Help');
+
+    \add_submenu_page(
+        SLUG_INFO_ROOT,
+        \__('RainbowPayPress Items', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+        \__('Items', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+        'manage_options',
+        SLUG_ITEMS,
+        '\\plugin_RainbowPayPress\\FragmentUtil::renderAdmin_Items');
 
     \add_submenu_page(
         SLUG_INFO_ROOT,

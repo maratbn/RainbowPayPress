@@ -277,6 +277,20 @@ class FragmentUtil {
     <?php
     }
 
+    static function renderAdmin_Items() {
+        //  Based on http://codex.wordpress.org/Administration_Menus
+        if (!\current_user_can('manage_options' ))  {
+            \wp_die(\__('You do not have sufficient permissions to access this page.',
+                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS));
+        }
+    ?>
+    <div class='wrap'>
+      <h3><?=\__('Items to be included in transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h3>
+      <span data-plugin-rainbow-pay-press-role='items'></span>
+    </div>
+    <?php
+    }
+
     static function renderAdmin_Transactions() {
         //  Based on http://codex.wordpress.org/Administration_Menus
         if (!\current_user_can('manage_options' ))  {
