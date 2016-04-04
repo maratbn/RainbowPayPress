@@ -590,6 +590,11 @@ function action_wp_ajax_rainbow_pay_press__submit() {
 
 function action_wp_enqueue_scripts() {
 
+    \wp_enqueue_style('plugin__RainbowPayPress__style_css',
+                      \plugin_dir_url(__FILE__) . '/style.css',
+                      null,
+                      getUVArg());
+
     \wp_enqueue_script(
         'plugin__RainbowPayPress__requirejs',
         plugin_dir_url(__FILE__) . (
