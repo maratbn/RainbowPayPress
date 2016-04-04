@@ -79,6 +79,7 @@ Official project URLs:
 
   https://wordpress.org/plugins/rainbowpaypress
   https://github.com/maratbn/RainbowPayPress
+  http://maratbn.com/projects/rainbow-pay-press
 
 
 == Installation ==
