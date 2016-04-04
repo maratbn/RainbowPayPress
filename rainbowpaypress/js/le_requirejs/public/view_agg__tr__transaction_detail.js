@@ -33,12 +33,11 @@
 (function(define) {
 
 
-define(['backbone',
+define(['view_agg__tr__detail_base',
         'jquery'
-    ], function (backbone, $) {
+    ], function (ViewAgg_Tr_DetailBase, $) {
 
-        return backbone.View.extend({
-                tagName: 'tr',
+        return ViewAgg_Tr_DetailBase.extend({
 
                 //  @param  params.callback_format_value
                 //                                  Optional value formatting callback.
