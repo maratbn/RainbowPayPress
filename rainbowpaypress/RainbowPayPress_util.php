@@ -275,9 +275,9 @@ class FragmentUtil {
         }
     </style>
     <div class='wrap'>
-      <h2><?=\__('Pending Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
+      <h3><?=\__('Pending Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h3>
       <span data-plugin-rainbow-pay-press-role='transactions-pending'></span>
-      <h2><?=\__('Charged Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
+      <h3><?=\__('Charged Transactions:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h3>
       <span data-plugin-rainbow-pay-press-role='transactions-charged'></span>
     </div>
     <?php
