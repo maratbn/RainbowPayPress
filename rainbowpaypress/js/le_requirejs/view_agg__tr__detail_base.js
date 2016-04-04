@@ -35,8 +35,12 @@
 define(['backbone'], function (backbone) {
 
         return backbone.View.extend({
-                tagName: 'tr'
+                tagName: 'tr',
 
+                initialize: function() {
+
+                        this.$el.addClass('widget_view_agg__tr__detail_base');
+                    }
             });
     });
 

@@ -50,6 +50,10 @@ define(['view_agg__tr__detail_base',
                 //  @param  params.text_modify      Text for the modification link when there's a
                 //                                  value.
                 initialize: function(params) {
+
+                        ViewAgg_Tr_DetailBase.prototype.initialize.apply(this, arguments);
+
+
                         this.$el.addClass('widget_view_agg__tr__transaction_detail');
 
                         var $aModify = params.text_enter
