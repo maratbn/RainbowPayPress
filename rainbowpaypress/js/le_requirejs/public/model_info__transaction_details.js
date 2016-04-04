@@ -36,7 +36,10 @@ define(['backbone',
         'jquery',
         'model_orig__app_common',
         'public/model_orig__app_public',
-    ], function(backbone, $, model_orig__app_common, model_orig__app_public) {
+    ], function(backbone,
+                $,
+                model_orig__app_common,
+                model_orig__app_public) {
 
         return backbone.Model.extend({
 
