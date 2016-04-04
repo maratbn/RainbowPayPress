@@ -53,6 +53,9 @@ define(['jquery',
 
                         ViewAgg_Table.prototype.initialize.apply(this, arguments);
 
+                        this.$el.addClass('widget_view_agg__table__transaction_details');
+
+
                         var model_info__transaction_details  = params
                                                                  .model_info__transaction_details,
                             model_orig__fields               = params.model_orig__fields;
