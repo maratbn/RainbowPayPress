@@ -63,7 +63,6 @@ define(['jquery',
                 }
             }
 
-            _processSpans($("span[data-plugin-rainbow-pay-press-role=transactions]"));
             _processSpans($("span[data-plugin-rainbow-pay-press-role=transactions-charged]"),
                           {flag_exclude_uncharged: true});
             _processSpans($("span[data-plugin-rainbow-pay-press-role=transactions-pending]"),
