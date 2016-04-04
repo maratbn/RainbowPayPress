@@ -58,6 +58,7 @@ define(['jquery',
             function _processSpans($elSpans, params) {
                 for (var i = 0; i < $elSpans.length; i++) {
                     var $elSpan = $($elSpans[i]);
+                    if (!$elSpan) continue;
 
                     (new ViewAgg_Table_Transactions(params)).$el.appendTo($elSpan);
                 }
