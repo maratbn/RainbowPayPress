@@ -32,14 +32,44 @@
 (function(define) {
 
 
-define(['backbone'], function(backbone) {
+define(['backbone',
+        'admin/view_agg__div__add_new_item'
+    ], function(backbone,
+                ViewAgg_Div_AddNewItem) {
 
         return backbone.View.extend({
                 tagName: 'button',
 
                 initialize: function() {
+
+                        var me                                 = this,
+                            view_agg__div__add_new_itemCached  = null;
+
                         this.$el.addClass('button button-secondary widget_view_agg__button__add_new_item')
-                                .text("Add new item...");
+                                .text("Add new item...")
+                                .on('click',
+                                    function(e) {
+                                            e.preventDefault();
+
+                                            if (view_agg__div__add_new_itemCached) {
+                                                if (view_agg__div__add_new_itemCached
+                                                                    .$el
+                                                                    .css('display') == 'none') {
+                                                    view_agg__div__add_new_itemCached
+                                                                    .$el
+                                                                    .css('display', "");
+                                                } else {
+                                                    view_agg__div__add_new_itemCached
+                                                                    .$el
+                                                                    .css('display', 'none');
+                                                }
+                                            } else {
+                                                (view_agg__div__add_new_itemCached =
+                                                            new ViewAgg_Div_AddNewItem({
+                                                                    })).$el.appendTo(me.$el
+                                                                                       .parent());
+                                            }
+                                        });
                     }
             });
 
