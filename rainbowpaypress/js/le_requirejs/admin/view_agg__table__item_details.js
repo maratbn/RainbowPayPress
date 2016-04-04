@@ -6,9 +6,9 @@
 
   Version:        2.4.0-development_unreleased
 
-  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__div__add_new_item.js
+  Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__table__item_details.js
 
-  Description:    Widget 'ViewAgg_Div_AddNewItem'.
+  Description:    Widget 'ViewAgg_Table_ItemDetails'.
 
   This file is part of RainbowPayPress.
 
@@ -32,15 +32,18 @@
 (function(define) {
 
 
-define(['backbone',
-        'admin/view_agg__table__item_details'
-    ], function(backbone,
-                ViewAgg_Table_ItemDetails) {
+define(['view_agg__table'], function(ViewAgg_Table) {
 
-        return backbone.View.extend({
+        return ViewAgg_Table.extend({
 
                 initialize: function() {
-                        (new ViewAgg_Table_ItemDetails).$el.appendTo(this.$el);
+
+                        ViewAgg_Table.prototype.initialize.apply(this, arguments);
+
+                        this.$el.addClass('widget_view_agg__table__item_details');
+
+
+
                     }
             });
 
