@@ -203,7 +203,7 @@ class FragmentUtil {
         <ul class='rpp_subitems'>
           <li>
             <code>amount</code>
-            <p>The amount to charge in cents.</p>
+            <p>The amount to charge in US cents.</p>
           </li>
           <li>
             <code>name</code>
