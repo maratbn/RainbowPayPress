@@ -32,16 +32,16 @@
 (function(define) {
 
 
-define(['backbone',
-        'jquery',
+define(['jquery',
+        'model_info__details_base',
         'model_orig__app_common',
         'public/model_orig__app_public',
-    ], function(backbone,
-                $,
+    ], function($,
+                ModelInfo_DetailsBase,
                 model_orig__app_common,
                 model_orig__app_public) {
 
-        return backbone.Model.extend({
+        return ModelInfo_DetailsBase.extend({
 
                 defaults: {
                         'type':                 null,
@@ -52,25 +52,6 @@ define(['backbone',
                         'customer_name':        null,
                         'customer_phone':       null,
                         'shipping_address':     null
-                    },
-
-                doCheckForFieldsWithMissingValues: function(model_orig__fields) {
-                        var arrFieldsRequired = model_orig__fields.getFieldsRequired();
-                            arrFieldsWithMissingValues = [];
-
-                        for (var i = 0; i < arrFieldsRequired.length; i++) {
-                            var field = arrFieldsRequired[i];
-                            var value = this.attributes[field];
-                            if (!value) {
-                                arrFieldsWithMissingValues.push(field);
-                            }
-                        }
-
-                        this.trigger('fields_with_missing_values', {
-                                        fields: arrFieldsWithMissingValues
-                                     });
-
-                        return arrFieldsWithMissingValues.length > 0 && true;
                     },
 
                 doXhrSubmit: function() {
