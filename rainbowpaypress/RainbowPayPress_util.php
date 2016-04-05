@@ -69,6 +69,7 @@ class DBUtil {
                 id bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 handle varchar(20) NOT NULL,
                 cost int unsigned NOT NULL,
+                currency varchar(20) NOT NULL,
                 description varchar(1000) NOT NULL
             );";
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
