@@ -44,8 +44,11 @@ define(['backbone',
                 initialize: function() {
 
                         function _doAddItemCycle() {
+
+                            var model_info__item_details = new ModelInfo_ItemDetails();
+
                             (new ViewAgg_Table_ItemDetails({
-                                        model_info__item_details: new ModelInfo_ItemDetails()
+                                        model_info__item_details: model_info__item_details
                                     })).$el.appendTo(this.$el);
                         }
 
