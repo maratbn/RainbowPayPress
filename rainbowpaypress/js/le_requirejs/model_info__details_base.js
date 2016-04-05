@@ -36,9 +36,8 @@ define(['backbone'], function(backbone) {
 
         return backbone.Model.extend({
 
-                doCheckForFieldsWithMissingValues: function(model_orig__fields) {
-                        var arrFieldsRequired = model_orig__fields.getFieldsRequired();
-                            arrFieldsWithMissingValues = [];
+                doCheckForFieldsWithMissingValues: function(arrFieldsRequired) {
+                        var arrFieldsWithMissingValues = [];
 
                         for (var i = 0; i < arrFieldsRequired.length; i++) {
                             var field = arrFieldsRequired[i];
