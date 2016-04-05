@@ -70,10 +70,10 @@ define(['jquery',
             }
 
 
-            collection_orig_transaction.fetch();
-
             function _processTransactionSpans($elSpans, params) {
                 if ($elSpans.length == 0) return;
+
+                collection_orig_transaction.fetch();
 
                 for (var i = 0; i < $elSpans.length; i++) {
                     var $elSpan = $($elSpans[i]);
