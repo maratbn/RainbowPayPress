@@ -33,9 +33,11 @@
 
 
 define(['backbone',
+        'jquery',
         'admin/model_info__item_details',
         'admin/view_agg__table__item_details'
     ], function(backbone,
+                $,
                 ModelInfo_ItemDetails,
                 ViewAgg_Table_ItemDetails) {
 
@@ -50,6 +52,26 @@ define(['backbone',
                             (new ViewAgg_Table_ItemDetails({
                                         model_info__item_details: model_info__item_details
                                     })).$el.appendTo(this.$el);
+
+                            this.listenTo(
+                                model_info__item_details,
+                                'xhr__always__rainbow_pay_press__add_item',
+                                function(event) {
+                                    if (event.success) {
+                                        var me = this;
+
+                                        var $buttonAnotherItem =
+                                               $('<button>').addClass('button button-secondary')
+                                                            .text("Add another item...")
+                                                            .click(function() {
+                                                                     $buttonAnotherItem.remove();
+                                                                     _doAddItemCycle.call(me);
+                                                                   });
+                                        this.$el.text("New item has been added successfully.")
+                                                .append('<br>')
+                                                .append($buttonAnotherItem);
+                                    }
+                                });
                         }
 
                         _doAddItemCycle.call(this);

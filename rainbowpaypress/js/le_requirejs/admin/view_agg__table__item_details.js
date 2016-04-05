@@ -32,9 +32,10 @@
 (function(define) {
 
 
-define(['view_agg__table',
+define(['jquery',
+        'view_agg__table',
         'view_agg__tr__detail_base'
-    ], function(ViewAgg_Table, ViewAgg_Tr_DetailBase) {
+    ], function($, ViewAgg_Table, ViewAgg_Tr_DetailBase) {
 
         return ViewAgg_Table.extend({
 
@@ -74,6 +75,13 @@ define(['view_agg__table',
                                 })).$el.appendTo(this.$el);
 
 
+                        var $buttonAdd = $('<button>').addClass('button button-secondary')
+                                                      .text("Add");
+
+                        $('<tr>').append($('<td>').attr('colspan', '2').append($buttonAdd))
+                                 .appendTo(this.$el);
+
+
                         this.listenTo(model_info__item_details, 'do_prompt', function(event) {
                                 var field = event.field;
 
@@ -104,6 +112,28 @@ define(['view_agg__table',
 
                                     model_info__item_details.set('description', strDescription);
                                 }
+                            });
+
+
+                        var me = this;
+
+                        $buttonAdd.click(function(event) {
+                                event.preventDefault();
+
+                                if (model_info__item_details
+                                                       .doCheckForFieldsWithMissingValues([
+                                                                                'handle',
+                                                                                'cost',
+                                                                                'description'])) {
+                                    window
+                                        .alert(
+                                            "Please specify the required information by clicking on the links in red.");
+                                    return;
+                                }
+
+                                if (!window.confirm("Add this item?")) return;
+
+                                model_info__item_details.doXhrAddItem();
                             });
                     }
             });

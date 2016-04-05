@@ -32,7 +32,10 @@
 (function(define) {
 
 
-define(['model_info__details_base'], function(ModelInfo_DetailsBase) {
+define(['jquery',
+        'model_info__details_base',
+        'model_orig__app_common'
+    ], function($, ModelInfo_DetailsBase, model_orig__app_common) {
 
         return ModelInfo_DetailsBase.extend({
 
@@ -40,6 +43,25 @@ define(['model_info__details_base'], function(ModelInfo_DetailsBase) {
                         'handle':               null,
                         'cost':                 null,
                         'description':          null
+                    },
+
+                doXhrAddItem: function() {
+                        var $xhr = $.post
+                                      (model_orig__app_common.get('ajax_url'), {
+                                          'action':             'rainbow_pay_press__admin__add_item',
+                                          'handle':             this.attributes['handle'],
+                                          'cost':               this.attributes['cost'],
+                                          'description':        this.attributes['description']
+                                      }),
+                            me = this;
+
+                        $xhr.always(function(strData) {
+                                var objData = JSON.parse(strData);
+
+                                me.trigger('xhr__always__rainbow_pay_press__add_item', {
+                                               success: objData && objData.success
+                                           });
+                            });
                     }
             });
 
