@@ -246,19 +246,23 @@ function action_wp_ajax_rainbow_pay_press__admin__add_item() {
         \array_push($arrErrors, 'error__insufficient_permissions');
     }
 
+    $objItemAdded = null;
+
     if (\count($arrErrors) == 0) {
         $strHandle       = $_POST['handle'];
         $strDescription  = $_POST['description'];
         $strCost         = $_POST['cost'];
 
-        if (!DBUtil::addItem($strHandle,
-                             $strDescription,
-                             $strCost)) {
+        $objItemAdded    = DBUtil::addItem($strHandle,
+                                           $strDescription,
+                                           $strCost);
+        if (!$objItemAdded) {
             \array_push($arrErrors, 'error__add_item');
         }
     }
 
-    die(json_encode(['success'  => (\count($arrErrors) == 0),
+    die(json_encode(['item'     => $objItemAdded,
+                     'success'  => (\count($arrErrors) == 0),
                      'errors'   => $arrErrors]));
 }
 

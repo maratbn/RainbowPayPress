@@ -57,7 +57,7 @@ class DBUtil {
                             'currency'              => 'usd_x_100'
                         ])) return false;
 
-        return true;
+        return DBUtil::selectItem($wpdb->insert_id);
     }
 
     static function deleteTransaction($id) {
@@ -135,6 +135,23 @@ class DBUtil {
                             'shipping_address'     => $strShippingAddress])) return false;
 
         return true;
+    }
+
+    static function selectItem($id) {
+        $strTableName = DBUtil::getTableName_Items();
+
+        global $wpdb;
+        $arrItem = $wpdb->get_results($wpdb->prepare("SELECT id,
+                                                             handle,
+                                                             cost,
+                                                             description
+                                                        FROM $strTableName
+                                                       WHERE id=%d",
+                                                     $id),
+                                      ARRAY_A);
+        if (!$arrItem || count($arrItem) == 0) return false;
+
+        return $arrItem[0];
     }
 
     static function selectItems() {
