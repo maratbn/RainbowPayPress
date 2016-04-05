@@ -73,6 +73,8 @@ define(['jquery',
             collection_orig_transaction.fetch();
 
             function _processTransactionSpans($elSpans, params) {
+                if ($elSpans.length == 0) return;
+
                 for (var i = 0; i < $elSpans.length; i++) {
                     var $elSpan = $($elSpans[i]);
                     if (!$elSpan) continue;
