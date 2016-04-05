@@ -110,6 +110,9 @@ if (\is_admin()) {
         'wp_ajax_rainbow_pay_press__admin__get_config',
         '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__admin__get_config');
     \add_action(
+        'wp_ajax_rainbow_pay_press__admin__get_items',
+        '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__admin__get_items');
+    \add_action(
         'wp_ajax_rainbow_pay_press__admin__get_transactions',
         '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__admin__get_transactions');
     \add_action(
@@ -414,6 +417,31 @@ function action_wp_ajax_rainbow_pay_press__admin__get_config() {
     }
 
     die(\json_encode($objRet));
+}
+
+function action_wp_ajax_rainbow_pay_press__admin__get_items() {
+    /** Possible errors:
+     *      error__insufficient_permissions
+     *      error__select_items
+    **/
+
+    $arrErrors = [];
+
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error__insufficient_permissions');
+    }
+
+    $arrItems = null;
+    if (count($arrErrors) == 0) {
+        $arrItems = DBUtil::selectItems();
+        if (!$arrItems) {
+            \array_push($arrErrors, 'error__select_items');
+        }
+    }
+
+    die(\json_encode(['success'       => (count($arrErrors) == 0),
+                      'errors'        => $arrErrors,
+                      'items'         => $arrItems]));
 }
 
 function action_wp_ajax_rainbow_pay_press__admin__get_transactions() {

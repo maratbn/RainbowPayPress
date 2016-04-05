@@ -137,6 +137,17 @@ class DBUtil {
         return true;
     }
 
+    static function selectItems() {
+        $strTableName = DBUtil::getTableName_Items();
+
+        global $wpdb;
+        return $wpdb->get_results("SELECT id,
+                                          handle,
+                                          cost,
+                                          description
+                                     FROM $strTableName", ARRAY_A);
+    }
+
     static function selectTransaction($id) {
         $strTableName = DBUtil::getTableName_Transactions();
 
