@@ -34,11 +34,15 @@
 
 define(['backbone',
         'jquery',
+        'admin/collection_orig__item',
         'admin/model_info__item_details',
+        'admin/model_orig__item',
         'admin/view_agg__table__item_details'
     ], function(backbone,
                 $,
+                collection_orig__item,
                 ModelInfo_ItemDetails,
+                ModelOrig_Item,
                 ViewAgg_Table_ItemDetails) {
 
         return backbone.View.extend({
@@ -58,6 +62,14 @@ define(['backbone',
                                 'xhr__always__rainbow_pay_press__add_item',
                                 function(event) {
                                     if (event.success) {
+
+                                        var itemAdded = event.item;
+                                        if (itemAdded) {
+                                            collection_orig__item
+                                                              .add(new ModelOrig_Item(itemAdded));
+                                        }
+
+
                                         var me = this;
 
                                         var $buttonAnotherItem =
