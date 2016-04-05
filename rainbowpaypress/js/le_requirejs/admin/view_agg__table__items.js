@@ -112,9 +112,6 @@ define(['jquery',
 
                                 $tbody.empty();
                             });
-
-
-                        collection_orig__item.fetch();
                     }
             });
 
