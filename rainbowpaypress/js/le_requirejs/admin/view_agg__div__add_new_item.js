@@ -42,9 +42,14 @@ define(['backbone',
         return backbone.View.extend({
 
                 initialize: function() {
-                        (new ViewAgg_Table_ItemDetails({
-                                    model_info__item_details: new ModelInfo_ItemDetails()
-                                })).$el.appendTo(this.$el);
+
+                        function _doAddItemCycle() {
+                            (new ViewAgg_Table_ItemDetails({
+                                        model_info__item_details: new ModelInfo_ItemDetails()
+                                    })).$el.appendTo(this.$el);
+                        }
+
+                        _doAddItemCycle.call(this);
                     }
             });
 
