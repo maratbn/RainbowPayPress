@@ -329,10 +329,10 @@ class FragmentUtil {
         }
     ?>
     <style>
-        .transaction--even {
+        .widget_view_agg__table__transactions .transaction--even {
             background-color: #eee;
         }
-        .transaction--odd {
+        .widget_view_agg__table__transactions .transaction--odd {
             background-color: #ddd;
         }
     </style>
