@@ -32,14 +32,100 @@
 (function(define) {
 
 
-define(['backbone'], function (backbone) {
+define(['backbone', 'jquery'], function (backbone, $) {
 
         return backbone.View.extend({
                 tagName: 'tr',
 
-                initialize: function() {
+                initialize: function(params) {
 
                         this.$el.addClass('widget_view_agg__tr__detail_base');
+
+
+                                                var $aModify = params.text_enter
+                                     ? $('<a>').attr('href', '#')
+                                     : null;
+
+
+                        this.get$aModify = function() {
+                                return $aModify;
+                            };
+
+
+                        var $divValue = $('<div>');
+
+                        var $tdValue = $("<td width='66%'>").append(params.text
+                                                                    ? $('<span>').text(params.text)
+                                                                    : null)
+                                                            .append($divValue);
+
+
+                        var $divBottom = $('<div>').appendTo($tdValue);
+
+                        this.get$divBottom = function() {
+                                return $divBottom;
+                            };
+
+
+                        if ($aModify) $aModify.appendTo($divBottom);
+
+                        this.$el.append($("<td width='34%'>").text(params.name))
+                                .append($tdValue);
+
+                        if ($aModify) {
+                            var me = this;
+
+                            $aModify.click(function(event) {
+                                    event.preventDefault();
+
+                                    me.trigger('click_modify');
+                                });
+                        }
+
+
+                        var field                      = params.field,
+                            model_info__details_base   = params.model_info__details_base;
+
+                        if (model_info__details_base) {
+                            this.on('click_modify', function() {
+                                    model_info__details_base.trigger('do_prompt', {field: field});
+                                }, this);
+                        }
+
+                        function _updateValue() {
+                            var value = model_info__details_base.get(field);
+
+                            if (params.callback_format_value) {
+                                value = params.callback_format_value(value);
+                            }
+
+                            $divValue.text(value || "");
+
+                            if ($aModify) {
+                                $aModify.text(value ? params.text_modify || params.text_enter
+                                                    : params.text_enter);
+                                if (value) {
+                                    $aModify.css('color', "");
+                                }
+                            }
+                        }
+
+                        if (model_info__details_base) {
+                            _updateValue.call(this);
+
+                            this.listenTo(model_info__details_base,
+                                          'change:' + field,
+                                          _updateValue);
+
+                            this.listenTo(
+                                model_info__details_base,
+                                'fields_with_missing_values',
+                                function(event) {
+                                    if ($aModify && event.fields.indexOf(field) >= 0) {
+                                        $aModify.css('color', 'red');
+                                    }
+                                });
+                        }
                     }
             });
     });
