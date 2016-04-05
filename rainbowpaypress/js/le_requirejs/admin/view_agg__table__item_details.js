@@ -32,7 +32,9 @@
 (function(define) {
 
 
-define(['view_agg__table'], function(ViewAgg_Table) {
+define(['view_agg__table',
+        'view_agg__tr__detail_base'
+    ], function(ViewAgg_Table, ViewAgg_Tr_DetailBase) {
 
         return ViewAgg_Table.extend({
 
@@ -44,7 +46,65 @@ define(['view_agg__table'], function(ViewAgg_Table) {
                         this.$el.addClass('widget_view_agg__table__item_details');
 
 
+                        var model_info__item_details = params.model_info__item_details;
 
+
+                        (new ViewAgg_Tr_DetailBase({
+                                    model_info__details_base: model_info__item_details,
+                                    field: 'description',
+                                    name: "Item description:",
+                                    text_enter: "Enter description",
+                                    text_modify: "Modify"
+                                })).$el.appendTo(this.$el);
+
+                        (new ViewAgg_Tr_DetailBase({
+                                    model_info__details_base: model_info__item_details,
+                                    field: 'handle',
+                                    name: "Item handle:",
+                                    text_enter: "Enter handle",
+                                    text_modify: "Modify"
+                                })).$el.appendTo(this.$el);
+
+                        (new ViewAgg_Tr_DetailBase({
+                                    model_info__details_base: model_info__item_details,
+                                    field: 'cost',
+                                    name: "Item cost:",
+                                    text_enter: "Enter cost",
+                                    text_modify: "Modify"
+                                })).$el.appendTo(this.$el);
+
+
+                        this.listenTo(model_info__item_details, 'do_prompt', function(event) {
+                                var field = event.field;
+
+                                if (field == 'handle') {
+                                    var strHandle =
+                                            window.prompt(
+                                                      "Enter item handle (to refer to it by in shortcodes, not visible to users):",
+                                                      model_info__item_details
+                                                                            .get('handle') || "");
+                                    if (strHandle == null) return;
+
+                                    model_info__item_details.set('handle', strHandle);
+                                } else if (field == 'cost') {
+                                    var strCost =
+                                            window.prompt(
+                                                      "Enter item cost in US cents (digits only):",
+                                                      model_info__item_details.get('cost') || "");
+                                    if (strCost == null) return;
+
+                                    model_info__item_details.set('cost', window.parseInt(strCost));
+                                } else if (field == 'description') {
+                                    var strDescription =
+                                            window.prompt(
+                                                      "Enter item description (visible to users):",
+                                                      model_info__item_details
+                                                                       .get('description') || "");
+                                    if (strDescription == null) return;
+
+                                    model_info__item_details.set('description', strDescription);
+                                }
+                            });
                     }
             });
 
