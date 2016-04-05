@@ -72,7 +72,7 @@ define(['jquery',
 
             collection_orig_transaction.fetch();
 
-            function _processSpans($elSpans, params) {
+            function _processTransactionSpans($elSpans, params) {
                 for (var i = 0; i < $elSpans.length; i++) {
                     var $elSpan = $($elSpans[i]);
                     if (!$elSpan) continue;
@@ -81,9 +81,11 @@ define(['jquery',
                 }
             }
 
-            _processSpans($("span[data-plugin-rainbow-pay-press-role=transactions-charged]"),
+            _processTransactionSpans(
+                          $("span[data-plugin-rainbow-pay-press-role=transactions-charged]"),
                           {flag_exclude_uncharged: true});
-            _processSpans($("span[data-plugin-rainbow-pay-press-role=transactions-pending]"),
+            _processTransactionSpans(
+                          $("span[data-plugin-rainbow-pay-press-role=transactions-pending]"),
                           {flag_exclude_charged: true});
         }
 
