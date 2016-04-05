@@ -54,7 +54,7 @@ define(['backbone', 'jquery'], function (backbone, $) {
 
                         var $divValue = $('<div>');
 
-                        var $tdValue = $("<td width='66%'>")
+                        var $tdValue = $("<td valign='top' width='66%'>")
                                                 .append(params.text ? $('<span>').text(params.text)
                                                                     : null)
                                                 .append($divValue);
@@ -69,7 +69,7 @@ define(['backbone', 'jquery'], function (backbone, $) {
 
                         if ($aModify) $aModify.appendTo($divBottom);
 
-                        this.$el.append($("<td width='34%'>").text(params.name))
+                        this.$el.append($("<td valign='top' width='34%'>").text(params.name))
                                 .append($tdValue);
 
                         if ($aModify) {
