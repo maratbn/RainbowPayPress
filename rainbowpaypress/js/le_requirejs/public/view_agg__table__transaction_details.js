@@ -138,7 +138,7 @@ define(['jquery',
                         }
 
 
-                        var $buttonSubmit = $('<button>').text("Submit").appendTo(this.$el);
+                        var $buttonSubmit = $('<button>').text("Submit");
 
                         $('<tr>').append($('<td>').attr('colspan', '2').append($buttonSubmit))
                                  .appendTo(this.$el);
