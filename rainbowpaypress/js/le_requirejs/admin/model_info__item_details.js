@@ -32,9 +32,9 @@
 (function(define) {
 
 
-define(['backbone'], function(backbone) {
+define(['model_info__details_base'], function(ModelInfo_DetailsBase) {
 
-        return backbone.Model.extend({
+        return ModelInfo_DetailsBase.extend({
 
                 defaults: {
                         'handle':               null,
