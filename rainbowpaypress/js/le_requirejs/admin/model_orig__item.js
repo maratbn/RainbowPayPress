@@ -6,9 +6,10 @@
 
   Version:        2.4.0-development_unreleased
 
-  Module:         rainbowpaypress/style.css
+  Module:         rainbowpaypress/js/le_requirejs/admin/model_orig__item.js
 
-  Description:    External CSS for the WordPress plugin 'RainbowPayPress'.
+  Description:    Model 'ModelOrig_Item' for caching single item
+                  information from the server.
 
   This file is part of RainbowPayPress.
 
@@ -29,28 +30,22 @@
 */
 
 
-.widget_view_agg__table__transaction_details {
-    width: 100%;
-}
+(function(define) {
 
 
-.widget_view_agg__button__add_new_item {
-    font-weight: bold;
-}
+define(['backbone'], function (backbone) {
 
-.widget_view_agg__table__items th,
-.widget_view_agg__table__items td,
-.widget_view_agg__table__transactions th,
-.widget_view_agg__table__transactions td {
-    padding: 2px 5px;
-}
+        return backbone.Model.extend({
+
+                defaults: {
+                        'id':                   null,
+                        'handle':               null,
+                        'description':          null,
+                        'amount':               null
+                    }
+            });
+
+    });
 
 
-.widget_view_agg__table__items .item--even,
-.widget_view_agg__table__transactions .transaction--even {
-    background-color: #eee;
-}
-.widget_view_agg__table__items .item--odd,
-.widget_view_agg__table__transactions .transaction--odd {
-    background-color: #ddd;
-}
+})(_plugin_RainbowPayPress__define);

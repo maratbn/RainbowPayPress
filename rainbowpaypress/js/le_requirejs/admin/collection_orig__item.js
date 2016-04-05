@@ -6,9 +6,10 @@
 
   Version:        2.4.0-development_unreleased
 
-  Module:         rainbowpaypress/style.css
+  Module:         rainbowpaypress/js/le_requirejs/admin/collection_orig__item.js
 
-  Description:    External CSS for the WordPress plugin 'RainbowPayPress'.
+  Description:    Single instance of collection 'CollectionOrig_Item'
+                  to be shared across the app.
 
   This file is part of RainbowPayPress.
 
@@ -29,28 +30,32 @@
 */
 
 
-.widget_view_agg__table__transaction_details {
-    width: 100%;
-}
+(function(define) {
 
 
-.widget_view_agg__button__add_new_item {
-    font-weight: bold;
-}
+define(['backbone',
+        'jquery',
+        'util',
+        'model_orig__app_common',
+        'admin/model_orig__item'
+    ], function (backbone, $, util, model_orig__app_common, ModelOrig_Item) {
 
-.widget_view_agg__table__items th,
-.widget_view_agg__table__items td,
-.widget_view_agg__table__transactions th,
-.widget_view_agg__table__transactions td {
-    padding: 2px 5px;
-}
+        return new (backbone.Collection.extend({
+
+                model: ModelOrig_Item,
+
+                parse: function(response, options) {
+                        if (!response.success) return null;
+
+                        return response.items;
+                    },
+
+                url: function() {
+                        return model_orig__app_common.get('ajax_url') +
+                                                    '?action=rainbow_pay_press__admin__get_items';
+                    }
+            }));
+    });
 
 
-.widget_view_agg__table__items .item--even,
-.widget_view_agg__table__transactions .transaction--even {
-    background-color: #eee;
-}
-.widget_view_agg__table__items .item--odd,
-.widget_view_agg__table__transactions .transaction--odd {
-    background-color: #ddd;
-}
+})(_plugin_RainbowPayPress__define);
