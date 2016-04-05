@@ -45,7 +45,7 @@ define(['jquery',
     ], function($,
                 model_orig__app_common,
                 collection_orig__item,
-                collection_orig_transaction,
+                collection_orig__transaction,
                 model_orig__config,
                 ViewAgg_Button_AddNewItem,
                 ViewAgg_Table_Config,
@@ -76,7 +76,7 @@ define(['jquery',
             function _processTransactionSpans($elSpans, params) {
                 if ($elSpans.length == 0) return;
 
-                collection_orig_transaction.fetch();
+                collection_orig__transaction.fetch();
 
                 for (var i = 0; i < $elSpans.length; i++) {
                     var $elSpan = $($elSpans[i]);
