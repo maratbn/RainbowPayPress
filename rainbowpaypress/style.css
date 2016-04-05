@@ -44,3 +44,10 @@
 .widget_view_agg__table__transactions td {
     padding: 2px 5px;
 }
+
+.widget_view_agg__table__transactions .transaction--even {
+    background-color: #eee;
+}
+.widget_view_agg__table__transactions .transaction--odd {
+    background-color: #ddd;
+}
