@@ -47,6 +47,19 @@ function getUVArg() {
 }
 
 class DBUtil {
+    static function addItem($strHandle, $strDescription, $strCost) {
+        global $wpdb;
+        if (!$wpdb->insert(
+                        DBUtil::getTableName_Items(), [
+                            'handle'                => $strHandle,
+                            'description'           => $strDescription,
+                            'cost'                  => $strCost,
+                            'currency'              => 'usd_x_100'
+                        ])) return false;
+
+        return true;
+    }
+
     static function deleteTransaction($id) {
         global $wpdb;
         return $wpdb->delete(DBUtil::getTableName_Transactions(), ['id' => $id]);
