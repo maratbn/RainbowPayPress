@@ -44,7 +44,20 @@ define(['jquery',
                 //  @param  params.model_info__transaction_details
                 //  @param  params.name_seller                          Name of the seller
                 initialize: function(params) {
-                        ViewAgg_Tr_TransactionDetail.prototype.initialize.apply(this, arguments);
+                        ViewAgg_Tr_TransactionDetail.prototype.initialize.call(this, {
+                                model_info__details_base:   params &&
+                                                            params.model_info__transaction_details,
+                                field:                      params &&
+                                                            params.field,
+                                name:                       params &&
+                                                            params.name,
+                                name_seller:                params &&
+                                                            params.name_seller,
+                                text_enter:                 params &&
+                                                            params.text_enter,
+                                text_modify:                params &&
+                                                            params.text_modify
+                            });
 
 
                         var model_info__transaction_details = params

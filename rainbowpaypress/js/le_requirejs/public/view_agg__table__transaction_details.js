@@ -61,13 +61,13 @@ define(['jquery',
                             model_orig__fields               = params.model_orig__fields;
 
                         (new ViewAgg_Tr_TransactionDetail({
-                                    model_info__transaction_details: model_info__transaction_details,
+                                    model_info__details_base: model_info__transaction_details,
                                     field: 'type',
                                     name: "Stripe transaction type:"
                                 })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_TransactionDetail({
-                                    model_info__transaction_details: model_info__transaction_details,
+                                    model_info__details_base: model_info__transaction_details,
                                     field: 'charge_description',
                                     name: "Description:"
                                 })).$el.appendTo(this.$el);
@@ -81,7 +81,7 @@ define(['jquery',
 
                         (new ViewAgg_Tr_TransactionDetail({
                                     callback_format_value: util.formatCurrency,
-                                    model_info__transaction_details: model_info__transaction_details,
+                                    model_info__details_base: model_info__transaction_details,
                                     field: 'charge_amount',
                                     name: "Puchase amount:"
                                 })).$el.appendTo(this.$el);
@@ -107,7 +107,7 @@ define(['jquery',
                             })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_TransactionDetail({
-                                model_info__transaction_details:
+                                model_info__details_base:
                                             model_info__transaction_details,
                                 field: 'customer_name',
                                 name: "Customer name:",
@@ -117,7 +117,7 @@ define(['jquery',
 
                         if (model_orig__fields.get('flag_query_phone')) {
                             (new ViewAgg_Tr_TransactionDetail({
-                                    model_info__transaction_details:
+                                    model_info__details_base:
                                                     model_info__transaction_details,
                                     field: 'customer_phone',
                                     name: "Customer phone:",
@@ -128,7 +128,7 @@ define(['jquery',
 
                         if (model_orig__fields.get('flag_query_shipping')) {
                             (new ViewAgg_Tr_TransactionDetail({
-                                    model_info__transaction_details:
+                                    model_info__details_base:
                                                 model_info__transaction_details,
                                     field: 'shipping_address',
                                     name: "Shipping address:",
