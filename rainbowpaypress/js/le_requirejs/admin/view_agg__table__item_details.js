@@ -51,27 +51,27 @@ define(['jquery',
 
 
                         (new ViewAgg_Tr_DetailBase({
-                                    model_info__details_base: model_info__item_details,
-                                    field: 'description',
-                                    name: "Item description:",
-                                    text_enter: "Enter description",
-                                    text_modify: "Modify"
+                                    model_info__details_base:   model_info__item_details,
+                                    field:                      'description',
+                                    name:                       "Item description:",
+                                    text_enter:                 "Enter description",
+                                    text_modify:                "Modify"
                                 })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_DetailBase({
-                                    model_info__details_base: model_info__item_details,
-                                    field: 'handle',
-                                    name: "Item handle:",
-                                    text_enter: "Enter handle",
-                                    text_modify: "Modify"
+                                    model_info__details_base:   model_info__item_details,
+                                    field:                      'handle',
+                                    name:                       "Item handle:",
+                                    text_enter:                 "Enter handle",
+                                    text_modify:                "Modify"
                                 })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_DetailBase({
-                                    model_info__details_base: model_info__item_details,
-                                    field: 'cost',
-                                    name: "Item cost:",
-                                    text_enter: "Enter cost",
-                                    text_modify: "Modify"
+                                    model_info__details_base:   model_info__item_details,
+                                    field:                      'cost',
+                                    name:                       "Item cost:",
+                                    text_enter:                 "Enter cost",
+                                    text_modify:                "Modify"
                                 })).$el.appendTo(this.$el);
 
 
