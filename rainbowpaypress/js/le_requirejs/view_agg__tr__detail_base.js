@@ -37,6 +37,16 @@ define(['backbone', 'jquery'], function (backbone, $) {
         return backbone.View.extend({
                 tagName: 'tr',
 
+                //  @param  params.callback_format_value
+                //                                  Optional value formatting callback.
+                //  @param  params.model_info__details_base
+                //  @param  params.field
+                //  @param  params.name             The name of this detail.
+                //  @param  params.text             Text to place into the value field.
+                //  @param  params.text_enter       Text for the modification link when there's no
+                //                                  value.
+                //  @param  params.text_modify      Text for the modification link when there's a
+                //                                  value.
                 initialize: function(params) {
 
                         this.$el.addClass('widget_view_agg__tr__detail_base');
