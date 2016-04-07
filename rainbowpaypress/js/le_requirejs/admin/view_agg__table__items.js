@@ -97,6 +97,18 @@ define(['jquery',
                                                             });
                             });
 
+                        this.listenTo(
+                            collection_orig__item,
+                            'remove',
+                            function(model_orig__item) {
+                                var id = model_orig__item.get('id');
+                                var view_agg__tr__item = mapViewAgg_Tr_Item[id];
+                                if (!view_agg__tr__item) return;
+
+                                mapViewAgg_Tr_Item[id] = null;
+
+                                view_agg__tr__item.markAsDeleted();
+                            });
 
                         this.listenTo(
                             collection_orig__item,

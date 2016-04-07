@@ -62,6 +62,10 @@ define(['jquery',
                         this.$el.append(_td().text(model_orig__item.get('handle') || ""))
                                 .append(_td().text(cost ? util.formatCurrency(cost) : ""))
                                 .append(_td().text(model_orig__item.get('description') || ""));
+                    },
+
+                markAsDeleted: function() {
+                        this._flipToSingleCol().text("--- Deleted ---");
                     }
             });
 
