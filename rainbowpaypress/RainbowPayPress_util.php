@@ -214,6 +214,14 @@ class DBUtil {
                                      FROM $strTableName ORDER BY charged, created", ARRAY_A);
     }
 
+    static function updateItem__handle($id, $handle) {
+        global $wpdb;
+        if(!$wpdb->update(DBUtil::getTableName_Items(),
+                          ['handle' => $handle],
+                          ['id' => $id])) return false;
+        return true;
+    }
+
     static function updateTransactionAsCharged($id, $stripe_customer_id, $stripe_charge_id) {
 
         $date_time = getDateTimeNow();
