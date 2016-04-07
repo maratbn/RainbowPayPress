@@ -55,8 +55,10 @@ define(['jquery',
                         var model_orig__item = params.model_orig__item;
 
 
+                        var cost = model_orig__item.get('cost');
+
                         this.$el.append(_td().text(model_orig__item.get('handle') || ""))
-                                .append(_td().text(model_orig__item.get('cost') || ""))
+                                .append(_td().text(cost || ""))
                                 .append(_td().text(model_orig__item.get('description') || ""));
                     }
             });
