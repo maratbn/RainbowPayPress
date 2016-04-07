@@ -39,7 +39,8 @@ define(['backbone', 'jquery'], function (backbone, $) {
 
                 initialize: function() {
 
-                        this.$el.attr({'border':       '0',
+                        this.$el.addClass('widget_view_agg__table')
+                                .attr({'border':       '0',
                                        'cellspacing':  '0',
                                        'cellpadding':  '0'});
                     }
