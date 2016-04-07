@@ -33,14 +33,18 @@
 
 
 define(['jquery',
+        'model_orig__app_common',
         'util',
         'admin/collection_orig__item',
         'admin/view_agg__button',
+        'admin/view_agg__td__detail',
         'admin/view_agg__tr__w_header'
     ], function($,
+                model_orig__app_common,
                 util,
                 collection_orig__item,
                 ViewAgg_Button,
+                ViewAgg_Td_Detail,
                 ViewAgg_Tr_WHeader) {
 
         function _td() {
@@ -73,11 +77,39 @@ define(['jquery',
                         this.get_$thHeader().append($buttonDelete);
 
 
-                        var cost = model_orig__item.get('cost');
+                        var cost                        = model_orig__item.get('cost'),
+                            view_agg__td__detailHandle  = new ViewAgg_Td_Detail({
+                                                                    model:        model_orig__item,
+                                                                    field:        'handle',
+                                                                    text_modify:  "Modify..."
+                                                                });
 
-                        this.$el.append(_td().text(model_orig__item.get('handle') || ""))
+                        this.$el.append(view_agg__td__detailHandle.$el)
                                 .append(_td().text(cost ? util.formatCurrency(cost) : ""))
                                 .append(_td().text(model_orig__item.get('description') || ""));
+
+
+                        this.listenTo(view_agg__td__detailHandle, 'click_modify', function() {
+                                    var strHandleNew = window.prompt("Enter handle:",
+                                                                     model_orig__item.get('handle'));
+
+                                    var $xhr = $.ajax(model_orig__app_common.get('ajax_url'), {
+                                              data: {
+                                                  'action':   'rainbow_pay_press__admin__modify_item',
+                                                  'id':       model_orig__item.get('id'),
+                                                  'handle':   strHandleNew
+                                                },
+                                              method: 'post'
+                                          }),
+                                        me = this;
+
+                                    $xhr.success(function(strData) {
+                                            var objData = JSON.parse(strData);
+                                            if (!objData || !objData.success) return;
+
+                                            model_orig__item.set(objData.item);
+                                        });
+                                });
                     },
 
                 markAsDeleted: function() {
