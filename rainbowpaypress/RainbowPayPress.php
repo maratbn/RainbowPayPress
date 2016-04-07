@@ -104,6 +104,9 @@ if (\is_admin()) {
         'wp_ajax_rainbow_pay_press__admin__charge',
         '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__admin__charge');
     \add_action(
+        'wp_ajax_rainbow_pay_press__admin__delete_item',
+        '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__admin__delete_item');
+    \add_action(
         'wp_ajax_rainbow_pay_press__admin__delete_transaction',
         '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__admin__delete_transaction');
     \add_action(
@@ -377,6 +380,29 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
     $dataRet['errors']   = $arrErrors;
 
     die(json_encode($dataRet));
+}
+
+function action_wp_ajax_rainbow_pay_press__admin__delete_item() {
+    /** Possible errors:
+     *      error__insufficient_permissions
+     *      error__delete_item
+    **/
+
+    $arrErrors = [];
+
+    if (!\current_user_can('manage_options')) {
+        \array_push($arrErrors, 'error__insufficient_permissions');
+    }
+
+    if (count($arrErrors) == 0) {
+        $id = $_POST['id'];
+        if (!DBUtil::deleteItem($id)) {
+            \array_push($arrErrors, 'error__delete_item');
+        }
+    }
+
+    die(json_encode(['success' => (count($arrErrors) == 0),
+                     'errors' => $arrErrors]));
 }
 
 function action_wp_ajax_rainbow_pay_press__admin__delete_transaction() {
