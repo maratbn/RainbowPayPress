@@ -29,6 +29,14 @@
 */
 
 
+.plugin_rainbow_payment_press.widget_view_agg__table td {
+    margin-right: 1em;
+}
+.plugin_rainbow_payment_press.widget_view_agg__table td:last-child {
+    margin-right: 0em;
+}
+
+
 .widget_view_agg__button__add_new_item {
     font-weight: bold;
 }
