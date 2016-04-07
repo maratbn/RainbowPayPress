@@ -35,10 +35,12 @@
 define(['jquery',
         'util',
         'admin/collection_orig__item',
+        'admin/view_agg__button',
         'admin/view_agg__tr__w_header'
     ], function($,
                 util,
                 collection_orig__item,
+                ViewAgg_Button,
                 ViewAgg_Tr_WHeader) {
 
         function _td() {
@@ -55,6 +57,20 @@ define(['jquery',
 
 
                         var model_orig__item = params.model_orig__item;
+
+
+                        var $buttonDelete = (new ViewAgg_Button).$el.text("Delete");
+
+                        $buttonDelete.click(function() {
+                                if (!window
+                                       .confirm("This will delete this item.  Are you sure?")) {
+                                    return;
+                                }
+
+                                collection_orig__item.doXhrDelete(model_orig__item);
+                            });
+
+                        this.get_$thHeader().append($buttonDelete);
 
 
                         var cost = model_orig__item.get('cost');

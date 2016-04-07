@@ -44,6 +44,27 @@ define(['backbone',
 
                 model: ModelOrig_Item,
 
+
+                doXhrDelete: function(model_orig__item) {
+                        if (!model_orig__item) return;
+
+                        var $xhr = $.ajax(model_orig__app_common.get('ajax_url'), {
+                                              data: {
+                                                      'action':  'rainbow_pay_press__admin__delete_item',
+                                                      'id':      model_orig__item.get('id')
+                                                  },
+                                              method: 'post'
+                                          }),
+                            me = this;
+
+                        $xhr.success(function(strData) {
+                                var objData = JSON.parse(strData);
+                                if (!objData || !objData.success) return;
+
+                                me.remove(model_orig__item);
+                            });
+                    },
+
                 parse: function(response, options) {
                         if (!response.success) return null;
 
