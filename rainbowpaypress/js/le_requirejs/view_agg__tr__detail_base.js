@@ -105,12 +105,6 @@ define(['backbone', 'jquery'], function (backbone, $) {
                         function _updateValue() {
                             var value = model_info__details_base.get(field);
 
-                            if (params.callback_format_value) {
-                                value = params.callback_format_value(value);
-                            }
-
-                            $divValue.text(value || "");
-
                             if ($aModify) {
                                 $aModify.text(value ? params.text_modify || params.text_enter
                                                     : params.text_enter);
@@ -118,6 +112,12 @@ define(['backbone', 'jquery'], function (backbone, $) {
                                     $aModify.css('color', "");
                                 }
                             }
+
+                            if (params.callback_format_value) {
+                                value = params.callback_format_value(value);
+                            }
+
+                            $divValue.text(value || "");
                         }
 
                         if (model_info__details_base) {
