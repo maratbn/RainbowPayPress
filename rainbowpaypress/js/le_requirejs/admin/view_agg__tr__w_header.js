@@ -55,6 +55,16 @@ define(['backbone',
                         this.get_$thHeader = function() {
                                 return $thHeader;
                             };
+                    },
+
+                _flipToSingleCol: function() {
+                        var totalCols = this.$el.children().length;
+
+                        this.$el.empty();
+
+                        return $('<td>').attr({'colspan':  totalCols,
+                                               'style':    'text-align:center'})
+                                        .appendTo(this.$el);
                     }
             });
     });
