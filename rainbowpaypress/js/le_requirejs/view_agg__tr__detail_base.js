@@ -42,7 +42,7 @@ define(['backbone', 'jquery'], function (backbone, $) {
                         this.$el.addClass('widget_view_agg__tr__detail_base');
 
 
-                                                var $aModify = params.text_enter
+                        var $aModify = params.text_enter
                                      ? $('<a>').attr('href', '#')
                                      : null;
 
