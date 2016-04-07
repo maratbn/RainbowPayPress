@@ -33,9 +33,10 @@
 
 
 define(['jquery',
+        'util',
         'view_agg__table',
         'view_agg__tr__detail_base'
-    ], function($, ViewAgg_Table, ViewAgg_Tr_DetailBase) {
+    ], function($, util, ViewAgg_Table, ViewAgg_Tr_DetailBase) {
 
         return ViewAgg_Table.extend({
 
@@ -67,6 +68,10 @@ define(['jquery',
                                 })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_DetailBase({
+                                    callback_format_value: function(value) {
+                                            return util.formatCurrency(value);
+                                        },
+
                                     model_info__details_base:   model_info__item_details,
                                     field:                      'cost',
                                     name:                       "Item cost:",
