@@ -81,7 +81,7 @@ define(['jquery',
                     },
 
                 markAsDeleted: function() {
-                        this._flipToSingleCol().text("--- Deleted ---");
+                        this.markAs("--- Deleted ---");
                     }
             });
 

@@ -65,6 +65,10 @@ define(['backbone',
                         return $('<td>').attr({'colspan':  totalCols,
                                                'style':    'text-align:center'})
                                         .appendTo(this.$el);
+                    },
+
+                markAs: function(strText) {
+                        this._flipToSingleCol().text(strText);
                     }
             });
     });

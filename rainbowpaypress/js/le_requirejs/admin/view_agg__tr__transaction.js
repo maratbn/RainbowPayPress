@@ -179,11 +179,11 @@ define(['jquery',
                     },
 
                 markAsCharged: function() {
-                        this._flipToSingleCol().text("--- Charged ---");
+                        this.markAs("--- Charged ---");
                     },
 
                 markAsDeleted: function() {
-                        this._flipToSingleCol().text("--- Deleted ---");
+                        this.markAs("--- Deleted ---");
                     }
             });
 
