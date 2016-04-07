@@ -39,7 +39,7 @@ define(['backbone', 'jquery'], function (backbone, $) {
 
                 initialize: function() {
 
-                        this.$el.addClass('widget_view_agg__table')
+                        this.$el.addClass('widget_view_agg__table plugin_rainbow_payment_press')
                                 .attr({'border':       '0',
                                        'cellspacing':  '0',
                                        'cellpadding':  '0'});
