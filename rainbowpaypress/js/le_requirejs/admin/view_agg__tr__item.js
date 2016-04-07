@@ -33,9 +33,11 @@
 
 
 define(['jquery',
+        'util',
         'admin/collection_orig__item',
         'admin/view_agg__tr__w_header'
     ], function($,
+                util,
                 collection_orig__item,
                 ViewAgg_Tr_WHeader) {
 
@@ -58,7 +60,7 @@ define(['jquery',
                         var cost = model_orig__item.get('cost');
 
                         this.$el.append(_td().text(model_orig__item.get('handle') || ""))
-                                .append(_td().text(cost || ""))
+                                .append(_td().text(cost ? util.formatCurrency(cost) : ""))
                                 .append(_td().text(model_orig__item.get('description') || ""));
                     }
             });
