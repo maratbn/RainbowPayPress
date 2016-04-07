@@ -92,8 +92,8 @@ define(['jquery',
                                 field: 'stripe_token_id',
                                 name: "Stripe token id:",
                                 name_seller: params.name,
-                                text_enter: "Enter credit card info",
-                                text_modify: "Modify"
+                                text_enter: "Enter credit card info...",
+                                text_modify: "Modify..."
                             })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_TransactionDetail_Stripe({
@@ -102,8 +102,8 @@ define(['jquery',
                                 field: 'stripe_email',
                                 name: "Stripe card email:",
                                 name_seller: params.name,
-                                text_enter: "Enter credit card info",
-                                text_modify: "Modify"
+                                text_enter: "Enter credit card info...",
+                                text_modify: "Modify..."
                             })).$el.appendTo(this.$el);
 
                         (new ViewAgg_Tr_TransactionDetail({
@@ -111,8 +111,8 @@ define(['jquery',
                                             model_info__transaction_details,
                                 field: 'customer_name',
                                 name: "Customer name:",
-                                text_enter: "Enter customer name",
-                                text_modify: "Modify"
+                                text_enter: "Enter customer name...",
+                                text_modify: "Modify..."
                             })).$el.appendTo(this.$el);
 
                         if (model_orig__fields.get('flag_query_phone')) {
@@ -121,8 +121,8 @@ define(['jquery',
                                                     model_info__transaction_details,
                                     field: 'customer_phone',
                                     name: "Customer phone:",
-                                    text_enter: "Enter customer phone",
-                                    text_modify: "Modify"
+                                    text_enter: "Enter customer phone...",
+                                    text_modify: "Modify..."
                                 })).$el.appendTo(this.$el);
                         }
 
@@ -132,8 +132,8 @@ define(['jquery',
                                                 model_info__transaction_details,
                                     field: 'shipping_address',
                                     name: "Shipping address:",
-                                    text_enter: "Enter shipping address",
-                                    text_modify: "Modify"
+                                    text_enter: "Enter shipping address...",
+                                    text_modify: "Modify..."
                                 })).$el.appendTo(this.$el);
                         }
 
