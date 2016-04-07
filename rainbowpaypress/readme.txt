@@ -131,8 +131,6 @@ configured on your server.  Also check your SPAM folder.
 == Changelog ==
 
 = 2.4.0 =
-* Added CSS to have the transaction details <table> expand to 100% of its available horizontal
-  space.
 * Fixed another date parsing bug that effected Firefox.
 
 = 2.3.0 =
