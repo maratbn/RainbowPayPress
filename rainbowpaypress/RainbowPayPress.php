@@ -399,7 +399,7 @@ function action_wp_ajax_rainbow_pay_press__admin__delete_item() {
 
     if (count($arrErrors) == 0) {
         $id = $_POST['id'];
-        if (!DBUtil::deleteItem($id)) {
+        if (!DBUtil::tbl__items__delete($id)) {
             \array_push($arrErrors, 'error__delete_item');
         }
     }

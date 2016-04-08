@@ -60,7 +60,7 @@ class DBUtil {
         return DBUtil::selectItem($wpdb->insert_id);
     }
 
-    static function deleteItem($id) {
+    static function tbl__items__delete($id) {
         global $wpdb;
         return $wpdb->delete(DBUtil::getTableName_Items(), ['id' => $id]);
     }
