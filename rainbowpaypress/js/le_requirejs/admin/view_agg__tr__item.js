@@ -32,22 +32,16 @@
 (function(define) {
 
 
-define(['jquery',
-        'util',
+define(['util',
         'admin/collection_orig__item',
         'admin/view_agg__button',
         'admin/view_agg__td__detail',
         'admin/view_agg__tr__w_header'
-    ], function($,
-                util,
+    ], function(util,
                 collection_orig__item,
                 ViewAgg_Button,
                 ViewAgg_Td_Detail,
                 ViewAgg_Tr_WHeader) {
-
-        function _td() {
-            return $('<td>');
-        }
 
         return ViewAgg_Tr_WHeader.extend({
 
@@ -91,11 +85,17 @@ define(['jquery',
                                                                     model:        model_orig__item,
                                                                     field:        'cost',
                                                                     text_modify:  "Modify..."
+                                                                }),
+
+                            view_agg__td__detailDesc    = new ViewAgg_Td_Detail({
+                                                                    model:        model_orig__item,
+                                                                    field:        'description',
+                                                                    text_modify:  "Modify..."
                                                                 });
 
                         this.$el.append(view_agg__td__detailHandle.$el)
                                 .append(view_agg__td__detailCost.$el)
-                                .append(_td().text(model_orig__item.get('description') || ""));
+                                .append(view_agg__td__detailDesc.$el);
 
 
                         this.listenTo(view_agg__td__detailHandle, 'click_modify', function() {
@@ -129,6 +129,16 @@ define(['jquery',
                                     }
 
                                     model_orig__item.doXhrUpdate({'cost': cost});
+                                });
+
+                        this.listenTo(view_agg__td__detailDesc, 'click_modify', function() {
+                                    var strDescNew = window.prompt(
+                                                                "Enter description:",
+                                                                model_orig__item
+                                                                             .get('description'));
+                                    if (!strDescNew) return;
+
+                                    model_orig__item.doXhrUpdate({'description': strDescNew});
                                 });
                     },
 
