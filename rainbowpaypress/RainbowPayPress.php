@@ -777,7 +777,7 @@ function plugin_activation_hook() {
     }
 
     DBUtil::tbl__items__init();
-    DBUtil::initializeTable_Transactions();
+    DBUtil::tbl__transactions__init();
 }
 
 function shortcode_rainbow_pay_press($atts) {

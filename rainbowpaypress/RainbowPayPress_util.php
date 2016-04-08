@@ -94,7 +94,7 @@ class DBUtil {
         return $wpdb->prefix . 'plugin_rainbow_pay_press_transactions';
     }
 
-    static function initializeTable_Transactions() {
+    static function tbl__transactions__init() {
         $strTableName = DBUtil::tbl__transactions__getName();
         global $wpdb;
         $sql = "CREATE TABLE $strTableName (
