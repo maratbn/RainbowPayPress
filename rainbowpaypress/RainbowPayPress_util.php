@@ -117,14 +117,14 @@ class DBUtil {
         dbDelta($sql);
     }
 
-    static function insertTransaction($strType,
-                                      $strChargeDescription,
-                                      $strProductCost,
-                                      $strStripeTokenId,
-                                      $strStripeEmail,
-                                      $strCustomerName,
-                                      $strCustomerPhone,
-                                      $strShippingAddress) {
+    static function tbl__transactions__insert($strType,
+                                              $strChargeDescription,
+                                              $strProductCost,
+                                              $strStripeTokenId,
+                                              $strStripeEmail,
+                                              $strCustomerName,
+                                              $strCustomerPhone,
+                                              $strShippingAddress) {
 
         global $wpdb;
         if (!$wpdb->insert(DBUtil::tbl__transactions__getName(), [

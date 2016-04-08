@@ -647,14 +647,14 @@ function action_wp_ajax_rainbow_pay_press__submit() {
     $strCustomerPhone       = $_POST['customer_phone'];
     $strShippingAddress     = $_POST['shipping_address'];
 
-    if (!DBUtil::insertTransaction($strType,
-                                   $strChargeDescription,
-                                   $strProductCost,
-                                   $strStripeTokenId,
-                                   $strStripeEmail,
-                                   $strCustomerName,
-                                   $strCustomerPhone,
-                                   $strShippingAddress)) {
+    if (!DBUtil::tbl__transactions__insert($strType,
+                                           $strChargeDescription,
+                                           $strProductCost,
+                                           $strStripeTokenId,
+                                           $strStripeEmail,
+                                           $strCustomerName,
+                                           $strCustomerPhone,
+                                           $strShippingAddress)) {
         \array_push($arrErrors, 'error__insert_transaction');
     }
 
