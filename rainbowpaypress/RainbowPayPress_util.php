@@ -47,7 +47,7 @@ function getUVArg() {
 }
 
 class DBUtil {
-    static function addItem($strHandle, $strDescription, $strCost) {
+    static function tbl__items__add($strHandle, $strDescription, $strCost) {
         global $wpdb;
         if (!$wpdb->insert(
                         DBUtil::getTableName_Items(), [
