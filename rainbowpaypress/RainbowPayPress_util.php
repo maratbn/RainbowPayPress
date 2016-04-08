@@ -72,10 +72,10 @@ class DBUtil {
 
     static function tbl__transactions__delete($id) {
         global $wpdb;
-        return $wpdb->delete(DBUtil::getTableName_Transactions(), ['id' => $id]);
+        return $wpdb->delete(DBUtil::tbl__transactions__getName(), ['id' => $id]);
     }
 
-    static function getTableName_Transactions() {
+    static function tbl__transactions__getName() {
         global $wpdb;
         return $wpdb->prefix . 'plugin_rainbow_pay_press_transactions';
     }
@@ -95,7 +95,7 @@ class DBUtil {
     }
 
     static function initializeTable_Transactions() {
-        $strTableName = DBUtil::getTableName_Transactions();
+        $strTableName = DBUtil::tbl__transactions__getName();
         global $wpdb;
         $sql = "CREATE TABLE $strTableName (
                 id bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -127,7 +127,7 @@ class DBUtil {
                                       $strShippingAddress) {
 
         global $wpdb;
-        if (!$wpdb->insert(DBUtil::getTableName_Transactions(), [
+        if (!$wpdb->insert(DBUtil::tbl__transactions__getName(), [
                             'type'                 => $strType,
                             'created'              => getDateTimeNow(),
                             'charge_description'   => $strChargeDescription,
@@ -171,7 +171,7 @@ class DBUtil {
     }
 
     static function selectTransaction($id) {
-        $strTableName = DBUtil::getTableName_Transactions();
+        $strTableName = DBUtil::tbl__transactions__getName();
 
         global $wpdb;
         $arrTransaction = $wpdb->get_results($wpdb->prepare("SELECT id,
@@ -195,7 +195,7 @@ class DBUtil {
     }
 
     static function selectTransactions() {
-        $strTableName = DBUtil::getTableName_Transactions();
+        $strTableName = DBUtil::tbl__transactions__getName();
 
         global $wpdb;
         return $wpdb->get_results("SELECT id,
@@ -227,7 +227,7 @@ class DBUtil {
         $date_time = getDateTimeNow();
 
         global $wpdb;
-        if(!$wpdb->update(DBUtil::getTableName_Transactions(),
+        if(!$wpdb->update(DBUtil::tbl__transactions__getName(),
                           ['charged'             => $date_time,
                            'stripe_customer_id'  => $stripe_customer_id,
                            'stripe_charge_id'    => $stripe_charge_id],
