@@ -75,15 +75,26 @@ define(['jquery',
                         this.get_$thHeader().append($buttonDelete);
 
 
-                        var cost                        = model_orig__item.get('cost'),
-                            view_agg__td__detailHandle  = new ViewAgg_Td_Detail({
+                        var view_agg__td__detailHandle  = new ViewAgg_Td_Detail({
                                                                     model:        model_orig__item,
                                                                     field:        'handle',
+                                                                    text_modify:  "Modify..."
+                                                                }),
+                            view_agg__td__detailCost    = new ViewAgg_Td_Detail({
+                                                                    callback_format_value:
+                                                                        function(strValue) {
+                                                                            return util
+                                                                                    .formatCurrency
+                                                                                        (strValue);
+                                                                        },
+
+                                                                    model:        model_orig__item,
+                                                                    field:        'cost',
                                                                     text_modify:  "Modify..."
                                                                 });
 
                         this.$el.append(view_agg__td__detailHandle.$el)
-                                .append(_td().text(cost ? util.formatCurrency(cost) : ""))
+                                .append(view_agg__td__detailCost.$el)
                                 .append(_td().text(model_orig__item.get('description') || ""));
 
 
@@ -94,6 +105,30 @@ define(['jquery',
                                     if (!strHandleNew) return;
 
                                     model_orig__item.doXhrUpdate({'handle': strHandleNew});
+                                });
+
+                        this.listenTo(view_agg__td__detailCost, 'click_modify', function() {
+                                    var strCostNew = window.prompt(
+                                                                "Enter cost in US cents:",
+                                                                model_orig__item.get('cost'));
+                                    if (strCostNew == null || strCostNew == "") return;
+
+                                    var cost = window.parseInt(strCostNew);
+                                    if (cost < 0) {
+                                        if (!window
+                                                .confirm(
+                                                    "Negative value was entered for cost, which would make this item some kind of a rebate.  Are you sure?")) {
+                                            return;
+                                        }
+                                    } else if (cost == 0) {
+                                        if (!window
+                                                .confirm(
+                                                    "0 value was entered for cost, which would make this item free.  Are you sure?")) {
+                                            return;
+                                        }
+                                    }
+
+                                    model_orig__item.doXhrUpdate({'cost': cost});
                                 });
                     },
 
