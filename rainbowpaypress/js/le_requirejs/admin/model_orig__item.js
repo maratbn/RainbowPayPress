@@ -47,15 +47,13 @@ define(['backbone',
                         'amount':               null
                     },
 
-                doXhrUpdateHandle: function(strHandleNew) {
+                doXhrUpdate: function(objData) {
                         var $xhr = $.ajax(model_orig__app_common.get('ajax_url'), {
                                   data: {
                                       'action':   'rainbow_pay_press__admin__modify_item',
                                       'id':       this.get('id'),
                                       'data':     window.encodeURIComponent(
-                                                        window.JSON.stringify({
-                                                                'handle': strHandleNew
-                                                            }))
+                                                                   window.JSON.stringify(objData))
                                     },
                                   method: 'post'
                               }),

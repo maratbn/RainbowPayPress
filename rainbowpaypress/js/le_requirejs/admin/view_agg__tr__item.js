@@ -93,7 +93,7 @@ define(['jquery',
                                                                 model_orig__item.get('handle'));
                                     if (!strHandleNew) return;
 
-                                    model_orig__item.doXhrUpdateHandle(strHandleNew);
+                                    model_orig__item.doXhrUpdate({'handle': strHandleNew});
                                 });
                     },
 
