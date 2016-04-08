@@ -50,7 +50,8 @@ define(['backbone',
 
                         var $thHeader = $('<th>');
 
-                        this.$el.append($thHeader);
+                        this.$el.attr('valign', 'top')
+                                .append($thHeader);
 
                         this.get_$thHeader = function() {
                                 return $thHeader;
