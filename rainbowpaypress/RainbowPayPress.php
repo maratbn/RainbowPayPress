@@ -518,7 +518,7 @@ function action_wp_ajax_rainbow_pay_press__admin__modify_item() {
 
     if (count($arrErrors) == 0) {
         $id =  $_POST['id'];
-        if (!DBUtil::updateItem__handle($id, $_POST['handle'])) {
+        if (!DBUtil::tbl__items__update__handle($id, $_POST['handle'])) {
             \array_push($arrErrors, 'error__update_item');
         } else {
             $item = DBUtil::tbl__items__selectSpecific($id);

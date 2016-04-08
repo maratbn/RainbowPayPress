@@ -112,6 +112,14 @@ class DBUtil {
         return $arrItem[0];
     }
 
+    static function tbl__items__update__handle($id, $handle) {
+        global $wpdb;
+        if(!$wpdb->update(DBUtil::tbl__items__getName(),
+                          ['handle' => $handle],
+                          ['id' => $id])) return false;
+        return true;
+    }
+
 
     static function tbl__transactions__delete($id) {
         global $wpdb;
@@ -213,14 +221,6 @@ class DBUtil {
         if (!$arrTransaction || count($arrTransaction) == 0) return false;
 
         return $arrTransaction[0];
-    }
-
-    static function updateItem__handle($id, $handle) {
-        global $wpdb;
-        if(!$wpdb->update(DBUtil::tbl__items__getName(),
-                          ['handle' => $handle],
-                          ['id' => $id])) return false;
-        return true;
     }
 
     static function updateTransactionAsCharged($id, $stripe_customer_id, $stripe_charge_id) {
