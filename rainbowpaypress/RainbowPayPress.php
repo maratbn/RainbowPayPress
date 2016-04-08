@@ -359,7 +359,9 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
                     \array_push($arrErrors, 'error__create_stripe_charge');
                 } else {
                     $dataRet['stripe_charge_id'] = $charge->id;
-                    $charged = DBUtil::updateTransactionAsCharged($id, $customer->id, $charge->id);
+                    $charged = DBUtil::tbl__transactions__update__charged($id,
+                                                                          $customer->id,
+                                                                          $charge->id);
                     if ($charged == null) {
                         \array_push($arrErrors, 'error__update_transaction');
                     } else {

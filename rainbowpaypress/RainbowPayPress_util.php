@@ -223,7 +223,9 @@ class DBUtil {
         return $arrTransaction[0];
     }
 
-    static function updateTransactionAsCharged($id, $stripe_customer_id, $stripe_charge_id) {
+    static function tbl__transactions__update__charged($id,
+                                                       $stripe_customer_id,
+                                                       $stripe_charge_id) {
 
         $date_time = getDateTimeNow();
 
