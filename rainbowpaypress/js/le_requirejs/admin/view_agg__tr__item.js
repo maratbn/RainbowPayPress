@@ -33,14 +33,12 @@
 
 
 define(['jquery',
-        'model_orig__app_common',
         'util',
         'admin/collection_orig__item',
         'admin/view_agg__button',
         'admin/view_agg__td__detail',
         'admin/view_agg__tr__w_header'
     ], function($,
-                model_orig__app_common,
                 util,
                 collection_orig__item,
                 ViewAgg_Button,
@@ -94,22 +92,7 @@ define(['jquery',
                                                                      model_orig__item.get('handle'));
                                     if (!strHandleNew) return;
 
-                                    var $xhr = $.ajax(model_orig__app_common.get('ajax_url'), {
-                                              data: {
-                                                  'action':   'rainbow_pay_press__admin__modify_item',
-                                                  'id':       model_orig__item.get('id'),
-                                                  'handle':   strHandleNew
-                                                },
-                                              method: 'post'
-                                          }),
-                                        me = this;
-
-                                    $xhr.success(function(strData) {
-                                            var objData = JSON.parse(strData);
-                                            if (!objData || !objData.success) return;
-
-                                            model_orig__item.set(objData.item);
-                                        });
+                                    model_orig__item.doXhrUpdateHandle(strHandleNew);
                                 });
                     },
 

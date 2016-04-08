@@ -33,7 +33,10 @@
 (function(define) {
 
 
-define(['backbone'], function (backbone) {
+define(['backbone',
+        'jquery',
+        'model_orig__app_common'
+    ], function (backbone, $, model_orig__app_common) {
 
         return backbone.Model.extend({
 
@@ -42,6 +45,25 @@ define(['backbone'], function (backbone) {
                         'handle':               null,
                         'description':          null,
                         'amount':               null
+                    },
+
+                doXhrUpdateHandle: function(strHandleNew) {
+                        var $xhr = $.ajax(model_orig__app_common.get('ajax_url'), {
+                                  data: {
+                                      'action':   'rainbow_pay_press__admin__modify_item',
+                                      'id':       this.get('id'),
+                                      'handle':   strHandleNew
+                                    },
+                                  method: 'post'
+                              }),
+                            me = this;
+
+                        $xhr.success(function(strData) {
+                                var objData = JSON.parse(strData);
+                                if (!objData || !objData.success) return;
+
+                                me.set(objData.item);
+                            });
                     }
             });
 
