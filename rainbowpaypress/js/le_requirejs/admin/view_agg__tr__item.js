@@ -92,6 +92,7 @@ define(['jquery',
                         this.listenTo(view_agg__td__detailHandle, 'click_modify', function() {
                                     var strHandleNew = window.prompt("Enter handle:",
                                                                      model_orig__item.get('handle'));
+                                    if (!strHandleNew) return;
 
                                     var $xhr = $.ajax(model_orig__app_common.get('ajax_url'), {
                                               data: {
