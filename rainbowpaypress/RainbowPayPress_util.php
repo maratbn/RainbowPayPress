@@ -112,10 +112,10 @@ class DBUtil {
         return $arrItem[0];
     }
 
-    static function tbl__items__update__handle($id, $handle) {
+    static function tbl__items__update($id, $objData) {
         global $wpdb;
         if(!$wpdb->update(DBUtil::tbl__items__getName(),
-                          ['handle' => $handle],
+                          $objData,
                           ['id' => $id])) return false;
         return true;
     }
