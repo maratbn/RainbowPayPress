@@ -466,7 +466,7 @@ function action_wp_ajax_rainbow_pay_press__admin__get_items() {
 
     $arrItems = null;
     if (count($arrErrors) == 0) {
-        $arrItems = DBUtil::selectItems();
+        $arrItems = DBUtil::tbl__items__selectAll();
         if (!$arrItems) {
             \array_push($arrErrors, 'error__select_items');
         }

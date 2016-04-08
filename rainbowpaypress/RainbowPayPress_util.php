@@ -84,6 +84,18 @@ class DBUtil {
         dbDelta($sql);
     }
 
+    static function tbl__items__selectAll() {
+        $strTableName = DBUtil::tbl__items__getName();
+
+        global $wpdb;
+        return $wpdb->get_results("SELECT id,
+                                          handle,
+                                          cost,
+                                          description
+                                     FROM $strTableName", ARRAY_A);
+    }
+
+
     static function tbl__transactions__delete($id) {
         global $wpdb;
         return $wpdb->delete(DBUtil::tbl__transactions__getName(), ['id' => $id]);
@@ -157,17 +169,6 @@ class DBUtil {
         if (!$arrItem || count($arrItem) == 0) return false;
 
         return $arrItem[0];
-    }
-
-    static function selectItems() {
-        $strTableName = DBUtil::tbl__items__getName();
-
-        global $wpdb;
-        return $wpdb->get_results("SELECT id,
-                                          handle,
-                                          cost,
-                                          description
-                                     FROM $strTableName", ARRAY_A);
     }
 
     static function selectTransaction($id) {
