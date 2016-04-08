@@ -521,7 +521,7 @@ function action_wp_ajax_rainbow_pay_press__admin__modify_item() {
         if (!DBUtil::updateItem__handle($id, $_POST['handle'])) {
             \array_push($arrErrors, 'error__update_item');
         } else {
-            $item = DBUtil::selectItem($id);
+            $item = DBUtil::tbl__items__selectSpecific($id);
         }
     }
 

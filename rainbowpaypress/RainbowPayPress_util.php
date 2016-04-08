@@ -57,7 +57,7 @@ class DBUtil {
                             'currency'              => 'usd_x_100'
                         ])) return false;
 
-        return DBUtil::selectItem($wpdb->insert_id);
+        return DBUtil::tbl__items__selectSpecific($wpdb->insert_id);
     }
 
     static function tbl__items__delete($id) {
@@ -93,6 +93,23 @@ class DBUtil {
                                           cost,
                                           description
                                      FROM $strTableName", ARRAY_A);
+    }
+
+    static function tbl__items__selectSpecific($id) {
+        $strTableName = DBUtil::tbl__items__getName();
+
+        global $wpdb;
+        $arrItem = $wpdb->get_results($wpdb->prepare("SELECT id,
+                                                             handle,
+                                                             cost,
+                                                             description
+                                                        FROM $strTableName
+                                                       WHERE id=%d",
+                                                     $id),
+                                      ARRAY_A);
+        if (!$arrItem || count($arrItem) == 0) return false;
+
+        return $arrItem[0];
     }
 
 
@@ -152,23 +169,6 @@ class DBUtil {
                             'shipping_address'     => $strShippingAddress])) return false;
 
         return true;
-    }
-
-    static function selectItem($id) {
-        $strTableName = DBUtil::tbl__items__getName();
-
-        global $wpdb;
-        $arrItem = $wpdb->get_results($wpdb->prepare("SELECT id,
-                                                             handle,
-                                                             cost,
-                                                             description
-                                                        FROM $strTableName
-                                                       WHERE id=%d",
-                                                     $id),
-                                      ARRAY_A);
-        if (!$arrItem || count($arrItem) == 0) return false;
-
-        return $arrItem[0];
     }
 
     static function selectTransaction($id) {
