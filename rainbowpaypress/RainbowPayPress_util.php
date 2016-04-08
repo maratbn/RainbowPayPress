@@ -65,7 +65,7 @@ class DBUtil {
         return $wpdb->delete(DBUtil::getTableName_Items(), ['id' => $id]);
     }
 
-    static function deleteTransaction($id) {
+    static function tbl__transactions__delete($id) {
         global $wpdb;
         return $wpdb->delete(DBUtil::getTableName_Transactions(), ['id' => $id]);
     }

@@ -422,7 +422,7 @@ function action_wp_ajax_rainbow_pay_press__admin__delete_transaction() {
 
     if (count($arrErrors) == 0) {
         $id = $_POST['id'];
-        if (!DBUtil::deleteTransaction($id)) {
+        if (!DBUtil::tbl__transactions__delete($id)) {
             \array_push($arrErrors, 'error__delete_transaction');
         }
     }
