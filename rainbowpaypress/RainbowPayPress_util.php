@@ -191,7 +191,7 @@ class DBUtil {
                                      FROM $strTableName ORDER BY charged, created", ARRAY_A);
     }
 
-    static function selectTransaction($id) {
+    static function tbl__transactions__selectSpecific($id) {
         $strTableName = DBUtil::tbl__transactions__getName();
 
         global $wpdb;

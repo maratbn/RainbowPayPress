@@ -298,7 +298,7 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
 
     if (count($arrErrors) == 0) {
         $id = $_POST['id'];
-        $dataTransaction = DBUtil::selectTransaction($id);
+        $dataTransaction = DBUtil::tbl__transactions__selectSpecific($id);
         if (!$dataTransaction) {
             \array_push($arrErrors, 'error__select_transaction');
         }
