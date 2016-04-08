@@ -44,10 +44,14 @@ define([], function() {
                                                          strDollars.substr(strDollars.length - 3);
             }
 
-            var strCents = "" + amount % 100;
+            var amountAbs = window.Math.abs(amount);
+
+            var strCents = "" + amountAbs % 100;
             if (strCents.length == 1) strCents = '0' + strCents;
 
-            return '$' + _formatDollars(Math.floor(amount / 100)) + '.' + strCents;
+            return (amount < 0 ? '-' : "") + '$'
+                                           + _formatDollars(Math.floor(amountAbs / 100))
+                                           + '.' + strCents;
         }
 
         //  This will parse a date string in the format "2016-04-03 05:10:41" that is assumed to
