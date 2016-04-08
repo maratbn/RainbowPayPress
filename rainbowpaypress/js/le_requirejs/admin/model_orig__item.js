@@ -52,7 +52,7 @@ define(['backbone',
                                   data: {
                                       'action':   'rainbow_pay_press__admin__modify_item',
                                       'id':       this.get('id'),
-                                      'handle':   strHandleNew
+                                      'handle':   window.encodeURIComponent(strHandleNew)
                                     },
                                   method: 'post'
                               }),
