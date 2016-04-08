@@ -50,7 +50,7 @@ class DBUtil {
     static function tbl__items__add($strHandle, $strDescription, $strCost) {
         global $wpdb;
         if (!$wpdb->insert(
-                        DBUtil::getTableName_Items(), [
+                        DBUtil::tbl__items__getName(), [
                             'handle'                => $strHandle,
                             'description'           => $strDescription,
                             'cost'                  => $strCost,
@@ -62,17 +62,17 @@ class DBUtil {
 
     static function tbl__items__delete($id) {
         global $wpdb;
-        return $wpdb->delete(DBUtil::getTableName_Items(), ['id' => $id]);
+        return $wpdb->delete(DBUtil::tbl__items__getName(), ['id' => $id]);
+    }
+
+    static function tbl__items__getName() {
+        global $wpdb;
+        return $wpdb->prefix . 'plugin_rainbow_pay_press_items';
     }
 
     static function tbl__transactions__delete($id) {
         global $wpdb;
         return $wpdb->delete(DBUtil::getTableName_Transactions(), ['id' => $id]);
-    }
-
-    static function getTableName_Items() {
-        global $wpdb;
-        return $wpdb->prefix . 'plugin_rainbow_pay_press_items';
     }
 
     static function getTableName_Transactions() {
@@ -81,7 +81,7 @@ class DBUtil {
     }
 
     static function initializeTable_Items() {
-        $strTableName = DBUtil::getTableName_Items();
+        $strTableName = DBUtil::tbl__items__getName();
         global $wpdb;
         $sql = "CREATE TABLE $strTableName (
                 id bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -143,7 +143,7 @@ class DBUtil {
     }
 
     static function selectItem($id) {
-        $strTableName = DBUtil::getTableName_Items();
+        $strTableName = DBUtil::tbl__items__getName();
 
         global $wpdb;
         $arrItem = $wpdb->get_results($wpdb->prepare("SELECT id,
@@ -160,7 +160,7 @@ class DBUtil {
     }
 
     static function selectItems() {
-        $strTableName = DBUtil::getTableName_Items();
+        $strTableName = DBUtil::tbl__items__getName();
 
         global $wpdb;
         return $wpdb->get_results("SELECT id,
@@ -216,7 +216,7 @@ class DBUtil {
 
     static function updateItem__handle($id, $handle) {
         global $wpdb;
-        if(!$wpdb->update(DBUtil::getTableName_Items(),
+        if(!$wpdb->update(DBUtil::tbl__items__getName(),
                           ['handle' => $handle],
                           ['id' => $id])) return false;
         return true;
