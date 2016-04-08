@@ -776,7 +776,7 @@ function plugin_activation_hook() {
                 PHP_VERSION_MIN_SUPPORTED));
     }
 
-    DBUtil::initializeTable_Items();
+    DBUtil::tbl__items__init();
     DBUtil::initializeTable_Transactions();
 }
 

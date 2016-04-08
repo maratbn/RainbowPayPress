@@ -70,17 +70,7 @@ class DBUtil {
         return $wpdb->prefix . 'plugin_rainbow_pay_press_items';
     }
 
-    static function tbl__transactions__delete($id) {
-        global $wpdb;
-        return $wpdb->delete(DBUtil::tbl__transactions__getName(), ['id' => $id]);
-    }
-
-    static function tbl__transactions__getName() {
-        global $wpdb;
-        return $wpdb->prefix . 'plugin_rainbow_pay_press_transactions';
-    }
-
-    static function initializeTable_Items() {
+    static function tbl__items__init() {
         $strTableName = DBUtil::tbl__items__getName();
         global $wpdb;
         $sql = "CREATE TABLE $strTableName (
@@ -92,6 +82,16 @@ class DBUtil {
             );";
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
+    }
+
+    static function tbl__transactions__delete($id) {
+        global $wpdb;
+        return $wpdb->delete(DBUtil::tbl__transactions__getName(), ['id' => $id]);
+    }
+
+    static function tbl__transactions__getName() {
+        global $wpdb;
+        return $wpdb->prefix . 'plugin_rainbow_pay_press_transactions';
     }
 
     static function initializeTable_Transactions() {
