@@ -491,7 +491,7 @@ function action_wp_ajax_rainbow_pay_press__admin__get_transactions() {
 
     $arrTransactions = null;
     if (count($arrErrors) == 0) {
-        $arrTransactions = DBUtil::selectTransactions();
+        $arrTransactions = DBUtil::tbl__transactions__selectAll();
         if (!$arrTransactions) {
             \array_push($arrErrors, 'error__select_transactions');
         }

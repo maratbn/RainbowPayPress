@@ -171,6 +171,26 @@ class DBUtil {
         return true;
     }
 
+    static function tbl__transactions__selectAll() {
+        $strTableName = DBUtil::tbl__transactions__getName();
+
+        global $wpdb;
+        return $wpdb->get_results("SELECT id,
+                                          type,
+                                          created,
+                                          charged,
+                                          charge_description,
+                                          charge_amount,
+                                          stripe_token_id,
+                                          stripe_email,
+                                          customer_name,
+                                          customer_phone,
+                                          shipping_address,
+                                          stripe_customer_id,
+                                          stripe_charge_id
+                                     FROM $strTableName ORDER BY charged, created", ARRAY_A);
+    }
+
     static function selectTransaction($id) {
         $strTableName = DBUtil::tbl__transactions__getName();
 
@@ -193,26 +213,6 @@ class DBUtil {
         if (!$arrTransaction || count($arrTransaction) == 0) return false;
 
         return $arrTransaction[0];
-    }
-
-    static function selectTransactions() {
-        $strTableName = DBUtil::tbl__transactions__getName();
-
-        global $wpdb;
-        return $wpdb->get_results("SELECT id,
-                                          type,
-                                          created,
-                                          charged,
-                                          charge_description,
-                                          charge_amount,
-                                          stripe_token_id,
-                                          stripe_email,
-                                          customer_name,
-                                          customer_phone,
-                                          shipping_address,
-                                          stripe_customer_id,
-                                          stripe_charge_id
-                                     FROM $strTableName ORDER BY charged, created", ARRAY_A);
     }
 
     static function updateItem__handle($id, $handle) {
