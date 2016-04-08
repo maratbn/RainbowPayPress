@@ -520,7 +520,7 @@ function action_wp_ajax_rainbow_pay_press__admin__modify_item() {
 
     if (count($arrErrors) == 0) {
         $id =  $_POST['id'];
-        if (!DBUtil::tbl__items__update($id, ['handle' => \urldecode($_POST['handle'])])) {
+        if (!DBUtil::tbl__items__update($id, \json_decode(\urldecode($_POST['data']), true))) {
             \array_push($arrErrors, 'error__update_item');
         } else {
             $item = DBUtil::tbl__items__selectSpecific($id);
