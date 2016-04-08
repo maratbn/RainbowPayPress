@@ -76,7 +76,7 @@ class DBUtil {
         $sql = "CREATE TABLE $strTableName (
                 id bigint(20) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 handle varchar(20) NOT NULL,
-                cost int unsigned NOT NULL,
+                cost int NOT NULL,
                 currency varchar(20) NOT NULL,
                 description varchar(1000) NOT NULL
             );";
