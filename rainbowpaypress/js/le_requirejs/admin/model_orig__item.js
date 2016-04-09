@@ -62,6 +62,17 @@ define(['backbone',
                         $xhr.success(function(strData) {
                                 var objData = JSON.parse(strData);
                                 if (!objData || !objData['success']) {
+
+                                    var arrErrors = objData['errors'];
+                                    if (arrErrors.indexOf('error__duplicate_handle') >= 0) {
+                                        window
+                                          .alert(
+                                            "Item was not updated because there already exists another item with the desired handle \""
+                                                + objDataUpdate['handle']
+                                                + "\".  Only unique item handles allowed.");
+                                        return;
+                                    }
+
                                     window
                                         .alert(
                                             "Item was not updated due to a server-side error.");
