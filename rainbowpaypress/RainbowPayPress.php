@@ -507,6 +507,7 @@ function action_wp_ajax_rainbow_pay_press__admin__get_transactions() {
 function action_wp_ajax_rainbow_pay_press__admin__modify_item() {
     /** Possible errors:
      *      error__insufficient_permissions
+     *      error__duplicate_handle
      *      error__update_item
      **/
 
@@ -521,8 +522,11 @@ function action_wp_ajax_rainbow_pay_press__admin__modify_item() {
     if (count($arrErrors) == 0) {
         $id =  $_POST['id'];
         $arrDataDecoded = \json_decode(\urldecode($_POST['data']), true);
+        $handle = getKeyValue($arrDataDecoded, 'handle');
 
-        if (!DBUtil::tbl__items__update($id, $arrDataDecoded)) {
+        if ($handle != null && DBUtil::tbl__items__selectSpecificForHandle($handle)) {
+            \array_push($arrErrors, 'error__duplicate_handle');
+        } else if (!DBUtil::tbl__items__update($id, $arrDataDecoded)) {
             \array_push($arrErrors, 'error__update_item');
         } else {
             $item = DBUtil::tbl__items__selectSpecific($id);

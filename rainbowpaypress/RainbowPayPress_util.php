@@ -33,6 +33,16 @@
 namespace plugin_RainbowPayPress;
 
 
+function getKeyValue($arr, $key, $default = null) {
+    if (!$arr) return $default;
+
+    if (\array_key_exists($key, $arr)) {
+        return $arr[$key];
+    }
+
+    return $default;
+}
+
 function getDateTimeNow() {
     $ms = \time() * 1000 + \substr(\microtime(), 2, 3);
     return \gmdate('Y-m-d H:i:s', $ms / 1000);
@@ -106,6 +116,23 @@ class DBUtil {
                                                         FROM $strTableName
                                                        WHERE id=%d",
                                                      $id),
+                                      ARRAY_A);
+        if (!$arrItem || count($arrItem) == 0) return false;
+
+        return $arrItem[0];
+    }
+
+    static function tbl__items__selectSpecificForHandle($handle) {
+        $strTableName = DBUtil::tbl__items__getName();
+
+        global $wpdb;
+        $arrItem = $wpdb->get_results($wpdb->prepare("SELECT id,
+                                                             handle,
+                                                             cost,
+                                                             description
+                                                        FROM $strTableName
+                                                       WHERE handle=%s",
+                                                     $handle),
                                       ARRAY_A);
         if (!$arrItem || count($arrItem) == 0) return false;
 
