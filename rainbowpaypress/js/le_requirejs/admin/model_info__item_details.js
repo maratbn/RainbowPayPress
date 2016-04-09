@@ -46,19 +46,15 @@ define(['jquery',
                     },
 
                 doXhrAddItem: function() {
+                        var dataAdd = {'handle':        this.attributes['handle'],
+                                       'cost':          this.attributes['cost'],
+                                       'description':   this.attributes['description']};
+
                         var $xhr = $.post
                                       (model_orig__app_common.get('ajax_url'), {
                                           'action':       'rainbow_pay_press__admin__add_item',
                                           'data':         window.encodeURIComponent(
-                                                            window.JSON.stringify({
-                                                                'handle':  this.attributes
-                                                                                       ['handle'],
-                                                                'cost':    this.attributes
-                                                                                         ['cost'],
-                                                                'description':
-                                                                           this.attributes
-                                                                                   ['description']
-                                                              }))
+                                                                   window.JSON.stringify(dataAdd))
                                       }),
                             me = this;
 
