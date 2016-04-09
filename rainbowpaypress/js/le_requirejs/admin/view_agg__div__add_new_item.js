@@ -62,7 +62,7 @@ define(['backbone',
                                 'xhr__always__rainbow_pay_press__add_item',
                                 function(event) {
 
-                                    var dataResponse = event.data;
+                                    var dataResponse = event.data_response;
 
                                     if (dataResponse['success']) {
 
