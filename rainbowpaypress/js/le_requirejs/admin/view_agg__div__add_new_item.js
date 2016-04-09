@@ -62,7 +62,8 @@ define(['backbone',
                                 'xhr__always__rainbow_pay_press__add_item',
                                 function(event) {
 
-                                    var dataResponse = event.data_response;
+                                    var dataItemSubmit  = event.item_submit,
+                                        dataResponse    = event.data_response;
 
                                     if (dataResponse['success']) {
 
@@ -97,7 +98,7 @@ define(['backbone',
                                             window
                                               .alert(
                                                 "Item was not added because there already exists another item with the desired handle \""
-                                                    + event.item_submit['handle']
+                                                    + dataItemSubmit['handle']
                                                     + "\".  Only unique item handles allowed.");
                                             return;
                                         }
