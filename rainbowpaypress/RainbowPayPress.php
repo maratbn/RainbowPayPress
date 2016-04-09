@@ -520,9 +520,9 @@ function action_wp_ajax_rainbow_pay_press__admin__modify_item() {
     $item = null;
 
     if (count($arrErrors) == 0) {
-        $id =  $_POST['id'];
-        $arrDataDecoded = \json_decode(\urldecode($_POST['data']), true);
-        $handle = getKeyValue($arrDataDecoded, 'handle');
+        $id              =  $_POST['id'];
+        $arrDataDecoded  = \json_decode(\urldecode($_POST['data']), true);
+        $handle          = getKeyValue($arrDataDecoded, 'handle');
 
         if ($handle != null && DBUtil::tbl__items__selectSpecificForHandle($handle)) {
             \array_push($arrErrors, 'error__duplicate_handle');
