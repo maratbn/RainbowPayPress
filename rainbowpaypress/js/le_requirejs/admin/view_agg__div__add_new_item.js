@@ -61,9 +61,12 @@ define(['backbone',
                                 model_info__item_details,
                                 'xhr__always__rainbow_pay_press__add_item',
                                 function(event) {
-                                    if (event.success) {
 
-                                        var itemAdded = event.item;
+                                    var dataResponse = event.data;
+
+                                    if (dataResponse['success']) {
+
+                                        var itemAdded = dataResponse['item'];
                                         if (itemAdded) {
                                             collection_orig__item
                                                               .add(new ModelOrig_Item(itemAdded));
