@@ -67,10 +67,14 @@ define(['backbone',
                                     if (dataResponse['success']) {
 
                                         var itemAdded = dataResponse['item'];
-                                        if (itemAdded) {
-                                            collection_orig__item
-                                                              .add(new ModelOrig_Item(itemAdded));
+                                        if (!itemAdded) {
+                                            window
+                                              .alert(
+                                                "Error!  Server returned invalid data.  Contact support.");
+                                            return;
                                         }
+
+                                        collection_orig__item.add(new ModelOrig_Item(itemAdded));
 
 
                                         var me = this;
