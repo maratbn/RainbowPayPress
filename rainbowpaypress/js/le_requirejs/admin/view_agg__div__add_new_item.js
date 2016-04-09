@@ -87,7 +87,9 @@ define(['backbone',
                                                                      $buttonAnotherItem.remove();
                                                                      _doAddItemCycle.call(me);
                                                                    });
-                                        this.$el.text("New item has been added successfully.")
+                                        this.$el.text("New item with the handle \""
+                                                               + dataItemSubmit['handle']
+                                                               + "\" has been added successfully.")
                                                 .append('<br>')
                                                 .append($buttonAnotherItem);
                                     } else {
