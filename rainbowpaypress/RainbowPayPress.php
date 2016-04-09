@@ -243,6 +243,7 @@ function action_admin_print_footer_scripts() {
 function action_wp_ajax_rainbow_pay_press__admin__add_item() {
     /** Possible errors:
      *      error__insufficient_permissions
+     *      error__duplicate_handle
      *      error__add_item
     **/
 
@@ -261,11 +262,15 @@ function action_wp_ajax_rainbow_pay_press__admin__add_item() {
         $strDescription  = $arrDataDecoded['description'];
         $strCost         = $arrDataDecoded['cost'];
 
-        $objItemAdded    = DBUtil::tbl__items__add($strHandle,
-                                                   $strDescription,
-                                                   $strCost);
-        if (!$objItemAdded) {
-            \array_push($arrErrors, 'error__add_item');
+        if ($strHandle != null && DBUtil::tbl__items__selectSpecificForHandle($strHandle)) {
+            \array_push($arrErrors, 'error__duplicate_handle');
+        } else {
+            $objItemAdded = DBUtil::tbl__items__add($strHandle,
+                                                    $strDescription,
+                                                    $strCost);
+            if (!$objItemAdded) {
+                \array_push($arrErrors, 'error__add_item');
+            }
         }
     }
 
