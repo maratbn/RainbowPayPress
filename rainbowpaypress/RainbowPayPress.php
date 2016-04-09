@@ -298,7 +298,7 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
 
     $dataTransaction = null;
 
-    if (count($arrErrors) == 0) {
+    if (\count($arrErrors) == 0) {
         $id = $_POST['id'];
         $dataTransaction = DBUtil::tbl__transactions__selectSpecific($id);
         if (!$dataTransaction) {
@@ -308,7 +308,7 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
 
     $stripe = null;
 
-    if (count($arrErrors) == 0) {
+    if (\count($arrErrors) == 0) {
 
         //  Based on:   https://stripe.com/docs/checkout/guides/php
 
@@ -336,7 +336,7 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
 
     $dataRet = [];
 
-    if (count($arrErrors) == 0) {
+    if (\count($arrErrors) == 0) {
         \plugin_RainbowPayPress\Stripe\Stripe::setApiKey($stripe['secret_key']);
 
         try {
@@ -381,7 +381,7 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
         }
     }
 
-    $flagSuccess = (count($arrErrors) == 0);
+    $flagSuccess = (\count($arrErrors) == 0);
 
     $dataRet['success']  = $flagSuccess;
     $dataRet['errors']   = $arrErrors;
@@ -401,14 +401,14 @@ function action_wp_ajax_rainbow_pay_press__admin__delete_item() {
         \array_push($arrErrors, 'error__insufficient_permissions');
     }
 
-    if (count($arrErrors) == 0) {
+    if (\count($arrErrors) == 0) {
         $id = $_POST['id'];
         if (!DBUtil::tbl__items__delete($id)) {
             \array_push($arrErrors, 'error__delete_item');
         }
     }
 
-    die(json_encode(['success' => (count($arrErrors) == 0),
+    die(json_encode(['success' => (\count($arrErrors) == 0),
                      'errors' => $arrErrors]));
 }
 
@@ -424,14 +424,14 @@ function action_wp_ajax_rainbow_pay_press__admin__delete_transaction() {
         \array_push($arrErrors, 'error__insufficient_permissions');
     }
 
-    if (count($arrErrors) == 0) {
+    if (\count($arrErrors) == 0) {
         $id = $_POST['id'];
         if (!DBUtil::tbl__transactions__delete($id)) {
             \array_push($arrErrors, 'error__delete_transaction');
         }
     }
 
-    die(json_encode(['success' => (count($arrErrors) == 0),
+    die(json_encode(['success' => (\count($arrErrors) == 0),
                      'errors' => $arrErrors]));
 }
 
@@ -469,14 +469,14 @@ function action_wp_ajax_rainbow_pay_press__admin__get_items() {
     }
 
     $arrItems = null;
-    if (count($arrErrors) == 0) {
+    if (\count($arrErrors) == 0) {
         $arrItems = DBUtil::tbl__items__selectAll();
         if (!$arrItems) {
             \array_push($arrErrors, 'error__select_items');
         }
     }
 
-    die(\json_encode(['success'       => (count($arrErrors) == 0),
+    die(\json_encode(['success'       => (\count($arrErrors) == 0),
                       'errors'        => $arrErrors,
                       'items'         => $arrItems]));
 }
@@ -494,14 +494,14 @@ function action_wp_ajax_rainbow_pay_press__admin__get_transactions() {
     }
 
     $arrTransactions = null;
-    if (count($arrErrors) == 0) {
+    if (\count($arrErrors) == 0) {
         $arrTransactions = DBUtil::tbl__transactions__selectAll();
         if (!$arrTransactions) {
             \array_push($arrErrors, 'error__select_transactions');
         }
     }
 
-    die(\json_encode(['success'       => (count($arrErrors) == 0),
+    die(\json_encode(['success'       => (\count($arrErrors) == 0),
                       'errors'        => $arrErrors,
                       'transactions'  => $arrTransactions]));
 }
@@ -521,7 +521,7 @@ function action_wp_ajax_rainbow_pay_press__admin__modify_item() {
 
     $item = null;
 
-    if (count($arrErrors) == 0) {
+    if (\count($arrErrors) == 0) {
         $id              =  $_POST['id'];
         $arrDataDecoded  = \json_decode(\urldecode($_POST['data']), true);
         $handle          = getKeyValue($arrDataDecoded, 'handle');
@@ -535,7 +535,7 @@ function action_wp_ajax_rainbow_pay_press__admin__modify_item() {
         }
     }
 
-    die(\json_encode(['success'  => (count($arrErrors) == 0),
+    die(\json_encode(['success'  => (\count($arrErrors) == 0),
                       'errors'   => $arrErrors,
                       'item'     => $item]));
 }
@@ -553,7 +553,7 @@ function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {
         \array_push($arrErrors, 'error__insufficient_permissions');
     }
 
-    if (count($arrErrors) == 0) {
+    if (\count($arrErrors) == 0) {
         $strRecipient  = \get_option(SETTING__EMAIL_NOTIFICATIONS);
         $strSiteURL    = \get_site_url();
 
@@ -585,7 +585,7 @@ function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {
         }
     }
 
-    die(\json_encode(['success'       => (count($arrErrors) == 0),
+    die(\json_encode(['success'       => (\count($arrErrors) == 0),
                       'errors'        => $arrErrors]));
 }
 
@@ -668,7 +668,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
         \array_push($arrErrors, 'error__insert_transaction');
     }
 
-    if (count($arrErrors) == 0 && Util::getFlagEnableEmailNotifications()) {
+    if (\count($arrErrors) == 0 && Util::getFlagEnableEmailNotifications()) {
         $strRecipient  = \get_option(SETTING__EMAIL_NOTIFICATIONS);
         $strSiteURL    = \get_site_url();
 
@@ -714,7 +714,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
         }
     }
 
-    die(json_encode(['success'  => (count($arrErrors) == 0),
+    die(json_encode(['success'  => (\count($arrErrors) == 0),
                      'errors'   => $arrErrors]));
 }
 
