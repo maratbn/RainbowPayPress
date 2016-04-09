@@ -85,6 +85,10 @@ define(['backbone',
                                         this.$el.text("New item has been added successfully.")
                                                 .append('<br>')
                                                 .append($buttonAnotherItem);
+                                    } else {
+                                        window
+                                            .alert(
+                                                "Item was not added due to a server-side error.");
                                     }
                                 });
                         }
