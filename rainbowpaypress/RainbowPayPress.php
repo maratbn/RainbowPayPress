@@ -653,14 +653,16 @@ function action_wp_ajax_rainbow_pay_press__submit() {
 
     $arrErrors = [];
 
-    $strType                = $_POST['type'];
-    $strChargeDescription   = $_POST['charge_description'];
-    $strProductCost         = $_POST['charge_amount'];
-    $strStripeTokenId       = $_POST['stripe_token_id'];
-    $strStripeEmail         = $_POST['stripe_email'];
-    $strCustomerName        = $_POST['customer_name'];
-    $strCustomerPhone       = $_POST['customer_phone'];
-    $strShippingAddress     = $_POST['shipping_address'];
+    $arrDataDecoded         = \json_decode(\urldecode($_POST['data']), true);
+
+    $strType                = $arrDataDecoded['type'];
+    $strChargeDescription   = $arrDataDecoded['charge_description'];
+    $strProductCost         = $arrDataDecoded['charge_amount'];
+    $strStripeTokenId       = $arrDataDecoded['stripe_token_id'];
+    $strStripeEmail         = $arrDataDecoded['stripe_email'];
+    $strCustomerName        = $arrDataDecoded['customer_name'];
+    $strCustomerPhone       = $arrDataDecoded['customer_phone'];
+    $strShippingAddress     = $arrDataDecoded['shipping_address'];
 
     if (!DBUtil::tbl__transactions__insert($strType,
                                            $strChargeDescription,

@@ -57,18 +57,26 @@ define(['jquery',
                 doXhrSubmit: function() {
                         var $xhr = $.post
                                       (model_orig__app_common.get('ajax_url'), {
-                                          'action':              'rainbow_pay_press__submit',
-                                          'type':                this.attributes['type'],
-                                          'charge_description':  this.attributes
-                                                                           ['charge_description'],
-                                          'charge_amount':       this.attributes['charge_amount'],
-                                          'stripe_token_id':     this.attributes
-                                                                              ['stripe_token_id'],
-                                          'stripe_email':        this.attributes['stripe_email'],
-                                          'customer_name':       this.attributes['customer_name'],
-                                          'customer_phone':      this.attributes['customer_phone'],
-                                          'shipping_address':    this.attributes
-                                                                              ['shipping_address']
+                                          'action':  'rainbow_pay_press__submit',
+                                          'data':    window.encodeURIComponent(
+                                                       window.JSON.stringify({
+                                                         'type':                this.attributes
+                                                                                        ['type'],
+                                                         'charge_description':  this.attributes
+                                                                                        ['charge_description'],
+                                                         'charge_amount':       this.attributes
+                                                                                        ['charge_amount'],
+                                                         'stripe_token_id':     this.attributes
+                                                                                        ['stripe_token_id'],
+                                                         'stripe_email':        this.attributes
+                                                                                        ['stripe_email'],
+                                                         'customer_name':       this.attributes
+                                                                                        ['customer_name'],
+                                                         'customer_phone':      this.attributes
+                                                                                        ['customer_phone'],
+                                                         'shipping_address':    this.attributes
+                                                                                        ['shipping_address']
+                                                       }))
                                       }),
                             me = this;
 
