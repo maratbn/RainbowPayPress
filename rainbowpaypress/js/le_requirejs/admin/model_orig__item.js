@@ -61,7 +61,12 @@ define(['backbone',
 
                         $xhr.success(function(strData) {
                                 var objData = JSON.parse(strData);
-                                if (!objData || !objData['success']) return;
+                                if (!objData || !objData['success']) {
+                                    window
+                                        .alert(
+                                            "Item was not updated due to a server-side error.");
+                                    return;
+                                }
 
                                 me.set(objData['item']);
                             });
