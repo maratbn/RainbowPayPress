@@ -171,7 +171,7 @@ class DBUtil {
                 currency varchar(20) NOT NULL,
                 stripe_token_id varchar(100) NOT NULL,
                 stripe_email varchar(200) NOT NULL,
-                customer_name varchar(200) NOT NULL,
+                customer_name varchar(200),
                 customer_phone varchar(100),
                 shipping_address varchar(300),
                 stripe_customer_id varchar(100),
