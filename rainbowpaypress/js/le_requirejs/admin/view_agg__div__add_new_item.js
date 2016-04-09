@@ -90,6 +90,18 @@ define(['backbone',
                                                 .append('<br>')
                                                 .append($buttonAnotherItem);
                                     } else {
+                                        var arrErrors = dataResponse['errors'];
+
+                                        if (arrErrors &&
+                                            arrErrors.indexOf('error__duplicate_handle') >= 0) {
+                                            window
+                                              .alert(
+                                                "Item was not added because there already exists another item with the desired handle \""
+                                                    + event.item_submit['handle']
+                                                    + "\".  Only unique item handles allowed.");
+                                            return;
+                                        }
+
                                         window
                                             .alert(
                                                 "Item was not added due to a server-side error.");
