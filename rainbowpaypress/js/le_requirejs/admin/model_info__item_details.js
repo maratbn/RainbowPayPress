@@ -49,9 +49,16 @@ define(['jquery',
                         var $xhr = $.post
                                       (model_orig__app_common.get('ajax_url'), {
                                           'action':       'rainbow_pay_press__admin__add_item',
-                                          'handle':       this.attributes['handle'],
-                                          'cost':         this.attributes['cost'],
-                                          'description':  this.attributes['description']
+                                          'data':         window.encodeURIComponent(
+                                                            window.JSON.stringify({
+                                                                'handle':  this.attributes
+                                                                                       ['handle'],
+                                                                'cost':    this.attributes
+                                                                                         ['cost'],
+                                                                'description':
+                                                                           this.attributes
+                                                                                   ['description']
+                                                              }))
                                       }),
                             me = this;
 

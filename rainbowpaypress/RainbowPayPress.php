@@ -255,9 +255,11 @@ function action_wp_ajax_rainbow_pay_press__admin__add_item() {
     $objItemAdded = null;
 
     if (\count($arrErrors) == 0) {
-        $strHandle       = $_POST['handle'];
-        $strDescription  = $_POST['description'];
-        $strCost         = $_POST['cost'];
+        $arrDataDecoded  = \json_decode(\urldecode($_POST['data']), true);
+
+        $strHandle       = $arrDataDecoded['handle'];
+        $strDescription  = $arrDataDecoded['description'];
+        $strCost         = $arrDataDecoded['cost'];
 
         $objItemAdded    = DBUtil::tbl__items__add($strHandle,
                                                    $strDescription,
