@@ -132,6 +132,12 @@ configured on your server.  Also check your SPAM folder.
 
 = 3.0.0 =
 * Fixed another date parsing bug that effected Firefox.
+* Database schema has been modified.  Table 'plugin_rainbow_pay_press_transactions' fields
+  'customer_name' and 'customer_phone' are now allowed to be NULL.  If upgrading, user should
+  examine the table schema to verify that these fields are now allowed to be NULL, and if not,
+  alter the table manually to allow these fields to be NULL.  User can use the Adminer plugin to
+  accomplish this.  Alternatively, user can disable the plugin, backup the data in the table,
+  delete the table, and re-enable the plugin to create the table anew.
 
 = 2.3.0 =
 * For better reliability and better server-side performance, loading the plugin's JavaScript logic
