@@ -61,9 +61,9 @@ define(['backbone',
 
                         $xhr.success(function(strData) {
                                 var objData = JSON.parse(strData);
-                                if (!objData || !objData.success) return;
+                                if (!objData || !objData['success']) return;
 
-                                me.set(objData.item);
+                                me.set(objData['item']);
                             });
                     }
             });
