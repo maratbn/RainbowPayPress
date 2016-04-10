@@ -700,6 +700,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                 if (\strlen($strRecipient) > 0) {
 
                     $strSiteURL          = \get_site_url();
+                    $strSubmissionTime   = $objTransaction['created'];
                     $strShippingAddress  = $objTransaction['shipping_address'];
 
                     \wp_mail(
@@ -715,7 +716,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                 \sprintf(
                                     \__('Submission timestamp: %s',
                                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                                    $objTransaction['created']),
+                                    $strSubmissionTime),
                                 "\r\n\r\n",
                                 \sprintf(
                                     \__('Stripe transaction type: %s',
