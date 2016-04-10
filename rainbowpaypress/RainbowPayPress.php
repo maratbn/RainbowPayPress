@@ -730,7 +730,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                               ' -- ',
                                               $objTransaction['customer_name'],
                                               ' -- ',
-                                              $strCustomerPhone,
+                                              $objTransaction['customer_phone'],
                                               ($strShippingAddress != "" ? (' -- ' .
                                                                             $strShippingAddress)
                                                                          : "")])),
