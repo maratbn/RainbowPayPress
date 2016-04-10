@@ -683,11 +683,9 @@ function action_wp_ajax_rainbow_pay_press__submit() {
 
     if (\count($arrErrors) == 0) {
 
-        $strProductCost        = $objItem['cost'];
-
         $idTransaction = DBUtil::tbl__transactions__insert($arrDataDecoded['type'],
                                                            $objItem['description'],
-                                                           $strProductCost,
+                                                           $objItem['cost'],
                                                            $strStripeTokenId,
                                                            $strStripeEmail,
                                                            $strCustomerName,
