@@ -67,14 +67,14 @@ define(['jquery',
                             }
                         } else {
                             (view_agg__div__transactionCached =
-                                                    new ViewAgg_Div_Transaction({
-                                                                type:          type,
-                                                                amount:        amount,
-                                                                name:          name,
-                                                                desc:          desc,
-                                                                info:          info,
-                                                                fields:        fields
-                                                            })).$el.appendTo($elSpan);
+                                new ViewAgg_Div_Transaction({
+                                            type:    type,
+                                            amount:  amount,
+                                            name:    name,
+                                            desc:    desc,
+                                            info:    info,
+                                            fields:  fields
+                                        })).$el.appendTo($elSpan);
                         }
                     });
             }
