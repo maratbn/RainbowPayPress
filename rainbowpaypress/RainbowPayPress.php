@@ -713,6 +713,11 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                     $strSiteURL),
                                 "\r\n\r\n",
                                 \sprintf(
+                                    \__('Submission timestamp: %s',
+                                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                                    $objTransaction['created']),
+                                "\r\n\r\n",
+                                \sprintf(
                                     \__('Stripe transaction type: %s',
                                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                                     $objTransaction['type']),
