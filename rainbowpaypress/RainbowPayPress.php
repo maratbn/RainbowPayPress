@@ -670,7 +670,6 @@ function action_wp_ajax_rainbow_pay_press__submit() {
     $arrDataDecoded         = \json_decode(\urldecode($_POST['data']), true);
 
     $strHandle              = $arrDataDecoded['handle'];
-    $strShippingAddress     = $arrDataDecoded['shipping_address'];
 
     $objItem = DBUtil::tbl__items__selectSpecificForHandle($strHandle);
     if (!$objItem) {
@@ -700,6 +699,9 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                 $strSiteURL    = \get_site_url();
 
                 if (\strlen($strRecipient) > 0) {
+
+                    $strShippingAddress = $objTransaction['shipping_address'];
+
                     \wp_mail(
                         $strRecipient,
                         \__('RainbowPayPress new pending transaction submitted at: ' . $strSiteURL,
