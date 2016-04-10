@@ -121,8 +121,8 @@ define([], function() {
                         if (!date_strings) return null;
 
                         return date_strings.weekday + ' ' + date_strings.date
-                                                    + '  ' + date_strings.time
-                                                    + '  ' + date_strings.tz;
+                                                    + ' ' + date_strings.time
+                                                    + ' ' + date_strings.tz;
                     }
             };
     });
