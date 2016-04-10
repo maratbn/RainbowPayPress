@@ -112,7 +112,18 @@ define([], function() {
         return {
                 formatCurrency:  _formatCurrency,
                 getDateStrings:  _getDateStrings,
-                parseDate:       _parseDate
+                parseDate:       _parseDate,
+
+
+                getDateRepr: function(date) {
+
+                        var date_strings = _getDateStrings(date);
+                        if (!date_strings) return null;
+
+                        return date_strings.weekday + ' ' + date_strings.date
+                                                    + '  ' + date_strings.time
+                                                    + '  ' + date_strings.tz;
+                    }
             };
     });
 

@@ -34,17 +34,6 @@
 
 define(['backbone', 'jquery', 'util'], function(backbone, $, util) {
 
-        function _getDateRepr(date) {
-
-            var date_strings = util.getDateStrings(date);
-            if (!date_strings) return null;
-
-            return date_strings.weekday + ' ' + date_strings.date
-                                       + '  ' + date_strings.time
-                                       + '  ' + date_strings.tz;
-        }
-
-
         return backbone.View.extend({
                 tagName: 'span',
 
