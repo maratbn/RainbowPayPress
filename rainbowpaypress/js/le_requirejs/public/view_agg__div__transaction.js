@@ -34,12 +34,14 @@
 
 define(['backbone',
         'jquery',
+        'util',
         'public/model_info__stripe_checkout',
         'public/model_info__transaction_details',
         'public/model_orig__fields',
         'public/view_agg__table__transaction_details'
     ], function(backbone,
                 $,
+                util,
                 model_info__stripe_checkout,
                 ModelInfo_TransactionDetails,
                 ModelOrig_Fields,
@@ -101,7 +103,9 @@ define(['backbone',
                                                                    });
                                         this.$el.text(
                                             "Your transaction has been submitted successfully on: "
-                                              + event.transaction['created']
+                                              + util.getDateRepr(
+                                                        util.parseDate(
+                                                                event.transaction['created']))
                                               + "  Your confirmation code is: "
                                               + model_info__transaction_details.get('stripe_token_id'))
                                                 .append('<br>')
