@@ -611,28 +611,28 @@ function action_wp_ajax_rainbow_pay_press__admin__update_config() {
     if (\count($arrErrors) == 0) {
         $objConfig = $_POST['config'];
 
-        if (array_key_exists('email_notifications', $objConfig)) {
+        if (\array_key_exists('email_notifications', $objConfig)) {
             \update_option(SETTING__EMAIL_NOTIFICATIONS,
                            $objConfig['email_notifications']);
         }
 
-        if (array_key_exists('flag_enable_email_notifications', $objConfig)) {
+        if (\array_key_exists('flag_enable_email_notifications', $objConfig)) {
             \update_option(SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS,
                            $objConfig['flag_enable_email_notifications']);
         }
 
-        if (array_key_exists('stripe_key_live_secret', $objConfig)) {
+        if (\array_key_exists('stripe_key_live_secret', $objConfig)) {
             \update_option(SETTING__STRIPE_LIVE_SECRET_KEY, $objConfig['stripe_key_live_secret']);
         }
-        if (array_key_exists('stripe_key_live_publish', $objConfig)) {
+        if (\array_key_exists('stripe_key_live_publish', $objConfig)) {
             \update_option(SETTING__STRIPE_LIVE_PUBLISH_KEY,
                            $objConfig['stripe_key_live_publish']);
         }
 
-        if (array_key_exists('stripe_key_test_secret', $objConfig)) {
+        if (\array_key_exists('stripe_key_test_secret', $objConfig)) {
             \update_option(SETTING__STRIPE_TEST_SECRET_KEY, $objConfig['stripe_key_test_secret']);
         }
-        if (array_key_exists('stripe_key_test_publish', $objConfig)) {
+        if (\array_key_exists('stripe_key_test_publish', $objConfig)) {
             \update_option(SETTING__STRIPE_TEST_PUBLISH_KEY,
                            $objConfig['stripe_key_test_publish']);
         }
