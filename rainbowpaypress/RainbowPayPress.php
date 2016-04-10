@@ -205,19 +205,19 @@ function action_admin_notices() {
     $wp_screen = \get_current_screen();
     if (!$wp_screen || $wp_screen->parent_base != SLUG_INFO_ROOT) return;
 
-    if (Util::isCurlAvailable()) return;
-
     $_renderWarning = function($strWarning) {
             ?><div class='notice notice-warning is-dismissible'><?php
               ?><p><?=\__('RainbowPayPress warning:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)
                     ?>  <?=$strWarning?></p></div><?php
         };
 
-    $_renderWarning(
-        \sprintf(
-            \__('Your PHP environment is lacking cURL support, without which it cannot communicate with the Stripe servers.  This will prevent you from charging your transactions with RainbowPayPress, for which you would need to enable PHP cURL support on your server.  If your server is running Debian or Ubuntu, this can be done by installing the package \'%s\'.',
-                DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-            'php5-curl'));
+    if (!Util::isCurlAvailable()) {
+        $_renderWarning(
+            \sprintf(
+                \__('Your PHP environment is lacking cURL support, without which it cannot communicate with the Stripe servers.  This will prevent you from charging your transactions with RainbowPayPress, for which you would need to enable PHP cURL support on your server.  If your server is running Debian or Ubuntu, this can be done by installing the package \'%s\'.',
+                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                'php5-curl'));
+    }
 }
 
 function action_admin_print_footer_scripts() {
