@@ -218,6 +218,18 @@ function action_admin_notices() {
                     DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                 'php5-curl'));
     }
+
+    if (Util::getOption(SETTING__ENTITY_NAME) == null) {
+        $_renderWarning(
+            \sprintf(
+                \__('Your %s is not configured, and this will prevent the RainbowPayPress shortcodes from working.  You can configure it on the %s.',
+                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                '<b>' . \__('site / company / organization name',
+                            DOMAIN_PLUGIN_RAINBOW_PAY_PRESS) . '</b>',
+                '<a href=\''
+                        . \admin_url('admin.php?page=' . SLUG_SETTINGS)
+                    . '\'>' . \__('settings page', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS) . '</a>'));
+    }
 }
 
 function action_admin_print_footer_scripts() {
