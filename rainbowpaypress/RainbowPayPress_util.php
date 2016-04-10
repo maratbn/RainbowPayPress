@@ -203,7 +203,7 @@ class DBUtil {
                             'customer_phone'       => $strCustomerPhone,
                             'shipping_address'     => $strShippingAddress])) return false;
 
-        return true;
+        return $wpdb->insert_id;
     }
 
     static function tbl__transactions__selectAll() {
