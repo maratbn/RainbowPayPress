@@ -686,14 +686,16 @@ function action_wp_ajax_rainbow_pay_press__submit() {
         $strChargeDescription  = $objItem['description'];
         $strProductCost        = $objItem['cost'];
 
-        if (DBUtil::tbl__transactions__insert($strType,
-                                              $strChargeDescription,
-                                              $strProductCost,
-                                              $strStripeTokenId,
-                                              $strStripeEmail,
-                                              $strCustomerName,
-                                              $strCustomerPhone,
-                                              $strShippingAddress) === false) {
+        $idTransaction = DBUtil::tbl__transactions__insert($strType,
+                                                           $strChargeDescription,
+                                                           $strProductCost,
+                                                           $strStripeTokenId,
+                                                           $strStripeEmail,
+                                                           $strCustomerName,
+                                                           $strCustomerPhone,
+                                                           $strShippingAddress);
+
+        if ($idTransaction === false) {
             \array_push($arrErrors, 'error__insert_transaction');
         }
     }
