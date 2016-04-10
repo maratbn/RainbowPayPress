@@ -676,6 +676,8 @@ function action_wp_ajax_rainbow_pay_press__submit() {
         \array_push($arrErrors, 'error__item_not_found');
     }
 
+    $objTransaction = null;
+
     if (\count($arrErrors) == 0) {
 
         $idTransaction = DBUtil::tbl__transactions__insert($arrDataDecoded['type'],
@@ -756,7 +758,9 @@ function action_wp_ajax_rainbow_pay_press__submit() {
         }
     }
 
-    die(json_encode(['success'      => (\count($arrErrors) == 0),
+    die(json_encode(['transaction'  => $objTransaction ? ['created' => $objTransaction['created']]
+                                                       : null,
+                     'success'      => (\count($arrErrors) == 0),
                      'errors'       => $arrErrors]));
 }
 
