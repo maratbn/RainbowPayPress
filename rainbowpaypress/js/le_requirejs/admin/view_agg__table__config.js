@@ -85,6 +85,13 @@ define(['jquery',
 
                         this.$el.append($("<tr>").append($("<th>").append($buttonRefresh)));
 
+                        (new ViewAgg_Tr_Config_Option_String({
+                                                field:   'entity_name',
+                                                label:   "Your site / company / organization name:",
+                                                prompt:  "Enter your site / company / organization name:"
+                                            })).$el
+                                               .appendTo(this.$el);
+
                         (new ViewAgg_Tr_Config_Option_Boolean({
                                                 field:   'flag_enable_email_notifications',
                                                 label:   "Enable email notifications:"

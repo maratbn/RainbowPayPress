@@ -106,6 +106,7 @@ define(['jquery',
                 model_orig__app_common.set('ajax_url', params.ajax_url);
 
                 model_orig__config.set({
+                        'entity_name':              params['entity_name'],
                         'email_notifications':      params['email_notifications'],
                         'flag_enable_email_notifications':
                                                     params['flag_enable_email_notifications'],
