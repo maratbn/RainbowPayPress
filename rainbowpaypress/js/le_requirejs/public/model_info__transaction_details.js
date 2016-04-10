@@ -83,7 +83,8 @@ define(['jquery',
                                 var objData = JSON.parse(strData);
 
                                 me.trigger('xhr__always__rainbow_pay_press__submit', {
-                                               success: objData && objData['success']
+                                               success:      objData && objData['success'],
+                                               transaction:  objData && objData['transaction']
                                            });
                             });
                     },
