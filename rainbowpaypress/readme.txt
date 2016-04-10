@@ -141,6 +141,8 @@ configured on your server.  Also check your SPAM folder.
 * Entity name is now specified in the global RainbowPayPress configuration rather than in each
   shortcode.
 * Fixed bug with resetting configuration settings to empty strings.
+* Shortcode syntax has changed.  Instead of specifying the cost amount and description of each item
+  in the shortcode, now only a pre-configured item handle is specified.
 
 = 2.3.0 =
 * For better reliability and better server-side performance, loading the plugin's JavaScript logic
