@@ -65,10 +65,6 @@ define(['jquery',
                                                                                         ['type'],
                                                          'handle':              this.attributes
                                                                                         ['handle'],
-                                                         'charge_description':  this.attributes
-                                                                                        ['charge_description'],
-                                                         'charge_amount':       this.attributes
-                                                                                        ['charge_amount'],
                                                          'stripe_token_id':     this.attributes
                                                                                         ['stripe_token_id'],
                                                          'stripe_email':        this.attributes
