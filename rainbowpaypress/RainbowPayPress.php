@@ -721,7 +721,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                 \sprintf(
                                     \__('Stripe transaction type: %s',
                                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                                    $strType),
+                                    $objTransaction['type']),
                                 "\r\n\r\n",
                                 \sprintf(
                                     \__('Charge: %s',
