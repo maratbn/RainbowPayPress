@@ -729,7 +729,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                                     \implode([$objTransaction['stripe_email'],
                                               ' -- ',
-                                              $strCustomerName,
+                                              $objTransaction['customer_name'],
                                               ' -- ',
                                               $strCustomerPhone,
                                               ($strShippingAddress != "" ? (' -- ' .
