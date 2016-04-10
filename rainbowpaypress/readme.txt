@@ -142,7 +142,9 @@ configured on your server.  Also check your SPAM folder.
   shortcode.
 * Fixed bug with resetting configuration settings to empty strings.
 * Shortcode syntax has changed.  Instead of specifying the cost amount and description of each item
-  in the shortcode, now only a pre-configured item handle is specified.
+  in the shortcode, now only a pre-configured item handle is specified.  Upon upgrading, users will
+  need to manually create the appropriate item records in the Items configuration, and to update
+  their shortcodes to include handles to their items.
 
 = 2.3.0 =
 * For better reliability and better server-side performance, loading the plugin's JavaScript logic
