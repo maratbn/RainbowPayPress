@@ -716,7 +716,11 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                 \sprintf(
                                     \__('Submission timestamp: %s',
                                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                                    $strSubmissionTime),
+                                    $strSubmissionTime ? ($strSubmissionTime .
+                                                          ' ' .
+                                                          \__('UTC',
+                                                              DOMAIN_PLUGIN_RAINBOW_PAY_PRESS))
+                                                       : 'unknown'),
                                 "\r\n\r\n",
                                 \sprintf(
                                     \__('Stripe transaction type: %s',
