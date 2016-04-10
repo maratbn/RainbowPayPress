@@ -726,7 +726,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                         DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                                     \implode([$objTransaction['charge_description'],
                                               ' -- ',
-                                              Util::formatUSD($strProductCost)])),
+                                              Util::formatUSD($objTransaction['charge_amount'])])),
                                 "\r\n\r\n",
                                 \sprintf(
                                     \__('Customer: %s',
