@@ -53,6 +53,7 @@ define(['backbone',
                 //                                                 (excluded fields preceded by !)
                 //  @param  params.name                 Name of the seller
                 //  @param  params.desc                 Product description
+                //  @param  params.handle               Item handle.
                 //  @param  params.info                 Miscellaneous additional information
                 initialize: function(params) {
 
@@ -71,7 +72,8 @@ define(['backbone',
                                 new ModelInfo_TransactionDetails({
                                             'type':                 params.type,
                                             'charge_description':   params.desc,
-                                            'charge_amount':        params.amount
+                                            'charge_amount':        params.amount,
+                                            'handle':               params.handle
                                         });
 
                             (new ViewAgg_Table_TransactionDetails({

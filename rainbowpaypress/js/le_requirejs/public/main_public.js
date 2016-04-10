@@ -80,7 +80,10 @@ define(['jquery',
                                                           'data-plugin-rainbow-pay-press-info'),
                                             fields:  $elSpan
                                                         .attr(
-                                                          'data-plugin-rainbow-pay-press-fields')
+                                                          'data-plugin-rainbow-pay-press-fields'),
+                                            handle:  $elSpan
+                                                        .attr(
+                                                          'data-plugin-rainbow-pay-press-handle')
                                         })).$el.appendTo($elSpan);
                         }
                     });

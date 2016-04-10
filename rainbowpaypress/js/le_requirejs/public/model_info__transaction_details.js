@@ -51,6 +51,7 @@ define(['jquery',
                         'stripe_email':         null,
                         'customer_name':        null,
                         'customer_phone':       null,
+                        'handle':               null,
                         'shipping_address':     null
                     },
 
@@ -62,6 +63,8 @@ define(['jquery',
                                                        window.JSON.stringify({
                                                          'type':                this.attributes
                                                                                         ['type'],
+                                                         'handle':              this.attributes
+                                                                                        ['handle'],
                                                          'charge_description':  this.attributes
                                                                                         ['charge_description'],
                                                          'charge_amount':       this.attributes
