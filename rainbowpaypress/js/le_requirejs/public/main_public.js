@@ -44,13 +44,7 @@ define(['jquery',
 
         function _processShortcodes() {
             function _processSpan($elSpan) {
-                var type    = $elSpan.attr('data-plugin-rainbow-pay-press-type') || 'test',
-                    amount  = $elSpan.attr('data-plugin-rainbow-pay-press-amount'),
-                    fields  = $elSpan.attr('data-plugin-rainbow-pay-press-fields'),
-                    name    = $elSpan.attr('data-plugin-rainbow-pay-press-name'),
-                    desc    = $elSpan.attr('data-plugin-rainbow-pay-press-desc'),
-                    info    = $elSpan.attr('data-plugin-rainbow-pay-press-info'),
-                    label   = $elSpan.attr('data-plugin-rainbow-pay-press-label');
+                var label   = $elSpan.attr('data-plugin-rainbow-pay-press-label');
 
                 var $buttonMakePayment = $('<button>').text(label || "Pay with Stripe")
                                                       .appendTo($elSpan),
@@ -68,12 +62,25 @@ define(['jquery',
                         } else {
                             (view_agg__div__transactionCached =
                                 new ViewAgg_Div_Transaction({
-                                            type:    type,
-                                            amount:  amount,
-                                            name:    name,
-                                            desc:    desc,
-                                            info:    info,
-                                            fields:  fields
+                                            type:    $elSpan
+                                                        .attr(
+                                                          'data-plugin-rainbow-pay-press-type')
+                                                      || 'test',
+                                            amount:  $elSpan
+                                                        .attr(
+                                                          'data-plugin-rainbow-pay-press-amount'),
+                                            name:    $elSpan
+                                                        .attr(
+                                                          'data-plugin-rainbow-pay-press-name'),
+                                            desc:    $elSpan
+                                                        .attr(
+                                                          'data-plugin-rainbow-pay-press-desc'),
+                                            info:    $elSpan
+                                                        .attr(
+                                                          'data-plugin-rainbow-pay-press-info'),
+                                            fields:  $elSpan
+                                                        .attr(
+                                                          'data-plugin-rainbow-pay-press-fields')
                                         })).$el.appendTo($elSpan);
                         }
                     });
