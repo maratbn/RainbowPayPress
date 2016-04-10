@@ -695,12 +695,12 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                 \array_push($arrErrors, 'error__select_transaction');
             } else if (Util::getFlagEnableEmailNotifications()) {
 
-                $strRecipient  = \get_option(SETTING__EMAIL_NOTIFICATIONS);
-                $strSiteURL    = \get_site_url();
+                $strRecipient = \get_option(SETTING__EMAIL_NOTIFICATIONS);
 
                 if (\strlen($strRecipient) > 0) {
 
-                    $strShippingAddress = $objTransaction['shipping_address'];
+                    $strSiteURL          = \get_site_url();
+                    $strShippingAddress  = $objTransaction['shipping_address'];
 
                     \wp_mail(
                         $strRecipient,
