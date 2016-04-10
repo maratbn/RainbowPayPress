@@ -799,11 +799,20 @@ function plugin_activation_hook() {
 function shortcode_rainbow_pay_press($atts) {
     if ($atts == null ||
         $atts['amount'] == null ||
-        $atts['desc'] == null ||
-        $atts['name'] == null) {
+        $atts['desc'] == null) {
         return '<b><i>' .
                \sprintf(
                    \__('Short-code [%s] missconfigured.',
+                       DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                   SHORTCODE__RAINBOW_PAY_PRESS) .
+               '</i></b>';
+    }
+
+    $strEntityName = Util::getOption(SETTING__ENTITY_NAME);
+    if ($strEntityName == null) {
+        return '<b><i>' .
+               \sprintf(
+                   \__('Short-code [%s] cannot be fully processed because entity name not configured.',
                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
                    SHORTCODE__RAINBOW_PAY_PRESS) .
                '</i></b>';
@@ -815,7 +824,7 @@ function shortcode_rainbow_pay_press($atts) {
                                                     '"') .
                 ' data-plugin-rainbow-pay-press-amount="' . \esc_attr($atts['amount']) .
                                                       '"' .
-                ' data-plugin-rainbow-pay-press-name="' . \esc_attr($atts['name']) .
+                ' data-plugin-rainbow-pay-press-name="' . \esc_attr($strEntityName) .
                                                     '"' .
                 ' data-plugin-rainbow-pay-press-desc="' . \esc_attr($atts['desc']) .
                                                     '"' .

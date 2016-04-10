@@ -292,7 +292,7 @@ class FragmentUtil {
     <div class="wrap">
       <h2><?=\__('Usage Info:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
       <p>Use the shortcode
-         <code>[<?=SHORTCODE__RAINBOW_PAY_PRESS?> type='<span style='color:red'>live</span>' amount=1234 name="My entity" desc="Buy this" label="Click to buy" fields='!phone shipping']</code>
+         <code>[<?=SHORTCODE__RAINBOW_PAY_PRESS?> type='<span style='color:red'>live</span>' amount=1234 desc="Buy this" label="Click to buy" fields='!phone shipping']</code>
          to embed a Stripe payment widget on
          any page or post.
       </p>
@@ -307,10 +307,6 @@ class FragmentUtil {
           <li>
             <code>amount</code>
             <p>The amount to charge in US cents.</p>
-          </li>
-          <li>
-            <code>name</code>
-            <p>Your site / company / organization name.</p>
           </li>
           <li>
             <code>desc</code>
