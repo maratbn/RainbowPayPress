@@ -686,7 +686,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                                            $arrDataDecoded['stripe_email'],
                                                            $arrDataDecoded['customer_name'],
                                                            $arrDataDecoded['customer_phone'],
-                                                           $strShippingAddress);
+                                                           $arrDataDecoded['shipping_address']);
 
         if ($idTransaction === false) {
             \array_push($arrErrors, 'error__insert_transaction');
