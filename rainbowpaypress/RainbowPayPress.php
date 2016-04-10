@@ -810,16 +810,6 @@ function plugin_activation_hook() {
 }
 
 function shortcode_rainbow_pay_press($atts) {
-    if ($atts == null ||
-        $atts['amount'] == null ||
-        $atts['desc'] == null) {
-        return '<b><i>' .
-               \sprintf(
-                   \__('Short-code [%s] missconfigured.',
-                       DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                   SHORTCODE__RAINBOW_PAY_PRESS) .
-               '</i></b>';
-    }
 
     $strEntityName = Util::getOption(SETTING__ENTITY_NAME);
     if ($strEntityName == null) {
@@ -831,15 +821,37 @@ function shortcode_rainbow_pay_press($atts) {
                '</i></b>';
     }
 
+    $strItemHandle = $atts ? $atts['item'] : null;
+    if ($strItemHandle == null) {
+        return '<b><i>' .
+               \sprintf(
+                   \__('Short-code [%s] cannot be fully processed because required parameter "%s" is not included.',
+                       DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                   SHORTCODE__RAINBOW_PAY_PRESS,
+                   'item') .
+               '</i></b>';
+    }
+
+    $objItem = DBUtil::tbl__items__selectSpecificForHandle($strItemHandle);
+    if (!$objItem) {
+        return '<b><i>' .
+               \sprintf(
+                   \__('Short-code [%s] cannot be fully processed because no item with the specified handle "%s" was found.',
+                       DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                   SHORTCODE__RAINBOW_PAY_PRESS,
+                   $strItemHandle) .
+               '</i></b>';
+    }
+
     return '<span data-plugin-rainbow-pay-press-role="root"' .
                 ($atts['type'] == null ? "" :
                 ' data-plugin-rainbow-pay-press-type="' . \esc_attr($atts['type']) .
                                                     '"') .
-                ' data-plugin-rainbow-pay-press-amount="' . \esc_attr($atts['amount']) .
+                ' data-plugin-rainbow-pay-press-amount="' . \esc_attr($objItem['cost']) .
                                                       '"' .
                 ' data-plugin-rainbow-pay-press-name="' . \esc_attr($strEntityName) .
                                                     '"' .
-                ' data-plugin-rainbow-pay-press-desc="' . \esc_attr($atts['desc']) .
+                ' data-plugin-rainbow-pay-press-desc="' . \esc_attr($objItem['description']) .
                                                     '"' .
 
                 ($atts['fields'] == null ? "" :

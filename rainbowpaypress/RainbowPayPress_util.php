@@ -292,7 +292,7 @@ class FragmentUtil {
     <div class="wrap">
       <h2><?=\__('Usage Info:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
       <p>Use the shortcode
-         <code>[<?=SHORTCODE__RAINBOW_PAY_PRESS?> type='<span style='color:red'>live</span>' amount=1234 desc="Buy this" label="Click to buy" fields='!phone shipping']</code>
+         <code>[<?=SHORTCODE__RAINBOW_PAY_PRESS?> type='<span style='color:red'>live</span>' item="handle" label="Click to buy" fields='!phone shipping']</code>
          to embed a Stripe payment widget on
          any page or post.
       </p>
@@ -305,12 +305,9 @@ class FragmentUtil {
         </style>
         <ul class='rpp_subitems'>
           <li>
-            <code>amount</code>
-            <p>The amount to charge in US cents.</p>
-          </li>
-          <li>
-            <code>desc</code>
-            <p>Description of the product / service / fee you're charging for.</p>
+            <code>item</code>
+            <p>The handle of the item to sell.  Items and their handles can be specified
+              <a href='<?=\admin_url('admin.php?page=' . SLUG_ITEMS)?>'>here</a>.</p>
           </li>
         </ul>
         <h5>Optional shortcode attributes:</h5>
