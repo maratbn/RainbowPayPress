@@ -669,7 +669,6 @@ function action_wp_ajax_rainbow_pay_press__submit() {
 
     $arrDataDecoded         = \json_decode(\urldecode($_POST['data']), true);
 
-    $strType                = $arrDataDecoded['type'];
     $strHandle              = $arrDataDecoded['handle'];
     $strStripeTokenId       = $arrDataDecoded['stripe_token_id'];
     $strStripeEmail         = $arrDataDecoded['stripe_email'];
@@ -687,7 +686,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
         $strChargeDescription  = $objItem['description'];
         $strProductCost        = $objItem['cost'];
 
-        $idTransaction = DBUtil::tbl__transactions__insert($strType,
+        $idTransaction = DBUtil::tbl__transactions__insert($arrDataDecoded['type'],
                                                            $strChargeDescription,
                                                            $strProductCost,
                                                            $strStripeTokenId,
