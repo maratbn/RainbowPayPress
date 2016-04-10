@@ -51,6 +51,7 @@ const PHP_VERSION_MIN_SUPPORTED = '5.4';
 
 const DOMAIN_PLUGIN_RAINBOW_PAY_PRESS = 'domain-plugin-RainbowPayPress';
 
+const SETTING__ENTITY_NAME           = 'plugin_RainbowPayPress__setting__entity_name';
 const SETTING__EMAIL_NOTIFICATIONS   = 'plugin_RainbowPayPress__setting__email_notifications';
 const SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS
                             = 'plugin_RainbowPayPress__setting__flag__enable_email_notifications';
@@ -618,6 +619,8 @@ function action_wp_ajax_rainbow_pay_press__admin__update_config() {
                 }
             };
 
+        $_updateConfigFieldIfNecessary(SETTING__ENTITY_NAME,
+                                       'entity_name');
         $_updateConfigFieldIfNecessary(SETTING__EMAIL_NOTIFICATIONS,
                                        'email_notifications');
         $_updateConfigFieldIfNecessary(SETTING__FLAG_ENABLE_EMAIL_NOTIFICATIONS,

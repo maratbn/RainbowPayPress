@@ -446,7 +446,8 @@ class Util {
     }
 
     static function getConfig() {
-        return ['email_notifications'     => Util::getOption(SETTING__EMAIL_NOTIFICATIONS),
+        return ['entity_name'             => Util::getOption(SETTING__ENTITY_NAME),
+                'email_notifications'     => Util::getOption(SETTING__EMAIL_NOTIFICATIONS),
                 'flag_enable_email_notifications'
                                           => Util::getFlagEnableEmailNotifications(),
                 'stripe_key_live_secret'  => Util::getOption(SETTING__STRIPE_LIVE_SECRET_KEY),
