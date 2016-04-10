@@ -145,6 +145,9 @@ configured on your server.  Also check your SPAM folder.
   in the shortcode, now only a pre-configured item handle is specified.  Upon upgrading, users will
   need to manually create the appropriate item records in the Items configuration, and to update
   their shortcodes to include handles to their items.
+* Shortcode syntax has changed.  The previous shortcode parameter 'fields' has been renamed to
+  'override_fields'.  Upon upgrading, users will need to manually modify their shortcodes to comply
+  with this latest parameter name.
 
 = 2.3.0 =
 * For better reliability and better server-side performance, loading the plugin's JavaScript logic
