@@ -752,8 +752,6 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                     \admin_url('admin.php?page=' . SLUG_TRANSACTIONS))
                             ]));
                 }
-
-
             }
         }
     }
