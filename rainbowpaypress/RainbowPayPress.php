@@ -671,7 +671,6 @@ function action_wp_ajax_rainbow_pay_press__submit() {
 
     $strHandle              = $arrDataDecoded['handle'];
     $strStripeTokenId       = $arrDataDecoded['stripe_token_id'];
-    $strStripeEmail         = $arrDataDecoded['stripe_email'];
     $strCustomerName        = $arrDataDecoded['customer_name'];
     $strCustomerPhone       = $arrDataDecoded['customer_phone'];
     $strShippingAddress     = $arrDataDecoded['shipping_address'];
@@ -687,7 +686,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
                                                            $objItem['description'],
                                                            $objItem['cost'],
                                                            $strStripeTokenId,
-                                                           $strStripeEmail,
+                                                           $arrDataDecoded['stripe_email'],
                                                            $strCustomerName,
                                                            $strCustomerPhone,
                                                            $strShippingAddress);
