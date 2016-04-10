@@ -71,7 +71,7 @@ define(['admin/view_agg__tr__config__option',
                                                                       model_orig__config
                                                                                 .get(params.field)
                                                                       || "");
-                                        if (!strValNew) return;
+                                        if (strValNew == null) return;
 
                                         var objConfig = {};
                                         objConfig[params.field] = strValNew;
