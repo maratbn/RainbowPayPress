@@ -100,7 +100,9 @@ define(['backbone',
                                                                      _doTransactionCycle.call(me);
                                                                    });
                                         this.$el.text(
-                                            "Your transaction has been submitted successfully.  Your confirmation code is: "
+                                            "Your transaction has been submitted successfully at: "
+                                              + event.transaction['created']
+                                              + "  Your confirmation code is: "
                                               + model_info__transaction_details.get('stripe_token_id'))
                                                 .append('<br>')
                                                 .append($buttonAnotherTransaction);
