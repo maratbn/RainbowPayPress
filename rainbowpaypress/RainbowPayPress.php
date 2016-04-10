@@ -756,8 +756,8 @@ function action_wp_ajax_rainbow_pay_press__submit() {
         }
     }
 
-    die(json_encode(['success'  => (\count($arrErrors) == 0),
-                     'errors'   => $arrErrors]));
+    die(json_encode(['success'      => (\count($arrErrors) == 0),
+                     'errors'       => $arrErrors]));
 }
 
 function action_wp_enqueue_scripts() {
