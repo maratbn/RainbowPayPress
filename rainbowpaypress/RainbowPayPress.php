@@ -660,8 +660,8 @@ function action_wp_ajax_rainbow_pay_press__admin__update_config() {
 
 function action_wp_ajax_rainbow_pay_press__submit() {
     /** Possible errors:
-     *      error__insert_transaction
      *      error__item_not_found
+     *      error__insert_transaction
      **/
 
     $arrErrors = [];
