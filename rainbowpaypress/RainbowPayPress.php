@@ -883,8 +883,8 @@ function shortcode_rainbow_pay_press($atts) {
                 ' data-plugin-rainbow-pay-press-handle="' . \esc_attr($strItemHandle) .
                                                       '"' .
 
-                ($atts['fields'] == null ? "" :
-                ' data-plugin-rainbow-pay-press-fields="' . \esc_attr($atts['fields']) .
+                ($atts['override_fields'] == null ? "" :
+                ' data-plugin-rainbow-pay-press-fields="' . \esc_attr($atts['override_fields']) .
                                                      '"') .
 
                 ($atts['info'] == null ? "" :

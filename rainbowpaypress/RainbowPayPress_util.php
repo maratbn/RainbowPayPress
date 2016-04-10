@@ -292,7 +292,7 @@ class FragmentUtil {
     <div class="wrap">
       <h2><?=\__('Usage Info:', DOMAIN_PLUGIN_RAINBOW_PAY_PRESS)?></h2>
       <p>Use the shortcode
-         <code>[<?=SHORTCODE__RAINBOW_PAY_PRESS?> type='<span style='color:red'>live</span>' item="handle" label="Click to buy" fields='!phone shipping']</code>
+         <code>[<?=SHORTCODE__RAINBOW_PAY_PRESS?> type='<span style='color:red'>live</span>' item="handle" label="Click to buy" override_fields='!phone shipping']</code>
          to embed a Stripe payment widget on
          any page or post.
       </p>
@@ -333,7 +333,7 @@ class FragmentUtil {
             <p>Stripe payment button label, otherwise defaults to "Pay with card" or similar.</p>
           </li>
           <li>
-            <code>fields</code>
+            <code>override_fields</code>
             <p>
               Overrides default settings for which fields to include or exclude on the buyer entry form.
               Available fields:
