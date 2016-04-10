@@ -138,6 +138,8 @@ configured on your server.  Also check your SPAM folder.
   alter the table manually to allow these fields to be NULL.  User can use the Adminer plugin to
   accomplish this.  Alternatively, user can disable the plugin, backup the data in the table,
   delete the table, and re-enable the plugin to create the table anew.
+* Entity name is now specified in the global RainbowPayPress configuration rather than in each
+  shortcode.
 
 = 2.3.0 =
 * For better reliability and better server-side performance, loading the plugin's JavaScript logic
