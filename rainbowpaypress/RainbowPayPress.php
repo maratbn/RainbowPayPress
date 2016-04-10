@@ -662,6 +662,7 @@ function action_wp_ajax_rainbow_pay_press__submit() {
     /** Possible errors:
      *      error__item_not_found
      *      error__insert_transaction
+     *      error__select_transaction
      **/
 
     $arrErrors = [];
@@ -697,52 +698,59 @@ function action_wp_ajax_rainbow_pay_press__submit() {
 
         if ($idTransaction === false) {
             \array_push($arrErrors, 'error__insert_transaction');
-        }
-    }
+        } else {
+            $objTransaction = DBUtil::tbl__transactions__selectSpecific($idTransaction);
+            if (!$objTransaction) {
+                \array_push($arrErrors, 'error__select_transaction');
+            } else if (Util::getFlagEnableEmailNotifications()) {
 
-    if (\count($arrErrors) == 0 && Util::getFlagEnableEmailNotifications()) {
-        $strRecipient  = \get_option(SETTING__EMAIL_NOTIFICATIONS);
-        $strSiteURL    = \get_site_url();
+                $strRecipient  = \get_option(SETTING__EMAIL_NOTIFICATIONS);
+                $strSiteURL    = \get_site_url();
 
-        if (\strlen($strRecipient) > 0) {
-            \wp_mail(
-                $strRecipient,
-                \__('RainbowPayPress new pending transaction submitted at: ' . $strSiteURL,
-                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                \implode([
-                        \sprintf(
-                            \__('New pending transaction has been submitted via the RainbowPayPress plugin installed onto the WordPress website at: %s',
-                                DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                            $strSiteURL),
-                        "\r\n\r\n",
-                        \sprintf(
-                            \__('Stripe transaction type: %s',
-                                DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                            $strType),
-                        "\r\n\r\n",
-                        \sprintf(
-                            \__('Charge: %s',
-                                DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                            \implode([$strChargeDescription,
-                                      ' -- ',
-                                      Util::formatUSD($strProductCost)])),
-                        "\r\n\r\n",
-                        \sprintf(
-                            \__('Customer: %s',
-                                DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                            \implode([$strStripeEmail,
-                                      ' -- ',
-                                      $strCustomerName,
-                                      ' -- ',
-                                      $strCustomerPhone,
-                                      ($strShippingAddress != "" ? (' -- ' . $strShippingAddress)
-                                                                 : "")])),
-                        "\r\n\r\n",
-                        \sprintf(
-                            \__('View / charge / delete this transaction at: %s',
-                                DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                            \admin_url('admin.php?page=' . SLUG_TRANSACTIONS))
-                    ]));
+                if (\strlen($strRecipient) > 0) {
+                    \wp_mail(
+                        $strRecipient,
+                        \__('RainbowPayPress new pending transaction submitted at: ' . $strSiteURL,
+                            DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                        \implode([
+                                \sprintf(
+                                    \__('New pending transaction has been submitted via the RainbowPayPress plugin installed onto the WordPress website at: %s',
+                                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                                    $strSiteURL),
+                                "\r\n\r\n",
+                                \sprintf(
+                                    \__('Stripe transaction type: %s',
+                                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                                    $strType),
+                                "\r\n\r\n",
+                                \sprintf(
+                                    \__('Charge: %s',
+                                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                                    \implode([$strChargeDescription,
+                                              ' -- ',
+                                              Util::formatUSD($strProductCost)])),
+                                "\r\n\r\n",
+                                \sprintf(
+                                    \__('Customer: %s',
+                                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                                    \implode([$strStripeEmail,
+                                              ' -- ',
+                                              $strCustomerName,
+                                              ' -- ',
+                                              $strCustomerPhone,
+                                              ($strShippingAddress != "" ? (' -- ' .
+                                                                            $strShippingAddress)
+                                                                         : "")])),
+                                "\r\n\r\n",
+                                \sprintf(
+                                    \__('View / charge / delete this transaction at: %s',
+                                        DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                                    \admin_url('admin.php?page=' . SLUG_TRANSACTIONS))
+                            ]));
+                }
+
+
+            }
         }
     }
 
