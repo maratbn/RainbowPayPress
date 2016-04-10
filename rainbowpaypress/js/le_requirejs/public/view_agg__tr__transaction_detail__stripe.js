@@ -4,7 +4,7 @@
 
   Copyright (C) 2015-2016  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
 
-  Version:        2.4.0-development_unreleased
+  Version:        3.0.0-development_unreleased
 
   Module:         rainbowpaypress/js/le_requirejs/admin/view_agg__tr__transaction_detail__stripe.js
 

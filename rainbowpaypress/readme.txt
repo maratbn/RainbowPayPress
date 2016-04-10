@@ -130,7 +130,7 @@ configured on your server.  Also check your SPAM folder.
 
 == Changelog ==
 
-= 2.4.0 =
+= 3.0.0 =
 * Fixed another date parsing bug that effected Firefox.
 
 = 2.3.0 =
