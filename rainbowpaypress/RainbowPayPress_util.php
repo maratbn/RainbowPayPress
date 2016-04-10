@@ -335,7 +335,7 @@ class FragmentUtil {
           <li>
             <code>fields</code>
             <p>
-              Specifies which fields to include or exclude on the buyer entry form.
+              Overrides default settings for which fields to include or exclude on the buyer entry form.
               Available fields:
               <ul class='rpp_subitems'>
                 <li>
