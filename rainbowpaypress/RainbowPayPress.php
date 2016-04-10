@@ -661,6 +661,7 @@ function action_wp_ajax_rainbow_pay_press__admin__update_config() {
 function action_wp_ajax_rainbow_pay_press__submit() {
     /** Possible errors:
      *      error__insert_transaction
+     *      error__item_not_found
      **/
 
     $arrErrors = [];
@@ -668,23 +669,33 @@ function action_wp_ajax_rainbow_pay_press__submit() {
     $arrDataDecoded         = \json_decode(\urldecode($_POST['data']), true);
 
     $strType                = $arrDataDecoded['type'];
-    $strChargeDescription   = $arrDataDecoded['charge_description'];
-    $strProductCost         = $arrDataDecoded['charge_amount'];
+    $strHandle              = $arrDataDecoded['handle'];
     $strStripeTokenId       = $arrDataDecoded['stripe_token_id'];
     $strStripeEmail         = $arrDataDecoded['stripe_email'];
     $strCustomerName        = $arrDataDecoded['customer_name'];
     $strCustomerPhone       = $arrDataDecoded['customer_phone'];
     $strShippingAddress     = $arrDataDecoded['shipping_address'];
 
-    if (!DBUtil::tbl__transactions__insert($strType,
-                                           $strChargeDescription,
-                                           $strProductCost,
-                                           $strStripeTokenId,
-                                           $strStripeEmail,
-                                           $strCustomerName,
-                                           $strCustomerPhone,
-                                           $strShippingAddress)) {
-        \array_push($arrErrors, 'error__insert_transaction');
+    $objItem = DBUtil::tbl__items__selectSpecificForHandle($strHandle);
+    if (!$objItem) {
+        \array_push($arrErrors, 'error__item_not_found');
+    }
+
+    if (\count($arrErrors) == 0) {
+
+        $strChargeDescription  = $objItem['description'];
+        $strProductCost        = $objItem['cost'];
+
+        if (!DBUtil::tbl__transactions__insert($strType,
+                                               $strChargeDescription,
+                                               $strProductCost,
+                                               $strStripeTokenId,
+                                               $strStripeEmail,
+                                               $strCustomerName,
+                                               $strCustomerPhone,
+                                               $strShippingAddress)) {
+            \array_push($arrErrors, 'error__insert_transaction');
+        }
     }
 
     if (\count($arrErrors) == 0 && Util::getFlagEnableEmailNotifications()) {
