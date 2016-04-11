@@ -110,6 +110,10 @@ define(['backbone',
                                               + model_info__transaction_details.get('stripe_token_id'))
                                                 .append('<br>')
                                                 .append($buttonAnotherTransaction);
+                                    } else {
+                                        window
+                                          .alert(
+                                            "Your transaction was not submitted due to server-side error(s).  Contact support.");
                                     }
                                 });
                         }
