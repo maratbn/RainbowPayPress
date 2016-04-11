@@ -109,12 +109,20 @@ define(['util',
                                                                     model:        model_orig__item,
                                                                     field:        'is_disallowed',
                                                                     text_modify:  "Toggle"
+                                                                }),
+
+                            view_agg__td__detailDisallowedReason
+                                                        = new ViewAgg_Td_Detail({
+                                                                    model:        model_orig__item,
+                                                                    field:        'disallowed_reason',
+                                                                    text_modify:  "Modify..."
                                                                 });
 
                         this.$el.append(view_agg__td__detailHandle.$el)
                                 .append(view_agg__td__detailCost.$el)
                                 .append(view_agg__td__detailDesc.$el)
-                                .append(view_agg__td__detailIsDisallowed.$el);
+                                .append(view_agg__td__detailIsDisallowed.$el)
+                                .append(view_agg__td__detailDisallowedReason.$el);
 
 
                         this.listenTo(view_agg__td__detailHandle, 'click_modify', function() {
@@ -164,6 +172,20 @@ define(['util',
                                     model_orig__item.doXhrUpdate({
                                             'is_disallowed': !model_orig__item.get('is_disallowed')
                                         });
+                                });
+
+                        this.listenTo(view_agg__td__detailDisallowedReason, 'click_modify',
+                                function() {
+                                    var strReasonNew = window.prompt(
+                                                                "Enter disallowed reason:",
+                                                                model_orig__item
+                                                                         .get('disallowed_reason')
+                                                                || "");
+                                    if (strReasonNew == null) return;
+
+                                    model_orig__item.doXhrUpdate({
+                                                            'disallowed_reason': strReasonNew
+                                                        });
                                 });
                     },
 
