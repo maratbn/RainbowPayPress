@@ -115,7 +115,7 @@ define(['backbone',
                                               "Your transaction could not be submitted due to server-side error(s).  Contact support.";
 
                                         if (event.errors) {
-                                            strError += "  Actual reported errors: ";
+                                            strError += "  Actual errors reported: ";
                                             strError += event.errors.join(' ');
                                         }
 
