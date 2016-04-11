@@ -661,6 +661,7 @@ function action_wp_ajax_rainbow_pay_press__admin__update_config() {
 function action_wp_ajax_rainbow_pay_press__submit() {
     /** Possible errors:
      *      error__item_not_found
+     *      error__item_disallowed
      *      error__insert_transaction
      *      error__select_transaction
      **/
@@ -672,7 +673,9 @@ function action_wp_ajax_rainbow_pay_press__submit() {
     $strHandle              = $arrDataDecoded['handle'];
 
     $objItem = DBUtil::tbl__items__selectSpecificForHandle($strHandle);
-    if (!$objItem) {
+    if ($objItem) {
+        \array_push($arrErrors, 'error__item_disallowed');
+    } else {
         \array_push($arrErrors, 'error__item_not_found');
     }
 
