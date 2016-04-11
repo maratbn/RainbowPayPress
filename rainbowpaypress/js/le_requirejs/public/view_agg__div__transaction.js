@@ -112,6 +112,14 @@ define(['backbone',
                                                 .append('<br>')
                                                 .append($buttonAnotherTransaction);
                                     } else {
+                                        if (event.errors &&
+                                            event.errors.indexOf('error__item_disallowed') >= 0) {
+                                            window
+                                              .alert(
+                                                "Your transaction could not be submitted because this item has been marked as disallowed for purchase.");
+                                            return;
+                                        }
+
                                         var strError =
                                               "Your transaction could not be submitted due to server-side error(s).  Contact support.";
 
