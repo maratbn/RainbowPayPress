@@ -104,7 +104,8 @@ class DBUtil {
                                           handle,
                                           cost,
                                           description,
-                                          is_disallowed
+                                          is_disallowed,
+                                          disallowed_reason
                                      FROM $strTableName", ARRAY_A);
     }
 
@@ -116,7 +117,8 @@ class DBUtil {
                                                              handle,
                                                              cost,
                                                              description,
-                                                             is_disallowed
+                                                             is_disallowed,
+                                                             disallowed_reason
                                                         FROM $strTableName
                                                        WHERE id=%d",
                                                      $id),
@@ -134,7 +136,8 @@ class DBUtil {
                                                              handle,
                                                              cost,
                                                              description,
-                                                             is_disallowed
+                                                             is_disallowed,
+                                                             disallowed_reason
                                                         FROM $strTableName
                                                        WHERE handle=%s",
                                                      $handle),
@@ -471,11 +474,12 @@ class Util {
     static function translateItem($objItemDB) {
         if (!$objItemDB) return null;
 
-        return ['id'             => $objItemDB['id'],
-                'handle'         => $objItemDB['handle'],
-                'description'    => $objItemDB['description'],
-                'cost'           => \intval($objItemDB['cost']),
-                'is_disallowed'  => $objItemDB['is_disallowed'] ? true : false];
+        return ['id'                 => $objItemDB['id'],
+                'handle'             => $objItemDB['handle'],
+                'description'        => $objItemDB['description'],
+                'cost'               => \intval($objItemDB['cost']),
+                'is_disallowed'      => $objItemDB['is_disallowed'] ? true : false,
+                'disallowed_reason'  => $objItemDB['disallowed_reason']];
     }
 
     static function translateItems($arrItems) {
