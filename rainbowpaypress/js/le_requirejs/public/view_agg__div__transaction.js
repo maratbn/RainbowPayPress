@@ -113,6 +113,12 @@ define(['backbone',
                                     } else {
                                         var strError =
                                               "Your transaction was not submitted due to server-side error(s).  Contact support.";
+
+                                        if (event.errors) {
+                                            strError += "  Actual reported errors: ";
+                                            strError += event.errors.join(' ');
+                                        }
+
                                         window.alert(strError);
                                     }
                                 });
