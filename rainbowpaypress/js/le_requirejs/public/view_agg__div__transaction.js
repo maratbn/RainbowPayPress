@@ -112,7 +112,7 @@ define(['backbone',
                                                 .append($buttonAnotherTransaction);
                                     } else {
                                         var strError =
-                                              "Your transaction was not submitted due to server-side error(s).  Contact support.";
+                                              "Your transaction could not be submitted due to server-side error(s).  Contact support.";
 
                                         if (event.errors) {
                                             strError += "  Actual reported errors: ";
