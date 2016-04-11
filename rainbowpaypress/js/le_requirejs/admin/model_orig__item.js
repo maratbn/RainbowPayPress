@@ -44,7 +44,8 @@ define(['backbone',
                         'id':                   null,
                         'handle':               null,
                         'description':          null,
-                        'cost':                 null
+                        'cost':                 null,
+                        'is_disallowed':        null
                     },
 
                 doXhrUpdate: function(objDataUpdate) {

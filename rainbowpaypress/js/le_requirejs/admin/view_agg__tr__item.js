@@ -91,11 +91,25 @@ define(['util',
                                                                     model:        model_orig__item,
                                                                     field:        'description',
                                                                     text_modify:  "Modify..."
+                                                                }),
+
+                            view_agg__td__detailIsDisallowed
+                                                        = new ViewAgg_Td_Detail({
+                                                                    callback_format_value:
+                                                                        function(value) {
+                                                                            return value ? "Yes"
+                                                                                         : "No";
+                                                                        },
+
+                                                                    model:        model_orig__item,
+                                                                    field:        'is_disallowed',
+                                                                    text_modify:  "Toggle"
                                                                 });
 
                         this.$el.append(view_agg__td__detailHandle.$el)
                                 .append(view_agg__td__detailCost.$el)
-                                .append(view_agg__td__detailDesc.$el);
+                                .append(view_agg__td__detailDesc.$el)
+                                .append(view_agg__td__detailIsDisallowed.$el);
 
 
                         this.listenTo(view_agg__td__detailHandle, 'click_modify', function() {
@@ -139,6 +153,12 @@ define(['util',
                                     if (!strDescNew) return;
 
                                     model_orig__item.doXhrUpdate({'description': strDescNew});
+                                });
+
+                        this.listenTo(view_agg__td__detailIsDisallowed, 'click_modify', function() {
+                                    model_orig__item.doXhrUpdate({
+                                            'is_disallowed': !model_orig__item.get('is_disallowed')
+                                        });
                                 });
                     },
 

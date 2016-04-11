@@ -62,6 +62,7 @@ define(['jquery',
                                  .append($('<th>').text("Handle:"))
                                  .append($('<th>').text("Cost:"))
                                  .append($('<th>').text("Description:"))
+                                 .append($('<th>').text("Is disallowed?"))
                                  .appendTo($('<thead>').appendTo(this.$el));
 
 
