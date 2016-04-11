@@ -290,7 +290,7 @@ function action_wp_ajax_rainbow_pay_press__admin__add_item() {
         }
     }
 
-    die(json_encode(['item'     => $objItemAdded,
+    die(json_encode(['item'     => Util::translateItem($objItemAdded),
                      'success'  => (\count($arrErrors) == 0),
                      'errors'   => $arrErrors]));
 }
@@ -499,7 +499,7 @@ function action_wp_ajax_rainbow_pay_press__admin__get_items() {
 
     die(\json_encode(['success'       => (\count($arrErrors) == 0),
                       'errors'        => $arrErrors,
-                      'items'         => $arrItems]));
+                      'items'         => Util::translateItems($arrItems)]));
 }
 
 function action_wp_ajax_rainbow_pay_press__admin__get_transactions() {
@@ -558,7 +558,7 @@ function action_wp_ajax_rainbow_pay_press__admin__modify_item() {
 
     die(\json_encode(['success'  => (\count($arrErrors) == 0),
                       'errors'   => $arrErrors,
-                      'item'     => $item]));
+                      'item'     => Util::translateItem($item)]));
 }
 
 function action_wp_ajax_rainbow_pay_press__admin__send_test_email() {

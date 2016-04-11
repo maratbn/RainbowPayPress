@@ -466,5 +466,27 @@ class Util {
     static function isCurlAvailable() {
         return \function_exists('\\curl_init');
     }
+
+    static function translateItem($objItemDB) {
+        if (!$objItemDB) return null;
+
+        return ['id'             => $objItemDB['id'],
+                'handle'         => $objItemDB['handle'],
+                'description'    => $objItemDB['description'],
+                'cost'           => \intval($objItemDB['cost']),
+                'is_disallowed'  => $objItemDB['is_disallowed'] ? true : false];
+    }
+
+    static function translateItems($arrItems) {
+        if (!$arrItems) return null;
+
+        $arrItemsTranslated = [];
+
+        foreach ($arrItems as $objItem) {
+            \array_push($arrItemsTranslated, Util::translateItem($objItem));
+        }
+
+        return $arrItemsTranslated;
+    }
 }
 ?>
