@@ -44,7 +44,7 @@ define(['backbone',
                         'id':                   null,
                         'handle':               null,
                         'description':          null,
-                        'amount':               null
+                        'cost':                 null
                     },
 
                 doXhrUpdate: function(objDataUpdate) {
