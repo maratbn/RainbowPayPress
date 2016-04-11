@@ -102,7 +102,8 @@ class DBUtil {
         return $wpdb->get_results("SELECT id,
                                           handle,
                                           cost,
-                                          description
+                                          description,
+                                          is_disallowed
                                      FROM $strTableName", ARRAY_A);
     }
 
@@ -113,7 +114,8 @@ class DBUtil {
         $arrItem = $wpdb->get_results($wpdb->prepare("SELECT id,
                                                              handle,
                                                              cost,
-                                                             description
+                                                             description,
+                                                             is_disallowed
                                                         FROM $strTableName
                                                        WHERE id=%d",
                                                      $id),
@@ -130,7 +132,8 @@ class DBUtil {
         $arrItem = $wpdb->get_results($wpdb->prepare("SELECT id,
                                                              handle,
                                                              cost,
-                                                             description
+                                                             description,
+                                                             is_disallowed
                                                         FROM $strTableName
                                                        WHERE handle=%s",
                                                      $handle),
