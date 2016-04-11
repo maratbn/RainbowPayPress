@@ -673,8 +673,13 @@ function action_wp_ajax_rainbow_pay_press__submit() {
     $strHandle              = $arrDataDecoded['handle'];
 
     $objItem = DBUtil::tbl__items__selectSpecificForHandle($strHandle);
+
+    $strDisallowedReason = null;
+
     if ($objItem) {
         \array_push($arrErrors, 'error__item_disallowed');
+
+        $strDisallowedReason = $objItem['disallowed_reason'];
     } else {
         \array_push($arrErrors, 'error__item_not_found');
     }
@@ -761,10 +766,12 @@ function action_wp_ajax_rainbow_pay_press__submit() {
         }
     }
 
-    die(json_encode(['transaction'  => $objTransaction ? ['created' => $objTransaction['created']]
-                                                       : null,
-                     'success'      => (\count($arrErrors) == 0),
-                     'errors'       => $arrErrors]));
+    die(json_encode(['transaction'        => $objTransaction
+                                           ? ['created' => $objTransaction['created']]
+                                           : null,
+                     'success'            => (\count($arrErrors) == 0),
+                     'errors'             => $arrErrors,
+                     'disallowed_reason'  => $strDisallowedReason]));
 }
 
 function action_wp_enqueue_scripts() {
