@@ -95,6 +95,11 @@ define(['util',
 
                             view_agg__td__detailIsDisallowed
                                                         = new ViewAgg_Td_Detail({
+                                                                    callback_decide_color:
+                                                                        function(value) {
+                                                                            return value ? 'red'
+                                                                                         : 'black';
+                                                                        },
                                                                     callback_format_value:
                                                                         function(value) {
                                                                             return value ? "Yes"

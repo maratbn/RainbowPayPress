@@ -37,6 +37,8 @@ define(['backbone', 'jquery'], function (backbone, $) {
         return backbone.View.extend({
                 tagName: 'td',
 
+                //  @param  params.callback_decide_color
+                //                                  Optional color-deciding callback.
                 //  @param  params.callback_format_value
                 //                                  Optional value formatting callback.
                 //  @param  params.model
@@ -82,6 +84,10 @@ define(['backbone', 'jquery'], function (backbone, $) {
 
                         function _updateValue() {
                             var value = model.get(field);
+
+                            if (params.callback_decide_color) {
+                                $divValue.css('color', params.callback_decide_color(value));
+                            }
 
                             if (params.callback_format_value) {
                                 value = params.callback_format_value(value);
