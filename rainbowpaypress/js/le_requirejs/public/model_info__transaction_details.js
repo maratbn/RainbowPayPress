@@ -85,7 +85,9 @@ define(['jquery',
                                 me.trigger('xhr__always__rainbow_pay_press__submit', {
                                                errors:       objData && objData['errors'],
                                                success:      objData && objData['success'],
-                                               transaction:  objData && objData['transaction']
+                                               transaction:  objData && objData['transaction'],
+                                               disallowed_reason:
+                                                             objData && objData['disallowed_reason']
                                            });
                             });
                     },

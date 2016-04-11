@@ -117,6 +117,12 @@ define(['backbone',
 
                                             var strErrorDisallowed =
                                                   "Your transaction could not be submitted because this item has been marked as disallowed for purchase.";
+
+                                            if (event.disallowed_reason) {
+                                                strErrorDisallowed += "Disallowed reason: ";
+                                                strErrorDisallowed += event.disallowed_reason;
+                                            }
+
                                             window.alert(strErrorDisallowed);
                                             return;
                                         }
