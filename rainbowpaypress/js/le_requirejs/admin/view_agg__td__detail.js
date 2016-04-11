@@ -93,7 +93,11 @@ define(['backbone', 'jquery'], function (backbone, $) {
                                 value = params.callback_format_value(value);
                             }
 
-                            $divValue.text(value || "");
+                            if (value) {
+                                $divValue.text(value);
+                            } else {
+                                $divValue.html('&nbsp;');
+                            }
                         }
 
                         _updateValue.call(this);
