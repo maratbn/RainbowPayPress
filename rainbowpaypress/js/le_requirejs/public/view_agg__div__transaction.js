@@ -111,9 +111,9 @@ define(['backbone',
                                                 .append('<br>')
                                                 .append($buttonAnotherTransaction);
                                     } else {
-                                        window
-                                          .alert(
-                                            "Your transaction was not submitted due to server-side error(s).  Contact support.");
+                                        var strError =
+                                              "Your transaction was not submitted due to server-side error(s).  Contact support.";
+                                        window.alert(strError);
                                     }
                                 });
                         }
