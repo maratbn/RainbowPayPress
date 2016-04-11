@@ -107,7 +107,8 @@ define(['backbone',
                                                         util.parseDate(
                                                                 event.transaction['created']))
                                               + "  Your confirmation code is: "
-                                              + model_info__transaction_details.get('stripe_token_id'))
+                                              + model_info__transaction_details
+                                                                          .get('stripe_token_id'))
                                                 .append('<br>')
                                                 .append($buttonAnotherTransaction);
                                     } else {
