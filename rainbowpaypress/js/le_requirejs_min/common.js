@@ -1,0 +1,1 @@
+(function(e){e(["backbone","jquery","underscore","util"],function(){})})(_plugin_RainbowPayPress__define);
