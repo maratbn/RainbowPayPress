@@ -89,7 +89,8 @@ class DBUtil {
                 cost int NOT NULL,
                 currency varchar(20) NOT NULL,
                 description varchar(1000) NOT NULL,
-                is_disallowed boolean
+                is_disallowed boolean,
+                disallowed_reason varchar(1000)
             );";
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
