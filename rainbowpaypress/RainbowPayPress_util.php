@@ -5,7 +5,7 @@
 
   Copyright (C) 2015-2016  Marat Nepomnyashy  http://maratbn.com  maratbn@gmail
 
-  Version:        3.0.0
+  Version:        3.0.1-development_unreleased_candidate
 
   Module:         rainbowpaypress/RainbowPayPress_util.php
 
