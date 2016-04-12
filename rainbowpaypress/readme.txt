@@ -130,6 +130,9 @@ configured on your server.  Also check your SPAM folder.
 
 == Changelog ==
 
+= 3.0.1 =
+* Fixed bug with allowed items being treated as disallowed.
+
 = 3.0.0 =
 * Fixed another date parsing bug that effected Firefox.
 * Database schema has been modified.  Table 'plugin_rainbow_pay_press_transactions' fields
