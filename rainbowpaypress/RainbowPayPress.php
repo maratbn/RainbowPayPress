@@ -677,9 +677,10 @@ function action_wp_ajax_rainbow_pay_press__submit() {
     $strDisallowedReason = null;
 
     if ($objItem) {
-        \array_push($arrErrors, 'error__item_disallowed');
-
-        $strDisallowedReason = $objItem['disallowed_reason'];
+        if ($objItem['is_disallowed']) {
+            \array_push($arrErrors, 'error__item_disallowed');
+            $strDisallowedReason = $objItem['disallowed_reason'];
+        }
     } else {
         \array_push($arrErrors, 'error__item_not_found');
     }
