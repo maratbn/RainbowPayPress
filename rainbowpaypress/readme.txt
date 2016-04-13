@@ -128,6 +128,44 @@ Check if you have a mail transfer agent (MTA) installed and properly
 configured on your server.  Also check your SPAM folder.
 
 
+== Screenshots ==
+
+1.  Examples of shortcode syntax, and display of all the transaction details entry fields that can
+    be made available to the buyer on any page of the website.
+
+2.  The official Stripe Checkout Dialog that appears when the buyer clicks to enter the Stripe
+    token id or Stripe card email fields.
+
+3.  RainbowPayPress admin menu.
+
+4.  Example of transaction details entry fields filled out by the buyer just before transaction
+    submission.
+
+5.  Transaction submission confirmation message displayed to the buyer after transaction
+    submission.  The confirmation message includes the timestamp of the submission and the Stripe
+    token that can be used by the website administrator(s) to charge the buyer's credit card.
+
+6.  The 'Pending Transactions' and 'Charged Transactions' tables as they appear to the website
+    administrator(s) on the 'Transactions' admin page, containing the data for example
+    transactions.  New transactions are initially inserted as new rows to the top of the 'Pending'
+    table,  Clicking the 'Charge' button charges the transaction, and moves the associated record
+    to the top of the 'Charged' table.  The 'Charged' table contains additional columns 'Customer
+    ID' and 'Charge ID'.  These data tokens are created by the Stripe business logic when the
+    transaction is charged, and they are rendered as web links, clicking on which takes the user to
+    the associated records on their Stripe account on the Stripe website.
+
+7.  The 'Items' table as it appears to the website administrator(s), containing an example list of
+    items that can be specified for sale via RainbowPayPress shortcodes.
+
+8.  The RainbowPayPress 'Settings' page as it appears to the website administrator(s) with some
+    example settings.
+
+9.  A screenshot of a customer record as it appears on the Stripe website.  This record was created
+    when the associated transaction was charged by clicking on the 'Charge' button on its row on
+    the 'Pending Transaction' table on the 'Transactions' admin page.  Once a transaction is
+    charged, all records associated with that charge can be tracked on the user's Stripe account.
+
+
 == Changelog ==
 
 = 3.0.1 =
