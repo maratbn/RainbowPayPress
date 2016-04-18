@@ -833,12 +833,12 @@ function filter_plugin_action_links($arrLinks) {
 
 function plugin_activation_hook() {
 
-    if (\version_compare(\strtolower(PHP_VERSION), PHP_VERSION_MIN_SUPPORTED, '<')) {
+    if (\version_compare(\strtolower(\PHP_VERSION), PHP_VERSION_MIN_SUPPORTED, '<')) {
         \wp_die(
             \sprintf(
                 \__('RainbowPayPress plugin cannot be activated because the currently active PHP version on this server is %s < %s and not supported.  PHP version >= %s is required.',
                     DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                PHP_VERSION,
+                \PHP_VERSION,
                 PHP_VERSION_MIN_SUPPORTED,
                 PHP_VERSION_MIN_SUPPORTED));
     }
