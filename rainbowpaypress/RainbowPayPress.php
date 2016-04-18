@@ -73,8 +73,6 @@ const SLUG_TRANSACTIONS  = 'plugin_RainbowPayPress_transactions';
 
 require_once('RainbowPayPress_util.php');
 
-\register_activation_hook(__FILE__, '\\plugin_RainbowPayPress\\plugin_activation_hook');
-
 
 \add_action('wp_ajax_nopriv_rainbow_pay_press__submit',
             '\\plugin_RainbowPayPress\\action_wp_ajax_rainbow_pay_press__submit');
@@ -88,6 +86,8 @@ require_once('RainbowPayPress_util.php');
 
 
 if (\is_admin()) {
+    \register_activation_hook(__FILE__, '\\plugin_RainbowPayPress\\plugin_activation_hook');
+
     \add_action(
         'admin_enqueue_scripts',
         '\\plugin_RainbowPayPress\\action_admin_enqueue_scripts');
