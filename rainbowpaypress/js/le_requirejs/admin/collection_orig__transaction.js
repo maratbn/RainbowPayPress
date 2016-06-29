@@ -62,7 +62,7 @@ define(['backbone',
                                         objData.errors.indexOf('error__no_curl') >= 0) {
                                         window
                                           .alert(
-                                             "Unable to charge transactions because your PHP environment lacks cURL support, without which it cannot communicate with the Stripe servers.  Please enable PHP cURL support on your server.  If your server is running Debian or Ubuntu, this can be done by installing the package 'php5-curl'.");
+                                             "Unable to charge transactions because your PHP environment lacks cURL support, without which it cannot communicate with the Stripe servers.  Please enable PHP cURL support on your server.  If your server is running Debian or Ubuntu, this can be done by installing the package 'php-curl'.");
                                         return;
                                     }
 

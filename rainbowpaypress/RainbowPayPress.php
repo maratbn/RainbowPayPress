@@ -216,7 +216,7 @@ function action_admin_notices() {
             \sprintf(
                 \__('Your PHP environment is lacking cURL support, without which it cannot communicate with the Stripe servers.  This will prevent you from charging your transactions with RainbowPayPress, for which you would need to enable PHP cURL support on your server.  If your server is running Debian or Ubuntu, this can be done by installing the package \'%s\'.',
                     DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
-                'php5-curl'));
+                'php-curl'));
     }
 
     if (Util::getOption(SETTING__ENTITY_NAME) == null) {
