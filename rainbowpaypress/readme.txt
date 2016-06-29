@@ -75,6 +75,7 @@ Requires:
 
   * PHP version >= 5.4
   * PHP cURL support enabled (Install module 'php-curl' on Debian / Ubuntu)
+  * PHP multibyte string support enabled (Install module 'mb-string' on Debian / Ubuntu)
   * Proper Mail Transfer Agent (MTA) configuration for notification emails.
 
 Official project URLs:

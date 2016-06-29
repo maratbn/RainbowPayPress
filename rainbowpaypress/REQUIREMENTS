@@ -11,4 +11,5 @@ RainbowPayPress requires:
 
      * PHP version >= 5.4
      * PHP cURL support enabled (Install module 'php-curl' on Debian / Ubuntu)
+     * PHP multibyte string support enabled (Install module 'mb-string' on Debian / Ubuntu)
      * WordPress version >= 3.8.3
