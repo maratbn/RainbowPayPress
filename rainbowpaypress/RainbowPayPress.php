@@ -219,6 +219,14 @@ function action_admin_notices() {
                 'php-curl'));
     }
 
+    if (!Util::isMbStringAvailable()) {
+        $_renderWarning(
+            \sprintf(
+                \__('Your PHP environment is lacking multibyte string support, without which it cannot communicate with the Stripe servers.  This will prevent you from charging your transactions with RainbowPayPress, for which you would need to enable PHP multibyte support on your server.  If your server is running Debian or Ubuntu, this can be done by installing the package \'%s\'.',
+                    DOMAIN_PLUGIN_RAINBOW_PAY_PRESS),
+                'php-mbstring'));
+    }
+
     if (Util::getOption(SETTING__ENTITY_NAME) == null) {
         $_renderWarning(
             \sprintf(

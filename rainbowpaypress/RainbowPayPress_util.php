@@ -471,6 +471,10 @@ class Util {
         return \function_exists('\\curl_init');
     }
 
+    static function isMbStringAvailable() {
+        return \function_exists('\\mb_detect_encoding');
+    }
+
     static function translateItem($objItemDB) {
         if (!$objItemDB) return null;
 
