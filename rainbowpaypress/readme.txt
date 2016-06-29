@@ -168,7 +168,7 @@ configured on your server.  Also check your SPAM folder.
 
 == Changelog ==
 
-= 3.1 =
+= 3.1.0 =
 * Added additional tags to make the plugin easier to find in the WordPress plugins directory.
 * Added detection of missing PHP multibyte string support, which is necessary to communicate with
   Stripe.
