@@ -171,6 +171,8 @@ configured on your server.  Also check your SPAM folder.
 
 = 3.1.0 =
 * Tested up to WordPress version 4.7.2.
+* Implemented notification to the paying user when a payment transaction could not be submitted due
+  to a communication error with the server.
 * Added additional tags to make the plugin easier to find in the WordPress plugins directory.
 * Added detection of missing PHP multibyte string support, which is necessary to communicate with
   Stripe.
