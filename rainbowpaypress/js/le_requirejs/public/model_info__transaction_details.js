@@ -79,6 +79,13 @@ define(['jquery',
                                       }),
                             me = this;
 
+                        $xhr.error(function($xhr2, strTextStatus, strErrorThrown) {
+                                if (!$xhr.getAllResponseHeaders()) {
+                                    var strErrorMessage = "An error has been detected, along with no response from the server.  This indicates that your transaction has not been submitted due to a communication problem with the server."
+                                    alert(strErrorMessage);
+                                }
+                            });
+
                         $xhr.success(function(strData) {
                                 var objData = JSON.parse(strData);
 
