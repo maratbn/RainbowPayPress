@@ -66,9 +66,10 @@ define(['jquery',
                                                         .attr(
                                                           'data-plugin-rainbow-pay-press-type')
                                                       || 'test',
-                                            amount:  $elSpan
+                                            amount:  parseInt(
+                                                      $elSpan
                                                         .attr(
-                                                          'data-plugin-rainbow-pay-press-amount'),
+                                                         'data-plugin-rainbow-pay-press-amount')),
                                             name:    $elSpan
                                                         .attr(
                                                           'data-plugin-rainbow-pay-press-name'),
