@@ -86,7 +86,7 @@ define(['jquery',
                                     var strErrorMessage = "An error has been detected, along with no response from the server.  This indicates that your transaction has not been submitted due to a communication problem with the server."
 
                                     if ($xhr.readyState == 0 && strURL.indexOf('https://') == 0) {
-                                        strErrorMessage += "  Your browser has likely refused to accept this website's HTTPS/SSL certificate.  This website may not be using a commonly trusted HTTPS/SSL certificate, or it may have expired.";
+                                        strErrorMessage = "An error has occurred before this transaction could be sent.  Your browser has likely refused to accept this website's HTTPS/SSL certificate.  This website may not be using a commonly trusted HTTPS/SSL certificate, or it may have expired.";
                                     }
 
                                     alert(strErrorMessage);
