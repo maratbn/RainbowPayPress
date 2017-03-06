@@ -384,7 +384,8 @@ function action_wp_ajax_rainbow_pay_press__admin__charge() {
                         'customer'  => $customer->id,
                         'amount'    => $dataTransaction['charge_amount'],
                         'currency'  => 'usd',
-                        'metadata'  => array('charge_desc' => $dataTransaction['charge_description'])
+                        'metadata'  => array('charge_desc' => $dataTransaction
+                                                                           ['charge_description'])
                     ));
                 if (!$charge) {
                     \array_push($arrErrors, 'error__create_stripe_charge');
