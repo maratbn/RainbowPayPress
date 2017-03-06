@@ -171,6 +171,8 @@ configured on your server.  Also check your SPAM folder.
 
 = 3.1.0 =
 * Tested up to WordPress version 4.7.2.
+* Implemented detection of when a transaction could not be submitted due to an untrusted HTTPS/SSL
+  certificate.
 * Implemented notification to the paying user when a payment transaction could not be submitted due
   to a communication error with the server.
 * Added additional tags to make the plugin easier to find in the WordPress plugins directory.
