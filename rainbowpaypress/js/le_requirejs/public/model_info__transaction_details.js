@@ -56,8 +56,10 @@ define(['jquery',
                     },
 
                 doXhrSubmit: function() {
+                        var strURL = model_orig__app_common.get('ajax_url');
+
                         var $xhr = $.post
-                                      (model_orig__app_common.get('ajax_url'), {
+                                      (strURL, {
                                           'action':  'rainbow_pay_press__submit',
                                           'data':    window.encodeURIComponent(
                                                        window.JSON.stringify({
