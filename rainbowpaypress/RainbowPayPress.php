@@ -813,7 +813,7 @@
 
     function action_wp_print_footer_scripts() {
 
-        if (!wp_script_is('plugin__RainbowPayPress__requirejs')) return;
+        if (!\wp_script_is('plugin__RainbowPayPress__requirejs')) return;
 
         $strUrlBase = \plugin_dir_url(__FILE__);
     ?>
