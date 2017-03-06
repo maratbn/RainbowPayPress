@@ -790,6 +790,11 @@
 
     function action_wp_enqueue_scripts() {
 
+        global $post;
+        $strContent = $post->post_content;
+        if (!\has_shortcode($strContent, SHORTCODE__RAINBOW_PAY_PRESS)) return;
+
+
         \wp_enqueue_style('plugin__RainbowPayPress__style_css',
                           \plugin_dir_url(__FILE__) . '/style.css',
                           null,
