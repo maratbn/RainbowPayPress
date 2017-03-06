@@ -171,6 +171,7 @@ configured on your server.  Also check your SPAM folder.
 
 = 3.1.0 =
 * Tested up to WordPress version 4.7.2.
+* Synched with the latest Stripe Checkout JavaScript API.
 * Limited the loading of plugin's static resources only to pages that use the plugin.
 * Implemented detection of when a transaction could not be submitted due to an untrusted HTTPS/SSL
   certificate.
