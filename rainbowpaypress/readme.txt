@@ -171,6 +171,7 @@ configured on your server.  Also check your SPAM folder.
 
 = 3.1.0 =
 * Tested up to WordPress version 4.7.2.
+* Limited the loading of plugin's static resources only to pages that use the plugin.
 * Implemented detection of when a transaction could not be submitted due to an untrusted HTTPS/SSL
   certificate.
 * Implemented notification to the paying user when a payment transaction could not be submitted due
