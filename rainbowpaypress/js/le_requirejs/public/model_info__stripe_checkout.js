@@ -96,11 +96,11 @@ define(['backbone',
                                     //  Based on:
                                     //  https://stripe.com/docs/checkout#integration-custom
                                     handleStripe = StripeCheckout.configure({
-                                            'allow-remember-me':
+                                            'allowRememberMe':
                                                     false,
                                             'key':  model_info__transaction_details
                                                                                  .getPublishKey(),
-                                            'panel-label': "Obtain Stripe token",
+                                            'panelLabel': "Obtain Stripe token",
 
                                             'closed': function() {
                                                     me.set({'flag_stripe_closed': true,
